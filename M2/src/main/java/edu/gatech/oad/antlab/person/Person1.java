@@ -31,15 +31,15 @@ public class Person1 {
 	 */
 	private String calc(String input) {
 	  String[] inputArray = input.split("");
-      String[] output = new String[inputArray.size];
-      for (int i = 0; i < inputArray.size; i++) {
-          if (i + 2 < inputArray.size) {
+      String[] output = new String[inputArray.length];
+      for (int i = 0; i < inputArray.length; i++) {
+          if (i + 2 < inputArray.length) {
               output[i] = inputArray[i + 2];
           } else {
-              output[i] = inputArray[i + 2 - inputArray.size];
+              output[i] = inputArray[i + 2 - inputArray.length];
           }
       }
-	  return output;
+	  return java.util.Arrays.toString(output);
 	}
 
 	/**
