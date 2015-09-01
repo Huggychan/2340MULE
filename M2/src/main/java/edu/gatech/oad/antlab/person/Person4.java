@@ -34,7 +34,7 @@ public class Person4 {
     	int x = input.length();
     	char y;
     	String modified = "";
-    	for(int i=1; i < x; i++){
+    	for(int i = 0 ; i < x; i++){
     		y = input.charAt(i);
     		y = (char) (y + 1);
     		modified = modified + y;
