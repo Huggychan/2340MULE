@@ -1,4 +1,6 @@
 apply plugin: 'java'
 jar {
-    manifest { attributes('Main-Class': '     ', 'Class-Path': '     ') }
+    manifest { attributes('Main-Class': 'edu.gatech.oad.antlab.pkg1' +
+            '.AntLabMain.java', 'Class-Path': 'out' +
+            '.production.CS2340-MULE.edu.gatech.oad.antlab') }
 } and dependencies { compile files ('     ') }
