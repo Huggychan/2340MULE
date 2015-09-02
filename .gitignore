@@ -5,3 +5,6 @@
 .idea
 out/
 *.class
+gradlew
+gradlew.bat
+settings.gradle
