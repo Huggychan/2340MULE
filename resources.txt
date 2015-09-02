@@ -1,0 +1,9 @@
+Here are some resources for branches:
+
+http://www.gitguys.com/topics/adding-and-removing-remote-branches/
+
+https://git-scm.com/book/en/v2/Git-Branching-Branch-Management
+
+Resources for Gradle:
+
+http://www.jayway.com/2013/05/12/getting-started-with-gradle/
