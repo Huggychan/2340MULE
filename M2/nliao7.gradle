@@ -1,6 +1,17 @@
+
+version '1.0-SNAPSHOT'
+
 apply plugin: 'java'
+
+
+repositories {
+    mavenCentral()
+}
+
 jar {
     manifest { attributes('Main-Class': 'edu.gatech.oad.antlab.pkg1' +
             '.AntLabMain.java', 'Class-Path': 'out' +
             '.production.CS2340-MULE.edu.gatech.oad.antlab') }
-} and dependencies { compile files ('     ') }
+} and dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
