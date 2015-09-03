@@ -1,4 +1,4 @@
-defaultTasks "compileJava", "compileTest", "javadoc", "clean", "jar"
+// defaultTasks "compileJava", "compileTest", "javadoc", "clean", "jar"
 
 version = '1.0'
 
@@ -6,8 +6,8 @@ apply plugin: 'java'
 
 // mainClassName = "src.main.java.edu.gatech.oad.antlab.pkg1.AntLabMain"
 
-sourceCompatibility = 1.7
-// targetCompatibility = 1.8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -15,15 +15,18 @@ repositories {
 
 jar {
     manifest {
-        attributes 'Main-Class' : 'AntLabMain',
-        'Implementation-Version': version ,
-        'Implementation-Title': 'M2 AntLab'
+        attributes 'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+        'Implementation-Version' : version ,
+        'Implementation-Title' : 'M2 AntLab'
     }
 }
 
 dependencies {
-    // testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
     compile files('lib/resources.jar')
+    compile files('src/main/java/edu/gatech/oad/antlab/pkg1')
+    compile files('src/main/java/edu/gatech/oad/antlab/pkg2')
+    compile files('src/main/java/edu/gatech/oad/antlab/person')
 }
 
 /*jar {
