@@ -1,17 +1,23 @@
-
-version '1.0-SNAPSHOT'
+version '1.0'
 
 apply plugin: 'java'
 
+sourceCompatibility = 1.5
 
 repositories {
     mavenCentral()
 }
 
+dependencies {
+    compile files('lib/resources.jar')
+}
+
 jar {
-    manifest { attributes('Main-Class': 'edu.gatech.oad.antlab.pkg1' +
-            '.AntLabMain.java', 'Class-Path': 'out' +
-            '.production.CS2340-MULE.edu.gatech.oad.antlab') }
-} and dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    manifest {
+        attributes 'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+                'Implementation-Version' : version ,
+                'Implementation-Title' : 'M2 AntLab - $version'
+    }
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
