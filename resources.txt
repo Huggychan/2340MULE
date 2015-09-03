@@ -7,3 +7,9 @@ https://git-scm.com/book/en/v2/Git-Branching-Branch-Management
 Resources for Gradle:
 
 http://www.jayway.com/2013/05/12/getting-started-with-gradle/
+
+http://examples.javacodegeeks.com/core-java/gradle/gradle-hello-world-tutorial/
+
+https://docs.gradle.org/current/userguide/tutorial_java_projects.html
+
+https://spring.io/guides/gs/gradle/
