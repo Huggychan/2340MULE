@@ -7,8 +7,8 @@ apply plugin: 'java'
 
 // mainClassName = "src.main.java.edu.gatech.oad.antlab.pkg1.AntLabMain"
 
-sourceCompatibility = 1.5
-// targetCompatibility = 1.8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -18,10 +18,7 @@ jar {
     manifest {
         attributes 'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
         'Implementation-Version' : version ,
-        'Implementation-Title' : 'M2 AntLab - $version'
-    }
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        'Implementation-Title' : 'M2 AntLab'
     }
 }
 
