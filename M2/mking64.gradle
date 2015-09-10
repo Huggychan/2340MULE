@@ -1,4 +1,6 @@
-//Myron King mking64
+//Myron King 
+// Student ID: mking64
+// defaultTasks "compileJava", "compileTest", "javadoc", "clean", "jar"
 
 version '1.0'
 
@@ -23,19 +25,19 @@ jar {
 
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
+
+
 /*jar {
     baseName = "mking64-antlab"
     version = "1.0"
-}*/
+}
 
-/*defaultTasks 'printName'
-
+defaultTasks 'printMyName'
 task printHello {
     doLast {
         println "Hello!"
     }
 }
-
-task printName (dependsOn:printHello) << {
-    println "My name is Myron."
+task printMyName (dependsOn:printHello) << {
+    println "My name is Myron King."
 }*/

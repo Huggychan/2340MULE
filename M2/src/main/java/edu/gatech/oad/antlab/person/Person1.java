@@ -30,16 +30,10 @@ public class Person1 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  String[] inputArray = input.split("");
-      String[] output = new String[inputArray.length];
-      for (int i = 0; i < inputArray.length; i++) {
-          if (i + 2 < inputArray.length) {
-              output[i] = inputArray[i + 2];
-          } else {
-              output[i] = inputArray[i + 2 - inputArray.length];
-          }
-      }
-	  return java.util.Arrays.toString(output);
+	  String output = new String();
+      output = input.substring(2);
+      output = output.concat(input.substring(0, 1));
+      return output;
 	}
 
 	/**
