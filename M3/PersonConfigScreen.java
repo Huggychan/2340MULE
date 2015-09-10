@@ -10,6 +10,11 @@ import javafx.stage.Stage;
 
 
 public class PersonConfigScreen extends Application {
+
+    public static void main(String[] args) {
+        Application.launch(PersonConfigScreen.class, (java.lang.String[]) null);
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root =
