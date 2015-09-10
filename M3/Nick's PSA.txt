@@ -4,10 +4,10 @@ this directory so we had a cs2340-mule inside this cs2340-mule. Don't do that.
 In case you forgot what you're doing, Shyam Bilal and Myron will work on the player
 Config page, which consists of Setting name and race,
 
-Marc and I will be doing Game, which consists of difficulty, # players, map type
+Marc and I will be doing Game, which consists of difficulty, # players, map type, color
 
 Shyam will use case for select Plot,
 Marc, Gamble
-Bilal, Sleect #player
+Bilal, Select #player
 Myron, Difficulty,
 Me, Auction
