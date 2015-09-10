@@ -1,0 +1,41 @@
+//Myron King mking64
+
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile files('lib/resources.jar')
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+                'Implementation-Version' : version ,
+                'Implementation-Title' : 'M2 AntLab - $version'
+    }
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+/*jar {
+    baseName = "mking64-antlab"
+    version = "1.0"
+}*/
+
+/*defaultTasks 'printName'
+
+task printHello {
+    doLast {
+        println "Hello!"
+    }
+}
+
+task printName (dependsOn:printHello) << {
+    println "My name is Myron."
+}*/
