@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -13,11 +14,17 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="658.0" layoutY="238.0" prefHeight="212.0" prefWidth="142.0">
          <children>
-            <TextField text="Enter name:" />
+            <TextField promptText="Enter name:">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
             <ComboBox fx:id="race" prefWidth="150.0" promptText="Pick race:" />
             <ComboBox fx:id="color" prefWidth="150.0" promptText="Pick color:" />
             <Button mnemonicParsing="false" text="Start" textAlignment="CENTER" />
          </children>
       </VBox>
    </children>
+   <cursor>
+      <Cursor fx:constant="TEXT" />
+   </cursor>
 </Pane>
