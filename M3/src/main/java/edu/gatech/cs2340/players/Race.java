@@ -1,3 +1,4 @@
+package edu.gatech.cs2340.players;
 /**
  *
  * @author Bilal, Marc

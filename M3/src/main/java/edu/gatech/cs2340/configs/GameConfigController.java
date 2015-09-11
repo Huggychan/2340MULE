@@ -1,3 +1,4 @@
+package edu.gatech.cs2340.configs;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 // import javafx.fxml.FXMLLoader;

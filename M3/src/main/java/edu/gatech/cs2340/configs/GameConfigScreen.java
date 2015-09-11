@@ -1,3 +1,4 @@
+package edu.gatech.cs2340.configs;
 // import java.awt.*;
 // import java.net.URL;
 // import java.util.ResourceBundle;

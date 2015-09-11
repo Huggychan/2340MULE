@@ -1,3 +1,4 @@
+package edu.gatech.cs2340.players;
 /**
  * Makes a Person with different elements
  * @author Bilal, Marc
