@@ -2,7 +2,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-// import javafx.scene.control.ComboBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,7 +11,6 @@ import javafx.stage.Stage;
 public class PersonConfigScreen extends Application {
 
     public static void main(String[] args) {
-        // Application.launch(GameConfigScreen.class, (java.lang.String[]) null);
         Application.launch(PersonConfigScreen.class, (java.lang.String[]) null);
     }
 
