@@ -1,15 +1,23 @@
-import java.util.logging.Level;
-import java.util.logging.Logger;
+// import java.util.logging.Level;
+// import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.StackPane;
+// import javafx.scene.layout.StackPane;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
+/**
+ * Person Configuration Screen
+ * @author Bilal, Myron, Shyam
+ * @version 1.0
+ */
 public class PersonConfigScreen extends Application {
 
+    /**
+     * Main method that utilizes PersonConfigScreen
+     * @param args Arguments to command line
+     */
     public static void main(String[] args) {
         Application.launch(PersonConfigScreen.class, (java.lang.String[]) null);
     }
