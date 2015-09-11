@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 public class PersonConfigScreen extends Application {
 
     public static void main(String[] args) {
+        // Application.launch(GameConfigScreen.class, (java.lang.String[]) null);
         Application.launch(PersonConfigScreen.class, (java.lang.String[]) null);
     }
 
