@@ -24,7 +24,7 @@ public class PersonConfigScreen extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root =
-            FXMLLoader.load(getClass().getResource("PersonConfigScreen.fxml"));
+            FXMLLoader.load(getClass().getResource("../../../../../resources/PersonConfigScreen.fxml"));
 
         Scene scene = new Scene(root, 1600, 900);
 

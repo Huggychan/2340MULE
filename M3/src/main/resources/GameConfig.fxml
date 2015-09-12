@@ -4,9 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import edu.gatech.cs2340.configs.*?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameConfigController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.configs.GameConfigController">
    <children>
       <ChoiceBox fx:id="difficultyChoiceBox" layoutX="565.0" layoutY="433.0" prefWidth="150.0" />
       <Label layoutX="200.0" layoutY="400.0" prefHeight="105.0" prefWidth="253.0" text="Game Difficulty">
