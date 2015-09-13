@@ -26,7 +26,10 @@ public class Game extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        URL location = getClass().getResource("/GameConfig.fxml"); //NOTE: using / in front of file name denotes that file is in src/main/resources
+        URL location = getClass().getResource
+                ("configs/GameConfig.fxml");
+        //NOTE:
+        // using / in front of file name denotes that file is in src/main/resources
         FXMLLoader loader = new FXMLLoader(location);
         loader.setClassLoader(this.getClass().getClassLoader());
 
