@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Game extends Application{
+public class Game extends Application {
 
     private ArrayList<Person> players;
     private int numPlayers;
@@ -21,7 +21,10 @@ public class Game extends Application{
     private enum GameState{GAMECONFIG, PLAYERCONFIG}
     private GameState state;
 
-
+    /**
+     * Main
+     * @param args Arguments passed
+     */
     public static void main(String[] args) {
         Application.launch(Game.class, (java.lang.String[]) null);
     }
@@ -32,6 +35,7 @@ public class Game extends Application{
         state = GameState.GAMECONFIG;
         URL location = getClass().getResource
                 ("configs/GameConfig.fxml");
+
         //NOTE:
         // using / in front of file name denotes that file is in src/main/resources
         FXMLLoader loader = new FXMLLoader(location);
@@ -41,6 +45,7 @@ public class Game extends Application{
 
         GameConfigController gcfgController = (GameConfigController)loader.getController();
         gcfgController.setGame(this);
+
         Scene scene = new Scene(root, 1600, 900);
         stage.setTitle("MULE");
         stage.setScene(scene);
