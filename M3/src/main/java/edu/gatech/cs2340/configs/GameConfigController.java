@@ -1,15 +1,21 @@
 package edu.gatech.cs2340.configs;
+import edu.gatech.cs2340.Maps.MapType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import edu.gatech.cs2340.Game;
 // import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Nick on 9/10/2015.
+ * Created by Nick on 9/10/2015. not marc
  */
 public class GameConfigController implements Initializable {
 
@@ -18,7 +24,11 @@ public class GameConfigController implements Initializable {
     @FXML
     private ChoiceBox<Integer> numPlayersBox;
     @FXML
-    private ChoiceBox<String> mapBox;
+    private ChoiceBox<MapType> mapBox;
+    @FXML
+    private Pane gameConfigPane;
+
+    private Game game;
 
     /**
      * Initialize method
@@ -29,7 +39,35 @@ public class GameConfigController implements Initializable {
         difficultyChoiceBox.setItems(FXCollections.observableArrayList(
             "Easy", "Medium", "Hard"));
         numPlayersBox.setItems(FXCollections.observableArrayList(1, 2, 3, 4));
-        mapBox.setItems(FXCollections.observableArrayList(
-            "Map1", "Map2", "Map3"));
+        mapBox.setItems(FXCollections.observableArrayList(MapType
+                .getAllMapTypes()));
+        gameConfigPane.setOnKeyPressed( event -> {
+            if(event.getCode().equals(KeyCode.ENTER)) {
+                passToGame();
+            }
+        });
     }
+
+    /**
+     * Set the Game bro!
+     * @param game the game to be set
+     */
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    /**
+     * pass the game data back to the game class bro!
+     */
+    private void passToGame() {
+        if (difficultyChoiceBox.getValue() != null
+                && numPlayersBox.getValue() != null
+                && mapBox.getValue() != null) {
+            game.setDifficulty(difficultyChoiceBox.getValue());
+            game.setMapType(mapBox.getValue());
+            game.setNumPlayers(numPlayersBox.getValue());
+        }
+    }
+
+
 }

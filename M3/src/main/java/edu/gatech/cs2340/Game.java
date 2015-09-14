@@ -17,6 +17,9 @@ public class Game extends Application{
     private ArrayList<Person> players;
     private int numPlayers;
     private MapType mapType;
+    private String Difficulty;
+    private enum GameState{GAMECONFIG, PLAYERCONFIG}
+    private GameState state;
 
 
     public static void main(String[] args) {
@@ -26,6 +29,7 @@ public class Game extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
+        state = GameState.GAMECONFIG;
         URL location = getClass().getResource
                 ("configs/GameConfig.fxml");
         //NOTE:
@@ -36,13 +40,25 @@ public class Game extends Application{
         Parent root = (Parent) loader.load();
 
         GameConfigController gcfgController = (GameConfigController)loader.getController();
-
+        gcfgController.setGame(this);
         Scene scene = new Scene(root, 1600, 900);
         stage.setTitle("MULE");
         stage.setScene(scene);
         stage.show();
     }
 
+    public void nextState() {
+    }
 
+    public void setDifficulty(String difficulty) {
+        Difficulty = difficulty;
+    }
 
+    public void setMapType(MapType mapType) {
+        this.mapType = mapType;
+    }
+
+    public void setNumPlayers(int numPlayers) {
+        this.numPlayers = numPlayers;
+    }
 }
