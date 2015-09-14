@@ -38,36 +38,36 @@ public class PersonConfigController implements Initializable {
      */
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         race.setItems(
-            FXCollections.observableArrayList(
-                "Packer",
-                "Spheroid",
-                "Humanoid",
-                "Leggite",
-                "Flapper",
-                "Bonzoid",
-                "Mechtron",
-                "Gollumer"));
+                FXCollections.observableArrayList(
+                        "Packer",
+                        "Spheroid",
+                        "Humanoid",
+                        "Leggite",
+                        "Flapper",
+                        "Bonzoid",
+                        "Mechtron",
+                        "Gollumer"));
         race.getSelectionModel().selectFirst();
         color.setItems(
-            FXCollections.observableArrayList(
-                "Red",
-                "Orange",
-                "Yellow",
-                "Green",
-                "Blue",
-                "Purple"));
+                FXCollections.observableArrayList(
+                        "Red",
+                        "Orange",
+                        "Yellow",
+                        "Green",
+                        "Blue",
+                        "Purple"));
         color.getSelectionModel().selectFirst();
         start.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                if (name.getCharacters().length() == 0) {
-                    welcome.setText(
-                        "Name must include at least one character. Please "
-                                + "enter a valid name");
-                }
+                if (name.getText() == null || name.getText().trim().isEmpty()) {
+                    welcome.setText("Name must include at least one character"
+                            + "\nPlease enter a valid name");
+                } else {
                     welcome.setText("Welcome " + color.getValue() + " "
-                        + race.getValue() + " named "
-                        + name.getCharacters() + "!");
+                            + race.getValue() + " named "
+                            + name.getCharacters() + "!");
+                }
             }
         });
     }
