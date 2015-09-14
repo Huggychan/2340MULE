@@ -47,6 +47,7 @@ public class PersonConfigController implements Initializable {
                 "Bonzoid",
                 "Mechtron",
                 "Gollumer"));
+        race.getSelectionModel().selectFirst();
         color.setItems(
             FXCollections.observableArrayList(
                 "Red",
@@ -55,23 +56,18 @@ public class PersonConfigController implements Initializable {
                 "Green",
                 "Blue",
                 "Purple"));
+        color.getSelectionModel().selectFirst();
         start.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 if (name.getCharacters().length() == 0) {
                     welcome.setText(
-                        "Wubba lubba dub dub name can't be empty yo!");
-                } else if (race.getValue() == null) {
-                    welcome.setText(
-                        "Wubba lubba dub dub race can't be null yo!");
-                } else if (color.getValue() == null) {
-                    welcome.setText(
-                        "Wubba lubba dub dub color can't be null yo!");
-                } else {
+                        "Name must include at least one character. Please "
+                                + "enter a valid name");
+                }
                     welcome.setText("Welcome " + color.getValue() + " "
                         + race.getValue() + " named "
                         + name.getCharacters() + "!");
-                }
             }
         });
     }

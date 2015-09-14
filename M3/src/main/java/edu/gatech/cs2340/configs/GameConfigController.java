@@ -28,8 +28,11 @@ public class GameConfigController implements Initializable {
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         difficultyChoiceBox.setItems(FXCollections.observableArrayList(
             "Easy", "Medium", "Hard"));
+        difficultyChoiceBox.getSelectionModel().selectFirst();
         numPlayersBox.setItems(FXCollections.observableArrayList(1, 2, 3, 4));
+        numPlayersBox.getSelectionModel().selectFirst();
         mapBox.setItems(FXCollections.observableArrayList(
             "Map1", "Map2", "Map3"));
+        mapBox.getSelectionModel().selectFirst();
     }
 }

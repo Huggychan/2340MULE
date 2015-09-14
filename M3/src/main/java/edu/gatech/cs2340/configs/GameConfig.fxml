@@ -8,12 +8,12 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.configs.GameConfigController">
    <children>
       <ChoiceBox fx:id="difficultyChoiceBox" layoutX="565.0" layoutY="433.0" prefWidth="150.0" />
-      <Label layoutX="200.0" layoutY="400.0" prefHeight="105.0" prefWidth="253.0" text="Game Difficulty">
+      <Label layoutX="200.0" layoutY="400.0" prefHeight="105.0" prefWidth="282.0" text="Game Difficulty">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="200.0" layoutY="500.0" prefHeight="105.0" prefWidth="309.0" text="Number of Players">
+      <Label layoutX="200.0" layoutY="500.0" prefHeight="105.0" prefWidth="327.0" text="Number of Players">
          <font>
             <Font size="36.0" />
          </font>
@@ -35,5 +35,6 @@
             <Font size="74.0" />
          </font>
       </Label>
+      <Button layoutX="616.0" layoutY="710.0" mnemonicParsing="false" text="Next" />
    </children>
 </Pane>

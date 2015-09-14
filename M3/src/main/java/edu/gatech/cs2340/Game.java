@@ -12,13 +12,16 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Game extends Application{
+public class Game extends Application {
 
     private ArrayList<Person> players;
     private int numPlayers;
     private MapType mapType;
 
-
+    /**
+     * Main
+     * @param args Arguments passed
+     */
     public static void main(String[] args) {
         Application.launch(Game.class, (java.lang.String[]) null);
     }
@@ -26,8 +29,7 @@ public class Game extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        URL location = getClass().getResource
-                ("configs/GameConfig.fxml");
+        URL location = getClass().getResource("configs/GameConfig.fxml");
         //NOTE:
         // using / in front of file name denotes that file is in src/main/resources
         FXMLLoader loader = new FXMLLoader(location);
@@ -35,7 +37,8 @@ public class Game extends Application{
 
         Parent root = (Parent) loader.load();
 
-        GameConfigController gcfgController = (GameConfigController)loader.getController();
+        GameConfigController gcfgController
+                = (GameConfigController) loader.getController();
 
         Scene scene = new Scene(root, 1600, 900);
         stage.setTitle("MULE");
