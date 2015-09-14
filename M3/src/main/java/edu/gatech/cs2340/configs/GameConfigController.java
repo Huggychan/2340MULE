@@ -1,18 +1,17 @@
 package edu.gatech.cs2340.configs;
+import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.MapType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import edu.gatech.cs2340.Game;
-// import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+// import javafx.fxml.FXMLLoader;
 
 /**
  * Created by Nick on 9/10/2015. not marc
@@ -20,7 +19,7 @@ import java.util.ResourceBundle;
 public class GameConfigController implements Initializable {
 
     @FXML
-    private ChoiceBox<String> difficultyChoiceBox;
+    private ChoiceBox<Game.Difficulty> difficultyChoiceBox;
     @FXML
     private ChoiceBox<Integer> numPlayersBox;
     @FXML
@@ -36,14 +35,14 @@ public class GameConfigController implements Initializable {
      * @param resources Resources
      */
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        difficultyChoiceBox.setItems(FXCollections.observableArrayList(
-            "Easy", "Medium", "Hard"));
-        difficultyChoiceBox.getSelectionModel().selectFirst();
+        difficultyChoiceBox.setItems(FXCollections.observableArrayList(Game
+                .Difficulty.getAllDifficulties()));
+
         numPlayersBox.setItems(FXCollections.observableArrayList(1, 2, 3, 4));
-        numPlayersBox.getSelectionModel().selectFirst();
+
         mapBox.setItems(FXCollections.observableArrayList(MapType
                 .getAllMapTypes()));
-        mapBox.getSelectionModel().selectFirst();
+
         gameConfigPane.setOnKeyPressed( event -> {
             if(event.getCode().equals(KeyCode.ENTER)) {
                 passToGame();

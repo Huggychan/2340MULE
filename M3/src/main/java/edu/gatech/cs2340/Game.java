@@ -11,15 +11,24 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Game extends Application {
 
     private ArrayList<Person> players;
     private int numPlayers;
     private MapType mapType;
-    private String Difficulty;
+    private Difficulty difficulty;
     private enum GameState{GAMECONFIG, PLAYERCONFIG}
     private GameState state;
+
+    public enum Difficulty {
+        Easy, Medium, Hard;
+
+        public static ArrayList<Difficulty> getAllDifficulties() {
+            return new ArrayList<>(Arrays.asList(values()));
+        }
+    }
 
     /**
      * Main
@@ -55,8 +64,8 @@ public class Game extends Application {
     public void nextState() {
     }
 
-    public void setDifficulty(String difficulty) {
-        Difficulty = difficulty;
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 
     public void setMapType(MapType mapType) {
