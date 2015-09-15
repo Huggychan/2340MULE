@@ -37,12 +37,12 @@ public class GameConfigController implements Initializable {
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         difficultyChoiceBox.setItems(FXCollections.observableArrayList(Game
                 .Difficulty.getAllDifficulties()));
-
+        difficultyChoiceBox.getSelectionModel().selectFirst();
         numPlayersBox.setItems(FXCollections.observableArrayList(1, 2, 3, 4));
-
+        numPlayersBox.getSelectionModel().selectFirst();
         mapBox.setItems(FXCollections.observableArrayList(MapType
                 .getAllMapTypes()));
-
+        mapBox.getSelectionModel().selectFirst();
         gameConfigPane.setOnKeyPressed( event -> {
             if(event.getCode().equals(KeyCode.ENTER)) {
                 passToGame();
@@ -68,6 +68,7 @@ public class GameConfigController implements Initializable {
             game.setDifficulty(difficultyChoiceBox.getValue());
             game.setMapType(mapBox.getValue());
             game.setNumPlayers(numPlayersBox.getValue());
+            game.nextState();
         }
     }
 

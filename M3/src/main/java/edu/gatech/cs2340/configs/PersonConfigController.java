@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.configs;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import edu.gatech.cs2340.Game;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,6 +33,8 @@ public class PersonConfigController implements Initializable {
     @FXML
     private Label welcome;
 
+
+    private Game game;
     /**
      * Initializes the fxml file
      * @param fxmlFileLocation Location of fxml file
@@ -70,5 +74,13 @@ public class PersonConfigController implements Initializable {
                 }
             }
         });
+    }
+
+    /**
+     * Set the Game bro!
+     * @param game the game to be set
+     */
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

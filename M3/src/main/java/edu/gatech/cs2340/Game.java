@@ -2,6 +2,7 @@ package edu.gatech.cs2340;
 
 import edu.gatech.cs2340.Maps.MapType;
 import edu.gatech.cs2340.configs.GameConfigController;
+import edu.gatech.cs2340.configs.PersonConfigController;
 import edu.gatech.cs2340.players.Person;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ public class Game extends Application {
     private Difficulty difficulty;
     private enum GameState{GAMECONFIG, PLAYERCONFIG}
     private GameState state;
+    private Stage stage;
 
     public enum Difficulty {
         Easy, Medium, Hard;
@@ -44,7 +46,7 @@ public class Game extends Application {
         state = GameState.GAMECONFIG;
         URL location = getClass().getResource
                 ("configs/GameConfig.fxml");
-
+        this.stage = stage;
         //NOTE:
         // using / in front of file name denotes that file is in src/main/resources
         FXMLLoader loader = new FXMLLoader(location);
@@ -61,8 +63,6 @@ public class Game extends Application {
         stage.show();
     }
 
-    public void nextState() {
-    }
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
@@ -74,5 +74,24 @@ public class Game extends Application {
 
     public void setNumPlayers(int numPlayers) {
         this.numPlayers = numPlayers;
+    }
+
+    public void nextState() {
+        state = GameState.PLAYERCONFIG;
+        System.out.println(mapType);
+        System.out.println(difficulty);
+        System.out.println(numPlayers);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource
+                ("configs/PersonConfigScreen.fxml"));
+        loader.setClassLoader(this.getClass().getClassLoader());
+
+        PersonConfigController pController = (PersonConfigController) loader
+                .getController();
+        pController.setGame(this);
+
+        //Scene scene = new Scene(root, 1600, 900);
+        //stage.setScene(scene);
+
     }
 }
