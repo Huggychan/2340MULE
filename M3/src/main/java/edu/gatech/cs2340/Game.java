@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -86,12 +87,19 @@ public class Game extends Application {
                 ("configs/PersonConfigScreen.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
 
+        Parent newRoot = null;
+
+        try {
+            newRoot = (Parent) loader.load();
+        } catch (IOException e) {
+            System.out.println("IOException loading PersonConfig.fxml");
+            System.out.println(e.getMessage());
+        }
+
         PersonConfigController pController = (PersonConfigController) loader
                 .getController();
         pController.setGame(this);
 
-        //Scene scene = new Scene(root, 1600, 900);
-        //stage.setScene(scene);
-
+        stage.getScene().setRoot(newRoot);
     }
 }
