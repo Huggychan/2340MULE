@@ -71,7 +71,7 @@ public class GameConfigController implements Initializable {
             game.setDifficulty(difficultyChoiceBox.getValue());
             game.setMapType(mapBox.getValue());
             game.setNumPlayers(numPlayersBox.getValue());
-            game.nextState();
+            game.nextState(0);
         }
     }
 

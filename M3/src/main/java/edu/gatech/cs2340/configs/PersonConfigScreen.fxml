@@ -12,10 +12,7 @@
 <?import javafx.scene.paint.*?>
 <?import edu.gatech.cs2340.configs.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0"
-      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="edu.gatech.cs2340.configs.PersonConfigController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.configs.PersonConfigController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="658.0" layoutY="238.0" prefHeight="212.0" prefWidth="142.0">
          <children>
@@ -29,6 +26,7 @@
          </children>
       </VBox>
       <Label fx:id="welcome" layoutX="629.0" layoutY="395.0" prefHeight="200.0" prefWidth="300.0" />
+      <Label fx:id="title" layoutX="658.0" layoutY="28.0" prefHeight="200.0" prefWidth="300.0" />
    </children>
    <cursor>
       <Cursor fx:constant="TEXT" />

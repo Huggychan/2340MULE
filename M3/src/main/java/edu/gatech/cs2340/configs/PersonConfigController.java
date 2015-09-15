@@ -32,8 +32,10 @@ public class PersonConfigController implements Initializable {
     private TextField name;
     @FXML
     private Label welcome;
+    @FXML
+    private Label title;
 
-
+    private int playerNumber;
     private Game game;
     /**
      * Initializes the fxml file
@@ -71,8 +73,12 @@ public class PersonConfigController implements Initializable {
                     welcome.setText("Welcome " + color.getValue() + " "
                             + race.getValue() + " named "
                             + name.getCharacters() + "!");
+                    //if someone could figure out how to delay before
+                    //moving onto next part that would be gr8 m8
+                    game.nextState(playerNumber);
                 }
             }
+
         });
     }
 
@@ -82,5 +88,10 @@ public class PersonConfigController implements Initializable {
      */
     public void setGame(Game game) {
         this.game = game;
+    }
+    public void setPlayerNumber(int i) {
+        playerNumber = i;
+        title.setText("Welcome Player " + playerNumber + "\n select your "
+                + "stuff");
     }
 }

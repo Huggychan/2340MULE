@@ -77,29 +77,53 @@ public class Game extends Application {
         this.numPlayers = numPlayers;
     }
 
-    public void nextState() {
-        state = GameState.PLAYERCONFIG;
-        System.out.println(mapType);
-        System.out.println(difficulty);
-        System.out.println(numPlayers);
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("configs/PersonConfigScreen.fxml"));
-        loader.setClassLoader(this.getClass().getClassLoader());
-
-        Parent newRoot = null;
-
-        try {
-            newRoot = (Parent) loader.load();
-        } catch (IOException e) {
-            System.out.println("IOException loading PersonConfig.fxml");
-            System.out.println(e.getMessage());
+    /**
+     * Setting configs only next state. passed in the state that just has been
+     * finished. i.e. Gameconfig is state 0 player 1 is state 1, player 2 is
+     * state 2
+     * @param i the state number just completed
+     */
+    public void nextState(int i) {
+        if (i == 0) {
+            state = GameState.PLAYERCONFIG;
         }
+        if (i < numPlayers) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource
+                    ("configs/PersonConfigScreen.fxml"));
+            loader.setClassLoader(this.getClass().getClassLoader());
 
-        PersonConfigController pController = (PersonConfigController) loader
-                .getController();
-        pController.setGame(this);
+            Parent newRoot = null;
 
-        stage.getScene().setRoot(newRoot);
+            try {
+                newRoot = (Parent) loader.load();
+            } catch (IOException e) {
+                System.out.println("IOException loading PersonConfig.fxml");
+                System.out.println(e.getMessage());
+            }
+
+            PersonConfigController pController = (PersonConfigController) loader.getController();
+            pController.setGame(this);
+            pController.setPlayerNumber(i + 1);
+            stage.getScene().setRoot(newRoot);
+        } else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource
+                    ("configs/PlaceHolder.fxml"));
+            loader.setClassLoader(this.getClass().getClassLoader());
+
+            Parent newRoot = null;
+
+            try {
+                newRoot = (Parent) loader.load();
+            } catch (IOException e) {
+                System.out.println("IOException loading PersonConfig.fxml");
+                System.out.println(e.getMessage());
+            }
+
+            //PersonConfigController pController = (PersonConfigController)
+                    loader.getController();
+            //pController.setGame(this);
+            //pController.setPlayerNumber(i + 1);
+            stage.getScene().setRoot(newRoot);
+        }
     }
 }
