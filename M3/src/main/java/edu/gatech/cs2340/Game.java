@@ -26,7 +26,7 @@ public class Game extends Application {
     private Stage stage;
 
     public enum Difficulty {
-        Easy, Medium, Hard;
+        Beginner, Standard, Tournament;
 
         public static ArrayList<Difficulty> getAllDifficulties() {
             return new ArrayList<>(Arrays.asList(values()));

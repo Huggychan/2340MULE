@@ -45,14 +45,11 @@ public class PersonConfigController implements Initializable {
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         race.setItems(
                 FXCollections.observableArrayList(
-                        "Packer",
-                        "Spheroid",
-                        "Humanoid",
-                        "Leggite",
+                        "Human",
                         "Flapper",
                         "Bonzoid",
-                        "Mechtron",
-                        "Gollumer"));
+                        "Ugaite",
+                        "Buzzite"));
         race.getSelectionModel().selectFirst();
         color.setItems(
                 FXCollections.observableArrayList(

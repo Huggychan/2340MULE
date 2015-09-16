@@ -39,7 +39,7 @@ public class GameConfigController implements Initializable {
                 .Difficulty.getAllDifficulties()));
         difficultyChoiceBox.getSelectionModel().selectFirst();
 
-        numPlayersBox.setItems(FXCollections.observableArrayList(1, 2, 3, 4));
+        numPlayersBox.setItems(FXCollections.observableArrayList(2, 3, 4));
         numPlayersBox.getSelectionModel().selectFirst();
 
         mapBox.setItems(FXCollections.observableArrayList(MapType
