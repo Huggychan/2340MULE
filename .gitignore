@@ -11,3 +11,4 @@ settings.gradle
 .gradle/
 gradle/
 build/
+.project
