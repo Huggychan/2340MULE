@@ -1,11 +1,16 @@
 package edu.gatech.cs2340.Maps;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
+import java.awt.event.InputEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 /**
  * Persong Configuration Screen Controller - works with SceneBuilder
@@ -28,6 +33,10 @@ public class TownMapController implements Initializable {
     private Rectangle energyRect;
     @FXML
     private Rectangle foodRect;
+    @FXML
+    private Pane backPane;
+    @FXML
+    private Rectangle playerSprite;
 
     /**
      * Initializes the fxml file
@@ -35,5 +44,52 @@ public class TownMapController implements Initializable {
      * @param resources Resources needed
      */
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+        backPane.requestFocus();
+
+        backPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent arg0) {
+                System.out.println("fffff");
+            }
+        });
     }
+
+    @FXML
+    private void handleOnKeyPressed(final InputEvent event) {
+        System.out.println("Key pressed");
+        System.out.println(event);
+    }
+
+    public void spriteMovement() {
+        System.out.println("pressed");
+    }
+
+    public void onAssayClicked() {
+        System.out.println("assay clicked");
+    }
+
+    public void onPubClicked() {
+        System.out.println("pub clicked");
+    }
+
+    public void onLandOfficeClicked() {
+        System.out.println("land office clicked");
+    }
+
+    public void onStoreClicked() {
+        System.out.println("store clicked");
+    }
+
+    public void onEnergyClicked() {
+        System.out.println("energy");
+    }
+
+    public void onOreClicked() {
+        System.out.println("ore");
+    }
+
+    public void onFoodClicked() {
+        System.out.println("Food");
+    }
+
 }
