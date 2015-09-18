@@ -47,7 +47,10 @@
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+      <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+         <image>
+            <Image url="@../../../../../resources/Town.jpg" />
+         </image></ImageView>
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2" />
