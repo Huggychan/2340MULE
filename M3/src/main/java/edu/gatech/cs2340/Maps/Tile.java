@@ -1,17 +1,19 @@
 package edu.gatech.cs2340.Maps;
 
+import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.players.Person;
 
-public abstract class Tile {
+public class Tile {
     private String color;
     private Person owner;
-    private ResourceType resource;
+    private TileType resource;
     private int food;
     private int energy;
     private int ore;
     private int crystite;
     private int xLoc;
     private int yLoc;
+    private Mule mule;
 
     public int getxLoc() {
         return xLoc;
