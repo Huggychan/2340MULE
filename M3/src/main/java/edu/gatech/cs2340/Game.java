@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Game extends Application {
 
@@ -48,8 +49,6 @@ public class Game extends Application {
         URL location = getClass().getResource
                 ("configs/GameConfig.fxml");
         this.stage = stage;
-        //NOTE:
-        // using / in front of file name denotes that file is in src/main/resources
         FXMLLoader loader = new FXMLLoader(location);
         loader.setClassLoader(this.getClass().getClassLoader());
 
@@ -125,5 +124,9 @@ public class Game extends Application {
             //pController.setPlayerNumber(i + 1);
             stage.getScene().setRoot(newRoot);
         }
+    }
+
+    public List<Person> getPlayers() {
+        return this.players;
     }
 }
