@@ -47,11 +47,13 @@ public class Tile {
         this.owner = owner;
     }
 
-    public ResourceType getResource() {
-        return resource;
-    }
+    public TileType getResource() {return resource;}
 
-    public void setResource(ResourceType resource) {
+    public Mule getMule() {return mule;}
+
+    public void setMule(Mule mule) {this.mule = mule;}
+
+    public void setResource(TileType resource) {
         this.resource = resource;
     }
 
@@ -75,9 +77,7 @@ public class Tile {
         return ore;
     }
 
-    public void setOre(int ore) {
-        this.ore = ore;
-    }
+    public void setOre(int ore) {this.ore = ore;}
 
     public int getCrystite() {
         return crystite;
