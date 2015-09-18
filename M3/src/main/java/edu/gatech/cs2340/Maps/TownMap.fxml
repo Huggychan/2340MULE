@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#da9292" height="400.0" layoutX="167.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="234.0" layoutY="559.0" text="Assay">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#96b9da" height="400.0" layoutX="442.0" layoutY="351.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="521.0" layoutY="556.0" text="Pub">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9acd8e" height="400.0" layoutX="716.0" layoutY="354.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="762.0" layoutY="534.0" text="Land Office">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8e969e" height="400.0" layoutX="1298.0" layoutY="357.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="1365.0" layoutY="538.0" text="MULEs">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#976d20" height="200.0" layoutX="1298.0" layoutY="59.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="1028.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#575d61" height="200.0" layoutX="761.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="1374.0" layoutY="143.0" text="Food">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="1101.0" layoutY="154.0" text="Energy">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="835.0" layoutY="151.0" text="Ore">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
