@@ -1,17 +1,19 @@
 package edu.gatech.cs2340.Maps;
 
+import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.players.Person;
 
-public abstract class Tile {
+public class Tile {
     private String color;
     private Person owner;
-    private ResourceType resource;
+    private TileType resource;
     private int food;
     private int energy;
     private int ore;
     private int crystite;
     private int xLoc;
     private int yLoc;
+    private Mule mule;
 
     public int getxLoc() {
         return xLoc;
@@ -45,11 +47,13 @@ public abstract class Tile {
         this.owner = owner;
     }
 
-    public ResourceType getResource() {
-        return resource;
-    }
+    public TileType getResource() {return resource;}
 
-    public void setResource(ResourceType resource) {
+    public Mule getMule() {return mule;}
+
+    public void setMule(Mule mule) {this.mule = mule;}
+
+    public void setResource(TileType resource) {
         this.resource = resource;
     }
 
@@ -73,9 +77,7 @@ public abstract class Tile {
         return ore;
     }
 
-    public void setOre(int ore) {
-        this.ore = ore;
-    }
+    public void setOre(int ore) {this.ore = ore;}
 
     public int getCrystite() {
         return crystite;
