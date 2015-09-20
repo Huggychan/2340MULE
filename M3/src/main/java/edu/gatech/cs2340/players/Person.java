@@ -2,7 +2,7 @@ package edu.gatech.cs2340.players;
 /**
  * Makes a Person with different elements
  * @author Bilal, Marc
- * @version 1.0
+ * @version 1.1
  */
 public class Person {
 
