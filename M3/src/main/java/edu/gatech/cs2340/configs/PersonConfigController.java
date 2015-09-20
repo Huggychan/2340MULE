@@ -72,15 +72,12 @@ public class PersonConfigController implements Initializable {
                 } else {
                     person = new Person(name.getCharacters().toString(),
                             race.getValue(), color.getValue());
-//                    System.out.println(person);
-//                    System.out.println(person.hashCode());
-//                    System.out.println(game.comparePlayers(person));
                     if (game.comparePlayers(person)) {
-                        welcome.setText("Please enter a different name or "
-                                +  "choose a different race or color");
+                        welcome.setText("Please enter a different name or color");
                     } else {
                         game.addPlayer(person);
                         game.nextState(playerNumber);
+                        System.out.println(game.getPlayers());
                     }
                     //if someone could figure out how to delay before
                     //moving onto next part that would be gr8 m8

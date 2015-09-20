@@ -142,8 +142,8 @@ public class Game extends Application {
             return false;
         }
         for (Person p : players) {
-            if (p.equals(person)) {
-                result = true;
+            if (person.equals(p)) {
+                return true;
             } else {
                 result = false;
             }
