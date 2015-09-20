@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 
 /**
- * Persong Configuration Screen Controller - works with SceneBuilder
+ * Person Configuration Screen Controller - works with SceneBuilder
  * @author Bilal, Myron, Shyam
  * @version 1.0
  */
