@@ -72,4 +72,22 @@ public class Person {
     public void setColor(String color) {
         this.color = color;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + this.name + "\n"
+                + "Color: " + this.color + "\n"
+                + "Race: " + this.race;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (!(other instanceof Person)) return false;
+        Person that = (Person)other;
+        return this.name.equals(that.name)
+                && this.race.equals(that.race)
+                && this.color.equals(that.color);
+    }
+
 }
