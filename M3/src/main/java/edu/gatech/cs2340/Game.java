@@ -126,6 +126,10 @@ public class Game extends Application {
         }
     }
 
+    public void addPlayer(Person person) {
+        players.add(person);
+    }
+
     public List<Person> getPlayers() {
         return this.players;
     }

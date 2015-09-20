@@ -10,6 +10,13 @@ public class Person {
     private Race race;
     private String color;
 
+    public Person(String name, Race race, String color) {
+        this.name = name;
+        this.race = race;
+        this.color = color;
+    }
+
+
     /**
      * Gets the name
      * @return Name of Person
