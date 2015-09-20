@@ -66,22 +66,25 @@ public class PersonConfigController implements Initializable {
         start.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-//                System.out.println(game.getPlayers());
                 if (name.getText() == null || name.getText().trim().isEmpty()) {
                     welcome.setText("Name must include at least one character"
                             + "\nPlease enter a valid name");
                 } else {
-//                    welcome.setText("Welcome " + color.getValue() + " "
-//                            + race.getValue() + " named "
-//                            + name.getCharacters() + "!");
                     person = new Person(name.getCharacters().toString(),
                             race.getValue(), color.getValue());
-                    System.out.println(person);
-                    //Getting exception on line 81
-                    //game.addPlayer(person);
+//                    System.out.println(person);
+//                    System.out.println(person.hashCode());
+//                    System.out.println(game.comparePlayers(person));
+                    if (game.comparePlayers(person)) {
+                        welcome.setText("Please enter a different name or "
+                                +  "choose a different race or color");
+                    } else {
+                        game.addPlayer(person);
+                        game.nextState(playerNumber);
+                    }
                     //if someone could figure out how to delay before
                     //moving onto next part that would be gr8 m8
-                    game.nextState(playerNumber);
+
                 }
             }
 

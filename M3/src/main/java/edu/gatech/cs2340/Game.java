@@ -45,6 +45,7 @@ public class Game extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        players = new ArrayList<>();
         state = GameState.GAMECONFIG;
         URL location = getClass().getResource
                 ("configs/GameConfig.fxml");
@@ -129,6 +130,27 @@ public class Game extends Application {
     public void addPlayer(Person person) {
         players.add(person);
     }
+
+    /**
+     * Compares person to players list
+     * @param person Person being compared
+     * @return True if person is already in list; false otherwise
+     */
+    public boolean comparePlayers(Person person) {
+        boolean result = true;
+        if (players.size() == 0) {
+            return false;
+        }
+        for (Person p : players) {
+            if (p.equals(person)) {
+                result = true;
+            } else {
+                result = false;
+            }
+        }
+        return result;
+    }
+
 
     public List<Person> getPlayers() {
         return this.players;

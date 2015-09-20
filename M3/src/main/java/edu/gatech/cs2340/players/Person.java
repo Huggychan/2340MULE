@@ -75,9 +75,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Name: " + this.name + "\n"
-                + "Color: " + this.color + "\n"
-                + "Race: " + this.race;
+        return this.name + " " + this.color + " " + this.race;
     }
 
     @Override
@@ -89,5 +87,13 @@ public class Person {
                 && this.race.equals(that.race)
                 && this.color.equals(that.color);
     }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        return 31 * result + name.hashCode() + color.hashCode()
+                + race.hashCode();
+    }
+
 
 }
