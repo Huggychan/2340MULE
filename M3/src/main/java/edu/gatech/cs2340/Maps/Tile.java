@@ -2,6 +2,8 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.players.Person;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * Tile class
@@ -19,6 +21,8 @@ public class Tile {
     private int xLoc;
     private int yLoc;
     private Mule mule;
+    private ImageView iv;
+
 
     /**
      * Tile construct on Instantiation, we will not handle who owns it.
@@ -29,6 +33,9 @@ public class Tile {
     public Tile(TileType resource) {
         this.resource = resource;
         this.mule = null;
+        Image im = new Image("/resources/Mountain1.jpg");
+        this.iv = new ImageView();
+        iv.setImage(im);
     }
 
     /**
