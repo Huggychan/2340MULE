@@ -2,11 +2,9 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.players.Person;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 
 /**
  * Tile class
@@ -71,20 +69,35 @@ public class Tile extends StackPane {
 
         this.getChildren().add(iv);
 
-        iv.setOnMouseEntered(event -> {
-            if (this.tileType != TileType.TOWN) {
-//            DropShadow ds = new DropShadow(20, this.map.getGame()
-//                    .getCurrentPlayer().getColor());
-//                iv.requestFocus();
-                DropShadow ds = new DropShadow(20, Color.RED);
+        this.setOnMouseEntered(event -> {
+//            this.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0)");
+//            this.setStyle("-fx-padding: 10");
+//            this.setStyle("-fx-background-color: red");
 
-                iv.setEffect(ds);
-            }
+            this.setStyle("-fx-border-color:darkblue ; \n" //#090a0c
+                    + "-fx-border-insets:3;\n"
+                    + "-fx-border-radius:7;\n"
+                    + "-fx-border-width:1.0");
         });
 
-        iv.setOnMouseExited(event -> {
-            iv.setEffect(null);
+        this.setOnMouseExited(event -> {
+            this.setStyle(null);
         });
+
+//        iv.setOnMouseEntered(event -> {
+//            if (this.tileType != TileType.TOWN) {
+////            DropShadow ds = new DropShadow(20, this.map.getGame()
+////                    .getCurrentPlayer().getColor());
+////                iv.requestFocus();
+//                DropShadow ds = new DropShadow(20, Color.RED);
+//
+//                iv.setEffect(ds);
+//            }
+//        });
+//
+//        iv.setOnMouseExited(event -> {
+//            iv.setEffect(null);
+//        });
     }
 
     /**
