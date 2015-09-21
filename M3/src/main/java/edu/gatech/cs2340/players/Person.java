@@ -2,13 +2,20 @@ package edu.gatech.cs2340.players;
 /**
  * Makes a Person with different elements
  * @author Bilal, Marc
- * @version 1.0
+ * @version 1.1
  */
 public class Person {
 
     private String name;
     private Race race;
     private String color;
+
+    public Person(String name, Race race, String color) {
+        this.name = name;
+        this.race = race;
+        this.color = color;
+    }
+
 
     /**
      * Gets the name
@@ -64,5 +71,24 @@ public class Person {
      */
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " " + this.color + " " + this.race;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (!(other instanceof Person)) return false;
+        Person that = (Person)other;
+        return this.name.equals(that.name) && this.color.equals(that.color);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        return 31 * result + name.hashCode() + color.hashCode();
     }
 }
