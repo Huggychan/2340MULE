@@ -21,21 +21,15 @@ public class Tile {
     private Mule mule;
 
     /**
-     * Tile construcot
-     * @param owner owner of tile
+     * Tile construct on Instantiation, we will not handle who owns it.
+     * The constructor call will be made only on new map, and we will
+     * set owners and other things as the game goes on
      * @param resource resource of tile
-     * @param mule mule set at that tile
-     * @param xLoc x position of tile
-     * @param yLoc y position of tile
      */
-    public Tile(Person owner, TileType resource, Mule mule,
-                int xLoc, int yLoc) {
+    public Tile(TileType resource) {
         this.resource = resource;
-        this.owner = owner;
         this.color = owner.getColor();
         this.mule = null;
-        this.xLoc = xLoc;
-        this.yLoc = yLoc;
     }
 
     /**
