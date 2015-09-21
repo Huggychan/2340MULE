@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 /**
  * Person Configuration Screen Controller - works with SceneBuilder
  * @author Bilal, Myron, Shyam
- * @version 1.0
+ * @version 1.1
  */
 public class PersonConfigController implements Initializable {
 
@@ -66,22 +66,22 @@ public class PersonConfigController implements Initializable {
         start.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-//                System.out.println(game.getPlayers());
                 if (name.getText() == null || name.getText().trim().isEmpty()) {
                     welcome.setText("Name must include at least one character"
                             + "\nPlease enter a valid name");
                 } else {
-//                    welcome.setText("Welcome " + color.getValue() + " "
-//                            + race.getValue() + " named "
-//                            + name.getCharacters() + "!");
                     person = new Person(name.getCharacters().toString(),
                             race.getValue(), color.getValue());
-                    System.out.println(person);
-                    //Getting exception on line 81
-                    //game.addPlayer(person);
+                    if (game.comparePlayers(person)) {
+                        welcome.setText("Please enter a different name or color");
+                    } else {
+                        game.addPlayer(person);
+                        game.nextState(playerNumber);
+                        System.out.println(game.getPlayers());
+                    }
                     //if someone could figure out how to delay before
                     //moving onto next part that would be gr8 m8
-                    game.nextState(playerNumber);
+
                 }
             }
 

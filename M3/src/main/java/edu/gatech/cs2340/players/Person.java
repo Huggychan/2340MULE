@@ -2,7 +2,7 @@ package edu.gatech.cs2340.players;
 /**
  * Makes a Person with different elements
  * @author Bilal, Marc
- * @version 1.0
+ * @version 1.1
  */
 public class Person {
 
@@ -75,9 +75,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Name: " + this.name + "\n"
-                + "Color: " + this.color + "\n"
-                + "Race: " + this.race;
+        return this.name + " " + this.color + " " + this.race;
     }
 
     @Override
@@ -85,9 +83,12 @@ public class Person {
         if (this == other) return true;
         if (!(other instanceof Person)) return false;
         Person that = (Person)other;
-        return this.name.equals(that.name)
-                && this.race.equals(that.race)
-                && this.color.equals(that.color);
+        return this.name.equals(that.name) && this.color.equals(that.color);
     }
 
+    @Override
+    public int hashCode() {
+        int result = 17;
+        return 31 * result + name.hashCode() + color.hashCode();
+    }
 }
