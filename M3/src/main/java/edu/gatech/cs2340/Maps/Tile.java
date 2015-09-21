@@ -2,15 +2,18 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.players.Person;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 /**
  * Tile class
  * @author Bilal
  * @version 1.0
  */
-public class Tile {
+public class Tile extends StackPane {
     private String color;
     private Person owner;
     private TileType tileType;
@@ -66,14 +69,16 @@ public class Tile {
         this.image = new Image(imageString);
         this.iv.setImage(this.image);
 
+        this.getChildren().add(iv);
+
         iv.setOnMouseEntered(event -> {
             if (this.tileType != TileType.TOWN) {
 //            DropShadow ds = new DropShadow(20, this.map.getGame()
 //                    .getCurrentPlayer().getColor());
 //                iv.requestFocus();
-//                DropShadow ds = new DropShadow(20, Color.RED);
-//
-//                iv.setEffect(ds);
+                DropShadow ds = new DropShadow(20, Color.RED);
+
+                iv.setEffect(ds);
             }
         });
 

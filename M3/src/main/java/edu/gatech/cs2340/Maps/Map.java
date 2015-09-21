@@ -52,10 +52,10 @@ public class Map implements Initializable {
                         Tile t = setUpTile(line.charAt(i));
                         t.setMap(this);
 
-                        GridPane.setColumnIndex(t.getImageView(), i);
-                        GridPane.setRowIndex(t.getImageView(), row);
+                        GridPane.setColumnIndex(t, i);
+                        GridPane.setRowIndex(t, row);
 
-                        this.backingPane.getChildren().add(t.getImageView());
+                        this.backingPane.getChildren().add(t);
 
                         tiles[row][i] = t;
                     }
