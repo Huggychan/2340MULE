@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 /**
  * Person Configuration Screen Controller - works with SceneBuilder
@@ -27,7 +28,7 @@ public class PersonConfigController implements Initializable {
     @FXML
     private ComboBox<Race> race;
     @FXML
-    private ComboBox<String> color;
+    private ComboBox<Color> color;
     @FXML
     private Button start;
     @FXML
@@ -56,12 +57,12 @@ public class PersonConfigController implements Initializable {
         race.getSelectionModel().selectFirst();
         color.setItems(
                 FXCollections.observableArrayList(
-                        "Red",
-                        "Orange",
-                        "Yellow",
-                        "Green",
-                        "Blue",
-                        "Purple"));
+                        Color.RED,
+                        Color.ORANGE,
+                        Color.YELLOW,
+                        Color.GREEN,
+                        Color.BLUE,
+                        Color.PURPLE));
         color.getSelectionModel().selectFirst();
         start.setOnAction(new EventHandler<ActionEvent>() {
             @Override

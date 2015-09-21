@@ -1,4 +1,7 @@
 package edu.gatech.cs2340.players;
+
+import javafx.scene.paint.Color;
+
 /**
  * Makes a Person with different elements
  * @author Bilal, Marc
@@ -8,9 +11,9 @@ public class Person {
 
     private String name;
     private Race race;
-    private String color;
+    private Color color;
 
-    public Person(String name, Race race, String color) {
+    public Person(String name, Race race, Color color) {
         this.name = name;
         this.race = race;
         this.color = color;
@@ -45,7 +48,7 @@ public class Person {
      * Gets the color
      * @return Color of Person
      */
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
@@ -69,7 +72,7 @@ public class Person {
      * Sets the Color of Person
      * @param color Color to be set for Person
      */
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
