@@ -22,14 +22,14 @@ import javafx.scene.paint.Color;
 
 public class MapController implements Initializable {
 
-     
+
     @FXML
     private ImageView imageView;
     @FXML
     private GridPane mapPane;
     @FXML
     private Rectangle rectzerozero;
-    
+
     /**
      * Initializes the fxml file
      * @param fxmlFileLocation Location of fxml file
@@ -38,7 +38,7 @@ public class MapController implements Initializable {
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         mapPane.requestFocus();
-        
+
         rectzerozero.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @FXML
             public void handle(MouseEvent t) {
@@ -54,6 +54,7 @@ public class MapController implements Initializable {
         System.out.println("mouse clicked");
         rectzerozero.setStroke(Color.BLUE);
     }
+
 
     @FXML
     public void tileClicked() {

@@ -31,7 +31,7 @@
   </rowConstraints>
    <children>
       <Rectangle fx:id="rectzerozero" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="181.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="10.0" width="179.0" />
-      <ImageView fx:id="zerozero" fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0"  />
+      <ImageView fx:id="zerozero" fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" />
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
@@ -56,7 +56,7 @@
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
          <image>
-            <Image url="@../../../../../resources/Town.jpg" />
+            <Image url="@Town.jpg" />
          </image></ImageView>
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
       <ImageView fitHeight="179.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />

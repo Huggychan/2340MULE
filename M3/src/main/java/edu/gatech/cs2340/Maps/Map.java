@@ -4,6 +4,7 @@ import edu.gatech.cs2340.Game;
 import javafx.fxml.Initializable;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -35,7 +36,7 @@ public class Map implements Initializable {
         tiles = new Tile[5][9];
         if (maptype == MapType.STANDARD) {
             try {
-                File mapfile = new File("standardmap.txt");
+                File mapfile = new File("./M3/src/main/standardmap.txt");
                 Scanner scan = new Scanner(mapfile);
                 int row = 0;
                 while (scan.hasNextLine()) {
@@ -45,8 +46,10 @@ public class Map implements Initializable {
                     }
                     row++;
                 }
+            } catch (IOException ioe) {
+                System.out.println(ioe.getMessage());
             } catch (Exception e) {
-                System.out.println("This should never happen. MAP.IO");
+                System.out.println("Trash tier coding");
             }
         }
     }

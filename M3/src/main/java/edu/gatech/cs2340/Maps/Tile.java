@@ -28,7 +28,6 @@ public class Tile {
      */
     public Tile(TileType resource) {
         this.resource = resource;
-        this.color = owner.getColor();
         this.mule = null;
     }
 
