@@ -13,7 +13,7 @@ import javafx.scene.image.ImageView;
 public class Tile {
     private String color;
     private Person owner;
-    private TileType resource;
+    private TileType tileType;
     private int food;
     private int energy;
     private int ore;
@@ -22,20 +22,48 @@ public class Tile {
     private int yLoc;
     private Mule mule;
     private ImageView iv;
-
+    private Image image;
 
     /**
      * Tile construct on Instantiation, we will not handle who owns it.
      * The constructor call will be made only on new map, and we will
      * set owners and other things as the game goes on
-     * @param resource resource of tile
+     * @param tileType tileType of tile
      */
-    public Tile(TileType resource) {
-        this.resource = resource;
+    public Tile(TileType tileType) {
+        this.tileType = tileType;
         this.mule = null;
-        Image im = new Image("/resources/Mountain1.jpg");
+
         this.iv = new ImageView();
-        iv.setImage(im);
+
+        String imageString;
+
+        switch (this.tileType) {
+            case MOUNTAIN_1:
+                imageString = "/resources/Mountain1.jpg";
+                break;
+            case MOUNTAIN_2:
+                imageString = "/resources/Mountain2.jpg";
+
+                break;
+            case MOUNTAIN_3:
+                imageString = "/resources/Mountain3.jpg";
+                break;
+            case PLAIN:
+                imageString = "/resources/Plain.jpg";
+                break;
+            case RIVER:
+                imageString = "/resources/River.jpg";
+                break;
+            case TOWN:
+                imageString = "/resources/Town.jpg";
+                break;
+            default:
+                throw new IllegalArgumentException("Unrecognized tile type");
+        }
+
+        this.image = new Image(imageString);
+        this.iv.setImage(this.image);
     }
 
     /**
@@ -96,15 +124,15 @@ public class Tile {
     }
 
     /**
-     * @return resource of tile
+     * @return tileType of tile
      */
-    public TileType getResource() { return resource; }
+    public TileType getResource() { return tileType; }
 
     /**
-     * @param resource set resource of tile
+     * @param tileType set tileType of tile
      */
-    public void setResource(TileType resource) {
-        this.resource = resource;
+    public void setResource(TileType tileType) {
+        this.tileType = tileType;
     }
 
     /**
@@ -168,4 +196,13 @@ public class Tile {
     public void setCrystite(int crystite) {
         this.crystite = crystite;
     }
+
+    /**
+     * Returns the Image View of the tile
+     * @return the image view of the tile
+     */
+    public ImageView getImageView() {
+        return iv;
+    }
+
 }

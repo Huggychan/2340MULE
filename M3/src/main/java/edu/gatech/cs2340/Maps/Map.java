@@ -3,8 +3,6 @@ package edu.gatech.cs2340.Maps;
 import edu.gatech.cs2340.Game;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 import java.io.File;
@@ -28,7 +26,8 @@ public class Map implements Initializable {
         try {
             setUpMap();
         } catch (IllegalArgumentException iae) {
-
+            System.out.println("Problem setting up map");
+            System.out.println(iae.getMessage());
         }
     }
 
@@ -47,15 +46,13 @@ public class Map implements Initializable {
                 while (scan.hasNextLine()) {
                     String line = scan.nextLine();
                     for (int i = 0; i < line.length(); i++) {
-                        Image im = new Image("/resources/Mountain1.jpg");
-                        ImageView iv = new ImageView();
-                        iv.setImage(im);
+                        Tile t = setUpTile(line.charAt(i));
+                        GridPane.setColumnIndex(t.getImageView(), i);
+                        GridPane.setRowIndex(t.getImageView(), row);
 
-                        GridPane.setRowIndex(iv, row);
-                        GridPane.setColumnIndex(iv, i);
-                        this.backingPane.getChildren().add(iv);
+                        this.backingPane.getChildren().add(t.getImageView());
 
-                        tiles[row][i] = setUpTile(line.charAt(i));
+                        tiles[row][i] = t;
                     }
                     row++;
                 }
