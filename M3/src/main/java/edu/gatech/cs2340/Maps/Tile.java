@@ -23,6 +23,7 @@ public class Tile {
     private Mule mule;
     private ImageView iv;
     private Image image;
+    private Map map;
 
     /**
      * Tile construct on Instantiation, we will not handle who owns it.
@@ -64,6 +65,21 @@ public class Tile {
 
         this.image = new Image(imageString);
         this.iv.setImage(this.image);
+
+        iv.setOnMouseEntered(event -> {
+            if (this.tileType != TileType.TOWN) {
+//            DropShadow ds = new DropShadow(20, this.map.getGame()
+//                    .getCurrentPlayer().getColor());
+//                iv.requestFocus();
+//                DropShadow ds = new DropShadow(20, Color.RED);
+//
+//                iv.setEffect(ds);
+            }
+        });
+
+        iv.setOnMouseExited(event -> {
+            iv.setEffect(null);
+        });
     }
 
     /**
@@ -203,6 +219,10 @@ public class Tile {
      */
     public ImageView getImageView() {
         return iv;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 
 }

@@ -17,6 +17,7 @@ public class Person {
     public Person(String name, Race race, String colorString) {
         this.name = name;
         this.race = race;
+        this.colorString = colorString;
         switch (colorString) {
             case "Red":
                 color = Color.RED;

@@ -4,6 +4,7 @@ import edu.gatech.cs2340.Maps.MapType;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PersonConfigController;
 import edu.gatech.cs2340.players.Person;
+import edu.gatech.cs2340.players.Race;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -154,5 +155,9 @@ public class Game extends Application {
 
     public List<Person> getPlayers() {
         return this.players;
+    }
+
+    public Person getCurrentPlayer() {
+        return new Person("Asdf", Race.BONZOID, "Red");
     }
 }

@@ -3,8 +3,11 @@ package edu.gatech.cs2340.Maps;
 import edu.gatech.cs2340.Game;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -47,6 +50,8 @@ public class Map implements Initializable {
                     String line = scan.nextLine();
                     for (int i = 0; i < line.length(); i++) {
                         Tile t = setUpTile(line.charAt(i));
+                        t.setMap(this);
+
                         GridPane.setColumnIndex(t.getImageView(), i);
                         GridPane.setRowIndex(t.getImageView(), row);
 
@@ -81,5 +86,17 @@ public class Map implements Initializable {
         } else {
             throw new IllegalArgumentException("No Such Tile type");
         }
+    }
+
+    public void onMouseEntered() {
+        System.out.println("asdf");
+    }
+
+    public void putBorderOnImageView(MouseEvent event) {
+        DropShadow ds = new DropShadow(20, Color.BLACK);
+    }
+
+    public Game getGame() {
+        return this.game;
     }
 }
