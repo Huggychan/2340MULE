@@ -65,16 +65,18 @@ public class Tile extends StackPane {
         }
 
         this.image = new Image(imageString);
+        System.out.println(this.image.getWidth() + " " + this.image.getHeight());
         this.iv.setImage(this.image);
+        System.out.println(this.iv.getFitWidth() + " " + this.iv.getFitHeight());
 
         this.getChildren().add(iv);
 
         this.setOnMouseEntered(event -> {
             this.toFront();
             this.setStyle("-fx-border-color:darkblue ; \n" //#090a0c
-                    + "-fx-border-insets:0;\n"
+                    + "-fx-border-insets:-5;\n"
                     + "-fx-border-radius:0;\n"
-                    + "-fx-border-width:10.0");
+                    + "-fx-border-width:5.0");
         });
 
         this.setOnMouseExited(event -> {

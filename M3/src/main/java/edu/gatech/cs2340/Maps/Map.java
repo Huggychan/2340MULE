@@ -43,7 +43,8 @@ public class Map implements Initializable {
         tiles = new Tile[5][9];
         if (maptype == MapType.STANDARD) {
             try {
-                File mapfile = new File("./src/main/standardmap.txt");
+                File mapfile = new File
+                        ("M3/src/main/java/resources/standardmap.txt");
                 Scanner scan = new Scanner(mapfile);
                 int row = 0;
                 while (scan.hasNextLine()) {
