@@ -12,11 +12,31 @@ public class Person {
     private String name;
     private Race race;
     private Color color;
+    private String colorString;
 
-    public Person(String name, Race race, Color color) {
+    public Person(String name, Race race, String colorString) {
         this.name = name;
         this.race = race;
-        this.color = color;
+        switch (colorString) {
+            case "Red":
+                color = Color.RED;
+                break;
+            case "Orange":
+                color = Color.ORANGE;
+                break;
+            case "Yellow":
+                color = Color.YELLOW;
+                break;
+            case "Green":
+                color = Color.GREEN;
+                break;
+            case "Blue":
+                color = Color.BLUE;
+                break;
+            case "Purple":
+                color = Color.PURPLE;
+                break;
+        }
     }
 
 

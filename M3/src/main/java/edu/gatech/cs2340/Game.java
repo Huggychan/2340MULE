@@ -107,7 +107,7 @@ public class Game extends Application {
             stage.getScene().setRoot(newRoot);
         } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource
-                    ("configs/PlaceHolder.fxml"));
+                    ("configs/Summary.fxml"));
             loader.setClassLoader(this.getClass().getClassLoader());
 
             Parent newRoot = null;
