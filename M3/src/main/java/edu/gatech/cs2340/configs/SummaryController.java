@@ -7,7 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
@@ -29,15 +29,15 @@ public class SummaryController {
     @FXML
     private HBox summary;
     @FXML
-    private TextArea firstText;
+    private Label firstText;
     @FXML
-    private TextArea secondText;
+    private Label secondText;
     @FXML
-    private TextArea thirdText;
+    private Label thirdText;
     @FXML
-    private TextArea fourthText;
+    private Label fourthText;
     @FXML
-    private TextArea summaryText;
+    private Label summaryText;
 
 
     private Game game;
