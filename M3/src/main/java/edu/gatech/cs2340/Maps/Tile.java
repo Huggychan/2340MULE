@@ -73,10 +73,12 @@ public class Tile extends StackPane {
 
         this.setOnMouseEntered(event -> {
             this.toFront();
-            this.setStyle("-fx-border-color:darkblue ; \n" //#090a0c
-                    + "-fx-border-insets:-5;\n"
-                    + "-fx-border-radius:0;\n"
-                    + "-fx-border-width:5.0");
+            if (this.owner == null && tileType != TileType.TOWN){
+                this.setStyle("-fx-border-color:darkblue ; \n" //#090a0c
+                        + "-fx-border-insets:-5;\n"
+                        + "-fx-border-radius:0;\n"
+                        + "-fx-border-width:5.0");
+            }
         });
 
         this.setOnMouseExited(event -> {
