@@ -70,14 +70,11 @@ public class Tile extends StackPane {
         this.getChildren().add(iv);
 
         this.setOnMouseEntered(event -> {
-//            this.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0)");
-//            this.setStyle("-fx-padding: 10");
-//            this.setStyle("-fx-background-color: red");
-
+            this.toFront();
             this.setStyle("-fx-border-color:darkblue ; \n" //#090a0c
-                    + "-fx-border-insets:3;\n"
-                    + "-fx-border-radius:7;\n"
-                    + "-fx-border-width:1.0");
+                    + "-fx-border-insets:0;\n"
+                    + "-fx-border-radius:0;\n"
+                    + "-fx-border-width:10.0");
         });
 
         this.setOnMouseExited(event -> {
