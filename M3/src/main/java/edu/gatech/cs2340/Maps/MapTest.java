@@ -22,7 +22,7 @@ public class MapTest extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         URL location = getClass().getResource
-                ("Map.fxml");
+                ("/resources/Map.fxml");
 
         FXMLLoader loader = new FXMLLoader(location);
         loader.setClassLoader(this.getClass().getClassLoader());

@@ -1,7 +1,11 @@
 package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.Game;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +20,8 @@ public class Map implements Initializable {
     private Tile[][] tiles;
     private MapType maptype = MapType.STANDARD;
     private Game game;
-
+    @FXML
+    private GridPane backingPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,6 +47,14 @@ public class Map implements Initializable {
                 while (scan.hasNextLine()) {
                     String line = scan.nextLine();
                     for (int i = 0; i < line.length(); i++) {
+                        Image im = new Image("/resources/Mountain1.jpg");
+                        ImageView iv = new ImageView();
+                        iv.setImage(im);
+
+                        GridPane.setRowIndex(iv, row);
+                        GridPane.setColumnIndex(iv, i);
+                        this.backingPane.getChildren().add(iv);
+
                         tiles[row][i] = setUpTile(line.charAt(i));
                     }
                     row++;
@@ -49,6 +62,7 @@ public class Map implements Initializable {
             } catch (IOException ioe) {
                 System.out.println(ioe.getMessage());
             } catch (Exception e) {
+                System.out.println(e.getMessage());
                 System.out.println("Trash tier coding");
             }
         }
