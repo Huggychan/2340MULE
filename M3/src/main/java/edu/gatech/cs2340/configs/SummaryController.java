@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
@@ -29,15 +30,23 @@ public class SummaryController {
     @FXML
     private HBox summary;
     @FXML
-    private Label firstText;
+    private ImageView firstImage;
     @FXML
-    private Label secondText;
+    private ImageView secondImage;
     @FXML
-    private Label thirdText;
+    private ImageView thirdImage;
     @FXML
-    private Label fourthText;
+    private ImageView fourthImage;
     @FXML
-    private Label summaryText;
+    private Label firstScore;
+    @FXML
+    private Label secondScore;
+    @FXML
+    private Label thirdScore;
+    @FXML
+    private Label fourthScore;
+    @FXML
+    private Label summaryScore;
 
 
     private Game game;
@@ -55,7 +64,6 @@ public class SummaryController {
     }
 
     /**
-     * Set the Game bro!
      * @param game the game to be set
      */
     public void setGame(Game game) {
