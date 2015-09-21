@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 
 public class TownTest extends Application {
@@ -21,8 +22,15 @@ public class TownTest extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        URL location = getClass().getResource
-                ("TownMap.fxml");
+        System.out.println(System.getProperty("user.dir"));
+
+        File f = new File("./src/main/resources/TownMap.fxml");
+        System.out.println(f.exists());
+
+        URL location = getClass().getResource("/resources/TownMap.fxml");
+        //Use this path format to access things in the
+        // src/main/java/resources folder
+        System.out.println(location);
 
         FXMLLoader loader = new FXMLLoader(location);
         loader.setClassLoader(this.getClass().getClassLoader());
