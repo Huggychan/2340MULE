@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="first" layoutX="60.0" layoutY="80.0" prefHeight="155.0" prefWidth="1470.0" />
+      <HBox fx:id="second" layoutX="60.0" layoutY="260.0" prefHeight="155.0" prefWidth="1470.0" />
+      <HBox fx:id="third" layoutX="60.0" layoutY="440.0" prefHeight="155.0" prefWidth="1470.0" />
+      <HBox fx:id="fourth" layoutX="60.0" layoutY="620.0" prefHeight="155.0" prefWidth="1470.0" />
+      <HBox fx:id="summary" layoutX="60.0" layoutY="775.0" prefHeight="50.0" prefWidth="1470.0" />
+   </children>
+</Pane>
