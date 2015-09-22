@@ -21,13 +21,15 @@ public class Game extends Application {
 
     private ArrayList<Person> players;
     private int numPlayers;
-    private int currentPlayerIndex;
     private MapType mapType;
     private Difficulty difficulty;
     private enum GameState{GAMECONFIG, PLAYERCONFIG, FREELAND, TOWN,
         LANDAUCTION}
-    private GameState state;
     private Stage stage;
+
+    private int currentPlayerIndex;
+    private GameState state;
+    private int roundNumber;
 
     public enum Difficulty {
         Beginner, Standard, Tournament;
@@ -154,6 +156,10 @@ public class Game extends Application {
 
     public void nextTurn() {
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        if (currentPlayerIndex == 1) {
+            roundNumber++;
+            System.out.println(roundNumber);
+        }
     }
     public void addPlayer(Person person) {
         players.add(person);
