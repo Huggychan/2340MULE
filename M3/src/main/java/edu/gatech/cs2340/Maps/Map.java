@@ -97,6 +97,9 @@ public class Map implements Initializable {
         DropShadow ds = new DropShadow(20, Color.BLACK);
     }
 
+    public void setGame(Game game) {
+        this.game = game;
+    }
     public Game getGame() {
         return this.game;
     }

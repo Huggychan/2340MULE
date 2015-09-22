@@ -1,6 +1,8 @@
 package edu.gatech.cs2340;
 
+import edu.gatech.cs2340.Maps.Map;
 import edu.gatech.cs2340.Maps.MapType;
+import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PersonConfigController;
 import edu.gatech.cs2340.players.Person;
@@ -21,9 +23,11 @@ public class Game extends Application {
 
     private ArrayList<Person> players;
     private int numPlayers;
+    private int currentPlayerIndex;
     private MapType mapType;
     private Difficulty difficulty;
-    private enum GameState{GAMECONFIG, PLAYERCONFIG}
+    private enum GameState{GAMECONFIG, PLAYERCONFIG, FREELAND, TOWN,
+        LANDAUCTION}
     private GameState state;
     private Stage stage;
 
@@ -46,6 +50,7 @@ public class Game extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        currentPlayerIndex = -1;
         players = new ArrayList<>();
         state = GameState.GAMECONFIG;
         URL location = getClass().getResource
@@ -108,7 +113,7 @@ public class Game extends Application {
             stage.getScene().setRoot(newRoot);
         } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource
-                    ("configs/Summary.fxml"));
+                    ("/resources/Map.fxml"));
             loader.setClassLoader(this.getClass().getClassLoader());
 
             Parent newRoot = null;
@@ -119,15 +124,20 @@ public class Game extends Application {
                 System.out.println("IOException loading PersonConfig.fxml");
                 System.out.println(e.getMessage());
             }
+            Map map = (Map) loader.getController();
+            map.setGame(this);
 
-            //PersonConfigController pController = (PersonConfigController)
-                    loader.getController();
-            //pController.setGame(this);
-            //pController.setPlayerNumber(i + 1);
+            loader.getController();
             stage.getScene().setRoot(newRoot);
+            state = GameState.FREELAND;
+            nextTurn();
         }
     }
 
+    public void nextTurn() {
+        System.out.println("nextturn");
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+    }
     public void addPlayer(Person person) {
         players.add(person);
     }
@@ -152,12 +162,22 @@ public class Game extends Application {
         return result;
     }
 
+    /**
+     * player has clicked on a tile
+     * @param tile the tile that was clicked
+     */
+    public void pingFromTile(Tile tile) {
+        if (state == GameState.FREELAND) {
+            tile.setOwner(players.get(currentPlayerIndex));
+            nextTurn();
+        }
+    }
 
     public List<Person> getPlayers() {
         return this.players;
     }
 
     public Person getCurrentPlayer() {
-        return new Person("Asdf", Race.BONZOID, "Red");
+        return players.get(currentPlayerIndex);
     }
 }

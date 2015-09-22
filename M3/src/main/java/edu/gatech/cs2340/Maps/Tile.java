@@ -8,7 +8,7 @@ import javafx.scene.layout.StackPane;
 
 /**
  * Tile class
- * @author Bilal
+ * @author Bilal, Marc, Nick
  * @version 1.0
  */
 public class Tile extends StackPane {
@@ -65,9 +65,7 @@ public class Tile extends StackPane {
         }
 
         this.image = new Image(imageString);
-        System.out.println(this.image.getWidth() + " " + this.image.getHeight());
         this.iv.setImage(this.image);
-        System.out.println(this.iv.getFitWidth() + " " + this.iv.getFitHeight());
 
         this.getChildren().add(iv);
 
@@ -83,6 +81,16 @@ public class Tile extends StackPane {
 
         this.setOnMouseExited(event -> {
             this.setStyle(null);
+        });
+
+        this.setOnMouseClicked(event -> {
+            if (this.owner == null) {
+                map.getGame().pingFromTile(this); //sends a message to game
+                //map.getGame().getCurrentPlayer()
+                //if player has enough money, set owner
+                //subtract money from player
+                //disallow buying more tiles this turn?
+            }
         });
 
 //        iv.setOnMouseEntered(event -> {
