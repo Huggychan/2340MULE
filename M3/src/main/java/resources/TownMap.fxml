@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane fx:id="backPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.Maps.TownMapController">
+<Pane fx:id="backPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.Maps.TownMapController">
    <children>
       <Rectangle fx:id="assayRect" arcHeight="5.0" arcWidth="5.0" fill="#da9292" height="400.0" layoutX="167.0" layoutY="350.0" onMouseClicked="#onAssayClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <Label layoutX="234.0" layoutY="559.0" text="Assay">
@@ -52,5 +52,6 @@
          </font>
       </Label>
       <Rectangle fx:id="playerSprite" arcHeight="5.0" arcWidth="5.0" fill="#da9292" height="107.0" layoutX="1088.0" layoutY="462.0" stroke="BLACK" strokeType="INSIDE" width="63.0" />
+      <Rectangle fx:id="exitRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="134.0" layoutY="54.0" onMouseClicked="#onExitClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
    </children>
 </Pane>

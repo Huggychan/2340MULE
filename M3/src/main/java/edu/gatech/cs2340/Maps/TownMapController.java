@@ -38,6 +38,8 @@ public class TownMapController implements Initializable {
     private Pane backPane;
     @FXML
     private Rectangle playerSprite;
+    @FXML
+    private Rectangle exitRect;
 
     private Game game;
 
@@ -97,5 +99,10 @@ public class TownMapController implements Initializable {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public void onExitClicked() {
+        System.out.println("exit");
+        this.game.getMap().getStackPane().getChildren().remove(this.backPane);
     }
 }
