@@ -2,11 +2,13 @@ package edu.gatech.cs2340;
 
 import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameEngine.Turn;
-import edu.gatech.cs2340.Maps.*;
+import edu.gatech.cs2340.Maps.Map;
+import edu.gatech.cs2340.Maps.MapType;
+import edu.gatech.cs2340.Maps.Tile;
+import edu.gatech.cs2340.Maps.TownMapController;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PersonConfigController;
 import edu.gatech.cs2340.players.Person;
-import edu.gatech.cs2340.players.Race;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,8 +28,17 @@ public class Game extends Application {
     private int numPlayers;
     private MapType mapType;
     private Difficulty difficulty;
+    private Stage stage;
+    private int currentPlayerIndex;
+    private GameState state;
+    private int roundNumber;
+    private LandSelection landselection;
+    private Turn turn;
+    private Map map;
+
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION}
+
     public enum Difficulty {
         Beginner, Standard, Tournament;
 
@@ -35,14 +46,6 @@ public class Game extends Application {
             return new ArrayList<>(Arrays.asList(values()));
         }
     }
-    private Stage stage;
-
-
-    private int currentPlayerIndex;
-    private GameState state;
-    private int roundNumber;
-    private LandSelection landselection;
-    private Turn turn;
 
     /**
      * Main
@@ -140,25 +143,27 @@ public class Game extends Application {
         try {
             newRoot = (Parent) loader.load();
         } catch (IOException e) {
-            System.out.println("IOException loading PersonConfig.fxml");
+            System.out.println("IOException loading Map.fxml");
             System.out.println(e.getMessage());
         }
-        Map map = (Map) loader.getController();
-        map.setGame(this);
+        this.map = (Map) loader.getController();
+        this.map.setGame(this);
 
-        loader.getController();
         stage.getScene().setRoot(newRoot);
         startRound();
     }
+
     public void startRound() {
         state = GameState.LANDSELECTION;
         currentPlayerIndex = 0;
         landselection = new LandSelection(this);
     }
+
     public void startTurns() {
         state = GameState.TURN;
         turn = new Turn(this);
     }
+
     public void goToTown() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/TownMap.fxml"));
@@ -168,15 +173,16 @@ public class Game extends Application {
 
         try {
             newRoot = (Parent) loader.load();
+            newRoot.toFront();
         } catch (IOException e) {
-            System.out.println("IOException loading Town.fxml");
+            System.out.println("IOException loading TownMap.fxml");
             System.out.println(e.getMessage());
         }
         TownMapController tmc = (TownMapController) loader.getController();
         tmc.setGame(this);
-
-        stage.getScene().setRoot(newRoot);
+        this.map.getStackPane().getChildren().add(newRoot);
     }
+
     /*
     public void nextTurn() {
         state = GameState.TURN;
@@ -233,7 +239,12 @@ public class Game extends Application {
     public Person getCurrentPlayer() {
         return players.get(currentPlayerIndex);
     }
+
     public void setCurrentPlayer(Person p) {
         currentPlayerIndex = players.indexOf(p);
+    }
+
+    public Map getMap() {
+        return this.map;
     }
 }

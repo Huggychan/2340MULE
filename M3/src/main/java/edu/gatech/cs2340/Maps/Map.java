@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
 import java.awt.event.MouseEvent;
@@ -23,6 +24,8 @@ public class Map implements Initializable {
     private Game game;
     @FXML
     private GridPane backingPane;
+    @FXML
+    private StackPane stackPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -101,7 +104,12 @@ public class Map implements Initializable {
     public void setGame(Game game) {
         this.game = game;
     }
+
     public Game getGame() {
         return this.game;
+    }
+
+    public StackPane getStackPane() {
+        return this.stackPane;
     }
 }
