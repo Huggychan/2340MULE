@@ -1,5 +1,7 @@
 package edu.gatech.cs2340;
 
+import edu.gatech.cs2340.GameEngine.LandSelection;
+import edu.gatech.cs2340.GameEngine.Turn;
 import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PersonConfigController;
@@ -23,14 +25,8 @@ public class Game extends Application {
     private int numPlayers;
     private MapType mapType;
     private Difficulty difficulty;
-    private enum GameState{GAMECONFIG, PLAYERCONFIG, FREELAND, TOWN,
-        LANDAUCTION}
-    private Stage stage;
-
-    private int currentPlayerIndex;
-    private GameState state;
-    private int roundNumber;
-
+    private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
+        AUCTION}
     public enum Difficulty {
         Beginner, Standard, Tournament;
 
@@ -38,6 +34,14 @@ public class Game extends Application {
             return new ArrayList<>(Arrays.asList(values()));
         }
     }
+    private Stage stage;
+
+
+    private int currentPlayerIndex;
+    private GameState state;
+    private int roundNumber;
+    private LandSelection landselection;
+    private Turn turn;
 
     /**
      * Main
@@ -46,11 +50,9 @@ public class Game extends Application {
     public static void main(String[] args) {
         Application.launch(Game.class, (java.lang.String[]) null);
     }
-
-
     @Override
     public void start(Stage stage) throws Exception {
-        currentPlayerIndex = -1;
+        roundNumber = 1;
         players = new ArrayList<>();
         state = GameState.GAMECONFIG;
         URL location = getClass().getResource
@@ -69,20 +71,15 @@ public class Game extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
-
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
-
     public void setMapType(MapType mapType) {
         this.mapType = mapType;
     }
-
     public void setNumPlayers(int numPlayers) {
         this.numPlayers = numPlayers;
     }
-
     /**
      * Setting configs only next state. passed in the state that just has been
      * finished. i.e. Gameconfig is state 0 player 1 is state 1, player 2 is
@@ -112,28 +109,42 @@ public class Game extends Application {
             pController.setPlayerNumber(i + 1);
             stage.getScene().setRoot(newRoot);
         } else {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource
-                    ("/resources/Map.fxml"));
-            loader.setClassLoader(this.getClass().getClassLoader());
-
-            Parent newRoot = null;
-
-            try {
-                newRoot = (Parent) loader.load();
-            } catch (IOException e) {
-                System.out.println("IOException loading PersonConfig.fxml");
-                System.out.println(e.getMessage());
-            }
-            Map map = (Map) loader.getController();
-            map.setGame(this);
-
-            loader.getController();
-            stage.getScene().setRoot(newRoot);
-            state = GameState.FREELAND;
-            nextTurn();
+            startGame();
         }
     }
 
+
+    /**
+     * loads the map fxml and controller, starts the first round
+     */
+    private void startGame() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource
+                ("/resources/Map.fxml"));
+        loader.setClassLoader(this.getClass().getClassLoader());
+
+        Parent newRoot = null;
+
+        try {
+            newRoot = (Parent) loader.load();
+        } catch (IOException e) {
+            System.out.println("IOException loading PersonConfig.fxml");
+            System.out.println(e.getMessage());
+        }
+        Map map = (Map) loader.getController();
+        map.setGame(this);
+
+        loader.getController();
+        stage.getScene().setRoot(newRoot);
+        startRound();
+    }
+    public void startRound() {
+        state = GameState.LANDSELECTION;
+        currentPlayerIndex = 0;
+        landselection = new LandSelection(this);
+    }
+    public void startTurns() {
+        turn = new Turn(this);
+    }
     public void goToTown() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/Town.fxml"));
@@ -151,15 +162,18 @@ public class Game extends Application {
         tmc.setGame(this);
 
         stage.getScene().setRoot(newRoot);
-        state = GameState.TOWN;
     }
-
     public void nextTurn() {
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
-        if (currentPlayerIndex == 1) {
-            roundNumber++;
-            System.out.println(roundNumber);
-        }
+    }
+    public int getRoundNumber() {
+        return roundNumber;
+    }
+
+
+
+    public void incrementRound() {
+        roundNumber++;
     }
     public void addPlayer(Person person) {
         players.add(person);
@@ -186,14 +200,12 @@ public class Game extends Application {
     }
 
     /**
-     * player has clicked on a tile
+     * player has clicked on a tile delegates work to other methods
      * @param tile the tile that was clicked
      */
     public void pingFromTile(Tile tile) {
-        if (state == GameState.FREELAND) {
-            if (tile.getOwner() == null && tile.getTileType() != TileType.TOWN)
-            tile.setOwner(players.get(currentPlayerIndex));
-            nextTurn();
+        if (state == GameState.LANDSELECTION) {
+            landselection.buy(tile);
         }
     }
 
@@ -203,5 +215,8 @@ public class Game extends Application {
 
     public Person getCurrentPlayer() {
         return players.get(currentPlayerIndex);
+    }
+    public void setCurrentPlayer(Person p) {
+        currentPlayerIndex = players.indexOf(p);
     }
 }
