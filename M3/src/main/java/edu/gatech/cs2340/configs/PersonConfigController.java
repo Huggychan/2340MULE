@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.configs;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import edu.gatech.cs2340.Game;
@@ -41,6 +42,7 @@ public class PersonConfigController implements Initializable {
     private int playerNumber;
     private Game game;
     private Person person;
+    private ArrayList<String> tempColor;
     /**
      * Initializes the fxml file
      * @param fxmlFileLocation Location of fxml file
@@ -55,6 +57,8 @@ public class PersonConfigController implements Initializable {
                         Race.UGAITE,
                         Race.BUZZITE));
         race.getSelectionModel().selectFirst();
+//        TODO getting IOException loading PersonConfig.fxml
+//        tempColor = game.getColors();
         color.setItems(
                 FXCollections.observableArrayList(
                         "Red",

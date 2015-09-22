@@ -22,6 +22,7 @@ import java.util.List;
 public class Game extends Application {
 
     private ArrayList<Person> players;
+    private ArrayList<String> colors;
     private int numPlayers;
     private MapType mapType;
     private Difficulty difficulty;
@@ -54,6 +55,13 @@ public class Game extends Application {
     public void start(Stage stage) throws Exception {
         roundNumber = 1;
         players = new ArrayList<>();
+        colors = new ArrayList<>();
+        colors.add("Red");
+        colors.add("Orange");
+        colors.add("Yellow");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Purple");
         state = GameState.GAMECONFIG;
         URL location = getClass().getResource
                 ("configs/GameConfig.fxml");
@@ -219,6 +227,8 @@ public class Game extends Application {
     public List<Person> getPlayers() {
         return this.players;
     }
+
+    public ArrayList<String> getColors() { return this.colors; }
 
     public Person getCurrentPlayer() {
         return players.get(currentPlayerIndex);
