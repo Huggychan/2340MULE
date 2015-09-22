@@ -1,30 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.configs.SummaryController">
    <children>
-      <HBox fx:id="first" layoutX="60.0" layoutY="80.0" prefHeight="155.0" prefWidth="1470.0">
+      <HBox fx:id="first" layoutX="50.0" layoutY="40.0" prefHeight="155.0" prefWidth="1470.0">
          <children>
-            <Label fx:id="firstText" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="1470.0" />
-         </children></HBox>
-      <HBox fx:id="second" layoutX="60.0" layoutY="259.0" prefHeight="155.0" prefWidth="1470.0">
+            <ImageView fx:id="firstImage" fitHeight="155.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="490.0" text="Money&#10;Land&#10;Goods&#10;Total">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label fx:id="firstScore" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="490.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="second" layoutX="50.0" layoutY="210.0" prefHeight="155.0" prefWidth="1470.0">
          <children>
-            <Label fx:id="secondText" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="1470.0" />
-         </children></HBox>
-      <HBox fx:id="third" layoutX="60.0" layoutY="440.0" prefHeight="155.0" prefWidth="1470.0">
+            <ImageView fx:id="secondImage" fitHeight="155.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="490.0" text="Money&#10;Land&#10;Goods&#10;Total">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="secondScore" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="490.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="third" layoutX="50.0" layoutY="380.0" prefHeight="155.0" prefWidth="1470.0">
          <children>
-            <Label fx:id="thirdText" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="1470.0" />
-         </children></HBox>
-      <HBox fx:id="fourth" layoutX="60.0" layoutY="620.0" prefHeight="155.0" prefWidth="1470.0">
+            <ImageView fx:id="thirdImage" fitHeight="155.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="490.0" text="Money&#10;Land&#10;Goods&#10;Total">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="thirdScore" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="490.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="fourth" layoutX="50.0" layoutY="550.0" prefHeight="155.0" prefWidth="1470.0">
          <children>
-            <Label fx:id="fourthText" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="1470.0" />
-         </children></HBox>
-      <HBox fx:id="summary" layoutX="60.0" layoutY="775.0" prefHeight="50.0" prefWidth="1470.0">
+            <ImageView fx:id="fourthImage" fitHeight="155.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="490.0" text="Money&#10;Land&#10;Goods&#10;Total">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="fourthScore" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="490.0" />
+         </children>
+      </HBox>
+      <HBox fx:id="summary" layoutX="50.0" layoutY="720.0" prefHeight="100.0" prefWidth="1470.0">
          <children>
-            <Label fx:id="summaryText" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="1470.0" />
-         </children></HBox>
+            <ImageView fitHeight="155.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="490.0" text="Summary">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="summaryScore" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="490.0" />
+         </children>
+      </HBox>
    </children>
 </Pane>
