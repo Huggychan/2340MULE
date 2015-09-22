@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import edu.gatech.cs2340.configs.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.configs.PersonConfigController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="563.0" layoutY="294.0" prefHeight="189.0" prefWidth="475.0">
+         <children>
+            <TextField fx:id="name" promptText="Enter name:">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <ComboBox fx:id="race" prefWidth="150.0" promptText="Pick race:" />
+            <ComboBox fx:id="color" prefWidth="150.0" promptText="Pick color:" />
+            <Button fx:id="start" mnemonicParsing="false" text="Start Game" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <Label fx:id="welcome" layoutX="545.0" layoutY="649.0" prefHeight="200.0" prefWidth="742.0" />
+      <Label fx:id="title" layoutX="658.0" layoutY="28.0" prefHeight="200.0" prefWidth="300.0" />
+   </children>
+   <cursor>
+      <Cursor fx:constant="TEXT" />
+   </cursor>
+</Pane>
