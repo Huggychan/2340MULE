@@ -2,9 +2,7 @@ package edu.gatech.cs2340.Maps;
 
 import javafx.event.EventHandler;
 import javafx.scene.layout.GridPane;
-import java.awt.event.InputEvent;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import java.net.URL;
@@ -26,9 +24,25 @@ public class MapController implements Initializable {
     @FXML
     private ImageView imageView;
     @FXML
-    private GridPane mapPane;
+    private GridPane GridPane;
     @FXML
-    private Rectangle rectzerozero;
+    private Rectangle pane00;
+    @FXML
+    private Rectangle pane10;
+    @FXML
+    private Rectangle pane20;
+    @FXML
+    private Rectangle pane01;
+    @FXML
+    private Rectangle pane11;
+    @FXML
+    private Rectangle pane21;
+    @FXML
+    private Rectangle pane02;
+    @FXML
+    private Rectangle pane12;
+    @FXML
+    private Rectangle pane22;
 
     /**
      * Initializes the fxml file
@@ -37,28 +51,22 @@ public class MapController implements Initializable {
      */
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        mapPane.requestFocus();
-
-        rectzerozero.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @FXML
-            public void handle(MouseEvent t) {
-                if(t.getButton() == MouseButton.PRIMARY) {
-                    System.out.println("mouse clicked");
+        
+        pane00.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent arg0) {
+                if (pane00.getStroke() == Color.TRANSPARENT) {
+                    System.out.println("Plot selected");
+                    //for test
+                    Color playerColor = Color.RED;
+                    //end test
+                    pane00.setStroke(playerColor);
+                    int x = (int) pane00.getX();
+                    int y = (int) pane00.getY();
+//                    Tile tile = new Tile(person, tileType, muleType, x, y);
+                    System.out.println(/*person.getName() + ", */"You have chosen plot (" + x + "," + y + ").");
+                    
                 }
             }
         });
-    }
-
-    @FXML
-    private void handleOnMouseClicked(final InputEvent event) {
-        System.out.println("mouse clicked");
-        rectzerozero.setStroke(Color.BLUE);
-    }
-
-
-    @FXML
-    public void tileClicked() {
-        System.out.println("tile clicked");
-        rectzerozero.setStroke(Color.BLUE);
     }
 }
