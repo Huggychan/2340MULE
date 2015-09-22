@@ -2,9 +2,9 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.players.Person;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 /**
  * Tile class
@@ -138,6 +138,19 @@ public class Tile extends StackPane {
         this.owner = owner;
         Image borderImage = new Image("/resources/ownerBorder"
                 + ".png");
+        WritableImage ownedBorderImage = new WritableImage(
+                (int) borderImage.getWidth(), (int) borderImage.getHeight());
+        PixelReader imageReader = borderImage.getPixelReader();
+        PixelWriter ownedImageWriter = ownedBorderImage.getPixelWriter();
+        Color ownerColor = owner.getColor();
+        Color imageColor = imageReader.getColor(1, 1);
+        for (int i = 0; i < borderImage.getWidth(); i++) {
+            for (int j = 0; i < borderImage.getHeight(); i++) {
+                if (imageReader.getColor(i, j).equals(imageColor)) {
+                    ownedImageWriter.setColor(i, j, ownerColor);
+                }
+            }
+        }
         ImageView border = new ImageView();
         border.setImage(borderImage);
         this.getChildren().add(border);

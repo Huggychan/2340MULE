@@ -14,3 +14,4 @@ gradle/
 build/
 .project
 *.metadata
+bin/
