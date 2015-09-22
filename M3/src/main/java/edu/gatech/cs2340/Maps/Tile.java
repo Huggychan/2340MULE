@@ -148,11 +148,16 @@ public class Tile extends StackPane {
             for (int j = 0; i < borderImage.getHeight(); i++) {
                 if (imageReader.getColor(i, j).equals(imageColor)) {
                     ownedImageWriter.setColor(i, j, ownerColor);
-                }
+                } /*else if(i > 11 && i < borderImage.getWidth() - 10) {
+                    ownedImageWriter.setColor(i, j, ownerColor);
+                } else {
+                    ownedImageWriter.setColor(i, j,
+                            imageReader.getColor(i, j));
+                }*/
             }
         }
         ImageView border = new ImageView();
-        border.setImage(borderImage);
+        border.setImage(ownedBorderImage);
         this.getChildren().add(border);
     }
 
