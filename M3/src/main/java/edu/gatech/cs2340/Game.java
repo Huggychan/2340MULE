@@ -80,6 +80,11 @@ public class Game extends Application {
     public void setNumPlayers(int numPlayers) {
         this.numPlayers = numPlayers;
     }
+
+    public void addPlayer(Person person) {
+        players.add(person);
+    }
+
     /**
      * Setting configs only next state. passed in the state that just has been
      * finished. i.e. Gameconfig is state 0 player 1 is state 1, player 2 is
@@ -143,11 +148,12 @@ public class Game extends Application {
         landselection = new LandSelection(this);
     }
     public void startTurns() {
+        state = GameState.TURN;
         turn = new Turn(this);
     }
     public void goToTown() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("/resources/Town.fxml"));
+                ("/resources/TownMap.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
 
         Parent newRoot = null;
@@ -163,20 +169,19 @@ public class Game extends Application {
 
         stage.getScene().setRoot(newRoot);
     }
+    /*
     public void nextTurn() {
+        state = GameState.TURN;
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
-    }
+    }*/
+
+
+
     public int getRoundNumber() {
         return roundNumber;
     }
-
-
-
     public void incrementRound() {
         roundNumber++;
-    }
-    public void addPlayer(Person person) {
-        players.add(person);
     }
 
     /**
@@ -206,6 +211,8 @@ public class Game extends Application {
     public void pingFromTile(Tile tile) {
         if (state == GameState.LANDSELECTION) {
             landselection.buy(tile);
+        } else if (state == GameState.TURN) {
+            turn.move(tile);
         }
     }
 
