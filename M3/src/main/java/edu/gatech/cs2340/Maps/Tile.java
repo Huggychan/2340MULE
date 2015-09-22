@@ -143,17 +143,13 @@ public class Tile extends StackPane {
         PixelReader imageReader = borderImage.getPixelReader();
         PixelWriter ownedImageWriter = ownedBorderImage.getPixelWriter();
         Color ownerColor = owner.getColor();
-        Color imageColor = imageReader.getColor(1, 1);
         for (int i = 0; i < borderImage.getWidth(); i++) {
-            for (int j = 0; i < borderImage.getHeight(); i++) {
-                if (imageReader.getColor(i, j).equals(imageColor)) {
+            for (int j = 0; j < borderImage.getHeight(); j++) {
+                if (i < 9 || i > borderImage.getWidth() - 8) {
                     ownedImageWriter.setColor(i, j, ownerColor);
-                } /*else if(i > 11 && i < borderImage.getWidth() - 10) {
+                } else if (j < 9 || j > borderImage.getHeight() - 8) {
                     ownedImageWriter.setColor(i, j, ownerColor);
-                } else {
-                    ownedImageWriter.setColor(i, j,
-                            imageReader.getColor(i, j));
-                }*/
+                }
             }
         }
         ImageView border = new ImageView();
