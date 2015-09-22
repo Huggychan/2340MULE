@@ -35,7 +35,7 @@ public class Tile extends StackPane {
         this.mule = null;
 
         this.iv = new ImageView();
-
+        System.out.println(System.getProperty("user.dir"));
         String imageString;
 
         switch (this.tileType) {
