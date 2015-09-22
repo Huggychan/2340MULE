@@ -58,12 +58,15 @@ public class MapController implements Initializable {
                     System.out.println("Plot selected");
                     //for test
                     Color playerColor = Color.RED;
+                    // should pull these colors from player object
+                    // all panes require this
+                    // how is this going to be done?
                     //end test
                     pane00.setStroke(playerColor);
                     int x = (int) pane00.getX();
                     int y = (int) pane00.getY();
 //                    Tile tile = new Tile(person, tileType, muleType, x, y);
-                    System.out.println(/*person.getName() + ", */"You have chosen plot (" + x + "," + y + ").");
+                    System.out.println(/*person.getName() + ", y*/"You have chosen plot (" + x + "," + y + ").");
                 }
             }
         });
