@@ -234,7 +234,8 @@ public class Game extends Application {
         return this.players;
     }
 
-    public ArrayList<String> getColors() { return this.colors; }
+    public ArrayList<String> getColors() {
+        return this.colors; }
 
     public Person getCurrentPlayer() {
         return players.get(currentPlayerIndex);

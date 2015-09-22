@@ -43,12 +43,15 @@ public class PersonConfigController implements Initializable {
     private Game game;
     private Person person;
     private ArrayList<String> tempColor;
+
     /**
      * Initializes the fxml file
      * @param fxmlFileLocation Location of fxml file
      * @param resources Resources needed
      */
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+        this.tempColor = new ArrayList<>();
+
         race.setItems(
                 FXCollections.observableArrayList(
                         Race.HUMAN,
@@ -58,16 +61,7 @@ public class PersonConfigController implements Initializable {
                         Race.BUZZITE));
         race.getSelectionModel().selectFirst();
 //        TODO getting IOException loading PersonConfig.fxml
-//        tempColor = game.getColors();
-        color.setItems(
-                FXCollections.observableArrayList(
-                        "Red",
-                        "Orange",
-                        "Yellow",
-                        "Green",
-                        "Blue",
-                        "Purple"));
-        color.getSelectionModel().selectFirst();
+
         start.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -98,6 +92,16 @@ public class PersonConfigController implements Initializable {
      */
     public void setGame(Game game) {
         this.game = game;
+        this.tempColor = game.getColors();
+
+
+        for (Person p : game.getPlayers()) {
+            tempColor.remove(p.getColorString());
+        }
+
+        color.setItems(
+                FXCollections.observableArrayList(this.tempColor));
+        color.getSelectionModel().selectFirst();
     }
     public void setPlayerNumber(int i) {
         playerNumber = i;
