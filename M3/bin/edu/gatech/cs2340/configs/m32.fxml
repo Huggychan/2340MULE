@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.spacitron.backupp.ui.controllers.Test">
+  <children>
+    <HBox id="HBox" alignment="CENTER" layoutX="41.0" layoutY="224.0" prefWidth="216.0" spacing="5.0" />
+    <ComboBox id="comboInterval" fx:id="comboTime" editable="false" layoutX="153.0" layoutY="129.0" onAction="#setTimeMultiplier" prefHeight="25.0" prefWidth="149.0" promptText="Select Race">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Packer" />
+          <String fx:value="Spheroid" />
+          <String fx:value="Humanoid" />
+          <String fx:value="Leggite" />
+          <String fx:value="Flapper" />
+          <String fx:value="Bonzoid" />
+          <String fx:value="Mechtron" />
+          <String fx:value="Gollumer" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+      <ComboBox id="comboInterval" fx:id="comboTime1" editable="false" layoutX="153.0" layoutY="165.0" onAction="#setTimeMultiplier" prefHeight="25.0" prefWidth="149.0" promptText="Select Color">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Purple" />
+               <String fx:value="Red" />
+               <String fx:value="Green" />
+               <String fx:value="Blue" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <TextField layoutX="153.0" layoutY="91.0" promptText="Enter Name" />
+  </children>
+</AnchorPane>
