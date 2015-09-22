@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.Maps;
 
+import edu.gatech.cs2340.Game;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,6 +38,8 @@ public class TownMapController implements Initializable {
     private Pane backPane;
     @FXML
     private Rectangle playerSprite;
+
+    private Game game;
 
     /**
      * Initializes the fxml file
@@ -92,4 +95,7 @@ public class TownMapController implements Initializable {
         System.out.println("Food");
     }
 
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }

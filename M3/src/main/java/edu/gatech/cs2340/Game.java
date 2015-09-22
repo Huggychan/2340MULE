@@ -1,8 +1,6 @@
 package edu.gatech.cs2340;
 
-import edu.gatech.cs2340.Maps.Map;
-import edu.gatech.cs2340.Maps.MapType;
-import edu.gatech.cs2340.Maps.Tile;
+import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PersonConfigController;
 import edu.gatech.cs2340.players.Person;
@@ -134,6 +132,26 @@ public class Game extends Application {
         }
     }
 
+    public void goToTown() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource
+                ("/resources/Town.fxml"));
+        loader.setClassLoader(this.getClass().getClassLoader());
+
+        Parent newRoot = null;
+
+        try {
+            newRoot = (Parent) loader.load();
+        } catch (IOException e) {
+            System.out.println("IOException loading Town.fxml");
+            System.out.println(e.getMessage());
+        }
+        TownMapController tmc = (TownMapController) loader.getController();
+        tmc.setGame(this);
+
+        stage.getScene().setRoot(newRoot);
+        state = GameState.TOWN;
+    }
+
     public void nextTurn() {
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }
@@ -167,6 +185,7 @@ public class Game extends Application {
      */
     public void pingFromTile(Tile tile) {
         if (state == GameState.FREELAND) {
+            if (tile.getOwner() == null && tile.getTileType() != TileType.TOWN)
             tile.setOwner(players.get(currentPlayerIndex));
             nextTurn();
         }

@@ -19,8 +19,6 @@ public class Tile extends StackPane {
     private int energy;
     private int ore;
     private int crystite;
-    private int xLoc;
-    private int yLoc;
     private Mule mule;
     private ImageView iv;
     private Image image;
@@ -71,10 +69,10 @@ public class Tile extends StackPane {
 
         this.setOnMouseEntered(event -> {
             this.toFront();
-            if (this.owner == null && tileType != TileType.TOWN){
+            if (this.owner == null && tileType != TileType.TOWN) {
                 this.setStyle("-fx-border-color:" + map.getGame()
-                        .getCurrentPlayer().getColorString()+ "; \n"
-                //#090a0c
+                        .getCurrentPlayer().getColorString() + "; \n"
+                        //#090a0c
                         + "-fx-border-insets:-5;\n"
                         + "-fx-border-radius:0;\n"
                         + "-fx-border-width:5.0");
@@ -86,14 +84,13 @@ public class Tile extends StackPane {
         });
 
         this.setOnMouseClicked(event -> {
-            if (this.owner == null) {
-                map.getGame().pingFromTile(this); //sends a message to game
-                //map.getGame().getCurrentPlayer()
-                //if player has enough money, set owner
-                //subtract money from player
-                //disallow buying more tiles this turn?
-            }
+            map.getGame().pingFromTile(this); //sends a message to game
+            //map.getGame().getCurrentPlayer()
+            //if player has enough money, set owner
+            //subtract money from player
+            //disallow buying more tiles this turn?
         });
+    }
 
 //        iv.setOnMouseEntered(event -> {
 //            if (this.tileType != TileType.TOWN) {
@@ -109,35 +106,8 @@ public class Tile extends StackPane {
 //        iv.setOnMouseExited(event -> {
 //            iv.setEffect(null);
 //        });
-    }
+//    }
 
-    /**
-     * @return x position
-     */
-    public int getxLoc() {
-        return xLoc;
-    }
-
-    /**
-     * @param xLoc set x position to xLoc
-     */
-    public void setxLoc(int xLoc) {
-        this.xLoc = xLoc;
-    }
-
-    /**
-     * @return y position
-     */
-    public int getyLoc() {
-        return yLoc;
-    }
-
-    /**
-     * @param yLoc set y position to yLoc
-     */
-    public void setyLoc(int yLoc) {
-        this.yLoc = yLoc;
-    }
 
     /**
      * @return String form of color
@@ -166,6 +136,11 @@ public class Tile extends StackPane {
      */
     public void setOwner(Person owner) {
         this.owner = owner;
+        Image borderImage = new Image("/resources/ownerBorder"
+                + ".png");
+        ImageView border = new ImageView();
+        border.setImage(borderImage);
+        this.getChildren().add(border);
     }
 
     /**
@@ -242,6 +217,10 @@ public class Tile extends StackPane {
         this.crystite = crystite;
     }
 
+
+    public TileType getTileType() {
+        return tileType;
+    }
     /**
      * Returns the Image View of the tile
      * @return the image view of the tile
