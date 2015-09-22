@@ -73,6 +73,9 @@ public class Person {
         return color;
     }
 
+    public String getColorString() {
+        return colorString.toLowerCase();
+    }
     /**
      * Sets the Name of Person
      * @param name Name to be set for Person

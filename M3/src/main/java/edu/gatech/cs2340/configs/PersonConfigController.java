@@ -78,7 +78,6 @@ public class PersonConfigController implements Initializable {
                     } else {
                         game.addPlayer(person);
                         game.nextState(playerNumber);
-                        System.out.println(game.getPlayers());
                     }
                     //if someone could figure out how to delay before
                     //moving onto next part that would be gr8 m8

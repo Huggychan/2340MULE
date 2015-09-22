@@ -64,7 +64,7 @@ public class SummaryController implements Initializable {
      * @param resources Resources needed
      */
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        firstPlace = new Image("resources/MULE_Humanoid");
+        firstPlace = new Image("resources/MULE_Humanoid.png");
         firstImage.setImage(firstPlace);
 //        firstText.setText(game.getPlayers().get(0).toString());
 //        secondText.setText(game.getPlayers().get(1).toString());

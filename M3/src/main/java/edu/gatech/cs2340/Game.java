@@ -135,7 +135,6 @@ public class Game extends Application {
     }
 
     public void nextTurn() {
-        System.out.println("nextturn");
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }
     public void addPlayer(Person person) {
