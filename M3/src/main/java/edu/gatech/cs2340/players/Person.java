@@ -74,7 +74,7 @@ public class Person {
     }
 
     public String getColorString() {
-        return colorString.toLowerCase();
+        return colorString;
     }
     /**
      * Sets the Name of Person
