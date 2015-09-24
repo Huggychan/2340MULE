@@ -28,14 +28,12 @@ public class LandSelection {
             return;
         }
         if (game.getRoundNumber() == 1 || game.getRoundNumber() == 2) {
-            if (tile.getOwner() == null && tile.getTileType() != TileType.TOWN) {
+            if (tile.getOwner() == null) {
                 tile.setOwner(game.getCurrentPlayer());
             }
         } else {
             if (game.getCurrentPlayer().getMoney() >= 300
-                    && tile.getOwner() == null
-                    && tile.getTileType() != TileType.TOWN) {
-
+                    && tile.getOwner() == null) {
                 tile.setOwner(game.getCurrentPlayer());
                 game.getCurrentPlayer().setMoney(game.getCurrentPlayer()
                         .getMoney() - 300);
