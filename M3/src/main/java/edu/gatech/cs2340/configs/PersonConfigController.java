@@ -60,11 +60,9 @@ public class PersonConfigController implements Initializable {
                         Race.UGAITE,
                         Race.BUZZITE));
         race.getSelectionModel().selectFirst();
-//        TODO getting IOException loading PersonConfig.fxml
 
-        start.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
+        start.setOnAction(event -> {
+//            public void handle(ActionEvent e) {
                 if (name.getText() == null || name.getText().trim().isEmpty()) {
                     welcome.setText("Name must include at least one character"
                             + "\nPlease enter a valid name");
@@ -81,9 +79,13 @@ public class PersonConfigController implements Initializable {
                     //moving onto next part that would be gr8 m8
 
                 }
-            }
+//            }
 
         });
+    }
+
+    public void onEnter() {
+        System.out.println("enter pressed");
     }
 
     /**
