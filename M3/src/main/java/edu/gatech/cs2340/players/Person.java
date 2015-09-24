@@ -14,7 +14,18 @@ public class Person {
     private Color color;
     private String colorString;
 
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    private int money;
+
     public Person(String name, Race race, String colorString) {
+        money = 300;
         this.name = name;
         this.race = race;
         this.colorString = colorString;
@@ -37,6 +48,9 @@ public class Person {
             case "Purple":
                 color = Color.PURPLE;
                 break;
+        }
+        if (color == Color.ORANGE || color == Color.BLUE) {
+            money = 3000;
         }
     }
 

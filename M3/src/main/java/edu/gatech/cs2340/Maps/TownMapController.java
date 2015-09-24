@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.Game;
+import edu.gatech.cs2340.GameEngine.Turn;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,6 +43,7 @@ public class TownMapController implements Initializable {
     private Rectangle exitRect;
 
     private Game game;
+    private Turn turn;
 
     /**
      * Initializes the fxml file
@@ -101,8 +103,12 @@ public class TownMapController implements Initializable {
         this.game = game;
     }
 
+    public void setTurn(Turn turn) {
+        this.turn = turn;
+    }
     public void onExitClicked() {
         System.out.println("exit");
+        turn.endPlayerTurn();
         this.game.getMap().getStackPane().getChildren().remove(this.backPane);
     }
 }

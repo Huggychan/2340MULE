@@ -49,10 +49,10 @@ public class Tile extends StackPane {
                 imageString = "/resources/Mountain3.jpg";
                 break;
             case PLAIN:
-                imageString = "/resources/Plain.jpg";
+                imageString = "/resources/Plain.png";
                 break;
             case RIVER:
-                imageString = "/resources/River.jpg";
+                imageString = "/resources/River.png";
                 break;
             case TOWN:
                 imageString = "/resources/Town.jpg";

@@ -19,15 +19,21 @@ public class Turn {
         players = new ArrayList<>();
         players.addAll(game.getPlayers());
         game.setCurrentPlayer(players.get(0));
-        if (game.getRoundNumber() == 1) {
-            game.incrementRound();
-            game.startRound();
-        }
     }
 
     public void move(Tile tile) {
         if (tile.getTileType() == TileType.TOWN) {
             game.goToTown();
+        }
+    }
+
+    public void endPlayerTurn() {
+        players.remove(game.getCurrentPlayer());
+        if (players.isEmpty()) {
+            game.incrementRound();
+            game.startRound();
+        } else {
+            game.setCurrentPlayer(players.get(0));
         }
     }
 }

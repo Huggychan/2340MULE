@@ -180,6 +180,7 @@ public class Game extends Application {
         }
         TownMapController tmc = (TownMapController) loader.getController();
         tmc.setGame(this);
+        tmc.setTurn(turn);
         this.map.getStackPane().getChildren().add(newRoot);
     }
 

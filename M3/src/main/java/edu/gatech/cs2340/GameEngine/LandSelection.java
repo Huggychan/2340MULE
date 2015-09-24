@@ -24,16 +24,31 @@ public class LandSelection {
     }
 
     public void buy(Tile tile) {
+        if (tile.getTileType() == TileType.TOWN) {
+            return;
+        }
         if (game.getRoundNumber() == 1 || game.getRoundNumber() == 2) {
             if (tile.getOwner() == null && tile.getTileType() != TileType.TOWN) {
                 tile.setOwner(game.getCurrentPlayer());
-                playersActive.remove(game.getCurrentPlayer());
-                if (playersActive.isEmpty()) {
-                    pass();
-                } else {
-                    game.setCurrentPlayer(playersActive.peek());
-                }
             }
+        } else {
+            if (game.getCurrentPlayer().getMoney() >= 300
+                    && tile.getOwner() == null
+                    && tile.getTileType() != TileType.TOWN) {
+
+                tile.setOwner(game.getCurrentPlayer());
+                game.getCurrentPlayer().setMoney(game.getCurrentPlayer()
+                        .getMoney() - 300);
+            }
+            if (game.getCurrentPlayer().getMoney() >= 300) {
+                playersActive.add(game.getCurrentPlayer());
+            }
+        }
+        playersActive.remove(game.getCurrentPlayer());
+        if (playersActive.isEmpty()) {
+            pass();
+        } else {
+            game.setCurrentPlayer(playersActive.peek());
         }
     }
 
