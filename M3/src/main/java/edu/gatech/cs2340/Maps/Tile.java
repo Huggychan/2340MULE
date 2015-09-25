@@ -39,7 +39,7 @@ public class Tile extends StackPane {
 
         switch (this.tileType) {
             case MOUNTAIN_1:
-                imageString = "/resources/Mountain1.jpg";
+                imageString = "/resources/Mountain1.png";
                 break;
             case MOUNTAIN_2:
                 imageString = "/resources/Mountain2.jpg";
