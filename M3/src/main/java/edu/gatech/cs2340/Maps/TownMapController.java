@@ -57,8 +57,6 @@ public class TownMapController implements Initializable {
         backPane.setOnKeyPressed(event -> {
             System.out.println("key pressed");
         });
-
-        System.out.println(backPane.getOnKeyPressed());
     }
 
     @FXML
@@ -76,7 +74,6 @@ public class TownMapController implements Initializable {
     }
 
     public void onPubClicked() {
-        System.out.println("pub clicked");
         Random r = new Random();
         //int money = calculate based off timer
 
@@ -98,6 +95,7 @@ public class TownMapController implements Initializable {
         game.getLog().log(curr.getName() + " has won " + money + " "
                 + "gambling");
         game.getTurn().endPlayerTurn();
+        this.onExitClicked();
     }
 
     public void onLandOfficeClicked() {
