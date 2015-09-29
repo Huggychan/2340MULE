@@ -6,6 +6,8 @@ import edu.gatech.cs2340.Maps.TileType;
 import edu.gatech.cs2340.players.Person;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by Nick on 9/22/2015.
@@ -21,7 +23,8 @@ public class Turn {
         players.addAll(game.getPlayers());
         game.setCurrentPlayer(players.get(0));
         timeStart = System.currentTimeMillis();
-        //(new Timekeeper(this)).run();
+        //ExecutorService executor = Executors.newCachedThreadPool();
+        //executor.submit(new Timekeeper(this));
     }
 
     public void move(Tile tile) {
