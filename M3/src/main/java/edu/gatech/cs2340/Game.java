@@ -12,11 +12,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.*;
-import javafx.stage.Stage;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,7 +35,7 @@ public class Game extends Application {
     private LandSelection landselection;
     private Turn turn;
     private Map map;
-    public EventLog log;
+    private EventLog log;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION}
@@ -266,5 +264,9 @@ public class Game extends Application {
 
     public Turn getTurn() {
         return this.turn;
+    }
+
+    public EventLog getLog() {
+        return this.log;
     }
 }
