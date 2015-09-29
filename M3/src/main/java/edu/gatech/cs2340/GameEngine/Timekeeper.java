@@ -14,7 +14,7 @@ public class Timekeeper implements Runnable {
     public Timekeeper(Turn turn, Game game) {
         this.game = game;
         this.turn = turn;
-        startTime = turn.timeStart;
+        startTime = System.currentTimeMillis();
     }
 
     public void run() {

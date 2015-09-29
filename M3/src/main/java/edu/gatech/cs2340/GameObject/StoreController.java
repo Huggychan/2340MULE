@@ -2,7 +2,7 @@ package edu.gatech.cs2340.GameObject;
 
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.Turn;
-import edu.gatech.cs2340.players.Person;
+import edu.gatech.cs2340.GameObject.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
