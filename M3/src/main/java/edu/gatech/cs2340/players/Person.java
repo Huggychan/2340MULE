@@ -1,18 +1,26 @@
 package edu.gatech.cs2340.players;
 
+import edu.gatech.cs2340.Maps.Tile;
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
 
 /**
  * Makes a Person with different elements
  * @author Bilal, Marc
  * @version 1.1
  */
-public class Person {
+public class Person implements Comparable<Person> {
 
     private String name;
     private Race race;
     private Color color;
     private String colorString;
+    private ArrayList<Tile> tiles;
+    private int ore;
+    private int food;
+    private int energy;
+    private int crystite;
 
     public int getMoney() {
         return money;
@@ -131,5 +139,14 @@ public class Person {
     public int hashCode() {
         int result = 17;
         return 31 * result + name.hashCode() + color.hashCode();
+    }
+
+    public int getScore() {
+        return this.getMoney() + this.tiles.size() * 500 + this.ore + this
+                .energy + this.crystite + this.food;
+    }
+
+    public int compareTo(Person other) {
+        return other.getScore() - this.getScore();
     }
 }
