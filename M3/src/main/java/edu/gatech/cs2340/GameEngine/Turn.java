@@ -24,14 +24,18 @@ public class Turn {
         players.addAll(game.getPlayers());
         game.setCurrentPlayer(players.get(0));
         timeStart = System.currentTimeMillis();
-        //ExecutorService executor = Executors.newCachedThreadPool();
-        //executor.submit(new Timekeeper(this, game));
+        //startTimer();
     }
 
     public void move(Tile tile) {
         if (tile.getTileType() == TileType.TOWN) {
             game.goToTown();
         }
+    }
+
+    public void startTimer() {
+        ExecutorService executor = Executors.newCachedThreadPool();
+        executor.submit(new Timekeeper(this, game));
     }
 
     public void endPlayerTurn() {
@@ -41,6 +45,7 @@ public class Turn {
             game.startRound();
         } else {
             game.setCurrentPlayer(players.get(0));
+            //startTimer();
         }
     }
 }
