@@ -15,7 +15,6 @@ public class EventLog extends Label {
         setTextFill(Paint.valueOf("white"));
         setFont(javafx.scene.text.Font.font(24));
         setAlignment(Pos.TOP_CENTER);
-        setText("TEST");
     }
 
     public void log(String s) {
