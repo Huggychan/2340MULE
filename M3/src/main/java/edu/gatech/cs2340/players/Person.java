@@ -13,6 +13,7 @@ public class Person {
     private Race race;
     private Color color;
     private String colorString;
+    private int money;
 
     public int getMoney() {
         return money;
@@ -21,8 +22,6 @@ public class Person {
     public void setMoney(int money) {
         this.money = money;
     }
-
-    private int money;
 
     public Person(String name, Race race, String colorString) {
         money = 300;
