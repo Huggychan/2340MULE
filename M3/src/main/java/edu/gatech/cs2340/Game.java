@@ -227,7 +227,7 @@ public class Game extends Application {
         return result;
     }
 
-//temp change text here
+//temp change text text here.
     public void log(String s) {
         log.log(s);
     }
