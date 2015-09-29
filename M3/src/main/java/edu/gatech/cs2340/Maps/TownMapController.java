@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 import java.awt.event.InputEvent;
@@ -110,5 +111,6 @@ public class TownMapController implements Initializable {
         System.out.println("exit");
         turn.endPlayerTurn();
         this.game.getMap().getStackPane().getChildren().remove(this.backPane);
+        game.log.setTextFill(Paint.valueOf("white"));
     }
 }

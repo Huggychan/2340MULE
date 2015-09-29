@@ -2,19 +2,21 @@ package edu.gatech.cs2340;
 
 import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameEngine.Turn;
-import edu.gatech.cs2340.Maps.Map;
-import edu.gatech.cs2340.Maps.MapType;
-import edu.gatech.cs2340.Maps.Tile;
-import edu.gatech.cs2340.Maps.TownMapController;
+import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PersonConfigController;
 import edu.gatech.cs2340.players.Person;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
+import javafx.scene.paint.Paint;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class Game extends Application {
     private LandSelection landselection;
     private Turn turn;
     private Map map;
+    public EventLog log;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION}
@@ -150,6 +153,10 @@ public class Game extends Application {
         this.map.setGame(this);
 
         stage.getScene().setRoot(newRoot);
+
+        log = new EventLog();
+        map.getStackPane().getChildren().add(log);
+        StackPane.setAlignment(log, Pos.TOP_CENTER);
         startRound();
     }
 
@@ -182,6 +189,9 @@ public class Game extends Application {
         tmc.setGame(this);
         tmc.setTurn(turn);
         this.map.getStackPane().getChildren().add(newRoot);
+        this.map.getStackPane().getChildren().remove(log);
+        this.map.getStackPane().getChildren().add(log);
+        log.setTextFill(Paint.valueOf("black"));
     }
 
     /*
@@ -219,6 +229,10 @@ public class Game extends Application {
         return result;
     }
 
+
+    public void log(String s) {
+        log.log(s);
+    }
     /**
      * player has clicked on a tile delegates work to other methods
      * @param tile the tile that was clicked
