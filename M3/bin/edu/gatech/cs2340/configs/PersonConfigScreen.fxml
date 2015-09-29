@@ -16,7 +16,7 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="563.0" layoutY="294.0" prefHeight="189.0" prefWidth="475.0">
          <children>
-            <TextField fx:id="name" promptText="Enter name:">
+            <TextField fx:id="name" onAction="#onEnter" promptText="Enter name:">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextField>
@@ -28,7 +28,4 @@
       <Label fx:id="welcome" layoutX="545.0" layoutY="649.0" prefHeight="200.0" prefWidth="742.0" />
       <Label fx:id="title" layoutX="658.0" layoutY="28.0" prefHeight="200.0" prefWidth="300.0" />
    </children>
-   <cursor>
-      <Cursor fx:constant="TEXT" />
-   </cursor>
 </Pane>
