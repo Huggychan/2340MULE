@@ -13,3 +13,5 @@ http://examples.javacodegeeks.com/core-java/gradle/gradle-hello-world-tutorial/
 https://docs.gradle.org/current/userguide/tutorial_java_projects.html
 
 https://spring.io/guides/gs/gradle/
+
+temp change ignore
