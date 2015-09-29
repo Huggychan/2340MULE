@@ -3,10 +3,8 @@ package edu.gatech.cs2340.Maps;
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.Turn;
 import edu.gatech.cs2340.players.Person;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -59,8 +57,6 @@ public class TownMapController implements Initializable {
         backPane.setOnKeyPressed(event -> {
             System.out.println("key pressed");
         });
-
-        System.out.println(backPane.getOnKeyPressed());
     }
 
     @FXML
@@ -78,7 +74,6 @@ public class TownMapController implements Initializable {
     }
 
     public void onPubClicked() {
-        System.out.println("pub clicked");
         Random r = new Random();
         //int money = calculate based off timer
 
@@ -97,8 +92,10 @@ public class TownMapController implements Initializable {
 
         curr.setMoney(curr.getMoney() + money);
 
-        //Logger.log(curr.getName() + " has won " + money + " gambling");
+        game.getLog().log(curr.getName() + " has won " + money + " "
+                + "gambling");
         game.getTurn().endPlayerTurn();
+        this.onExitClicked();
     }
 
     public void onLandOfficeClicked() {
@@ -130,8 +127,7 @@ public class TownMapController implements Initializable {
     }
     public void onExitClicked() {
         System.out.println("exit");
-        turn.endPlayerTurn();
         this.game.getMap().getStackPane().getChildren().remove(this.backPane);
-        game.log.setTextFill(Paint.valueOf("white"));
+        game.getLog().setTextFill(Paint.valueOf("white"));
     }
 }
