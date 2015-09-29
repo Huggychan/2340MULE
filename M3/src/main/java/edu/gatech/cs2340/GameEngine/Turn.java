@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by Nick on 9/22/2015.
+ * @author Nick, Shyam
  */
 public class Turn {
     private  Game game;
