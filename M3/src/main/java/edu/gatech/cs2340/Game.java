@@ -257,7 +257,6 @@ public class Game extends Application {
     }
 
     public void setCurrentPlayer(Person p) {
-        long milliTime = System.currentTimeMillis();
         currentPlayerIndex = players.indexOf(p);
     }
 
