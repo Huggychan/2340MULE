@@ -1,7 +1,7 @@
 package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.GameObject.Mule;
-import edu.gatech.cs2340.players.Person;
+import edu.gatech.cs2340.GameObject.Person;
 import javafx.scene.image.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -22,7 +22,7 @@ public class Tile extends StackPane {
     private Mule mule;
     private ImageView iv;
     private Image image;
-    private Map map;
+    private MapController map;
 
     /**
      * Tile construct on Instantiation, we will not handle who owns it.
@@ -243,7 +243,7 @@ public class Tile extends StackPane {
         return iv;
     }
 
-    public void setMap(Map map) {
+    public void setMap(MapController map) {
         this.map = map;
     }
 

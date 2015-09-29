@@ -34,7 +34,7 @@ public class Game extends Application {
     private int roundNumber;
     private LandSelection landselection;
     private Turn turn;
-    private Map map;
+    private MapController map;
     private EventLog log;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
@@ -147,7 +147,7 @@ public class Game extends Application {
             System.out.println("IOException loading Map.fxml");
             System.out.println(e.getMessage());
         }
-        this.map = (Map) loader.getController();
+        this.map = (MapController) loader.getController();
         this.map.setGame(this);
 
         stage.getScene().setRoot(newRoot);
@@ -258,7 +258,7 @@ public class Game extends Application {
         currentPlayerIndex = players.indexOf(p);
     }
 
-    public Map getMap() {
+    public MapController getMap() {
         return this.map;
     }
 

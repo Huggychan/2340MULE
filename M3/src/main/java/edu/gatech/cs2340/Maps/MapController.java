@@ -18,7 +18,7 @@ import java.util.Scanner;
 /**
  * Created by Nick on 9/20/2015.
  */
-public class Map implements Initializable {
+public class MapController implements Initializable {
     private Tile[][] tiles;
     private MapType maptype = MapType.STANDARD;
     private Game game;
