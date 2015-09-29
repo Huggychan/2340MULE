@@ -1,7 +1,7 @@
 package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.GameObject.Mule;
-import edu.gatech.cs2340.GameObject.Person;
+import edu.gatech.cs2340.GameObject.Player;
 import javafx.scene.image.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
  */
 public class Tile extends StackPane {
     private String color;
-    private Person owner;
+    private Player owner;
     private TileType tileType;
     private int food;
     private int energy;
@@ -123,17 +123,17 @@ public class Tile extends StackPane {
     }
 
     /**
-     * Person returned
-     * @return person owner of tile
+     * Player returned
+     * @return Player owner of tile
      */
-    public Person getOwner() {
+    public Player getOwner() {
         return owner;
     }
 
     /**
      * @param owner set owner to this owner
      */
-    public void setOwner(Person owner) {
+    public void setOwner(Player owner) {
         this.owner = owner;
         Image borderImage = new Image("/resources/ownerBorder"
                 + ".png");

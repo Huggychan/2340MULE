@@ -3,7 +3,7 @@ package edu.gatech.cs2340.GameEngine;
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TileType;
-import edu.gatech.cs2340.players.Person;
+import edu.gatech.cs2340.GameObject.Player;
 
 import java.util.LinkedList;
 
@@ -12,12 +12,12 @@ import java.util.LinkedList;
  */
 public class LandSelection {
     private Game game;
-    private LinkedList<Person> playersActive;
+    private LinkedList<Player> GameObjectActive;
 
     public LandSelection(Game game) {
         this.game = game;
-        playersActive = new LinkedList<>();
-        playersActive.addAll(game.getPlayers());
+        GameObjectActive = new LinkedList<>();
+        GameObjectActive.addAll(game.getPlayers());
     }
 
     public void buy(Tile tile) {
@@ -37,19 +37,19 @@ public class LandSelection {
                 System.out.println(game.getCurrentPlayer().getMoney());
             }
             if (game.getCurrentPlayer().getMoney() >= 300) {
-                playersActive.add(game.getCurrentPlayer());
+                GameObjectActive.add(game.getCurrentPlayer());
             }
         }
-        playersActive.remove(game.getCurrentPlayer());
-        if (playersActive.isEmpty()) {
+        GameObjectActive.remove(game.getCurrentPlayer());
+        if (GameObjectActive.isEmpty()) {
             pass();
         } else {
-            game.setCurrentPlayer(playersActive.peek());
+            game.setCurrentPlayer(GameObjectActive.peek());
         }
     }
 
     public void pass() {
-        if (playersActive.isEmpty()) {
+        if (GameObjectActive.isEmpty()) {
             game.startTurns();
         }
     }

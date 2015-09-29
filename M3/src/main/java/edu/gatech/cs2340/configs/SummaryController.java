@@ -1,8 +1,8 @@
 package edu.gatech.cs2340.configs;
 
 import edu.gatech.cs2340.Game;
-import edu.gatech.cs2340.players.Person;
-import edu.gatech.cs2340.players.Race;
+import edu.gatech.cs2340.GameObject.Player;
+import edu.gatech.cs2340.GameObject.Race;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

@@ -23,7 +23,7 @@ import java.util.List;
 
 public class Game extends Application {
 
-    private ArrayList<Player> players;
+    private ArrayList<Player> GameObject;
     private ArrayList<String> colors;
     private int numPlayers;
     private MapType mapType;
@@ -58,7 +58,7 @@ public class Game extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         roundNumber = 1;
-        players = new ArrayList<>();
+        GameObject = new ArrayList<>();
         colors = new ArrayList<>();
         colors.add("Red");
         colors.add("Orange");
@@ -94,7 +94,7 @@ public class Game extends Application {
     }
 
     public void addPlayer(Player Player) {
-        players.add(Player);
+        GameObject.add(Player);
     }
 
     /**
@@ -195,7 +195,7 @@ public class Game extends Application {
     /*
     public void nextTurn() {
         state = GameState.TURN;
-        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        currentPlayerIndex = (currentPlayerIndex + 1) % GameObject.size();
     }*/
 
 
@@ -208,16 +208,16 @@ public class Game extends Application {
     }
 
     /**
-     * Compares Player to players list
+     * Compares Player to GameObject list
      * @param Player Player being compared
      * @return True if Player is already in list; false otherwise
      */
     public boolean comparePlayers(Player Player) {
         boolean result = true;
-        if (players.size() == 0) {
+        if (GameObject.size() == 0) {
             return false;
         }
-        for (Player p : players) {
+        for (Player p : GameObject) {
             if (Player.equals(p)) {
                 return true;
             } else {
@@ -244,18 +244,18 @@ public class Game extends Application {
     }
 
     public List<Player> getPlayers() {
-        return this.players;
+        return this.GameObject;
     }
 
     public ArrayList<String> getColors() {
         return this.colors; }
 
     public Player getCurrentPlayer() {
-        return players.get(currentPlayerIndex);
+        return GameObject.get(currentPlayerIndex);
     }
 
     public void setCurrentPlayer(Player p) {
-        currentPlayerIndex = players.indexOf(p);
+        currentPlayerIndex = GameObject.indexOf(p);
     }
 
     public MapController getMap() {

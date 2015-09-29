@@ -2,7 +2,7 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.Turn;
-import edu.gatech.cs2340.GameObject.Person;
+import edu.gatech.cs2340.GameObject.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 
 /**
- * Person Configuration Screen Controller - works with SceneBuilder
+ * Player Configuration Screen Controller - works with SceneBuilder
  * @author Bilal, Myron, Shyam
  * @version 1.0
  */
@@ -88,7 +88,7 @@ public class TownMapController implements Initializable {
             money = 250;
         }
 
-        Person curr = this.game.getCurrentPlayer();
+        Player curr = this.game.getCurrentPlayer();
 
         curr.setMoney(curr.getMoney() + money);
 
