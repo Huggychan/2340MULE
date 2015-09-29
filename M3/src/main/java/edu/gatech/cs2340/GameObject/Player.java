@@ -21,6 +21,7 @@ public class Player implements Comparable<Player> {
     private int food;
     private int energy;
     private int crystite;
+    private Mule mule;
 
     public int getMoney() {
         return money;
