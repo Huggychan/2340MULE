@@ -16,7 +16,7 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="563.0" layoutY="294.0" prefHeight="189.0" prefWidth="475.0">
          <children>
-            <TextField fx:id="name" onAction="#onEnter" promptText="Enter name:">
+            <TextField fx:id="name" promptText="Enter name:">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextField>

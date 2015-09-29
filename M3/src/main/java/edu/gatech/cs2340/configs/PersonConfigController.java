@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 //import javafx.scene.paint.Color;
 
 /**
@@ -62,30 +64,23 @@ public class PersonConfigController implements Initializable {
         race.getSelectionModel().selectFirst();
 
         start.setOnAction(event -> {
-//            public void handle(ActionEvent e) {
-                if (name.getText() == null || name.getText().trim().isEmpty()) {
-                    welcome.setText("Name must include at least one character"
-                            + "\nPlease enter a valid name");
+            if (name.getText() == null || name.getText().trim().isEmpty()) {
+                welcome.setText("Name must include at least one character"
+                        + "\nPlease enter a valid name");
+            } else {
+                person = new Person(name.getCharacters().toString(),
+                        race.getValue(), color.getValue());
+                if (game.comparePlayers(person)) {
+                    welcome.setText("Please enter a different name or color");
                 } else {
-                    person = new Person(name.getCharacters().toString(),
-                            race.getValue(), color.getValue());
-                    if (game.comparePlayers(person)) {
-                        welcome.setText("Please enter a different name or color");
-                    } else {
-                        game.addPlayer(person);
-                        game.nextState(playerNumber);
-                    }
-                    //if someone could figure out how to delay before
-                    //moving onto next part that would be gr8 m8
-
+                    game.addPlayer(person);
+                    game.nextState(playerNumber);
                 }
-//            }
-
+                //if someone could figure out how to delay before
+                //moving onto next part that would be gr8 m8
+            }
         });
-    }
-
-    public void onEnter() {
-        System.out.println("enter pressed");
+        start.defaultButtonProperty().bind(name.focusedProperty());
     }
 
     /**
