@@ -2,10 +2,10 @@ package edu.gatech.cs2340;
 
 import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameEngine.Turn;
-import edu.gatech.cs2340.GameObject.Person;
+import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
-import edu.gatech.cs2340.configs.PersonConfigController;
+import edu.gatech.cs2340.configs.PlayerConfigController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -23,7 +23,7 @@ import java.util.List;
 
 public class Game extends Application {
 
-    private ArrayList<Person> players;
+    private ArrayList<Player> players;
     private ArrayList<String> colors;
     private int numPlayers;
     private MapType mapType;
@@ -93,8 +93,8 @@ public class Game extends Application {
         this.numPlayers = numPlayers;
     }
 
-    public void addPlayer(Person person) {
-        players.add(person);
+    public void addPlayer(Player Player) {
+        players.add(Player);
     }
 
     /**
@@ -109,7 +109,7 @@ public class Game extends Application {
         }
         if (i < numPlayers) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource
-                    ("configs/PersonConfigScreen.fxml"));
+                    ("configs/PlayerConfigScreen.fxml"));
             loader.setClassLoader(this.getClass().getClassLoader());
 
             Parent newRoot = null;
@@ -117,11 +117,11 @@ public class Game extends Application {
             try {
                 newRoot = (Parent) loader.load();
             } catch (IOException e) {
-                System.out.println("IOException loading PersonConfig.fxml");
+                System.out.println("IOException loading PlayerConfig.fxml");
                 System.out.println(e.getMessage());
             }
 
-            PersonConfigController pController = (PersonConfigController) loader.getController();
+            PlayerConfigController pController = (PlayerConfigController) loader.getController();
             pController.setGame(this);
             pController.setPlayerNumber(i + 1);
             stage.getScene().setRoot(newRoot);
@@ -208,17 +208,17 @@ public class Game extends Application {
     }
 
     /**
-     * Compares person to players list
-     * @param person Person being compared
-     * @return True if person is already in list; false otherwise
+     * Compares Player to players list
+     * @param Player Player being compared
+     * @return True if Player is already in list; false otherwise
      */
-    public boolean comparePlayers(Person person) {
+    public boolean comparePlayers(Player Player) {
         boolean result = true;
         if (players.size() == 0) {
             return false;
         }
-        for (Person p : players) {
-            if (person.equals(p)) {
+        for (Player p : players) {
+            if (Player.equals(p)) {
                 return true;
             } else {
                 result = false;
@@ -243,18 +243,18 @@ public class Game extends Application {
         }
     }
 
-    public List<Person> getPlayers() {
+    public List<Player> getPlayers() {
         return this.players;
     }
 
     public ArrayList<String> getColors() {
         return this.colors; }
 
-    public Person getCurrentPlayer() {
+    public Player getCurrentPlayer() {
         return players.get(currentPlayerIndex);
     }
 
-    public void setCurrentPlayer(Person p) {
+    public void setCurrentPlayer(Player p) {
         currentPlayerIndex = players.indexOf(p);
     }
 

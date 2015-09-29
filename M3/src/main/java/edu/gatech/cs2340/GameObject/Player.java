@@ -6,11 +6,11 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
 /**
- * Makes a Person with different elements
+ * Makes a Player with different elements
  * @author Bilal, Marc
  * @version 1.1
  */
-public class Person implements Comparable<Person> {
+public class Player implements Comparable<Player> {
 
     private String name;
     private Race race;
@@ -32,7 +32,7 @@ public class Person implements Comparable<Person> {
 
     private int money;
 
-    public Person(String name, Race race, String colorString) {
+    public Player(String name, Race race, String colorString) {
         money = 300;
         this.name = name;
         this.race = race;
@@ -65,7 +65,7 @@ public class Person implements Comparable<Person> {
 
     /**
      * Gets the name
-     * @return Name of Person
+     * @return Name of Player
      */
     public String getName() {
         return name;
@@ -73,7 +73,7 @@ public class Person implements Comparable<Person> {
 
     /**
      * Gets the race
-     * @return Race of Person
+     * @return Race of Player
      */
     public Race getRace() {
         return race;
@@ -89,7 +89,7 @@ public class Person implements Comparable<Person> {
 
     /**
      * Gets the color
-     * @return Color of Person
+     * @return Color of Player
      */
     public Color getColor() {
         return color;
@@ -99,24 +99,24 @@ public class Person implements Comparable<Person> {
         return colorString;
     }
     /**
-     * Sets the Name of Person
-     * @param name Name to be set for Person
+     * Sets the Name of Player
+     * @param name Name to be set for Player
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Sets the Race of Person
-     * @param race RaCe to be set for Person
+     * Sets the Race of Player
+     * @param race RaCe to be set for Player
      */
     public void setRace(Race race) {
         this.race = race;
     }
 
     /**
-     * Sets the Color of Person
-     * @param color Color to be set for Person
+     * Sets the Color of Player
+     * @param color Color to be set for Player
      */
     public void setColor(Color color) {
         this.color = color;
@@ -130,8 +130,8 @@ public class Person implements Comparable<Person> {
     @Override
     public boolean equals(Object other) {
         if (this == other) return true;
-        if (!(other instanceof Person)) return false;
-        Person that = (Person)other;
+        if (!(other instanceof Player)) return false;
+        Player that = (Player)other;
         return this.name.equals(that.name) && this.color.equals(that.color);
     }
 
@@ -146,7 +146,7 @@ public class Person implements Comparable<Person> {
                 .energy + this.crystite + this.food;
     }
 
-    public int compareTo(Person other) {
+    public int compareTo(Player other) {
         return other.getScore() - this.getScore();
     }
 }

@@ -3,7 +3,7 @@ package edu.gatech.cs2340.GameEngine;
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TileType;
-import edu.gatech.cs2340.players.Person;
+import edu.gatech.cs2340.players.Player;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
  */
 public class Turn {
     private  Game game;
-    private ArrayList<Person> players;
+    private ArrayList<Player> players;
     public long timeStart;
 
     public Turn(Game game) {
