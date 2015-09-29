@@ -15,3 +15,4 @@ build/
 .project
 *.metadata
 bin/
+/nbproject/private/
