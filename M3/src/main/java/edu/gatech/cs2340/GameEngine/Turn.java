@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Turn {
     private  Game game;
     private ArrayList<Person> players;
-    private long timeStart;
+    public long timeStart;
 
     public Turn(Game game) {
         this.game = game;
@@ -28,10 +28,6 @@ public class Turn {
         if (tile.getTileType() == TileType.TOWN) {
             game.goToTown();
         }
-    }
-
-    public boolean timeRemains() {
-        return (System.currentTimeMillis() - timeStart) < 30000;
     }
 
     public void endPlayerTurn() {
