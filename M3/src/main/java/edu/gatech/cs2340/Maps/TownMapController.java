@@ -2,6 +2,7 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.Turn;
+import edu.gatech.cs2340.players.Person;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.awt.event.InputEvent;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 
@@ -54,12 +56,11 @@ public class TownMapController implements Initializable {
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         backPane.requestFocus();
 
-        backPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent arg0) {
-                System.out.println("fffff");
-            }
+        backPane.setOnKeyPressed(event -> {
+            System.out.println("key pressed");
         });
+
+        System.out.println(backPane.getOnKeyPressed());
     }
 
     @FXML
@@ -78,6 +79,26 @@ public class TownMapController implements Initializable {
 
     public void onPubClicked() {
         System.out.println("pub clicked");
+        Random r = new Random();
+        //int money = calculate based off timer
+
+        int roundBonus = 100; //round bonus?
+        int timeLeft = 50;
+        int timeBonus = (timeLeft / 50) * 150 + 50;
+        int multiplier = r.nextInt(timeBonus);
+
+        int money = roundBonus * multiplier;
+
+        if (money > 250) {
+            money = 250;
+        }
+
+        Person curr = this.game.getCurrentPlayer();
+
+        curr.setMoney(curr.getMoney() + money);
+
+        //Logger.log(curr.getName() + " has won " + money + " gambling");
+        game.getTurn().endPlayerTurn();
     }
 
     public void onLandOfficeClicked() {

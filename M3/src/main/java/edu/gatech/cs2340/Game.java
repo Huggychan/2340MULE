@@ -263,4 +263,8 @@ public class Game extends Application {
     public Map getMap() {
         return this.map;
     }
+
+    public Turn getTurn() {
+        return this.turn;
+    }
 }

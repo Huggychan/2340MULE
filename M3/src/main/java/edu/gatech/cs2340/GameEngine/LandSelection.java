@@ -5,10 +5,7 @@ import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TileType;
 import edu.gatech.cs2340.players.Person;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by Nick on 9/22/2015.
@@ -37,6 +34,7 @@ public class LandSelection {
                 tile.setOwner(game.getCurrentPlayer());
                 game.getCurrentPlayer().setMoney(game.getCurrentPlayer()
                         .getMoney() - 300);
+                System.out.println(game.getCurrentPlayer().getMoney());
             }
             if (game.getCurrentPlayer().getMoney() >= 300) {
                 playersActive.add(game.getCurrentPlayer());
