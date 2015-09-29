@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import edu.gatech.cs2340.Game;
-import edu.gatech.cs2340.players.Person;
-import edu.gatech.cs2340.players.Race;
+import edu.gatech.cs2340.GameObject.Player;
+import edu.gatech.cs2340.GameObject.Race;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,11 +22,11 @@ import javafx.scene.input.KeyEvent;
 //import javafx.scene.paint.Color;
 
 /**
- * Person Configuration Screen Controller - works with SceneBuilder
+ * Player Configuration Screen Controller - works with SceneBuilder
  * @author Bilal, Myron, Shyam
  * @version 1.1
  */
-public class PersonConfigController implements Initializable {
+public class PlayerConfigController implements Initializable {
 
     @FXML
     private ComboBox<Race> race;
@@ -43,7 +43,7 @@ public class PersonConfigController implements Initializable {
 
     private int playerNumber;
     private Game game;
-    private Person person;
+    private Player Player;
     private ArrayList<String> tempColor;
 
     /**
@@ -68,12 +68,12 @@ public class PersonConfigController implements Initializable {
                 welcome.setText("Name must include at least one character"
                         + "\nPlease enter a valid name");
             } else {
-                person = new Person(name.getCharacters().toString(),
+                Player = new Player(name.getCharacters().toString(),
                         race.getValue(), color.getValue());
-                if (game.comparePlayers(person)) {
+                if (game.comparePlayers(Player)) {
                     welcome.setText("Please enter a different name or color");
                 } else {
-                    game.addPlayer(person);
+                    game.addPlayer(Player);
                     game.nextState(playerNumber);
                 }
                 //if someone could figure out how to delay before
@@ -92,7 +92,7 @@ public class PersonConfigController implements Initializable {
         this.tempColor = game.getColors();
 
 
-        for (Person p : game.getPlayers()) {
+        for (Player p : game.getPlayers()) {
             tempColor.remove(p.getColorString());
         }
 

@@ -7,28 +7,28 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Person Configuration Screen
+ * Player Configuration Screen
  * @author Bilal, Myron, Shyam
  * @version 1.0
  */
-public class PersonConfigScreen extends Application {
+public class PlayerConfigScreen extends Application {
 
     /**
-     * Main method that utilizes PersonConfigScreen
+     * Main method that utilizes PlayerConfigScreen
      * @param args Arguments to command line
      */
     public static void main(String[] args) {
-        Application.launch(PersonConfigScreen.class, (java.lang.String[]) null);
+        Application.launch(PlayerConfigScreen.class, (java.lang.String[]) null);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
         Parent root =
-            FXMLLoader.load(getClass().getResource("PersonConfigScreen.fxml"));
+            FXMLLoader.load(getClass().getResource("PlayerConfigScreen.fxml"));
 
         Scene scene = new Scene(root, 1600, 900);
 
-        stage.setTitle("Person Configuration Screen");
+        stage.setTitle("Player Configuration Screen");
         stage.setScene(scene);
         stage.show();
     }
