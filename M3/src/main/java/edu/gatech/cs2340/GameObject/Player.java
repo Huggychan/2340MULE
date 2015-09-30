@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Makes a Player with different elements
- * @author Bilal, Marc
+ * @author Bilal, Marc, Shyam
  * @version 1.1
  */
 public class Player implements Comparable<Player> {
