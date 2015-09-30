@@ -3,6 +3,7 @@ package edu.gatech.cs2340;
 import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameEngine.Turn;
 import edu.gatech.cs2340.GameObject.Player;
+import edu.gatech.cs2340.GameObject.Store;
 import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PlayerConfigController;
@@ -36,6 +37,7 @@ public class Game extends Application {
     private Turn turn;
     private MapController map;
     private EventLog log;
+    private Store store;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION}
@@ -57,6 +59,7 @@ public class Game extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
+        this.store = new Store();
         roundNumber = 1;
         GameObject = new ArrayList<>();
         colors = new ArrayList<>();
@@ -268,5 +271,9 @@ public class Game extends Application {
 
     public EventLog getLog() {
         return this.log;
+    }
+
+    public Store getStore() {
+        return this.store;
     }
 }

@@ -31,4 +31,49 @@ public class Store {
             this.mules.add(m);
         }
     }
+
+    public ArrayList<Mule> getMules() {
+        return mules;
+    }
+
+    public int getOreCount() {
+        return oreCount;
+    }
+
+    public int getFoodCount() {
+        return foodCount;
+    }
+
+    public int getEnergyCount() {
+        return energyCount;
+    }
+
+    public int getCrystiteCount() {
+        return crystiteCount;
+    }
+
+    public int getENERGY_PRICE() {
+        return ENERGY_PRICE;
+    }
+
+    public int getSMITHORE_PRICE() {
+        return SMITHORE_PRICE;
+    }
+
+    public int getBASE_MULE_PRICE() {
+        return BASE_MULE_PRICE;
+    }
+
+    public int getFOOD_PRICE() {
+
+        return FOOD_PRICE;
+    }
+
+    public int getCRYSTITE_PRICE() {
+
+        return CRYSTITE_PRICE;
+    }
+
 }
+
+

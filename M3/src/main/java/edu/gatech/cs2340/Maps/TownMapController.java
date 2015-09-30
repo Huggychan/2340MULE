@@ -3,13 +3,17 @@ package edu.gatech.cs2340.Maps;
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.Turn;
 import edu.gatech.cs2340.GameObject.Player;
+import edu.gatech.cs2340.GameObject.StoreController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 import java.awt.event.InputEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -103,7 +107,25 @@ public class TownMapController implements Initializable {
     }
 
     public void onStoreClicked() {
-        System.out.println("store clicked");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource
+                ("/resources/Store.fxml"));
+        loader.setClassLoader(this.getClass().getClassLoader());
+        Parent newRoot = null;
+
+        try {
+            newRoot = (Parent) loader.load();
+        } catch (IOException e) {
+            System.out.println("IOException loading Store.fxml");
+            System.out.println(e.getMessage());
+            System.out.println("Cause: " + e.getCause());
+            System.out.println(e.getStackTrace());
+        }
+
+        StoreController sc = (StoreController) loader.getController();
+        sc.setStore(this.game.getStore());
+
+        this.game.getMap().getStackPane().getChildren().add(sc.getBackingPane
+                ());
     }
 
     public void onEnergyClicked() {
