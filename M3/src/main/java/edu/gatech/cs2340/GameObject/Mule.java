@@ -16,8 +16,9 @@ public class Mule {
 
     public enum ResourceType {FOOD, ENERGY, ORE, CRYSTITE};
 
-    public Mule(Player player) {
-        this.player = player;
+    public Mule(/*Player player*/) {
+//        this.player = player;
+        player = new Player("John", Race.HUMAN, "Red");
         this.colorString = player.getColorString();
         this.color = player.getColor();
         image = new Image("/resources/mule.png");
@@ -43,22 +44,24 @@ public class Mule {
         return player;
     }
 
-    public void changeColor(Player player) {
+    public Image getImage() {
+        return this.image;
+    }
+
+    public WritableImage changeColor(Player player) {
         int width = (int) image.getWidth();
         int height = (int) image.getHeight();
 
         PixelReader pixelReader = image.getPixelReader();
-        WritableImage writableImage = new WritableImage(pixelReader, 0, 0,
-                width, height);
+        WritableImage writableImage = new WritableImage(width, height);
         PixelWriter pixelWriter = writableImage.getPixelWriter();
 
-//        for (int i = 0; i < width; i++) {
-//            for (int j = 0; j < height; j++) {
-//                Color color = pixelReader.getColor(i, j);
-//                if (!(color.equals(Color.AQUA))) {
-//                    pixelWriter.setColor(i, j, Color.RED);
-//                }
-//            }
-//        }
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                Color color = player.getColor();
+                pixelWriter.setColor(x, y, color);
+            }
+        }
+        return writableImage;
     }
 }

@@ -73,8 +73,6 @@ public class StoreController implements Initializable {
     public void setStore(Store store) {
         this.store = store;
         this.updateInventory();
-        Image image = new Image("/resources/mule.png");
-        this.game.getScene().setCursor(new ImageCursor(image));
     }
 
     public void updateInventory() {
