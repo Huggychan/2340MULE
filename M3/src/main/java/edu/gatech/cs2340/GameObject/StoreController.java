@@ -6,10 +6,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -71,6 +73,8 @@ public class StoreController implements Initializable {
     public void setStore(Store store) {
         this.store = store;
         this.updateInventory();
+        Image image = new Image("/resources/mule.png");
+        this.game.getScene().setCursor(new ImageCursor(image));
     }
 
     public void updateInventory() {
