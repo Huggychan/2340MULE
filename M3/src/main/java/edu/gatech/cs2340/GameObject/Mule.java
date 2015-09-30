@@ -59,7 +59,9 @@ public class Mule {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 Color color = player.getColor();
-                pixelWriter.setColor(x, y, color);
+                if (!(pixelReader.getColor(x, y).equals(Color.TRANSPARENT))) {
+                    pixelWriter.setColor(x, y, color);
+                }
             }
         }
         return writableImage;
