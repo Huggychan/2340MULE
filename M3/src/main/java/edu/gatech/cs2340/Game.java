@@ -38,6 +38,7 @@ public class Game extends Application {
     private MapController map;
     private EventLog log;
     private Store store;
+    private Scene scene;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION}
@@ -81,7 +82,7 @@ public class Game extends Application {
         GameConfigController gcfgController = (GameConfigController)loader.getController();
         gcfgController.setGame(this);
 
-        Scene scene = new Scene(root, 1600, 900);
+        this.scene = new Scene(root, 1600, 900);
         stage.setTitle("MULE");
         stage.setScene(scene);
         stage.show();
@@ -276,4 +277,6 @@ public class Game extends Application {
     public Store getStore() {
         return this.store;
     }
+
+    public Scene getScene() { return this.scene; }
 }

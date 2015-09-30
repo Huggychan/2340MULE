@@ -4,10 +4,14 @@ import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.Turn;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.StoreController;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -126,6 +130,10 @@ public class TownMapController implements Initializable {
 
         this.game.getMap().getStackPane().getChildren().add(sc.getBackingPane
                 ());
+
+        Image image = new Image("/resources/mule.png");
+        this.game.getScene().setCursor(new ImageCursor(image));
+
     }
 
     public void onEnergyClicked() {
