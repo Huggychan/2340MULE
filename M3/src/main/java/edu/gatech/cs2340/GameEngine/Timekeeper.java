@@ -1,7 +1,9 @@
 package edu.gatech.cs2340.GameEngine;
 
 import edu.gatech.cs2340.Game;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 
 /**
@@ -21,6 +23,13 @@ public class Timekeeper implements Runnable {
     public void run() {
         System.out.println("Starting");
         Long longInt = 3000 - (System.currentTimeMillis() - startTime);
+        Label label = new Label();
+        game.getMap().getStackPane().getChildren().add(label);
+        label.setFont(javafx.scene.text.Font.font(24));
+        StackPane.setAlignment(label, Pos.TOP_RIGHT);
+        //label.setAlignment(Pos.TOP_RIGHT);
+        label.setTextFill(Paint.valueOf("white"));
+        label.setText("your time is up");
         while ((System.currentTimeMillis() - startTime) < 3000) {
             /*try {
                 wait(1000);
@@ -35,9 +44,5 @@ public class Timekeeper implements Runnable {
             game.getTown().onExitClicked();
         }
         game.getTurn().endPlayerTurn();
-        Label label = new Label();
-        game.getMap().getStackPane().getChildren().add(label);
-        label.setText(longInt.toString());
-        label.setTextFill(Paint.valueOf("white"));
     }
 }
