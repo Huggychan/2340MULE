@@ -53,22 +53,15 @@ public class Turn {
         }
     }
 
-    public void startTimer() {
-        //ExecutorService executor = Executors.newCachedThreadPool();
-        //executor.submit(new Timekeeper(game));
-        Timekeeper t = new Timekeeper(game);
-        t.execute();
-    }
-
     public int getTurnTime() {
         return turnTime;
     }
 
     public void setTurnTime() {
         Player player = players.get(0);
-        if (player.getFood() >= 8) {
+        if (player.getFood() >= 12) {
             turnTime = 50;
-        } else if (player.getFood() >= 4) {
+        } else if (player.getFood() > 8) {
             turnTime = 30;
         } else {
             turnTime = 5;
@@ -80,6 +73,7 @@ public class Turn {
         if (players.isEmpty()) {
             game.incrementRound();
             game.startRound();
+            label.setText("");
         } else {
             game.setCurrentPlayer(players.get(0));
             setTurnTime();
@@ -101,17 +95,22 @@ public class Turn {
 
             public void timerMethod() {
                 turnTime = game.getTurn().getTurnTime();
-                game.getTurn().getLabel().setText(turnTime - checker - 1 + " seconds remaining");
-                checker++;
-                if (turnTime - checker == 0) {
-                    checker = 0;
-                    if (game.getTownEntered()) {
-                        System.out.println("in town");
-                        game.getTown().onExitClicked();
-                    }
+                if (!game.getCurrentPlayer().equals(players.get(0))) {
+                    timer.stop();
                     game.getTurn().getLabel().setText("");
-                    game.getTurn().getLabel().setText("Your have run out of time");
-                    game.getTurn().endPlayerTurn();
+                } else {
+                    game.getTurn().getLabel().setText(turnTime - checker - 1 + " seconds remaining");
+                    checker++;
+                    if (turnTime - checker == 0) {
+                        checker = 0;
+                        if (game.getTownEntered()) {
+                            System.out.println("in town");
+                            game.getTown().onExitClicked();
+                        }
+                        game.getTurn().getLabel().setText("");
+                        game.getTurn().getLabel().setText("Your have run out of time");
+                        game.getTurn().endPlayerTurn();
+                    }
                 }
             }
         }));
