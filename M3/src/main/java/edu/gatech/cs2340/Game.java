@@ -40,6 +40,7 @@ public class Game extends Application {
     private Store store;
     private Scene scene;
     private TownMapController tmc;
+    private boolean townEntered = false;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION}
@@ -195,6 +196,7 @@ public class Game extends Application {
         this.map.getStackPane().getChildren().remove(log);
         this.map.getStackPane().getChildren().add(log);
         log.setTextFill(Paint.valueOf("black"));
+        townEntered = true;
     }
 
     /*
@@ -284,4 +286,12 @@ public class Game extends Application {
     }
 
     public Scene getScene() { return this.scene; }
+
+    public boolean getTownEntered() {
+        return this.townEntered;
+    }
+
+    public void setTownEntered(boolean bool) {
+        this.townEntered = bool;
+    }
 }

@@ -167,5 +167,6 @@ public class TownMapController implements Initializable {
         System.out.println("exit");
         this.game.getMap().getStackPane().getChildren().remove(this.backPane);
         game.getLog().setTextFill(Paint.valueOf("white"));
+        game.setTownEntered(false);
     }
 }

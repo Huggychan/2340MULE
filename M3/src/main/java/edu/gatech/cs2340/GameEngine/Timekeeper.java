@@ -6,16 +6,15 @@ import javafx.scene.paint.Paint;
 
 /**
  * Created by snatarajan8 on 9/29/2015.
+ * @author Shyam
  */
 public class Timekeeper implements Runnable {
 
-    private Turn turn;
     private long startTime;
     private Game game;
 
-    public Timekeeper(Turn turn, Game game) {
+    public Timekeeper(Game game) {
         this.game = game;
-        this.turn = turn;
         startTime = System.currentTimeMillis();
     }
 
@@ -32,7 +31,10 @@ public class Timekeeper implements Runnable {
             */
         }
         System.out.println("Done waiting");
-        turn.endPlayerTurn();
+        if (game.getTownEntered()) {
+            game.getTown().onExitClicked();
+        }
+        game.getTurn().endPlayerTurn();
         Label label = new Label();
         game.getMap().getStackPane().getChildren().add(label);
         label.setText(longInt.toString());
