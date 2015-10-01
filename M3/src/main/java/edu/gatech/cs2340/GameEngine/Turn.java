@@ -14,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 /**
  * Created by Nick on 9/22/2015.
@@ -25,6 +26,7 @@ public class Turn {
     private Label label;
     private LogService service;
     private int turnTime = 50;
+    private Timeline timer;
 
     public Turn(Game game) {
         this.game = game;
@@ -34,12 +36,13 @@ public class Turn {
         setTurnTime();
         label = new Label();
         game.getMap().getStackPane().getChildren().add(label);
-        label.setFont(javafx.scene.text.Font.font(24));
+        label.setFont(Font.font(24));
         StackPane.setAlignment(label, Pos.TOP_RIGHT);
         label.setTextFill(Paint.valueOf("white"));
         //startTimer();
-        Timeline timer = game.getTimer();
-        timer.setCycleCount(30);
+        timer = game.getTimer();
+
+        timer.setCycleCount(turnTime);
         timer.play();
     }
 
@@ -72,7 +75,6 @@ public class Turn {
     }
 
     public void endPlayerTurn() {
-        //label.setText(players.get(0).getName() + " your turn is over");
         players.remove(game.getCurrentPlayer());
         if (players.isEmpty()) {
             game.incrementRound();
@@ -81,6 +83,8 @@ public class Turn {
             game.setCurrentPlayer(players.get(0));
             setTurnTime();
             //startTimer();
+            timer.setCycleCount(turnTime);
+            timer.play();
         }
 
     }

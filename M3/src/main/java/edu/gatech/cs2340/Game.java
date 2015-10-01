@@ -50,7 +50,7 @@ public class Game extends Application {
     private Timeline timer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
         private int turnTime;
-        private int checker;
+        public int checker;
 
         public void handle(ActionEvent event) {
             timerMethod();
@@ -60,6 +60,15 @@ public class Game extends Application {
             turnTime = getTurn().getTurnTime();
             getTurn().getLabel().setText(turnTime - checker + " seconds remaining");
             checker++;
+            if (turnTime - checker == 1) {
+                checker = 0;
+                if (getTownEntered()) {
+                    System.out.println("in town");
+                    getTown().onExitClicked();
+                }
+                getTurn().getLabel().setText("Your have run out of time");
+                getTurn().endPlayerTurn();
+            }
         }
     }));
 
