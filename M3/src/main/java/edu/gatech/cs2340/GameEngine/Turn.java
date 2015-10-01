@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -36,8 +37,10 @@ public class Turn {
         label.setFont(javafx.scene.text.Font.font(24));
         StackPane.setAlignment(label, Pos.TOP_RIGHT);
         label.setTextFill(Paint.valueOf("white"));
-        startTimer();
-
+        //startTimer();
+        Timeline timer = game.getTimer();
+        timer.setCycleCount(30);
+        timer.play();
     }
 
     public void move(Tile tile) {
@@ -77,7 +80,7 @@ public class Turn {
         } else {
             game.setCurrentPlayer(players.get(0));
             setTurnTime();
-            startTimer();
+            //startTimer();
         }
 
     }

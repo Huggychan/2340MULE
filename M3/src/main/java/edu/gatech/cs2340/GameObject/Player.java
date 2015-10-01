@@ -24,7 +24,6 @@ public class Player implements Comparable<Player> {
     private int crystite;
     private int money;
     private Mule mule;
-    private Game game;
 
     public int getMoney() {
         return money;
@@ -71,23 +70,6 @@ public class Player implements Comparable<Player> {
                 break;
             default:
                 this.money = 1000;
-                break;
-        }
-        switch (game.getDifficulty()) {
-            case Beginner:
-                this.food = 8;
-                this.energy = 4;
-                this.ore = 0;
-                break;
-            case Standard:
-                this.food = 4;
-                this.energy = 2;
-                this.ore = 0;
-                break;
-            case Tournament:
-                this.food = 4;
-                this.energy = 2;
-                this.ore = 0;
                 break;
         }
     }

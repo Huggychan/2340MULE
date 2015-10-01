@@ -7,7 +7,11 @@ import edu.gatech.cs2340.GameObject.Store;
 import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PlayerConfigController;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -15,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +46,14 @@ public class Game extends Application {
     private Scene scene;
     private TownMapController tmc;
     private boolean townEntered = false;
+
+    private Timeline timer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+
+        @Override
+        public void handle(ActionEvent event) {
+            getTurn().getLabel().setText("something");
+        }
+    }));
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION}
@@ -213,6 +226,11 @@ public class Game extends Application {
     public int getRoundNumber() {
         return roundNumber;
     }
+
+    public Timeline getTimer() {
+        return timer;
+    }
+
     public void incrementRound() {
         roundNumber++;
     }
