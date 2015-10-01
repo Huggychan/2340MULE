@@ -45,6 +45,7 @@ public class PlayerConfigController implements Initializable {
     private Game game;
     private Player Player;
     private ArrayList<String> tempColor;
+    private Game.Difficulty difficulty;
 
     /**
      * Initializes the fxml file
@@ -90,10 +91,27 @@ public class PlayerConfigController implements Initializable {
     public void setGame(Game game) {
         this.game = game;
         this.tempColor = game.getColors();
-
+        this.difficulty = game.getDifficulty();
 
         for (Player p : game.getPlayers()) {
             tempColor.remove(p.getColorString());
+            switch (game.getDifficulty()) {
+                case Beginner:
+                    p.setFood(8);
+                    p.setEnergy(4);
+                    p.setOre(0);
+                    break;
+                case Standard:
+                    p.setFood(4);
+                    p.setEnergy(2);
+                    p.setOre(0);
+                    break;
+                case Tournament:
+                    p.setFood(4);
+                    p.setEnergy(2);
+                    p.setOre(0);
+                    break;
+            }
         }
 
         color.setItems(
