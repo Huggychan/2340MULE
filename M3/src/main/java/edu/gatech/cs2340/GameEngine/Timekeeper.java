@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.GameEngine;
 
 import edu.gatech.cs2340.Game;
+import edu.gatech.cs2340.GameObject.Player;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -14,17 +15,22 @@ public class Timekeeper implements Runnable {
 
     private long startTime;
     private Game game;
+    private Player player;
 
 
     public Timekeeper(Game game) {
         this.game = game;
         startTime = System.currentTimeMillis();
+        this.player = game.getCurrentPlayer();
     }
 
     public void run() {
         System.out.println("Starting");
         Long longInt = 1000 - (System.currentTimeMillis() - startTime);
         for (int i = 0; i < game.getTurn().getTurnTime(); i++) {
+            if (!game.getCurrentPlayer().equals(player)) {
+                return;
+            }
             while ((System.currentTimeMillis() - startTime) < 1000 + 1000 * i) {
             /*try {
                 wait(1000);
