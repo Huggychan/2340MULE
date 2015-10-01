@@ -43,7 +43,6 @@ public class Turn {
         label.setFont(Font.font(24));
         StackPane.setAlignment(label, Pos.TOP_RIGHT);
         label.setTextFill(Paint.valueOf("white"));
-        //startTimer();
         turnTimerCreator();
     }
 
@@ -77,7 +76,6 @@ public class Turn {
         } else {
             game.setCurrentPlayer(players.get(0));
             setTurnTime();
-            //startTimer();
             turnTimerCreator();
         }
 
@@ -88,6 +86,7 @@ public class Turn {
 
             private int turnTime;
             public int checker;
+            private Player player = game.getCurrentPlayer();
 
             public void handle(ActionEvent event) {
                 timerMethod();
@@ -95,9 +94,9 @@ public class Turn {
 
             public void timerMethod() {
                 turnTime = game.getTurn().getTurnTime();
-                if (!game.getCurrentPlayer().equals(players.get(0))) {
-                    timer.stop();
+                if (!game.getCurrentPlayer().equals(player)) {
                     game.getTurn().getLabel().setText("");
+                    timer.stop();
                 } else {
                     game.getTurn().getLabel().setText(turnTime - checker - 1 + " seconds remaining");
                     checker++;
@@ -121,10 +120,6 @@ public class Turn {
 
     public Label getLabel() {
         return label;
-    }
-
-    public LogService getService() {
-        return service;
     }
 
 }
