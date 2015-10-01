@@ -49,9 +49,17 @@ public class Game extends Application {
 
     private Timeline timer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
-        @Override
+        private int turnTime;
+        private int checker;
+
         public void handle(ActionEvent event) {
-            getTurn().getLabel().setText("something");
+            timerMethod();
+        }
+
+        public void timerMethod() {
+            turnTime = getTurn().getTurnTime();
+            getTurn().getLabel().setText(turnTime - checker + " seconds remaining");
+            checker++;
         }
     }));
 
