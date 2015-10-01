@@ -23,16 +23,8 @@ public class Timekeeper implements Runnable {
     public void run() {
         System.out.println("Starting");
         Long longInt = 1000 - (System.currentTimeMillis() - startTime);
-        /*Label label = new Label();
-        game.getMap().getStackPane().getChildren().add(label);
-        label.setFont(javafx.scene.text.Font.font(24));
-        StackPane.setAlignment(label, Pos.TOP_RIGHT);
-        //label.setAlignment(Pos.TOP_RIGHT);
-        label.setTextFill(Paint.valueOf("white"));
-        label.setText("your time is up");
-        */
-        for (int i = 0; i < 30; i++) {
-            while ((System.currentTimeMillis() - startTime) < 1000) {
+        //for (int i = 0; i < 5; i++) {
+            while ((System.currentTimeMillis() - startTime) < 5000) {
             /*try {
                 wait(1000);
                 System.out.println("waiting");
@@ -41,12 +33,15 @@ public class Timekeeper implements Runnable {
             }
             */
             }
-            game.getLog().log(30 - i + " second(s) remaining");
-        }
+            //game.getTurn().getService().setI(i);
+            //game.getTurn().getService().start();
+        //}
         System.out.println("Done waiting");
         if (game.getTownEntered()) {
             game.getTown().onExitClicked();
         }
+
         game.getTurn().endPlayerTurn();
+
     }
 }

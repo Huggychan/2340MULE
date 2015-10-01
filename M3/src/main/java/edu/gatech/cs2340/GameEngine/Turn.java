@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Paint;
+
 /**
  * Created by Nick on 9/22/2015.
  * @author Nick, Shyam
@@ -16,16 +21,21 @@ import java.util.concurrent.Executors;
 public class Turn {
     private  Game game;
     private ArrayList<Player> players;
-    public long timeStart;
+    private Label label;
+    private LogService service;
 
     public Turn(Game game) {
         this.game = game;
         players = new ArrayList<>();
         players.addAll(game.getPlayers());
         game.setCurrentPlayer(players.get(0));
-        timeStart = System.currentTimeMillis();
-        game.getLog().log("Your turn has started");
-        //startTimer();
+        label = new Label();
+        game.getMap().getStackPane().getChildren().add(label);
+        label.setFont(javafx.scene.text.Font.font(24));
+        StackPane.setAlignment(label, Pos.TOP_RIGHT);
+        label.setTextFill(Paint.valueOf("white"));
+        startTimer();
+
     }
 
     public void move(Tile tile) {
@@ -40,14 +50,24 @@ public class Turn {
     }
 
     public void endPlayerTurn() {
+        //label.setText(players.get(0).getName() + " your turn is over");
         players.remove(game.getCurrentPlayer());
         if (players.isEmpty()) {
             game.incrementRound();
             game.startRound();
         } else {
             game.setCurrentPlayer(players.get(0));
-            //startTimer();
+            startTimer();
         }
+
+    }
+
+    public Label getLabel() {
+        return label;
+    }
+
+    public LogService getService() {
+        return service;
     }
 
 }
