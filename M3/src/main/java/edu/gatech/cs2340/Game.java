@@ -46,31 +46,7 @@ public class Game extends Application {
     private Scene scene;
     private TownMapController tmc;
     private boolean townEntered = false;
-
-    private Timeline timer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
-
-        private int turnTime;
-        public int checker;
-
-        public void handle(ActionEvent event) {
-            timerMethod();
-        }
-
-        public void timerMethod() {
-            turnTime = getTurn().getTurnTime();
-            getTurn().getLabel().setText(turnTime - checker + " seconds remaining");
-            checker++;
-            if (turnTime - checker == 1) {
-                checker = 0;
-                if (getTownEntered()) {
-                    System.out.println("in town");
-                    getTown().onExitClicked();
-                }
-                getTurn().getLabel().setText("Your have run out of time");
-                getTurn().endPlayerTurn();
-            }
-        }
-    }));
+    public Timeline timer;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION}
