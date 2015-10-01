@@ -24,7 +24,7 @@ public class Turn {
         players.addAll(game.getPlayers());
         game.setCurrentPlayer(players.get(0));
         timeStart = System.currentTimeMillis();
-        //startTimer();
+        startTimer();
     }
 
     public void move(Tile tile) {
@@ -35,7 +35,7 @@ public class Turn {
 
     public void startTimer() {
         ExecutorService executor = Executors.newCachedThreadPool();
-        //executor.submit(new Timekeeper(this, game));
+        executor.submit(new Timekeeper(this, game));
     }
 
     public void endPlayerTurn() {
@@ -45,7 +45,7 @@ public class Turn {
             game.startRound();
         } else {
             game.setCurrentPlayer(players.get(0));
-            //startTimer();
+            startTimer();
         }
     }
 }

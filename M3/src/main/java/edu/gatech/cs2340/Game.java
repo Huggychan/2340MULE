@@ -39,6 +39,7 @@ public class Game extends Application {
     private EventLog log;
     private Store store;
     private Scene scene;
+    private TownMapController tmc;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION}
@@ -187,7 +188,7 @@ public class Game extends Application {
             System.out.println("IOException loading TownMap.fxml");
             System.out.println(e.getMessage());
         }
-        TownMapController tmc = (TownMapController) loader.getController();
+        tmc = (TownMapController) loader.getController();
         tmc.setGame(this);
         tmc.setTurn(turn);
         this.map.getStackPane().getChildren().add(newRoot);
@@ -264,6 +265,10 @@ public class Game extends Application {
 
     public MapController getMap() {
         return this.map;
+    }
+
+    public TownMapController getTown() {
+        return this.tmc;
     }
 
     public Turn getTurn() {
