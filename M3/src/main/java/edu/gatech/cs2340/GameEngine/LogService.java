@@ -25,6 +25,7 @@ public class LogService extends Service {
     protected Task createTask() {
         return new Task() {
             protected Object call() {
+                System.out.println("called");
                 game.getTurn().getLabel().setText(5 - i + " second(s) remaining");
                 return null;
             }

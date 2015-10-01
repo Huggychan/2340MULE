@@ -31,10 +31,15 @@ public class Player implements Comparable<Player> {
         this.money = money;
     }
 
+    public int getFood() {
+        return food;
+    }
+
     private int money;
 
     public Player(String name, Race race, String colorString) {
         money = 300;
+        food = 100;
         this.name = name;
         this.race = race;
         this.colorString = colorString;

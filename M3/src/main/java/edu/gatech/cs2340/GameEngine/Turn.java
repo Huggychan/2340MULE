@@ -23,12 +23,14 @@ public class Turn {
     private ArrayList<Player> players;
     private Label label;
     private LogService service;
+    private int turnTime = 50;
 
     public Turn(Game game) {
         this.game = game;
         players = new ArrayList<>();
         players.addAll(game.getPlayers());
         game.setCurrentPlayer(players.get(0));
+        setTurnTime();
         label = new Label();
         game.getMap().getStackPane().getChildren().add(label);
         label.setFont(javafx.scene.text.Font.font(24));
@@ -45,8 +47,25 @@ public class Turn {
     }
 
     public void startTimer() {
-        ExecutorService executor = Executors.newCachedThreadPool();
-        executor.submit(new Timekeeper(game));
+        //ExecutorService executor = Executors.newCachedThreadPool();
+        //executor.submit(new Timekeeper(game));
+        Timekeeper t = new Timekeeper(game);
+        t.execute();
+    }
+
+    public int getTurnTime() {
+        return turnTime;
+    }
+
+    public void setTurnTime() {
+        Player player = players.get(0);
+        if (player.getFood() > 50) {
+            turnTime = 50;
+        } else if (player.getFood() > 20) {
+            turnTime = 30;
+        } else {
+            turnTime = 5;
+        }
     }
 
     public void endPlayerTurn() {
@@ -57,6 +76,7 @@ public class Turn {
             game.startRound();
         } else {
             game.setCurrentPlayer(players.get(0));
+            setTurnTime();
             startTimer();
         }
 

@@ -15,6 +15,7 @@ public class Timekeeper implements Runnable {
     private long startTime;
     private Game game;
 
+
     public Timekeeper(Game game) {
         this.game = game;
         startTime = System.currentTimeMillis();
@@ -23,8 +24,8 @@ public class Timekeeper implements Runnable {
     public void run() {
         System.out.println("Starting");
         Long longInt = 1000 - (System.currentTimeMillis() - startTime);
-        //for (int i = 0; i < 5; i++) {
-            while ((System.currentTimeMillis() - startTime) < 5000) {
+        for (int i = 0; i < game.getTurn().getTurnTime(); i++) {
+            while ((System.currentTimeMillis() - startTime) < 1000 + 1000 * i) {
             /*try {
                 wait(1000);
                 System.out.println("waiting");
@@ -33,15 +34,19 @@ public class Timekeeper implements Runnable {
             }
             */
             }
-            //game.getTurn().getService().setI(i);
+            System.out.println(game.getTurn().getTurnTime() - 1 - i + " seconds remaining");
             //game.getTurn().getService().start();
-        //}
+        }
         System.out.println("Done waiting");
         if (game.getTownEntered()) {
+            System.out.println("in town");
             game.getTown().onExitClicked();
         }
-
+        //game.getTurn().getLabel().setText("your turn is over");
         game.getTurn().endPlayerTurn();
+    }
 
+    public void execute() {
+        new Thread(this, "timer").start();
     }
 }
