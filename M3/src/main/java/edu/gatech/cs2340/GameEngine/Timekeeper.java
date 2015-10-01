@@ -24,7 +24,7 @@ public class Timekeeper implements Runnable {
         while ((System.currentTimeMillis() - startTime) < 3000) {
             try {
                 wait(1000);
-                System.out.println("waiting")
+                System.out.println("waiting");
             } catch (Exception e) {
                 e.printStackTrace();
             }
