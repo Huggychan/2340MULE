@@ -35,7 +35,7 @@ public class Turn {
 
     public void startTimer() {
         ExecutorService executor = Executors.newCachedThreadPool();
-        executor.submit(new Timekeeper(this, game));
+        //executor.submit(new Timekeeper(this, game));
     }
 
     public void endPlayerTurn() {

@@ -113,6 +113,7 @@ public class TownMapController implements Initializable {
     }
 
     public void onStoreClicked() {
+        System.out.println("asdffdsa");
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/Store.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
@@ -129,7 +130,7 @@ public class TownMapController implements Initializable {
 
         StoreController sc = (StoreController) loader.getController();
         sc.setStore(this.game.getStore());
-
+        sc.setGame(this.game);
         this.game.getMap().getStackPane().getChildren().add(sc.getBackingPane
                 ());
 

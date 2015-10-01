@@ -1,18 +1,14 @@
 package edu.gatech.cs2340.GameObject;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 /**
  * Created by lacay_000 on 9/29/2015.
  */
 public class Store {
 
-    private ArrayList<Mule> mules;
-    private int oreCount;
-    private int foodCount;
-    private int energyCount;
-    private int crystiteCount;
-
+    private HashMap<ProductType, Integer> inventoryStock;
+    private HashMap<ProductType, Integer> inventoryPrice;
     private final int FOOD_PRICE = 30;
     private final int ENERGY_PRICE = 25;
     private final int SMITHORE_PRICE = 50;
@@ -20,36 +16,41 @@ public class Store {
     private final int BASE_MULE_PRICE = 100;
 
     public Store() {
-        this.foodCount = 16;
-        this.energyCount = 16;
-        this.oreCount = 0;
-        this.crystiteCount = 0;
-        this.mules = new ArrayList<>();
+        inventoryStock = new HashMap<>();
+        inventoryStock.put(ProductType.FOOD, 16);
+        inventoryStock.put(ProductType.ENERGY, 16);
+        inventoryStock.put(ProductType.ORE, 0);
+        inventoryStock.put(ProductType.CRYSTITE, 0);
+        inventoryStock.put(ProductType.MULE, 25);
 
-        for (int i = 0; i < 25; i++) {
-            Mule m = new Mule();
-            this.mules.add(m);
-        }
+        inventoryPrice = new HashMap<>();
+        inventoryPrice.put(ProductType.FOOD, FOOD_PRICE);
+        inventoryPrice.put(ProductType.ENERGY, ENERGY_PRICE);
+        inventoryPrice.put(ProductType.ORE, SMITHORE_PRICE);
+        inventoryPrice.put(ProductType.CRYSTITE, CRYSTITE_PRICE);
+        inventoryPrice.put(ProductType.MULE, BASE_MULE_PRICE);
+
+
     }
 
-    public ArrayList<Mule> getMules() {
-        return mules;
+    public int getMuleCount() {
+        return inventoryStock.get("MULE");
     }
 
     public int getOreCount() {
-        return oreCount;
+        return inventoryStock.get("Ore");
     }
 
     public int getFoodCount() {
-        return foodCount;
+        return inventoryStock.get("Food");
     }
 
     public int getEnergyCount() {
-        return energyCount;
+        return inventoryStock.get("Energy");
     }
 
     public int getCrystiteCount() {
-        return crystiteCount;
+        return inventoryStock.get("Crystite");
     }
 
     public int getENERGY_PRICE() {
@@ -72,6 +73,17 @@ public class Store {
     public int getCRYSTITE_PRICE() {
 
         return CRYSTITE_PRICE;
+    }
+
+    public boolean buy(ProductType pt, Player player) {
+        if (player.getMoney() > inventoryPrice.get(pt) && inventoryStock
+                .get(pt) > 0) {
+        }
+        return false;
+    }
+
+    public boolean sell(ProductType pt, Player player) {
+        return false;
     }
 
 }
