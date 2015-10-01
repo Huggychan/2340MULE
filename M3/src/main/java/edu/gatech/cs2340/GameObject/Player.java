@@ -72,6 +72,24 @@ public class Player implements Comparable<Player> {
                 this.money = 1000;
                 break;
         }
+//        Each player's food, energy, and ore depends on Difficulty
+//        switch (game.getDifficulty()) {
+//            case Beginner:
+//                this.food = 8;
+//                this.energy = 4;
+//                this.ore = 0;
+//                break;
+//            case Standard:
+//                this.food = 4;
+//                this.energy = 2;
+//                this.ore = 0;
+//                break;
+//            case Tournament:
+//                this.food = 4;
+//                this.energy = 2;
+//                this.ore = 0;
+//                break;
+//        }
     }
 
 
