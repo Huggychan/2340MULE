@@ -92,6 +92,9 @@ public class Game extends Application {
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
+    public Difficulty getDifficulty() {
+        return this.difficulty;
+    }
     public void setMapType(MapType mapType) {
         this.mapType = mapType;
     }

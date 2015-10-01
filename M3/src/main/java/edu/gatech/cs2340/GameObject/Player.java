@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.GameObject;
 
+import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.Tile;
 import javafx.scene.paint.Color;
 
@@ -21,7 +22,9 @@ public class Player implements Comparable<Player> {
     private int food;
     private int energy;
     private int crystite;
+    private int money;
     private Mule mule;
+    private Game game;
 
     public int getMoney() {
         return money;
@@ -35,11 +38,7 @@ public class Player implements Comparable<Player> {
         return food;
     }
 
-    private int money;
-
     public Player(String name, Race race, String colorString) {
-        money = 300;
-        food = 100;
         this.name = name;
         this.race = race;
         this.colorString = colorString;
@@ -63,8 +62,33 @@ public class Player implements Comparable<Player> {
                 color = Color.PURPLE;
                 break;
         }
-        if (color == Color.ORANGE || color == Color.BLUE) {
-            money = 3000;
+        switch (race) {
+            case HUMAN:
+                this.money = 600;
+                break;
+            case FLAPPER:
+                this.money = 1600;
+                break;
+            default:
+                this.money = 1000;
+                break;
+        }
+        switch (game.getDifficulty()) {
+            case Beginner:
+                this.food = 8;
+                this.energy = 4;
+                this.ore = 0;
+                break;
+            case Standard:
+                this.food = 4;
+                this.energy = 2;
+                this.ore = 0;
+                break;
+            case Tournament:
+                this.food = 4;
+                this.energy = 2;
+                this.ore = 0;
+                break;
         }
     }
 
