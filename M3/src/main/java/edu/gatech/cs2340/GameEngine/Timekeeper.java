@@ -22,14 +22,15 @@ public class Timekeeper implements Runnable {
 
     public void run() {
         System.out.println("Starting");
-        Long longInt = 3000 - (System.currentTimeMillis() - startTime);
-        Label label = new Label();
+        Long longInt = 5000 - (System.currentTimeMillis() - startTime);
+        /*Label label = new Label();
         game.getMap().getStackPane().getChildren().add(label);
         label.setFont(javafx.scene.text.Font.font(24));
         StackPane.setAlignment(label, Pos.TOP_RIGHT);
         //label.setAlignment(Pos.TOP_RIGHT);
         label.setTextFill(Paint.valueOf("white"));
         label.setText("your time is up");
+        */
         while ((System.currentTimeMillis() - startTime) < 3000) {
             /*try {
                 wait(1000);

@@ -24,7 +24,8 @@ public class Turn {
         players.addAll(game.getPlayers());
         game.setCurrentPlayer(players.get(0));
         timeStart = System.currentTimeMillis();
-        //startTimer();
+        game.getLog().log("nigga");
+        startTimer();
     }
 
     public void move(Tile tile) {
@@ -45,7 +46,7 @@ public class Turn {
             game.startRound();
         } else {
             game.setCurrentPlayer(players.get(0));
-            //startTimer();
+            startTimer();
         }
     }
 
