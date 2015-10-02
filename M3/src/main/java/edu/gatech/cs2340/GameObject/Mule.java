@@ -14,10 +14,10 @@ public class Mule {
     private ResourceType resourceType;
     private Image image;
 
-    public enum ResourceType {FOOD, ENERGY, ORE, CRYSTITE};
+    public enum ResourceType {FOOD, ENERGY, ORE, CRYSTITE}
 
-    public Mule(/*Player player*/) {
-//        this.player = player;
+    public Mule(Player player) {
+        this.player = player;
         player = new Player("John", Race.HUMAN, "Red");
         this.colorString = player.getColorString();
         this.color = player.getColor();

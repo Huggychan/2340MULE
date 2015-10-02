@@ -2,18 +2,12 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.Turn;
-import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.StoreController;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
-import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -55,6 +49,7 @@ public class TownMapController implements Initializable {
 
     private Game game;
     private Turn turn;
+    private StoreController storeController;
 
     /**
      * Initializes the fxml file
@@ -113,14 +108,14 @@ public class TownMapController implements Initializable {
     }
 
     public void onStoreClicked() {
-        System.out.println("asdffdsa");
+        game.toggleStoreEntered();
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/Store.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
         Parent newRoot = null;
 
         try {
-            newRoot = (Parent) loader.load();
+            newRoot = loader.load();
         } catch (IOException e) {
             System.out.println("IOException loading Store.fxml");
             System.out.println(e.getMessage());
@@ -128,7 +123,8 @@ public class TownMapController implements Initializable {
             System.out.println(e.getStackTrace());
         }
 
-        StoreController sc = (StoreController) loader.getController();
+        StoreController sc = loader.getController();
+        this.storeController = sc;
         sc.setStore(this.game.getStore());
         sc.setGame(this.game);
         this.game.getMap().getStackPane().getChildren().add(sc.getBackingPane
@@ -164,9 +160,13 @@ public class TownMapController implements Initializable {
         this.turn = turn;
     }
     public void onExitClicked() {
-        System.out.println("exit");
+        this.game.toggleStoreEntered();
         this.game.getMap().getStackPane().getChildren().remove(this.backPane);
         game.getLog().setTextFill(Paint.valueOf("white"));
         game.setTownEntered(false);
+    }
+
+    public StoreController getStoreController() {
+        return storeController;
     }
 }

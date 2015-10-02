@@ -7,9 +7,6 @@ import edu.gatech.cs2340.GameObject.Player;
 
 import java.util.LinkedList;
 
-/**
- * Created by Nick on 9/22/2015.
- */
 public class LandSelection {
     private Game game;
     private LinkedList<Player> GameObjectActive;
@@ -34,7 +31,7 @@ public class LandSelection {
                 tile.setOwner(game.getCurrentPlayer());
                 game.getCurrentPlayer().setMoney(game.getCurrentPlayer()
                         .getMoney() - 300);
-                System.out.println(game.getCurrentPlayer().getMoney());
+                //System.out.println(game.getCurrentPlayer().getMoney());
             }
             if (game.getCurrentPlayer().getMoney() >= 300) {
                 GameObjectActive.add(game.getCurrentPlayer());

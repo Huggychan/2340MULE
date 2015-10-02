@@ -46,7 +46,6 @@ public class StoreController implements Initializable {
     private boolean isBuying;
 
 
-
     public Pane getBackingPane() {
         return backingPane;
     }
@@ -71,12 +70,14 @@ public class StoreController implements Initializable {
     }
 
     public void onStoreLeave() {
-        System.out.println("TEST");
         game.getMap().getStackPane().getChildren().remove(this.backingPane);
     }
+
     public void setStore(Store store) {
         this.store = store;
-        this.updateInventory();
+        if (store != null) {
+            this.updateInventory();
+        }
     }
 
     public void setGame(Game game) {

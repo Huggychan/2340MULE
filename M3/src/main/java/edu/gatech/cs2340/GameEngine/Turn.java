@@ -1,14 +1,9 @@
 package edu.gatech.cs2340.GameEngine;
 
 import edu.gatech.cs2340.Game;
+import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TileType;
-import edu.gatech.cs2340.GameObject.Player;
-
-import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -20,6 +15,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+
 /**
  * Created by Nick on 9/22/2015.
  * @author Nick, Shyam
@@ -28,7 +25,6 @@ public class Turn {
     private  Game game;
     private ArrayList<Player> players;
     private Label label;
-    private LogService service;
     private int turnTime = 50;
     private Timeline timer;
 
@@ -102,8 +98,11 @@ public class Turn {
                     checker++;
                     if (turnTime - checker == 0) {
                         checker = 0;
+                        if (game.getStoreEntered()) {
+                            game.getTown().getStoreController().onStoreLeave();
+                        }
+
                         if (game.getTownEntered()) {
-                            System.out.println("in town");
                             game.getTown().onExitClicked();
                         }
                         game.getTurn().getLabel().setText("");
