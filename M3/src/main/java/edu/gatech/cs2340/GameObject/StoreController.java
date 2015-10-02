@@ -6,10 +6,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
@@ -91,12 +94,20 @@ public class StoreController implements Initializable {
                 .getSelectedItem();
         if (product != null) {
             if (isBuying) {
-                store.buy(null, game.getCurrentPlayer());
+                boolean success = store.buy(null, game.getCurrentPlayer());
+                if (success && product.contains("MULE")) {
+                    Mule mule = this.game.getCurrentPlayer().getMule();
+                    Image image = mule.getImage();
+                    WritableImage writableImage = mule.changeColor(game.getCurrentPlayer());
+                    this.game.getScene().setCursor(new ImageCursor(writableImage));
+                    System.out.println("New Mule!!");
+                }
             } else {
                 store.sell(null, game.getCurrentPlayer());
             }
         }
     }
+
     public void updateInventory() {
         items = FXCollections.observableArrayList();
         this.items.add("MULE: " + this.store.getBASE_MULE_PRICE() + " " +

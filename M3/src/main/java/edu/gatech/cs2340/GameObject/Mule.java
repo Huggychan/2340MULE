@@ -18,7 +18,6 @@ public class Mule {
 
     public Mule(Player player) {
         this.player = player;
-        player = new Player("John", Race.HUMAN, "Red");
         this.colorString = player.getColorString();
         this.color = player.getColor();
         image = new Image("/resources/mule.png");
