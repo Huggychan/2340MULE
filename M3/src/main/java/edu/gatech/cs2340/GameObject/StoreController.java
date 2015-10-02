@@ -6,12 +6,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -100,26 +97,18 @@ public class StoreController implements Initializable {
     }
     public void updateInventory() {
         items = FXCollections.observableArrayList();
+        this.items.add("MULE: " + this.store.getBASE_MULE_PRICE() + " " +
+                this.store.getMuleCount());
 
-        if (this.store.getMuleCount() > 0) {
-            this.items.add("MULE: " + this.store.getBASE_MULE_PRICE());
-        }
+        this.items.add("Crystite: " + this.store.getCRYSTITE_PRICE() + " " +
+                this.store.getCrystiteCount());
 
-        if (this.store.getCrystiteCount() > 0) {
-            this.items.add("Crystite: " + this.store.getCRYSTITE_PRICE());
-        }
-
-        if (this.store.getFoodCount() > 0) {
-            this.items.add("Food: " + this.store.getFOOD_PRICE());
-        }
-
-        if (this.store.getEnergyCount() > 0) {
-            this.items.add("Energy: " + this.store.getENERGY_PRICE());
-        }
-
-        if (this.store.getOreCount() > 0) {
-            this.items.add("Ore: " + this.store.getENERGY_PRICE());
-        }
+        this.items.add("Food: " + this.store.getFOOD_PRICE() + " " +
+                this.store.getFoodCount());
+        this.items.add("Ore: " + this.store.getSMITHORE_PRICE() + " " +
+                this.store.getOreCount());
+        this.items.add("Energy: " + this.store.getENERGY_PRICE() + " " +
+                this.store.getEnergyCount());
 
         listView.setItems(this.items);
     }
