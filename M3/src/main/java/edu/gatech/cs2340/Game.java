@@ -21,11 +21,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Game extends Application {
 
-    private ArrayList<Player> GameObject;
+    private ArrayList<Player> players;
     private ArrayList<String> colors;
     private int numPlayers;
     private MapType mapType;
@@ -75,7 +76,7 @@ public class Game extends Application {
     public void start(Stage stage) throws Exception {
         this.store = new Store();
         roundNumber = 1;
-        GameObject = new ArrayList<>();
+        players = new ArrayList<>();
         colors = new ArrayList<>();
         colors.add("Red");
         colors.add("Orange");
@@ -114,7 +115,7 @@ public class Game extends Application {
     }
 
     public void addPlayer(Player Player) {
-        GameObject.add(Player);
+        players.add(Player);
     }
 
     /**
@@ -180,6 +181,7 @@ public class Game extends Application {
 
     public void startRound() {
         state = GameState.LANDSELECTION;
+        Collections.sort(this.players);
         currentPlayerIndex = 0;
         landselection = new LandSelection(this);
     }
@@ -216,7 +218,7 @@ public class Game extends Application {
     /*
     public void nextTurn() {
         state = GameState.TURN;
-        currentPlayerIndex = (currentPlayerIndex + 1) % GameObject.size();
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }*/
 
 
@@ -234,16 +236,16 @@ public class Game extends Application {
     }
 
     /**
-     * Compares Player to GameObject list
+     * Compares Player to Players list
      * @param Player Player being compared
      * @return True if Player is already in list; false otherwise
      */
     public boolean comparePlayers(Player Player) {
         boolean result = true;
-        if (GameObject.size() == 0) {
+        if (players.size() == 0) {
             return false;
         }
-        for (Player p : GameObject) {
+        for (Player p : players) {
             if (Player.equals(p)) {
                 return true;
             } else {
@@ -270,18 +272,18 @@ public class Game extends Application {
     }
 
     public List<Player> getPlayers() {
-        return this.GameObject;
+        return this.players;
     }
 
     public ArrayList<String> getColors() {
         return this.colors; }
 
     public Player getCurrentPlayer() {
-        return GameObject.get(currentPlayerIndex);
+        return players.get(currentPlayerIndex);
     }
 
     public void setCurrentPlayer(Player p) {
-        currentPlayerIndex = GameObject.indexOf(p);
+        currentPlayerIndex = players.indexOf(p);
     }
 
     public MapController getMap() {

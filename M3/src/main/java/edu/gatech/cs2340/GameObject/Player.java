@@ -45,6 +45,8 @@ public class Player implements Comparable<Player> {
         inventory.put(ProductType.ORE, 0);
         inventory.put(ProductType.ENERGY, 0);
 
+        this.tiles = new ArrayList<>();
+
         this.name = name;
         this.race = race;
         this.colorString = colorString;
