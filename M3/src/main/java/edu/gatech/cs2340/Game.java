@@ -7,11 +7,8 @@ import edu.gatech.cs2340.GameObject.Store;
 import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PlayerConfigController;
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -19,7 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,10 +42,11 @@ public class Game extends Application {
     private Scene scene;
     private TownMapController tmc;
     private boolean townEntered = false;
+    private boolean storeEntered = false;
     public Timeline timer;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
-        AUCTION}
+        AUCTION, STORE, TOWN}
 
     public enum Difficulty {
         Beginner, Standard, Tournament;
@@ -57,6 +54,14 @@ public class Game extends Application {
         public static ArrayList<Difficulty> getAllDifficulties() {
             return new ArrayList<>(Arrays.asList(values()));
         }
+    }
+
+    public boolean getStoreEntered() {
+        return this.storeEntered;
+    }
+
+    public void toggleStoreEntered() {
+        this.storeEntered = !this.storeEntered;
     }
 
     /**
@@ -85,9 +90,9 @@ public class Game extends Application {
         FXMLLoader loader = new FXMLLoader(location);
         loader.setClassLoader(this.getClass().getClassLoader());
 
-        Parent root = (Parent) loader.load();
+        Parent root = loader.load();
 
-        GameConfigController gcfgController = (GameConfigController)loader.getController();
+        GameConfigController gcfgController = loader.getController();
         gcfgController.setGame(this);
 
         this.scene = new Scene(root, 1600, 900);
@@ -130,13 +135,13 @@ public class Game extends Application {
             Parent newRoot = null;
 
             try {
-                newRoot = (Parent) loader.load();
+                newRoot = loader.load();
             } catch (IOException e) {
                 System.out.println("IOException loading PlayerConfig.fxml");
                 System.out.println(e.getMessage());
             }
 
-            PlayerConfigController pController = (PlayerConfigController) loader.getController();
+            PlayerConfigController pController = loader.getController();
             pController.setGame(this);
             pController.setPlayerNumber(i + 1);
             stage.getScene().setRoot(newRoot);
@@ -157,12 +162,12 @@ public class Game extends Application {
         Parent newRoot = null;
 
         try {
-            newRoot = (Parent) loader.load();
+            newRoot = loader.load();
         } catch (IOException e) {
             System.out.println("IOException loading Map.fxml");
             System.out.println(e.getMessage());
         }
-        this.map = (MapController) loader.getController();
+        this.map = loader.getController();
         this.map.setGame(this);
 
         stage.getScene().setRoot(newRoot);
@@ -192,13 +197,13 @@ public class Game extends Application {
         Parent newRoot = null;
 
         try {
-            newRoot = (Parent) loader.load();
+            newRoot = loader.load();
             newRoot.toFront();
         } catch (IOException e) {
             System.out.println("IOException loading TownMap.fxml");
             System.out.println(e.getMessage());
         }
-        tmc = (TownMapController) loader.getController();
+        tmc = loader.getController();
         tmc.setGame(this);
         tmc.setTurn(turn);
         this.map.getStackPane().getChildren().add(newRoot);

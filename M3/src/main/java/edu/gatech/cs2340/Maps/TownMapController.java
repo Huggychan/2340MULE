@@ -2,18 +2,12 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.Turn;
-import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.StoreController;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
-import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -55,6 +49,7 @@ public class TownMapController implements Initializable {
 
     private Game game;
     private Turn turn;
+    private StoreController storeController;
 
     /**
      * Initializes the fxml file
@@ -85,14 +80,17 @@ public class TownMapController implements Initializable {
 
     public void onPubClicked() {
         Random r = new Random();
-        //int money = calculate based off timer
 
-        int roundBonus = 100; //round bonus?
-        int timeLeft = 50;
-        int timeBonus = (timeLeft / 50) * 150 + 50;
+        double roundBonus = (int) Math.ceil(game.getRoundNumber() / 4.0) * 50;
+
+        int timeLeft = turn.getTimeRemaining();
+        int timeBonus = (int) Math.ceil(timeLeft / 12.5) * 50;
+
         int multiplier = r.nextInt(timeBonus);
 
-        int money = roundBonus * multiplier;
+        System.out.println(timeLeft);
+
+        int money = (int) roundBonus * multiplier;
 
         if (money > 250) {
             money = 250;
@@ -113,14 +111,14 @@ public class TownMapController implements Initializable {
     }
 
     public void onStoreClicked() {
-        System.out.println("asdffdsa");
+        game.toggleStoreEntered();
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/Store.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
         Parent newRoot = null;
 
         try {
-            newRoot = (Parent) loader.load();
+            newRoot = loader.load();
         } catch (IOException e) {
             System.out.println("IOException loading Store.fxml");
             System.out.println(e.getMessage());
@@ -128,7 +126,8 @@ public class TownMapController implements Initializable {
             System.out.println(e.getStackTrace());
         }
 
-        StoreController sc = (StoreController) loader.getController();
+        StoreController sc = loader.getController();
+        this.storeController = sc;
         sc.setStore(this.game.getStore());
         sc.setGame(this.game);
         this.game.getMap().getStackPane().getChildren().add(sc.getBackingPane
@@ -164,9 +163,12 @@ public class TownMapController implements Initializable {
         this.turn = turn;
     }
     public void onExitClicked() {
-        System.out.println("exit");
         this.game.getMap().getStackPane().getChildren().remove(this.backPane);
         game.getLog().setTextFill(Paint.valueOf("white"));
         game.setTownEntered(false);
+    }
+
+    public StoreController getStoreController() {
+        return storeController;
     }
 }

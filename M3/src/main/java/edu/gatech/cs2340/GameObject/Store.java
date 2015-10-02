@@ -1,10 +1,7 @@
 package edu.gatech.cs2340.GameObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-/**
- * Created by lacay_000 on 9/29/2015.
- */
+
 public class Store {
 
     private HashMap<ProductType, Integer> inventoryStock;
@@ -29,28 +26,26 @@ public class Store {
         inventoryPrice.put(ProductType.ORE, SMITHORE_PRICE);
         inventoryPrice.put(ProductType.CRYSTITE, CRYSTITE_PRICE);
         inventoryPrice.put(ProductType.MULE, BASE_MULE_PRICE);
-
-
     }
 
     public int getMuleCount() {
-        return inventoryStock.get("MULE");
+        return inventoryStock.get(ProductType.MULE);
     }
 
     public int getOreCount() {
-        return inventoryStock.get("Ore");
+        return inventoryStock.get(ProductType.ORE);
     }
 
     public int getFoodCount() {
-        return inventoryStock.get("Food");
+        return inventoryStock.get(ProductType.FOOD);
     }
 
     public int getEnergyCount() {
-        return inventoryStock.get("Energy");
+        return inventoryStock.get(ProductType.ENERGY);
     }
 
     public int getCrystiteCount() {
-        return inventoryStock.get("Crystite");
+        return inventoryStock.get(ProductType.CRYSTITE);
     }
 
     public int getENERGY_PRICE() {
@@ -66,26 +61,69 @@ public class Store {
     }
 
     public int getFOOD_PRICE() {
-
         return FOOD_PRICE;
     }
 
     public int getCRYSTITE_PRICE() {
-
         return CRYSTITE_PRICE;
     }
 
     public boolean buy(ProductType pt, Player player) {
-        if (player.getMoney() > inventoryPrice.get(pt) && inventoryStock
-                .get(pt) > 0) {
+        int price = this.inventoryPrice.get(pt);
+        int stock = this.inventoryStock.get(pt);
+        if (player.getMoney() > price && stock > 0) {
+            this.decrementKeyInMap(pt, this.inventoryStock);
+
+            if (pt != ProductType.MULE) {
+                this.incrementKeyInMap(pt, player.getInventory());
+                player.decrementMoney(price);
+                return true;
+            } else {
+                if (player.getMule() == null) {
+                    player.giveMule();
+                    player.decrementMoney(price);
+                    return true;
+                }
+            }
         }
+
         return false;
     }
 
     public boolean sell(ProductType pt, Player player) {
+        int value = this.inventoryPrice.get(pt);
+        int stock = this.inventoryStock.get(pt);
+        this.incrementKeyInMap(pt, this.inventoryStock);
+        player.incrementMoney(value);
+
+
+        if (pt != ProductType.MULE) {
+            this.decrementKeyInMap(pt, player.getInventory());
+            return true;
+        } else {
+            if (player.getMule() != null) {
+                player.takeMule();
+                return true;
+            }
+        }
+
         return false;
     }
+    //TODO add logging to buying/selling
 
+    private void incrementKeyInMap(ProductType key, HashMap<ProductType,
+            Integer> map) {
+        int val = map.get(key);
+        map.put(key, val + 1);
+    }
+
+    private void decrementKeyInMap(ProductType key, HashMap<ProductType,
+            Integer> map) {
+        int val = map.get(key);
+        if (val > 0) {
+            map.put(key, val - 1);
+        }
+    }
 }
 
 

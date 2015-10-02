@@ -15,9 +15,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-/**
- * Created by Nick on 9/20/2015.
- */
 public class MapController implements Initializable {
     private Tile[][] tiles;
     private MapType maptype = MapType.STANDARD;
@@ -94,7 +91,6 @@ public class MapController implements Initializable {
     }
 
     public void onMouseEntered() {
-        System.out.println("asdf");
     }
 
     public void putBorderOnImageView(MouseEvent event) {

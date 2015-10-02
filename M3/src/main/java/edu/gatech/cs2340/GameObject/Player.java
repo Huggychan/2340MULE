@@ -1,10 +1,10 @@
 package edu.gatech.cs2340.GameObject;
 
-import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.Tile;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Makes a Player with different elements
@@ -18,6 +18,7 @@ public class Player implements Comparable<Player> {
     private Color color;
     private String colorString;
     private ArrayList<Tile> tiles;
+    private HashMap<ProductType, Integer> inventory;
     private int ore;
     private int food;
     private int energy;
@@ -38,6 +39,12 @@ public class Player implements Comparable<Player> {
     }
 
     public Player(String name, Race race, String colorString) {
+        this.inventory = new HashMap<>();
+        inventory.put(ProductType.CRYSTITE, 0);
+        inventory.put(ProductType.FOOD, 0);
+        inventory.put(ProductType.ORE, 0);
+        inventory.put(ProductType.ENERGY, 0);
+
         this.name = name;
         this.race = race;
         this.colorString = colorString;
@@ -135,15 +142,19 @@ public class Player implements Comparable<Player> {
     }
 
     public void setFood(int food) {
-        this.food = food;
+        inventory.put(ProductType.FOOD, food);
     }
 
     public void setEnergy(int energy) {
-        this.energy = energy;
+        inventory.put(ProductType.ENERGY, energy);
     }
 
     public void setOre(int ore) {
-        this.ore = ore;
+        inventory.put(ProductType.ORE, ore);
+    }
+
+    public void setCrystite(int crystite) {
+        inventory.put(ProductType.CRYSTITE, crystite);
     }
 
 
@@ -173,5 +184,33 @@ public class Player implements Comparable<Player> {
 
     public int compareTo(Player other) {
         return other.getScore() - this.getScore();
+    }
+
+    public HashMap<ProductType, Integer> getInventory() {
+        return this.inventory;
+    }
+
+    public void decrementMoney(int amount) {
+        if (this.money > amount) {
+            this.money = this.money - amount;
+        }
+    }
+
+    public void giveMule() {
+        if (this.mule == null) {
+            this.mule = new Mule(this);
+        }
+    }
+
+    public Mule getMule() {
+        return this.mule;
+    }
+
+    public void takeMule() {
+        this.mule = null;
+    }
+
+    public void incrementMoney(int amount) {
+        this.money = this.money + amount;
     }
 }
