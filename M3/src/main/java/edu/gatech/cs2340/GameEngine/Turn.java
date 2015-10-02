@@ -98,6 +98,7 @@ public class Turn {
                 if (!game.getCurrentPlayer().equals(player)) {
                     game.getTurn().getLabel().setText("");
                     timer.stop();
+                    turnTimerCreator();
                 } else {
                     timeRemaining = turnTime - checker - 1;
                     game.getTurn().getLabel().setText(timeRemaining + " seconds "
