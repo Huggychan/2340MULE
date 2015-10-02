@@ -100,16 +100,19 @@ public class PlayerConfigController implements Initializable {
                     p.setFood(8);
                     p.setEnergy(4);
                     p.setOre(0);
+                    p.setCrystite(0);
                     break;
                 case Standard:
                     p.setFood(4);
                     p.setEnergy(2);
                     p.setOre(0);
+                    p.setCrystite(0);
                     break;
                 case Tournament:
                     p.setFood(4);
                     p.setEnergy(2);
                     p.setOre(0);
+                    p.setCrystite(0);
                     break;
             }
         }

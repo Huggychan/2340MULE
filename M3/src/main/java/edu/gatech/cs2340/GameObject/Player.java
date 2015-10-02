@@ -142,15 +142,19 @@ public class Player implements Comparable<Player> {
     }
 
     public void setFood(int food) {
-        this.food = food;
+        inventory.put(ProductType.FOOD, food);
     }
 
     public void setEnergy(int energy) {
-        this.energy = energy;
+        inventory.put(ProductType.ENERGY, energy);
     }
 
     public void setOre(int ore) {
-        this.ore = ore;
+        inventory.put(ProductType.ORE, ore);
+    }
+
+    public void setCrystite(int crystite) {
+        inventory.put(ProductType.CRYSTITE, crystite);
     }
 
 
