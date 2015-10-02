@@ -70,6 +70,7 @@ public class StoreController implements Initializable {
     }
 
     public void onStoreLeave() {
+        game.toggleStoreEntered();
         game.getMap().getStackPane().getChildren().remove(this.backingPane);
     }
 

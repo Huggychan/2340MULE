@@ -80,14 +80,17 @@ public class TownMapController implements Initializable {
 
     public void onPubClicked() {
         Random r = new Random();
-        //int money = calculate based off timer
 
-        int roundBonus = 100; //round bonus?
-        int timeLeft = 50;
-        int timeBonus = (timeLeft / 50) * 150 + 50;
+        double roundBonus = (int) Math.ceil(game.getRoundNumber() / 4.0) * 50;
+
+        int timeLeft = turn.getTimeRemaining();
+        int timeBonus = (int) Math.ceil(timeLeft / 12.5) * 50;
+
         int multiplier = r.nextInt(timeBonus);
 
-        int money = roundBonus * multiplier;
+        System.out.println(timeLeft);
+
+        int money = (int) roundBonus * multiplier;
 
         if (money > 250) {
             money = 250;
@@ -160,7 +163,6 @@ public class TownMapController implements Initializable {
         this.turn = turn;
     }
     public void onExitClicked() {
-        this.game.toggleStoreEntered();
         this.game.getMap().getStackPane().getChildren().remove(this.backPane);
         game.getLog().setTextFill(Paint.valueOf("white"));
         game.setTownEntered(false);

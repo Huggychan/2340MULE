@@ -26,6 +26,7 @@ public class Turn {
     private ArrayList<Player> players;
     private Label label;
     private int turnTime = 50;
+    private int timeRemaining;
     private Timeline timer;
 
     public Turn(Game game) {
@@ -77,6 +78,10 @@ public class Turn {
 
     }
 
+    public int getTimeRemaining() {
+        return this.timeRemaining;
+    }
+
     public void turnTimerCreator() {
         game.timer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
@@ -94,7 +99,9 @@ public class Turn {
                     game.getTurn().getLabel().setText("");
                     timer.stop();
                 } else {
-                    game.getTurn().getLabel().setText(turnTime - checker - 1 + " seconds remaining");
+                    timeRemaining = turnTime - checker - 1;
+                    game.getTurn().getLabel().setText(timeRemaining + " seconds "
+                            + "remaining");
                     checker++;
                     if (turnTime - checker == 0) {
                         checker = 0;
