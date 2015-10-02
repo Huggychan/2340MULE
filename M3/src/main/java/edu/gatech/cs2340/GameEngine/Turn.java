@@ -28,7 +28,6 @@ public class Turn {
     private  Game game;
     private ArrayList<Player> players;
     private Label label;
-    private LogService service;
     private int turnTime = 50;
     private Timeline timer;
 
