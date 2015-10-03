@@ -47,7 +47,7 @@ public class Game extends Application {
     public Timeline timer;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
-        AUCTION, STORE, TOWN}
+        AUCTION, STORE, TOWN, SUMMARY}
 
     public enum Difficulty {
         Beginner, Standard, Tournament;
@@ -215,6 +215,11 @@ public class Game extends Application {
         townEntered = true;
     }
 
+    public void summaryScreen() {
+//        state = GameState.SUMMARY;
+        System.out.println(System.getProperty("user.dir"));
+    }
+
     /*
     public void nextTurn() {
         state = GameState.TURN;
@@ -255,7 +260,6 @@ public class Game extends Application {
         return result;
     }
 
-//temp change text text here.
     public void log(String s) {
         log.log(s);
     }
