@@ -92,10 +92,12 @@ public class StoreController implements Initializable {
     public void onConfirm() {
         String product = (String) this.listView.getSelectionModel()
                 .getSelectedItem();
+
+        ProductType productType = this.getProductTypeFromString
+                (product);
+
         if (product != null) {
             if (isBuying) {
-                ProductType productType = this.getProductTypeFromString
-                        (product);
                 boolean success = store.buy(productType, game.getCurrentPlayer());
                 if (success && product.contains("MULE")) {
                     Mule mule = this.game.getCurrentPlayer().getMule();
@@ -105,7 +107,7 @@ public class StoreController implements Initializable {
                     System.out.println("New Mule!!");
                 }
             } else {
-                store.sell(null, game.getCurrentPlayer());
+                store.sell(productType, game.getCurrentPlayer());
             }
         }
 
