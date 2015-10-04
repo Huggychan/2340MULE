@@ -1,24 +1,21 @@
 package edu.gatech.cs2340.configs;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.Race;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-// import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-// import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+// import javafx.fxml.FXMLLoader;
+// import javafx.scene.control.ChoiceBox;
 //import javafx.scene.paint.Color;
 
 /**
@@ -95,32 +92,13 @@ public class PlayerConfigController implements Initializable {
 
         for (Player p : game.getPlayers()) {
             tempColor.remove(p.getColorString());
-            switch (game.getDifficulty()) {
-                case Beginner:
-                    p.setFood(8);
-                    p.setEnergy(4);
-                    p.setOre(0);
-                    p.setCrystite(0);
-                    break;
-                case Standard:
-                    p.setFood(4);
-                    p.setEnergy(2);
-                    p.setOre(0);
-                    p.setCrystite(0);
-                    break;
-                case Tournament:
-                    p.setFood(4);
-                    p.setEnergy(2);
-                    p.setOre(0);
-                    p.setCrystite(0);
-                    break;
-            }
         }
 
         color.setItems(
                 FXCollections.observableArrayList(this.tempColor));
         color.getSelectionModel().selectFirst();
     }
+
     public void setPlayerNumber(int i) {
         playerNumber = i;
         title.setText("Welcome Player " + playerNumber + "\n select your "

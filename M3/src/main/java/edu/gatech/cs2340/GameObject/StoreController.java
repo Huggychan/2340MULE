@@ -94,7 +94,9 @@ public class StoreController implements Initializable {
                 .getSelectedItem();
         if (product != null) {
             if (isBuying) {
-                boolean success = store.buy(null, game.getCurrentPlayer());
+                ProductType productType = this.getProductTypeFromString
+                        (product);
+                boolean success = store.buy(productType, game.getCurrentPlayer());
                 if (success && product.contains("MULE")) {
                     Mule mule = this.game.getCurrentPlayer().getMule();
                     Image image = mule.getImage();
@@ -106,6 +108,8 @@ public class StoreController implements Initializable {
                 store.sell(null, game.getCurrentPlayer());
             }
         }
+
+        this.updateInventory();
     }
 
     public void updateInventory() {
@@ -124,5 +128,15 @@ public class StoreController implements Initializable {
                 this.store.getEnergyCount());
 
         listView.setItems(this.items);
+    }
+
+    public ProductType getProductTypeFromString(String prodTypeString) {
+        for (ProductType pt : ProductType.values()) {
+            if (prodTypeString.toUpperCase().contains(pt.toString())) {
+                return pt;
+            }
+        }
+
+        throw new IllegalArgumentException("Product Type not allowed");
     }
 }

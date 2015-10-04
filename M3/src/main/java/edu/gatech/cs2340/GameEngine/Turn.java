@@ -60,7 +60,7 @@ public class Turn {
         } else if (player.getFood() > 8) {
             turnTime = 30;
         } else {
-            turnTime = 5;
+            turnTime = 50;
         }
     }
 

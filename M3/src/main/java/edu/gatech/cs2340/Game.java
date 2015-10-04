@@ -156,6 +156,29 @@ public class Game extends Application {
      * loads the map fxml and controller, starts the first round
      */
     private void startGame() {
+        for (Player p : this.getPlayers()) {
+            switch (this.getDifficulty()) {
+                case Beginner:
+                    p.setFood(8);
+                    p.setEnergy(4);
+                    p.setOre(0);
+                    p.setCrystite(0);
+                    break;
+                case Standard:
+                    p.setFood(4);
+                    p.setEnergy(2);
+                    p.setOre(0);
+                    p.setCrystite(0);
+                    break;
+                case Tournament:
+                    p.setFood(4);
+                    p.setEnergy(2);
+                    p.setOre(0);
+                    p.setCrystite(0);
+                    break;
+            }
+        }
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/Map.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
