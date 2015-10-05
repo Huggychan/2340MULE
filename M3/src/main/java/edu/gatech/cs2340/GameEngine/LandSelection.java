@@ -4,6 +4,7 @@ import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TileType;
 import edu.gatech.cs2340.GameObject.Player;
+import edu.gatech.cs2340.GameObject.Mule;
 
 import java.util.LinkedList;
 

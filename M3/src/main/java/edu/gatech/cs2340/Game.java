@@ -2,7 +2,9 @@ package edu.gatech.cs2340;
 //TODO fix stuff that violates Law of Demeter
 import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameEngine.Turn;
+import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
+import edu.gatech.cs2340.GameObject.ResourceType;
 import edu.gatech.cs2340.GameObject.Store;
 import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
@@ -36,6 +38,7 @@ public class Game extends Application {
     private GameState state;
     private int roundNumber;
     private LandSelection landselection;
+    private Mule mule;
     private Turn turn;
     private MapController map;
     private EventLog log;
@@ -47,7 +50,7 @@ public class Game extends Application {
     public Timeline timer;
 
     private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
-        AUCTION, STORE, TOWN, SUMMARY}
+        AUCTION, STORE, TOWN, SUMMARY, MULE}
 
     public enum Difficulty {
         Beginner, Standard, Tournament;
@@ -214,6 +217,11 @@ public class Game extends Application {
         turn = new Turn(this);
     }
 
+    public void placeMule() {
+        state = GameState.MULE;
+        mule = new Mule(getCurrentPlayer());
+    }
+
     public void goToTown() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/TownMap.fxml"));
@@ -295,6 +303,8 @@ public class Game extends Application {
             landselection.buy(tile);
         } else if (state == GameState.TURN) {
             turn.move(tile);
+        } else if (state == GameState.MULE) {
+            mule.placeMule(tile);
         }
     }
 

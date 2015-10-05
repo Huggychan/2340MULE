@@ -182,6 +182,7 @@ public class TownMapController implements Initializable {
             System.out.println("Resource type: "
                     + this.game.getCurrentPlayer().getMule().getResourceType());
             onExitClicked();
+            game.placeMule();
         } else {
             this.game.log("Your MULE's resource type is already "
                     + this.game.getCurrentPlayer().getMule().getResourceType());

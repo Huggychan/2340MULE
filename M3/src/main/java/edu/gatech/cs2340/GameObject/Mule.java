@@ -1,5 +1,9 @@
 package edu.gatech.cs2340.GameObject;
 
+import edu.gatech.cs2340.Game;
+import edu.gatech.cs2340.Maps.Tile;
+import edu.gatech.cs2340.Maps.TileType;
+import javafx.scene.ImageCursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
@@ -13,6 +17,7 @@ public class Mule {
     private Player player;
     private ResourceType resourceType;
     private Image image;
+    private Game game;
 
     public Mule(Player player) {
         this.player = player;
@@ -62,5 +67,26 @@ public class Mule {
             }
         }
         return writableImage;
+    }
+
+    public void placeMule(Tile tile){
+        //System.out.println(tile.getMule());
+        if (tile.getTileType() == TileType.TOWN) {
+            System.out.println("That is town. Mule can't be placed there.");
+            return;
+        }else if (tile.getOwner() != player) {
+            System.out.println("You do not own that property. Mule lost.");
+            // mule needs to be added back to mule stock supply
+            return;
+        } else {
+            System.out.println("Mule placed.");
+            tile.setMule(resourceType);
+            tile.setMule(player.getMule().getResourceType());
+            System.out.println("Your mule type on this tile is now: " + tile.getMule());
+            //this.game.getScene().getCursor();
+            //game state to placeMule
+            //cursor needs to be changed back, but didn't have time to find default
+
+        }
     }
 }

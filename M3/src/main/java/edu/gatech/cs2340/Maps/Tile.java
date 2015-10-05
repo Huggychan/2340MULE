@@ -1,7 +1,9 @@
 package edu.gatech.cs2340.Maps;
 
+import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
+import edu.gatech.cs2340.GameObject.ResourceType;
 import javafx.scene.image.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -11,7 +13,7 @@ import javafx.scene.paint.Color;
  * @author Bilal, Marc, Nick
  * @version 1.0
  */
-public abstract class Tile extends StackPane {
+public class Tile extends StackPane {
     private String color;
     private Player owner;
     private TileType tileType;
@@ -19,7 +21,7 @@ public abstract class Tile extends StackPane {
     private int energy;
     private int ore;
     private int crystite;
-    private Mule mule;
+    private ResourceType mule;
     private ImageView iv;
     private Image image;
     private MapController map;
@@ -172,12 +174,14 @@ public abstract class Tile extends StackPane {
     /**
      * @return get Mule of tile
      */
-    public Mule getMule() { return mule; }
+    public ResourceType getMule() { return mule; }
 
     /**
      * @param mule set mule of tile
      */
-    public void setMule(Mule mule) { this.mule = mule; }
+    public void setMule(ResourceType mule) {
+        this.mule = mule;
+    }
 
     /**
      * @return food count
@@ -246,5 +250,6 @@ public abstract class Tile extends StackPane {
     public void setMap(MapController map) {
         this.map = map;
     }
+
 
 }
