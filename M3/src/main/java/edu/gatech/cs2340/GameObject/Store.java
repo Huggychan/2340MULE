@@ -84,7 +84,6 @@ public class Store {
                     this.decrementKeyInMap(pt, this.inventoryStock);
                     player.giveMule();
                     player.decrementMoney(price);
-                    System.out.println("Player's inventory after: " + player.getInventory());
                     return true;
                 }
             }

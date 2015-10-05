@@ -105,6 +105,7 @@ public class StoreController implements Initializable {
                     WritableImage writableImage = mule.changeColor(game.getCurrentPlayer());
                     this.game.getScene().setCursor(new ImageCursor(writableImage));
                     System.out.println("New Mule!!");
+                    this.onStoreLeave();
                 }
             } else {
                 store.sell(productType, game.getCurrentPlayer());
