@@ -2,16 +2,13 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.Turn;
-import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
+import edu.gatech.cs2340.GameObject.ResourceType;
 import edu.gatech.cs2340.GameObject.StoreController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
-import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -139,15 +136,19 @@ public class TownMapController implements Initializable {
     }
 
     public void onEnergyClicked() {
-        System.out.println("energy");
+        this.setMuleResourceType(ResourceType.ENERGY);
     }
 
     public void onOreClicked() {
-        System.out.println("ore");
+        this.setMuleResourceType(ResourceType.ORE);
     }
 
     public void onFoodClicked() {
-        System.out.println("Food");
+        this.setMuleResourceType(ResourceType.FOOD);
+    }
+
+    public void onCrystiteClicked() {
+        this.setMuleResourceType(ResourceType.CRYSTITE);
     }
 
     public void setGame(Game game) {
@@ -165,5 +166,9 @@ public class TownMapController implements Initializable {
 
     public StoreController getStoreController() {
         return storeController;
+    }
+
+    private void setMuleResourceType(ResourceType resource) {
+        this.game.getCurrentPlayer().getMule().setResourceType(resource);
     }
 }

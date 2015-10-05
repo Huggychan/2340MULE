@@ -14,8 +14,6 @@ public class Mule {
     private ResourceType resourceType;
     private Image image;
 
-    public enum ResourceType {FOOD, ENERGY, ORE, CRYSTITE}
-
     public Mule(Player player) {
         this.player = player;
         this.colorString = player.getColorString();
