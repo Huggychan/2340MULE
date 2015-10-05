@@ -21,7 +21,8 @@ public class Tile extends StackPane {
     private int energy;
     private int ore;
     private int crystite;
-    private ResourceType mule;
+    private Mule mule;
+    private ResourceType muleResource;
     private ImageView iv;
     private Image image;
     private MapController map;
@@ -174,13 +175,21 @@ public class Tile extends StackPane {
     /**
      * @return get Mule of tile
      */
-    public ResourceType getMule() { return mule; }
+    public Mule getMule() { return mule; }
 
     /**
      * @param mule set mule of tile
      */
-    public void setMule(ResourceType mule) {
+    public void setMule(Mule mule) {
         this.mule = mule;
+    }
+
+    public ResourceType getMuleResource () {
+        return this.muleResource;
+    }
+
+    public void setMuleResource(ResourceType muleResource) {
+        this.muleResource = muleResource;
     }
 
     /**

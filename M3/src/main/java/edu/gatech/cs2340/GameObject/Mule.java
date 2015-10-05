@@ -3,6 +3,7 @@ package edu.gatech.cs2340.GameObject;
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TileType;
+import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
@@ -72,24 +73,24 @@ public class Mule {
         return writableImage;
     }
 
+//    TODO fix adding mules to property
     public void placeMule(Tile tile){
         //System.out.println(tile.getMule());
         if (tile.getTileType() == TileType.TOWN) {
-            System.out.println("That is town. Mule can't be placed there.");
+            System.out.println("That is town. Mule lost.");
             return;
-        }else if (tile.getOwner() != player) {
+        } else if (tile.getOwner() != player) {
             System.out.println("You do not own that property. Mule lost.");
-            // mule needs to be added back to mule stock supply
             return;
         } else {
             System.out.println("Mule placed.");
-            tile.setMule(resourceType);
-            tile.setMule(player.getMule().getResourceType());
-            System.out.println("Your mule type on this tile is now: " + tile.getMule());
+            tile.setMuleResource(this.player.getMule().getResourceType());
+            System.out.println("Your mule type on this tile is now: "
+                    + tile.getMuleResource());
+            this.game.getScene().setCursor(Cursor.DEFAULT);
             //this.game.getScene().getCursor();
             //game state to placeMule
             //cursor needs to be changed back, but didn't have time to find default
-
         }
     }
 }

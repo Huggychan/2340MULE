@@ -219,7 +219,7 @@ public class Game extends Application {
 
     public void placeMule() {
         state = GameState.MULE;
-        mule = new Mule(getCurrentPlayer());
+        mule = this.getCurrentPlayer().getMule();
     }
 
     public void goToTown() {
