@@ -8,7 +8,9 @@ import edu.gatech.cs2340.GameObject.StoreController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -169,6 +171,20 @@ public class TownMapController implements Initializable {
     }
 
     private void setMuleResourceType(ResourceType resource) {
-        this.game.getCurrentPlayer().getMule().setResourceType(resource);
+        if (resource == null || this.game.getCurrentPlayer().getMule() == null) {
+            this.game.log("Buy a mule first!");
+        } else if (this.game.getCurrentPlayer().getMule().getResourceType()
+                == null) {
+            this.game.getCurrentPlayer().getMule().setResourceType(resource);
+            WritableImage writableImage =
+                    this.game.getCurrentPlayer().getMule().changeColor(game.getCurrentPlayer());
+            this.game.getScene().setCursor(new ImageCursor(writableImage));
+            System.out.println("Resource type: "
+                    + this.game.getCurrentPlayer().getMule().getResourceType());
+            onExitClicked();
+        } else {
+            this.game.log("Your MULE's resource type is already "
+                    + this.game.getCurrentPlayer().getMule().getResourceType());
+        }
     }
 }

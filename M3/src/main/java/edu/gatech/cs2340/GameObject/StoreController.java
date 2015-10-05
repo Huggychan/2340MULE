@@ -102,8 +102,7 @@ public class StoreController implements Initializable {
                 if (success && product.contains("MULE")) {
                     Mule mule = this.game.getCurrentPlayer().getMule();
                     Image image = mule.getImage();
-                    WritableImage writableImage = mule.changeColor(game.getCurrentPlayer());
-                    this.game.getScene().setCursor(new ImageCursor(writableImage));
+                    this.game.getScene().setCursor(new ImageCursor(image));
                     System.out.println("New Mule!!");
                     this.onStoreLeave();
                 }
