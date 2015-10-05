@@ -173,7 +173,7 @@ public class TownMapController implements Initializable {
         this.turn = turn;
     }
     public void onExitClicked() {
-        if (!muleHasResourceType()) {
+        if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
             this.game.log("Please select a Resource Type before exiting");
         } else {
             this.game.getMap().getStackPane().getChildren().remove(this.backPane);
