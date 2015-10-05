@@ -1,5 +1,5 @@
 package edu.gatech.cs2340;
-
+//TODO fix stuff that violates Law of Demeter
 import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameEngine.Turn;
 import edu.gatech.cs2340.GameObject.Player;

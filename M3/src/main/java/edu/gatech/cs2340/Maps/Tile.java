@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
  * @author Bilal, Marc, Nick
  * @version 1.0
  */
-public class Tile extends StackPane {
+public abstract class Tile extends StackPane {
     private String color;
     private Player owner;
     private TileType tileType;
