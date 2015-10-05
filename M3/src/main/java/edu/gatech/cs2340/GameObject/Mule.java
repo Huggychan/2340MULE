@@ -29,6 +29,9 @@ public class Mule {
         this.resourceType = resourceType;
     }
 
+    public boolean hasResourceType() {
+        return resourceType != null;
+    }
     public Color getColor() {
         return color;
     }

@@ -208,6 +208,10 @@ public class Player implements Comparable<Player> {
         return this.mule;
     }
 
+    public boolean hasMule() {
+        return this.mule != null;
+    }
+
     public void takeMule() {
         this.mule = null;
     }

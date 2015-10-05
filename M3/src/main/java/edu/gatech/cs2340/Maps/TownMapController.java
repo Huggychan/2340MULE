@@ -78,39 +78,51 @@ public class TownMapController implements Initializable {
     }
 
     public void onAssayClicked() {
-        System.out.println("assay clicked");
+        if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
+            this.game.log("Select a resource type!");
+        } else {
+            System.out.println("assay clicked");
+        }
     }
 
     public void onPubClicked() {
-        Random r = new Random();
+        if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
+            this.game.log("Select a resource type!");
+        } else {
+            Random r = new Random();
 
-        double roundBonus = (int) Math.ceil(game.getRoundNumber() / 4.0) * 50;
+            double roundBonus = (int) Math.ceil(game.getRoundNumber() / 4.0) * 50;
 
-        int timeLeft = turn.getTimeRemaining();
-        int timeBonus = (int) Math.ceil(timeLeft / 12.5) * 50;
+            int timeLeft = turn.getTimeRemaining();
+            int timeBonus = (int) Math.ceil(timeLeft / 12.5) * 50;
 
-        int multiplier = r.nextInt(timeBonus);
+            int multiplier = r.nextInt(timeBonus);
 
-        System.out.println(timeLeft);
+            System.out.println(timeLeft);
 
-        int money = (int) roundBonus * multiplier;
+            int money = (int) roundBonus * multiplier;
 
-        if (money > 250) {
-            money = 250;
+            if (money > 250) {
+                money = 250;
+            }
+
+            Player curr = this.game.getCurrentPlayer();
+
+            curr.setMoney(curr.getMoney() + money);
+
+            game.getLog().log(curr.getName() + " has won " + money + " "
+                    + "gambling");
+            game.getTurn().endPlayerTurn();
+            this.onExitClicked();
         }
-
-        Player curr = this.game.getCurrentPlayer();
-
-        curr.setMoney(curr.getMoney() + money);
-
-        game.getLog().log(curr.getName() + " has won " + money + " "
-                + "gambling");
-        game.getTurn().endPlayerTurn();
-        this.onExitClicked();
     }
 
     public void onLandOfficeClicked() {
-        System.out.println("land office clicked");
+        if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
+            this.game.log("Select a resource type!");
+        } else {
+            System.out.println("land office clicked");
+        }
     }
 
     public void onStoreClicked() {
@@ -161,9 +173,17 @@ public class TownMapController implements Initializable {
         this.turn = turn;
     }
     public void onExitClicked() {
-        this.game.getMap().getStackPane().getChildren().remove(this.backPane);
-        game.getLog().setTextFill(Paint.valueOf("white"));
-        game.setTownEntered(false);
+        if (!muleHasResourceType()) {
+            this.game.log("Please select a Resource Type before exiting");
+        } else {
+            this.game.getMap().getStackPane().getChildren().remove(this.backPane);
+            game.getLog().setTextFill(Paint.valueOf("white"));
+            game.setTownEntered(false);
+        }
+    }
+
+    public boolean muleHasResourceType() {
+        return this.game.getCurrentPlayer().getMule().hasResourceType();
     }
 
     public StoreController getStoreController() {
@@ -171,7 +191,7 @@ public class TownMapController implements Initializable {
     }
 
     private void setMuleResourceType(ResourceType resource) {
-        if (resource == null || this.game.getCurrentPlayer().getMule() == null) {
+        if (resource == null || !this.game.getCurrentPlayer().hasMule()) {
             this.game.log("Buy a mule first!");
         } else if (this.game.getCurrentPlayer().getMule().getResourceType()
                 == null) {
