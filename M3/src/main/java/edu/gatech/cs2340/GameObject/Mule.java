@@ -73,6 +73,4 @@ public class Mule {
         return writableImage;
     }
 
-//    TODO fix adding mules to property
-
 }
