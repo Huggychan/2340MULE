@@ -66,6 +66,7 @@ public class Turn {
 
     public void endPlayerTurn() {
         players.remove(game.getCurrentPlayer());
+        game.timer.stop();
         if (players.isEmpty()) {
             game.incrementRound();
             game.startRound();
