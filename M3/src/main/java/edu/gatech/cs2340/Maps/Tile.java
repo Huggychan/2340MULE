@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
  * @author Bilal, Marc, Nick
  * @version 1.0
  */
-public class Tile extends StackPane {
+public abstract class Tile extends StackPane {
     private String color;
     private Player owner;
     private TileType tileType;
@@ -34,8 +34,8 @@ public class Tile extends StackPane {
      * set owners and other things as the game goes on
      * @param tileType tileType of tile
      */
-    public Tile(TileType tileType) {
-        this.tileType = tileType;
+    public Tile() {
+//        this.tileType = tileType;
         this.mule = null;
 
         this.iv = new ImageView();
@@ -111,6 +111,7 @@ public class Tile extends StackPane {
 //        });
 //    }
 
+    public abstract int calculateProduction();
 
     /**
      * @return String form of color
