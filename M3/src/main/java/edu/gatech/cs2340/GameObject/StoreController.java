@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
@@ -88,7 +87,7 @@ public class StoreController implements Initializable {
         this.game = game;
     }
 
-    //WHERE ALL THE SHIT HAPPENS
+
     public void onConfirm() {
         String product = (String) this.listView.getSelectionModel()
                 .getSelectedItem();

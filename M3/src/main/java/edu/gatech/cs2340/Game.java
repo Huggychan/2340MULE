@@ -4,7 +4,6 @@ import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameEngine.Turn;
 import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
-import edu.gatech.cs2340.GameObject.ResourceType;
 import edu.gatech.cs2340.GameObject.Store;
 import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
@@ -38,8 +37,8 @@ public class Game extends Application {
     private GameState state;
     private int roundNumber;
     private LandSelection landselection;
-    private Mule mule;
     private Turn turn;
+    private Mule mule;
     private MapController map;
     private EventLog log;
     private Store store;
