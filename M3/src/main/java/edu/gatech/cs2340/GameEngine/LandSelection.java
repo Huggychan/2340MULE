@@ -25,6 +25,8 @@ public class LandSelection {
         if (game.getRoundNumber() == 1 || game.getRoundNumber() == 2) {
             if (tile.getOwner() == null) {
                 tile.setOwner(game.getCurrentPlayer());
+            } else {
+                System.out.println("somthieng someone already owns plot");
             }
         } else {
             if (game.getCurrentPlayer().getMoney() >= 300
