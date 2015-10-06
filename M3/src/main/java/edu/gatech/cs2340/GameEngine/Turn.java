@@ -9,6 +9,8 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
@@ -65,6 +67,8 @@ public class Turn {
     }
 
     public void endPlayerTurn() {
+        game.getCurrentPlayer().setMule(null);
+        this.game.getScene().setCursor(Cursor.DEFAULT);
         players.remove(game.getCurrentPlayer());
         game.timer.stop();
         if (players.isEmpty()) {
