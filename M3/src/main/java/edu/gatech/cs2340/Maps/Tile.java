@@ -41,37 +41,11 @@ public abstract class Tile extends StackPane {
         this.iv = new ImageView();
         String imageString;
 
-        switch (this.tileType) {
-            case MOUNTAIN_1:
-                imageString = "/resources/Mountain1.png";
-                break;
-            case MOUNTAIN_2:
-                imageString = "/resources/Mountain2.jpg";
-                break;
-            case MOUNTAIN_3:
-                imageString = "/resources/Mountain3.jpg";
-                break;
-            case PLAIN:
-                imageString = "/resources/Plain.png";
-                break;
-            case RIVER:
-                imageString = "/resources/River.png";
-                break;
-            case TOWN:
-                imageString = "/resources/Town.jpg";
-                break;
-            default:
-                throw new IllegalArgumentException("Unrecognized tile type");
-        }
 
-        this.image = new Image(imageString);
-        this.iv.setImage(this.image);
-
-        this.getChildren().add(iv);
 
         this.setOnMouseEntered(event -> {
             this.toFront();
-            if (this.owner == null && tileType != TileType.TOWN) {
+            if (this.owner == null && !(this instanceof TownTile)) {
                 this.setStyle("-fx-border-color:" + map.getGame()
                         .getCurrentPlayer().getColorString() + "; \n"
                         //#090a0c
@@ -180,7 +154,7 @@ public abstract class Tile extends StackPane {
 
     public void placeMule(Mule mule) {
         //System.out.println(tile.getMule());
-        if (this.getTileType() == TileType.TOWN) {
+        if (this instanceof TownTile) {
             map.getGame().log("That is town. Mule lost.");
             map.getGame().getScene().setCursor(Cursor.DEFAULT);
             map.getGame().setState(Game.GameState.TURN);

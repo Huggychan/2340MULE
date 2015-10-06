@@ -4,6 +4,7 @@ import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TileType;
+import edu.gatech.cs2340.Maps.TownTile;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -46,7 +47,7 @@ public class Turn {
     }
 
     public void move(Tile tile) {
-        if (tile.getTileType() == TileType.TOWN) {
+        if (tile instanceof TownTile) {
             game.goToTown();
         }
     }

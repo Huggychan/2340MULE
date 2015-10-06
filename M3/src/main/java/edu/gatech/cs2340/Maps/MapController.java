@@ -66,6 +66,7 @@ public class MapController implements Initializable {
             } catch (IOException ioe) {
                 System.out.println(ioe.getMessage());
             } catch (Exception e) {
+                System.out.println(e);
                 System.out.println(e.getMessage());
                 System.out.println("Trash tier coding");
             }
@@ -74,17 +75,17 @@ public class MapController implements Initializable {
 
     private Tile setUpTile(char c) throws IllegalArgumentException {
         if (c == 'R') {
-            return new Tile(TileType.RIVER);
+            return new RiverTile();
         } else if (c == 'P') {
-            return new Tile(TileType.PLAIN);
+            return new PlainsTile();
         } else if (c == 'M') {
-            return new Tile(TileType.MOUNTAIN_1);
+            return new MountainOneTile();
         } else if (c == 'N') {
-            return new Tile(TileType.MOUNTAIN_2);
+            return new MountainTwoTile();
         } else if (c == 'O') {
-            return new Tile(TileType.MOUNTAIN_3);
+            return new MountainThreeTile();
         } else if (c == 'T') {
-            return new Tile(TileType.TOWN);
+            return new TownTile();
         } else {
             throw new IllegalArgumentException("No Such Tile type");
         }

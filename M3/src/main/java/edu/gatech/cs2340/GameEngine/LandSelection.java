@@ -5,6 +5,7 @@ import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TileType;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.Mule;
+import edu.gatech.cs2340.Maps.TownTile;
 
 import java.util.LinkedList;
 
@@ -19,7 +20,7 @@ public class LandSelection {
     }
 
     public void buy(Tile tile) {
-        if (tile.getTileType() == TileType.TOWN) {
+        if (tile instanceof TownTile) {
             return;
         }
         if (game.getRoundNumber() == 1 || game.getRoundNumber() == 2) {
