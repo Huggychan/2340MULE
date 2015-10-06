@@ -191,10 +191,27 @@ public class TownMapController implements Initializable {
     }
 
     private void setMuleResourceType(ResourceType resource) {
+        boolean canAfford = false;
+        Player curr = game.getCurrentPlayer();
+
+        if (resource == ResourceType.CRYSTITE && curr.getMoney() >= 100) {
+            curr.decrementMoney(100);
+            canAfford = true;
+        } else if (resource == ResourceType.ENERGY && curr.getMoney() >= 25) {
+            curr.decrementMoney(25);
+            canAfford = true;
+        } else if (resource == ResourceType.FOOD && curr.getMoney() >= 30) {
+            curr.decrementMoney(30);
+            canAfford = true;
+        } else if (resource == ResourceType.ORE && curr.getMoney() >= 50) {
+            curr.decrementMoney(50);
+            canAfford = true;
+        }
+
         if (resource == null || !this.game.getCurrentPlayer().hasMule()) {
             this.game.log("Buy a mule first!");
         } else if (this.game.getCurrentPlayer().getMule().getResourceType()
-                == null) {
+                == null && canAfford) {
             this.game.getCurrentPlayer().getMule().setResourceType(resource);
             WritableImage writableImage =
                     this.game.getCurrentPlayer().getMule().changeColor(game.getCurrentPlayer());
