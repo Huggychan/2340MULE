@@ -46,8 +46,6 @@ public class TownMapController implements Initializable {
     @FXML
     private Pane backPane;
     @FXML
-    private Rectangle playerSprite;
-    @FXML
     private Rectangle exitRect;
 
     private Game game;
