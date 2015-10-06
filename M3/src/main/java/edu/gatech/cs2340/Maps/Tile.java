@@ -47,7 +47,6 @@ public class Tile extends StackPane {
                 break;
             case MOUNTAIN_2:
                 imageString = "/resources/Mountain2.jpg";
-
                 break;
             case MOUNTAIN_3:
                 imageString = "/resources/Mountain3.jpg";
@@ -178,7 +177,7 @@ public class Tile extends StackPane {
      */
     public Mule getMule() { return mule; }
 
-    public void placeMule(Mule mule){
+    public void placeMule(Mule mule) {
         //System.out.println(tile.getMule());
         if (this.getTileType() == TileType.TOWN) {
             map.getGame().log("That is town. Mule lost.");
