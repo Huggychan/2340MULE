@@ -188,9 +188,14 @@ public class Tile extends StackPane {
             map.getGame().log("You do not own that property. Mule lost.");
             map.getGame().getScene().setCursor(Cursor.DEFAULT);
             map.getGame().setState(Game.GameState.TURN);
+        } else if (this.getMule() != null) {
+            map.getGame().log("Muree already place. You lose mule!!");
+            map.getGame().getScene().setCursor(Cursor.DEFAULT);
+            map.getGame().setState(Game.GameState.TURN);
         } else {
             map.getGame().log("Mule placed.");
             this.setMuleResource(mule.getResourceType());
+            this.mule = mule;
             System.out.println("Your mule type on this tile is now: "
                     + this.getMuleResource());
             ImageView iv2 = new ImageView(new Image("/resources/mule.png"));
@@ -202,6 +207,7 @@ public class Tile extends StackPane {
             //game state to placeMule
             //cursor needs to be changed back, but didn't have time to find default
         }
+        this.getOwner().setMule(null);
     }
 
     public ResourceType getMuleResource () {
