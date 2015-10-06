@@ -208,7 +208,7 @@ public class Tile extends StackPane {
             //game state to placeMule
             //cursor needs to be changed back, but didn't have time to find default
         }
-        this.getOwner().setMule(null);
+        this.map.getGame().getCurrentPlayer().setMule(null);
     }
 
     public ResourceType getMuleResource () {
