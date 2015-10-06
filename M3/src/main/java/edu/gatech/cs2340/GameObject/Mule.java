@@ -78,17 +78,20 @@ public class Mule {
     public void placeMule(Tile tile){
         //System.out.println(tile.getMule());
         if (tile.getTileType() == TileType.TOWN) {
-            System.out.println("That is town. Mule lost.");
-            return;
+            this.game.log("That is town. Mule lost.");
+            this.game.getScene().setCursor(Cursor.DEFAULT);
+            game.goToTown();
         } else if (tile.getOwner() != player) {
-            System.out.println("You do not own that property. Mule lost.");
-            return;
+            this.game.log("You do not own that property. Mule lost.");
+            this.game.getScene().setCursor(Cursor.DEFAULT);
+            game.goToTown();
         } else {
-            System.out.println("Mule placed.");
+            this.game.log("Mule placed.");
             tile.setMuleResource(this.player.getMule().getResourceType());
             System.out.println("Your mule type on this tile is now: "
                     + tile.getMuleResource());
             this.game.getScene().setCursor(Cursor.DEFAULT);
+            game.goToTown();
             //this.game.getScene().getCursor();
             //game state to placeMule
             //cursor needs to be changed back, but didn't have time to find default
