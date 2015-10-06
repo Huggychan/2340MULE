@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
  * @author Bilal, Marc, Nick
  * @version 1.0
  */
-public class Tile extends StackPane {
+public abstract class Tile extends StackPane {
     private String color;
     private Player owner;
     private TileType tileType;
@@ -34,8 +34,8 @@ public class Tile extends StackPane {
      * set owners and other things as the game goes on
      * @param tileType tileType of tile
      */
-    public Tile(TileType tileType) {
-        this.tileType = tileType;
+    public Tile() {
+//        this.tileType = tileType;
         this.mule = null;
 
         this.iv = new ImageView();
@@ -110,6 +110,7 @@ public class Tile extends StackPane {
 //        });
 //    }
 
+    public abstract int calculateProduction();
 
     /**
      * @return String form of color
@@ -207,7 +208,7 @@ public class Tile extends StackPane {
             //game state to placeMule
             //cursor needs to be changed back, but didn't have time to find default
         }
-        this.getOwner().setMule(null);
+        this.map.getGame().getCurrentPlayer().setMule(null);
     }
 
     public ResourceType getMuleResource () {
