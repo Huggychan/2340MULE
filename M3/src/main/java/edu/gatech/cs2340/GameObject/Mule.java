@@ -20,11 +20,12 @@ public class Mule {
     private Image image;
     private Game game;
 
-    public Mule(Player player) {
+    public Mule(Player player, Game game) {
         this.player = player;
         this.colorString = player.getColorString();
         this.color = player.getColor();
         image = new Image("/resources/mule.png");
+        this.game = game;
     }
 
     public ResourceType getResourceType() {
