@@ -4,6 +4,7 @@ import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.ResourceType;
+import javafx.scene.Cursor;
 import javafx.scene.image.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -177,11 +178,30 @@ public class Tile extends StackPane {
      */
     public Mule getMule() { return mule; }
 
-    /**
-     * @param mule set mule of tile
-     */
-    public void setMule(Mule mule) {
-        this.mule = mule;
+    public void placeMule(Mule mule){
+        //System.out.println(tile.getMule());
+        if (this.getTileType() == TileType.TOWN) {
+            map.getGame().log("That is town. Mule lost.");
+            map.getGame().getScene().setCursor(Cursor.DEFAULT);
+            map.getGame().setState(Game.GameState.TURN);
+        } else if (this.getOwner() != mule.getPlayer()) {
+            map.getGame().log("You do not own that property. Mule lost.");
+            map.getGame().getScene().setCursor(Cursor.DEFAULT);
+            map.getGame().setState(Game.GameState.TURN);
+        } else {
+            map.getGame().log("Mule placed.");
+            this.setMuleResource(mule.getResourceType());
+            System.out.println("Your mule type on this tile is now: "
+                    + this.getMuleResource());
+            ImageView iv2 = new ImageView(new Image("/resources/mule.png"));
+            iv2.toFront();
+            this.getChildren().add((iv2));
+            map.getGame().getScene().setCursor(Cursor.DEFAULT);
+            map.getGame().setState(Game.GameState.TURN);
+            //this.game.getScene().getCursor();
+            //game state to placeMule
+            //cursor needs to be changed back, but didn't have time to find default
+        }
     }
 
     public ResourceType getMuleResource () {

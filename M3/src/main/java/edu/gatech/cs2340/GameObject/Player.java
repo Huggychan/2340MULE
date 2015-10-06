@@ -202,7 +202,7 @@ public class Player implements Comparable<Player> {
 
     public void giveMule() {
         if (this.mule == null) {
-            this.mule = new Mule(this, game);
+            this.mule = new Mule(this);
         }
     }
 

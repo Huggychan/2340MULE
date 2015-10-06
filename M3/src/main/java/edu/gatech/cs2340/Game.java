@@ -49,7 +49,7 @@ public class Game extends Application {
     private boolean storeEntered = false;
     public Timeline timer;
 
-    private enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
+    public enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION, STORE, TOWN, SUMMARY, MULE}
 
     public enum Difficulty {
@@ -106,6 +106,9 @@ public class Game extends Application {
     }
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+    public void setState(GameState state) {
+        this.state = state;
     }
     public Difficulty getDifficulty() {
         return this.difficulty;
@@ -304,7 +307,7 @@ public class Game extends Application {
         } else if (state == GameState.TURN) {
             turn.move(tile);
         } else if (state == GameState.MULE) {
-            mule.placeMule(tile);
+            tile.placeMule(this.getCurrentPlayer().getMule());
         }
     }
 

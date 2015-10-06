@@ -20,12 +20,11 @@ public class Mule {
     private Image image;
     private Game game;
 
-    public Mule(Player player, Game game) {
+    public Mule(Player player) {
         this.player = player;
         this.colorString = player.getColorString();
         this.color = player.getColor();
         image = new Image("/resources/mule.png");
-        this.game = game;
     }
 
     public ResourceType getResourceType() {
@@ -75,26 +74,5 @@ public class Mule {
     }
 
 //    TODO fix adding mules to property
-    public void placeMule(Tile tile){
-        //System.out.println(tile.getMule());
-        if (tile.getTileType() == TileType.TOWN) {
-            this.game.log("That is town. Mule lost.");
-            this.game.getScene().setCursor(Cursor.DEFAULT);
-            game.goToTown();
-        } else if (tile.getOwner() != player) {
-            this.game.log("You do not own that property. Mule lost.");
-            this.game.getScene().setCursor(Cursor.DEFAULT);
-            game.goToTown();
-        } else {
-            this.game.log("Mule placed.");
-            tile.setMuleResource(this.player.getMule().getResourceType());
-            System.out.println("Your mule type on this tile is now: "
-                    + tile.getMuleResource());
-            this.game.getScene().setCursor(Cursor.DEFAULT);
-            game.goToTown();
-            //this.game.getScene().getCursor();
-            //game state to placeMule
-            //cursor needs to be changed back, but didn't have time to find default
-        }
-    }
+
 }
