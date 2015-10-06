@@ -194,6 +194,8 @@ public class TownMapController implements Initializable {
         boolean canAfford = false;
         Player curr = game.getCurrentPlayer();
 
+        System.out.println(curr.getMoney());
+
         if (resource == ResourceType.CRYSTITE && curr.getMoney() >= 100) {
             curr.decrementMoney(100);
             canAfford = true;
@@ -207,6 +209,8 @@ public class TownMapController implements Initializable {
             curr.decrementMoney(50);
             canAfford = true;
         }
+
+        System.out.println(curr.getMoney());
 
         if (resource == null || !this.game.getCurrentPlayer().hasMule()) {
             this.game.log("Buy a mule first!");
