@@ -194,39 +194,40 @@ public class TownMapController implements Initializable {
         boolean canAfford = false;
         Player curr = game.getCurrentPlayer();
 
-        System.out.println(curr.getMoney());
+        if (curr.hasMule()) {
+            System.out.println(curr.getMoney());
 
-        if (resource == ResourceType.CRYSTITE && curr.getMoney() >= 100) {
-            curr.decrementMoney(100);
-            canAfford = true;
-        } else if (resource == ResourceType.ENERGY && curr.getMoney() >= 25) {
-            curr.decrementMoney(25);
-            canAfford = true;
-        } else if (resource == ResourceType.FOOD && curr.getMoney() >= 30) {
-            curr.decrementMoney(30);
-            canAfford = true;
-        } else if (resource == ResourceType.ORE && curr.getMoney() >= 50) {
-            curr.decrementMoney(50);
-            canAfford = true;
-        }
+            if (resource == ResourceType.CRYSTITE && curr.getMoney() >= 100) {
+                curr.decrementMoney(100);
+                canAfford = true;
+            } else if (resource == ResourceType.ENERGY && curr.getMoney() >= 25) {
+                curr.decrementMoney(25);
+                canAfford = true;
+            } else if (resource == ResourceType.FOOD && curr.getMoney() >= 30) {
+                curr.decrementMoney(30);
+                canAfford = true;
+            } else if (resource == ResourceType.ORE && curr.getMoney() >= 50) {
+                curr.decrementMoney(50);
+                canAfford = true;
+            }
 
-        System.out.println(curr.getMoney());
+            System.out.println(curr.getMoney());
 
-        if (resource == null || !this.game.getCurrentPlayer().hasMule()) {
-            this.game.log("Buy a mule first!");
-        } else if (this.game.getCurrentPlayer().getMule().getResourceType()
-                == null && canAfford) {
-            this.game.getCurrentPlayer().getMule().setResourceType(resource);
-            WritableImage writableImage =
-                    this.game.getCurrentPlayer().getMule().changeColor(game.getCurrentPlayer());
-            this.game.getScene().setCursor(new ImageCursor(writableImage));
-            System.out.println("Resource type: "
-                    + this.game.getCurrentPlayer().getMule().getResourceType());
-            onExitClicked();
-            game.placeMule();
-        } else {
-            this.game.log("Your MULE's resource type is already "
-                    + this.game.getCurrentPlayer().getMule().getResourceType());
-        }
+            if (resource == null || !this.game.getCurrentPlayer().hasMule()) {
+                this.game.log("Buy a mule first!");
+            } else if (this.game.getCurrentPlayer().getMule().getResourceType()
+                    == null && canAfford) {
+                this.game.getCurrentPlayer().getMule().setResourceType(resource);
+                WritableImage writableImage =
+                        this.game.getCurrentPlayer().getMule().changeColor(game.getCurrentPlayer());
+                this.game.getScene().setCursor(new ImageCursor(writableImage));
+                System.out.println("Resource type: "
+                        + this.game.getCurrentPlayer().getMule().getResourceType());
+                onExitClicked();
+                game.placeMule();
+            } else {
+                this.game.log("Your MULE's resource type is already "
+                        + this.game.getCurrentPlayer().getMule().getResourceType());
+            }}
     }
 }
