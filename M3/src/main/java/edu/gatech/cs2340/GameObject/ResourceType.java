@@ -10,15 +10,13 @@ public enum ResourceType {
     ORE("/resources/MULE_Ore.png"),
     CRYSTITE("/resources/MULE_Crystite.png");
 
-    private Image image;
-    private ImageView imageView;
+    private String imageString;
 
     private ResourceType(String string) {
-        this.image = new Image(string);
-        this.imageView = new ImageView(image);
+        this.imageString = string;
     }
 
-    public ImageView getImageView() {
-        return this.imageView;
+    public String getImageString() {
+        return this.imageString;
     }
 };

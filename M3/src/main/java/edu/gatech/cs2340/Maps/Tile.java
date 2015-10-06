@@ -198,8 +198,8 @@ public class Tile extends StackPane {
             this.mule = mule;
             System.out.println("Your mule type on this tile is now: "
                     + this.getMuleResource());
-            ImageView iv2 = this.getMuleResource().getImageView();
-//            ImageView iv2 = new ImageView(new Image("/resources/mule.png"));
+            ImageView iv2 = new ImageView(
+                    this.getMuleResource().getImageString());
             iv2.toFront();
             this.getChildren().add((iv2));
             map.getGame().getScene().setCursor(Cursor.DEFAULT);
