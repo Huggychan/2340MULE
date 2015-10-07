@@ -71,6 +71,7 @@ public class Turn {
     public void endPlayerTurn() {
         game.setState(Game.GameState.TURN);
         game.getCurrentPlayer().setMule(null);
+        game.getCurrentPlayer().muleBoughtThisTurn = false;
         this.game.getScene().setCursor(Cursor.DEFAULT);
         players.remove(game.getCurrentPlayer());
         game.timer.stop();

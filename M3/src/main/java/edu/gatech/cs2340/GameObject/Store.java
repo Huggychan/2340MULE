@@ -12,8 +12,6 @@ public class Store {
     private final int CRYSTITE_PRICE = 100;
     private final int BASE_MULE_PRICE = 100;
 
-    public boolean muleBoughtThisTurn = false;
-
     public Store() {
         inventoryStock = new HashMap<>();
         inventoryStock.put(ProductType.FOOD, 16);
@@ -82,8 +80,8 @@ public class Store {
                 System.out.println("Player's inventory after: " + player.getInventory());
                 return true;
             } else {
-                if (player.getMule() == null && !muleBoughtThisTurn) {
-                    muleBoughtThisTurn = true;
+                if (player.getMule() == null && !player.muleBoughtThisTurn) {
+                    player.muleBoughtThisTurn = true;
                     this.decrementKeyInMap(pt, this.inventoryStock);
                     player.giveMule();
                     player.decrementMoney(price);

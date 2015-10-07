@@ -27,6 +27,7 @@ public class Player implements Comparable<Player> {
     private int money;
     private Mule mule;
     private Game game;
+    public boolean muleBoughtThisTurn = false;
 
     public int getMoney() {
         return money;
