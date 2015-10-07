@@ -15,7 +15,6 @@ public class MountainTwoTile extends Tile {
         this.getChildren().add(this.getImageView());
         Random r = new Random();
         int randomNum = r.nextInt(4);
-        this.getChildren().add(this.getImageView());
         this.getResourceTypeMap().put(ResourceType.FOOD, 1);
         this.getResourceTypeMap().put(ResourceType.ENERGY, 1);
         this.getResourceTypeMap().put(ResourceType.ORE, 3);

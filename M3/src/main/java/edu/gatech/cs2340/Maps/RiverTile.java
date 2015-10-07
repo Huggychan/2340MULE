@@ -13,11 +13,10 @@ public class RiverTile extends Tile {
     public RiverTile() {
         this.getImageView().setImage(new Image("/resources/River.png"));
         this.getChildren().add(this.getImageView());
-        Random r = new Random();
-        int randomNum = r.nextInt(4);
-        this.getChildren().add(this.getImageView());
         this.getResourceTypeMap().put(ResourceType.FOOD, 4);
         this.getResourceTypeMap().put(ResourceType.ENERGY, 2);
+        this.getResourceTypeMap().put(ResourceType.ORE, 0);
+        this.getResourceTypeMap().put(ResourceType.CRYSTITE, 0);
     }
 
     public int calculateProduction() {
