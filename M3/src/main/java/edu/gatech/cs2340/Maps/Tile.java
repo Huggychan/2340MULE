@@ -9,6 +9,9 @@ import javafx.scene.image.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Tile class
  * @author Bilal, Marc, Nick
@@ -27,21 +30,19 @@ public abstract class Tile extends StackPane {
     private ImageView iv;
     private Image image;
     private MapController map;
+    private Map<ResourceType, Integer> resourceTypeMap;
 
     /**
      * Tile construct on Instantiation, we will not handle who owns it.
      * The constructor call will be made only on new map, and we will
      * set owners and other things as the game goes on
-     * @param tileType tileType of tile
      */
     public Tile() {
-//        this.tileType = tileType;
         this.mule = null;
 
         this.iv = new ImageView();
-        String imageString;
 
-
+        resourceTypeMap = new HashMap<>();
 
         this.setOnMouseEntered(event -> {
             this.toFront();
@@ -85,6 +86,10 @@ public abstract class Tile extends StackPane {
 //    }
 
     public abstract int calculateProduction();
+
+    public Map<ResourceType, Integer> getResourceTypeMap() {
+        return this.resourceTypeMap;
+    }
 
     /**
      * @return String form of color
