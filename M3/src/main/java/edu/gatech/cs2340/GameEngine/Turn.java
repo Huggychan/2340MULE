@@ -3,7 +3,6 @@ package edu.gatech.cs2340.GameEngine;
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.Maps.Tile;
-import edu.gatech.cs2340.Maps.TileType;
 import edu.gatech.cs2340.Maps.TownTile;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -11,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.ImageCursor;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
@@ -32,6 +30,8 @@ public class Turn {
     private int timeRemaining;
     private Timeline timer;
 
+    public boolean mule;
+
     public Turn(Game game) {
         this.game = game;
         players = new ArrayList<>();
@@ -44,6 +44,7 @@ public class Turn {
         StackPane.setAlignment(label, Pos.TOP_RIGHT);
         label.setTextFill(Paint.valueOf("white"));
         turnTimerCreator();
+        mule = false;
     }
 
     public void move(Tile tile) {
