@@ -124,27 +124,31 @@ public class TownMapController implements Initializable {
     }
 
     public void onStoreClicked() {
-        game.toggleStoreEntered();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("/resources/Store.fxml"));
-        loader.setClassLoader(this.getClass().getClassLoader());
-        Parent newRoot = null;
+        if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
+            this.game.log("Select your Resource Type!");
+        } else {
+            game.toggleStoreEntered();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource
+                    ("/resources/Store.fxml"));
+            loader.setClassLoader(this.getClass().getClassLoader());
+            Parent newRoot = null;
 
-        try {
-            newRoot = loader.load();
-        } catch (IOException e) {
-            System.out.println("IOException loading Store.fxml");
-            System.out.println(e.getMessage());
-            System.out.println("Cause: " + e.getCause());
-            System.out.println(e.getStackTrace());
+            try {
+                newRoot = loader.load();
+            } catch (IOException e) {
+                System.out.println("IOException loading Store.fxml");
+                System.out.println(e.getMessage());
+                System.out.println("Cause: " + e.getCause());
+                System.out.println(e.getStackTrace());
+            }
+
+            StoreController sc = loader.getController();
+            this.storeController = sc;
+            sc.setStore(this.game.getStore());
+            sc.setGame(this.game);
+            this.game.getMap().getStackPane().getChildren().add(sc.getBackingPane
+                    ());
         }
-
-        StoreController sc = loader.getController();
-        this.storeController = sc;
-        sc.setStore(this.game.getStore());
-        sc.setGame(this.game);
-        this.game.getMap().getStackPane().getChildren().add(sc.getBackingPane
-                ());
     }
 
     public void onEnergyClicked() {
@@ -226,6 +230,7 @@ public class TownMapController implements Initializable {
             } else {
                 this.game.log("Your MULE's resource type is already "
                         + this.game.getCurrentPlayer().getMule().getResourceType());
-            }}
+            }
+        }
     }
 }
