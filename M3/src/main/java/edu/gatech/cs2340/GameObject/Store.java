@@ -99,13 +99,11 @@ public class Store {
         System.out.println(player.getMoney());
         int value = this.inventoryPrice.get(pt);
         int stock = this.inventoryStock.get(pt);
-        this.incrementKeyInMap(pt, this.inventoryStock);
-        player.incrementMoney(value);
-
 
         if (pt != ProductType.MULE) {
             if (player.getInventory().get(pt) > 0) {
                 this.decrementKeyInMap(pt, player.getInventory());
+                this.incrementKeyInMap(pt, this.inventoryStock);
 
                 System.out.println(player.getInventory());
                 System.out.println(player.getMoney());
@@ -115,6 +113,7 @@ public class Store {
         } else {
             if (player.getMule() != null) {
                 player.takeMule();
+                this.incrementKeyInMap(pt, this.inventoryStock);
                 return true;
             }
         }
