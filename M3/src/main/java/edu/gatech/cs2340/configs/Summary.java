@@ -22,7 +22,8 @@ public class Summary extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root =
-                FXMLLoader.load(getClass().getResource("Summary.fxml"));
+                FXMLLoader.load(
+                        getClass().getResource("/resources/Summary.fxml"));
 
         Scene scene = new Scene(root, 1600, 900);
 
