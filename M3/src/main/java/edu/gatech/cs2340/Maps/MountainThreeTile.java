@@ -26,20 +26,7 @@ public class MountainThreeTile extends Tile {
         if (this.getOwner().getEnergy() > 0 && this.tileHasMule()) {
             this.getOwner().setEnergy(this.getOwner().getEnergy() - 1);
             ResourceType resourceType = this.getMuleResource();
-            switch (resourceType) {
-                case FOOD:
-                    amount = this.getResourceTypeMap().get(ResourceType.FOOD);
-                    break;
-                case ENERGY:
-                    amount = this.getResourceTypeMap().get(ResourceType.ENERGY);
-                    break;
-                case ORE:
-                    amount = this.getResourceTypeMap().get(ResourceType.ORE);
-                    break;
-                case CRYSTITE:
-                    amount = this.getResourceTypeMap().get(ResourceType.CRYSTITE);
-                    break;
-            }
+            amount = this.getResourceTypeMap().get(resourceType);
         }
         return amount;
     }
