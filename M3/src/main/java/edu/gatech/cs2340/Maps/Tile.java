@@ -157,6 +157,10 @@ public abstract class Tile extends StackPane {
      */
     public Mule getMule() { return mule; }
 
+    public boolean tileHasMule() {
+        return this.mule != null;
+    }
+
     public void placeMule(Mule mule) {
         //System.out.println(tile.getMule());
         if (this instanceof TownTile) {

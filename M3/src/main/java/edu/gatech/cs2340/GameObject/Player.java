@@ -41,6 +41,18 @@ public class Player implements Comparable<Player> {
         return food;
     }
 
+    public int getOre() {
+        return this.ore;
+    }
+
+    public int getEnergy() {
+        return this.energy;
+    }
+
+    public int getCrystite() {
+        return this.crystite;
+    }
+
     public Player(String name, Race race, String colorString, Game game) {
         this.inventory = new HashMap<>();
         inventory.put(ProductType.CRYSTITE, 0);

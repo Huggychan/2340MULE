@@ -10,12 +10,11 @@ import java.util.Random;
  */
 public class MountainOneTile extends Tile {
 
-
     public MountainOneTile() {
         this.getImageView().setImage(new Image("/resources/Mountain1.png"));
+        this.getChildren().add(this.getImageView());
         Random r = new Random();
         int randomNum = r.nextInt(4);
-        this.getChildren().add(this.getImageView());
         this.getResourceTypeMap().put(ResourceType.FOOD, 1);
         this.getResourceTypeMap().put(ResourceType.ENERGY, 1);
         this.getResourceTypeMap().put(ResourceType.ORE, 2);
@@ -23,6 +22,25 @@ public class MountainOneTile extends Tile {
     }
 
     public int calculateProduction() {
-        return 0;
+        int amount = -1;
+        if (this.getOwner().getEnergy() > 0 && this.tileHasMule()) {
+            this.getOwner().setEnergy(this.getOwner().getEnergy() - 1);
+            ResourceType resourceType = this.getMuleResource();
+            switch (resourceType) {
+                case FOOD:
+                    amount = this.getResourceTypeMap().get(ResourceType.FOOD);
+                    break;
+                case ENERGY:
+                    amount = this.getResourceTypeMap().get(ResourceType.ENERGY);
+                    break;
+                case ORE:
+                    amount = this.getResourceTypeMap().get(ResourceType.ORE);
+                    break;
+                case CRYSTITE:
+                    amount = this.getResourceTypeMap().get(ResourceType.CRYSTITE);
+                    break;
+            }
+        }
+        return amount;
     }
 }
