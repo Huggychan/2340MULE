@@ -95,9 +95,12 @@ public class StoreController implements Initializable {
         ProductType productType = this.getProductTypeFromString
                 (product);
 
+        boolean success = false;
+
         if (product != null) {
             if (isBuying) {
-                boolean success = store.buy(productType, game.getCurrentPlayer());
+                success = store.buy(productType, game.getCurrentPlayer());
+
                 if (success && product.contains("MULE")) {
                     Mule mule = this.game.getCurrentPlayer().getMule();
                     Image image = mule.getImage();
@@ -107,11 +110,12 @@ public class StoreController implements Initializable {
                     game.getLog().log("You have already bought a mule this turn");
                 }
             } else {
-                store.sell(productType, game.getCurrentPlayer());
+                success = store.sell(productType, game.getCurrentPlayer());
             }
         }
-
-        this.updateInventory();
+        if (success) {
+            this.updateInventory();
+        }
     }
 
     public void updateInventory() {
