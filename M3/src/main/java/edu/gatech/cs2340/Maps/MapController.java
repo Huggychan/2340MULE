@@ -109,4 +109,9 @@ public class MapController implements Initializable {
     public StackPane getStackPane() {
         return this.stackPane;
     }
+
+    public void calcProduction() {
+
+
+    }
 }

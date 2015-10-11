@@ -89,19 +89,19 @@ public class StoreController implements Initializable {
 
 
     public void onConfirm() {
-        String product = (String) this.listView.getSelectionModel()
+        String resource = (String) this.listView.getSelectionModel()
                 .getSelectedItem();
 
-        ProductType productType = this.getProductTypeFromString
-                (product);
+        ResourceType resourceType = this.getResourceTypeFromString
+                (resource);
 
         boolean success = false;
 
-        if (product != null) {
+        if (resource != null) {
             if (isBuying) {
-                success = store.buy(productType, game.getCurrentPlayer());
+                success = store.buy(resourceType, game.getCurrentPlayer());
 
-                if (success && product.contains("MULE")) {
+                if (success && resource.contains("MULE")) {
                     Mule mule = this.game.getCurrentPlayer().getMule();
                     Image image = mule.getImage();
                     this.game.getScene().setCursor(new ImageCursor(image));
@@ -110,7 +110,7 @@ public class StoreController implements Initializable {
                     game.getLog().log("You have already bought a mule this turn");
                 }
             } else {
-                success = store.sell(productType, game.getCurrentPlayer());
+                success = store.sell(resourceType, game.getCurrentPlayer());
             }
         }
         if (success) {
@@ -136,8 +136,8 @@ public class StoreController implements Initializable {
         listView.setItems(this.items);
     }
 
-    public ProductType getProductTypeFromString(String prodTypeString) {
-        for (ProductType pt : ProductType.values()) {
+    public ResourceType getResourceTypeFromString(String prodTypeString) {
+        for (ResourceType pt : ResourceType.values()) {
             if (prodTypeString.toUpperCase().contains(pt.toString())) {
                 return pt;
             }

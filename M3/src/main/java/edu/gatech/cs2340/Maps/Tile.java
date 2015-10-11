@@ -11,6 +11,9 @@ import javafx.scene.paint.Color;
 
 import java.util.HashMap;
 import java.util.Map;
+//note to self, the hashmap is inefficient because every tile has its own "map"
+//wherease all MOUNTAINTWO will have same values
+
 
 /**
  * Tile class
@@ -172,7 +175,7 @@ public abstract class Tile extends StackPane {
             map.getGame().getScene().setCursor(Cursor.DEFAULT);
             map.getGame().setState(Game.GameState.TURN);
         } else if (this.getMule() != null) {
-            map.getGame().log("Muree already place. You lose mule!!");
+            map.getGame().log("Mule already place. You lose mule!!");
             map.getGame().getScene().setCursor(Cursor.DEFAULT);
             map.getGame().setState(Game.GameState.TURN);
         } else {

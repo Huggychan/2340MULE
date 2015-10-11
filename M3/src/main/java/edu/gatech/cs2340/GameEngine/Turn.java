@@ -76,6 +76,7 @@ public class Turn {
         players.remove(game.getCurrentPlayer());
         game.timer.stop();
         if (players.isEmpty()) {
+            game.calcProduction();
             game.incrementRound();
             game.startRound();
             label.setText("");

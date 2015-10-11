@@ -19,11 +19,7 @@ public class Player implements Comparable<Player> {
     private Color color;
     private String colorString;
     private ArrayList<Tile> tiles;
-    private HashMap<ProductType, Integer> inventory;
-    private int ore;
-    private int food;
-    private int energy;
-    private int crystite;
+    private HashMap<ResourceType, Integer> inventory;
     private int money;
     private Mule mule;
     private Game game;
@@ -38,27 +34,27 @@ public class Player implements Comparable<Player> {
     }
 
     public int getFood() {
-        return food;
+        return inventory.get(ResourceType.FOOD);
     }
 
     public int getOre() {
-        return this.ore;
+        return inventory.get(ResourceType.ORE);
     }
 
     public int getEnergy() {
-        return this.energy;
+        return inventory.get(ResourceType.ENERGY);
     }
 
     public int getCrystite() {
-        return this.crystite;
+        return inventory.get(ResourceType.CRYSTITE);
     }
 
     public Player(String name, Race race, String colorString, Game game) {
         this.inventory = new HashMap<>();
-        inventory.put(ProductType.CRYSTITE, 0);
-        inventory.put(ProductType.FOOD, 0);
-        inventory.put(ProductType.ORE, 0);
-        inventory.put(ProductType.ENERGY, 0);
+        inventory.put(ResourceType.CRYSTITE, 0);
+        inventory.put(ResourceType.FOOD, 0);
+        inventory.put(ResourceType.ORE, 0);
+        inventory.put(ResourceType.ENERGY, 0);
         this.game = game;
         this.tiles = new ArrayList<>();
 
@@ -159,19 +155,19 @@ public class Player implements Comparable<Player> {
     }
 
     public void setFood(int food) {
-        inventory.put(ProductType.FOOD, food);
+        inventory.put(ResourceType.FOOD, food);
     }
 
     public void setEnergy(int energy) {
-        inventory.put(ProductType.ENERGY, energy);
+        inventory.put(ResourceType.ENERGY, energy);
     }
 
     public void setOre(int ore) {
-        inventory.put(ProductType.ORE, ore);
+        inventory.put(ResourceType.ORE, ore);
     }
 
     public void setCrystite(int crystite) {
-        inventory.put(ProductType.CRYSTITE, crystite);
+        inventory.put(ResourceType.CRYSTITE, crystite);
     }
 
 
@@ -195,15 +191,18 @@ public class Player implements Comparable<Player> {
     }
 
     public int getScore() {
-        return this.getMoney() + this.tiles.size() * 500 + this.ore + this
-                .energy + this.crystite + this.food;
+        int returnValue = this.getMoney() + this.tiles.size();
+        for (Integer i : inventory.values()) {
+            returnValue += i;
+        }
+        return returnValue;
     }
 
     public int compareTo(Player other) {
         return other.getScore() - this.getScore();
     }
 
-    public HashMap<ProductType, Integer> getInventory() {
+    public HashMap<ResourceType, Integer> getInventory() {
         return this.inventory;
     }
 
