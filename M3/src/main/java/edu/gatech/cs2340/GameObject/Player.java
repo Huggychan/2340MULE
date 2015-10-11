@@ -93,7 +93,9 @@ public class Player implements Comparable<Player> {
                 break;
         }
     }
-
+    public void addTile (Tile t) {
+        tiles.add(t);
+    }
 
     /**
      * Gets the name
@@ -216,6 +218,17 @@ public class Player implements Comparable<Player> {
         if (this.mule == null) {
             this.mule = new Mule(this);
         }
+    }
+
+    public void calcProduction() {
+        System.out.println(this.getName() + " " + inventory);
+        for (Tile t : tiles) {
+            ResourceType resource = t.getMuleResource();
+            System.out.println(resource);
+            Integer currentValue = inventory.get(resource);
+            inventory.put(resource, currentValue + t.calculateProduction());
+        }
+        System.out.println(this.getName() + " " + inventory);
     }
 
     public Mule getMule() {

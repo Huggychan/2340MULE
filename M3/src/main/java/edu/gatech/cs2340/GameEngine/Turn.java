@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Nick on 9/22/2015.
@@ -76,7 +77,7 @@ public class Turn {
         players.remove(game.getCurrentPlayer());
         game.timer.stop();
         if (players.isEmpty()) {
-            game.calcProduction();
+            calcProduction();
             game.incrementRound();
             game.startRound();
             label.setText("");
@@ -139,6 +140,13 @@ public class Turn {
 
     public Label getLabel() {
         return label;
+    }
+
+    private void calcProduction() {
+        List<Player> players = game.getPlayers();
+        for (Player p : players) {
+            p.calcProduction();
+        }
     }
 
 }

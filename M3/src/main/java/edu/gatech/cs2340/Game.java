@@ -248,9 +248,6 @@ public class Game extends Application {
         townEntered = true;
     }
 
-    public void calcProduction() {
-        map.calcProduction();
-    }
     public void summary() {
         state = GameState.SUMMARY;
         System.out.println(System.getProperty("user.dir"));

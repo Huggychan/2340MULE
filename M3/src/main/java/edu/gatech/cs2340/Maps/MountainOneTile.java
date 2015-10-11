@@ -22,7 +22,7 @@ public class MountainOneTile extends Tile {
     }
 
     public int calculateProduction() {
-        int amount = -1;
+        int amount = 0;
         if (this.getOwner().getEnergy() > 0 && this.tileHasMule()) {
             this.getOwner().setEnergy(this.getOwner().getEnergy() - 1);
             ResourceType resourceType = this.getMuleResource();
