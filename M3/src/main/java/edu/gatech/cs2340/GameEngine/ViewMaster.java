@@ -68,8 +68,9 @@ public class ViewMaster {
             game.setState(Game.GameState.GAMECONFIG);
         }
 
-        if (i < game.getNumPlayers()) [
-        ]
+        if (i < game.getNumPlayers()) {
+
+        }
     };
 
     /**
