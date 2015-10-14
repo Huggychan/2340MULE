@@ -63,11 +63,18 @@ public class ViewMaster {
         //TODO do this shit
     };
 
-    public void nextState() {};
+    public void nextState(int i) {
+        if (i == 0) {
+            game.setState(Game.GameState.GAMECONFIG);
+        }
+
+        if (i < game.getNumPlayers()) [
+        ]
+    };
 
     /**
      * adds somethign to front of stackpane
-     * @param node
+     * @param node the node to add to front of stackpane
      */
     public void addToStackPane(Parent node) {
         node.toFront();
