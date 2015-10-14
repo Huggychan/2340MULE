@@ -23,13 +23,7 @@ import java.util.Map;
 public abstract class Tile extends StackPane {
     private String color;
     private Player owner;
-    private TileType tileType;
-    private int food;
-    private int energy;
-    private int ore;
-    private int crystite;
     private Mule mule;
-    private ResourceType muleResource;
     private ImageView iv;
     private Image image;
     private MapController map;
@@ -65,30 +59,18 @@ public abstract class Tile extends StackPane {
 
         this.setOnMouseClicked(event -> {
             map.getGame().pingFromTile(this); //sends a message to game
-            //map.getGame().getCurrentPlayer()
-            //if player has enough money, set owner
-            //subtract money from player
-            //disallow buying more tiles this turn?
         });
     }
 
-//        iv.setOnMouseEntered(event -> {
-//            if (this.tileType != TileType.TOWN) {
-////            DropShadow ds = new DropShadow(20, this.map.getGame()
-////                    .getCurrentPlayer().getColor());
-////                iv.requestFocus();
-//                DropShadow ds = new DropShadow(20, Color.RED);
-//
-//                iv.setEffect(ds);
-//            }
-//        });
-//
-//        iv.setOnMouseExited(event -> {
-//            iv.setEffect(null);
-//        });
-//    }
+    public int calculateProduction() {
+        if (this.getOwner().getEnergy() > 0 && this.tileHasMule()) {
+            this.getOwner().setEnergy(this.getOwner().getEnergy() - 1);
+            ResourceType resourceType = this.getMuleResource();
+            return this.getResourceTypeMap().get(resourceType);
+        }
 
-    public abstract int calculateProduction();
+        return 0;
+    }
 
     public Map<ResourceType, Integer> getResourceTypeMap() {
         return this.resourceTypeMap;
@@ -144,18 +126,6 @@ public abstract class Tile extends StackPane {
     }
 
     /**
-     * @return tileType of tile
-     */
-    public TileType getResource() { return tileType; }
-
-    /**
-     * @param tileType set tileType of tile
-     */
-    public void setResource(TileType tileType) {
-        this.tileType = tileType;
-    }
-
-    /**
      * @return get Mule of tile
      */
     public Mule getMule() { return mule; }
@@ -180,7 +150,6 @@ public abstract class Tile extends StackPane {
             map.getGame().setState(Game.GameState.TURN);
         } else {
             map.getGame().log("Mule placed.");
-            this.setMuleResource(mule.getResourceType());
             this.mule = mule;
             System.out.println("Your mule type on this tile is now: "
                     + this.getMuleResource());
@@ -190,77 +159,66 @@ public abstract class Tile extends StackPane {
             this.getChildren().add((iv2));
             map.getGame().getScene().setCursor(Cursor.DEFAULT);
             map.getGame().setState(Game.GameState.TURN);
-            //this.game.getScene().getCursor();
-            //game state to placeMule
-            //cursor needs to be changed back, but didn't have time to find default
         }
         this.map.getGame().getCurrentPlayer().setMule(null);
     }
 
     public ResourceType getMuleResource () {
-        return this.muleResource;
-    }
-
-    public void setMuleResource(ResourceType muleResource) {
-        this.muleResource = muleResource;
+        return this.getMule().getResourceType();
     }
 
     /**
      * @return food count
      */
     public int getFood() {
-        return food;
+        return this.resourceTypeMap.get(ResourceType.FOOD);
     }
 
     /**
      * @param food set food amount
      */
     public void setFood(int food) {
-        this.food = food;
+        this.resourceTypeMap.put(ResourceType.FOOD, food);
     }
 
     /**
      * @return energy amount
      */
     public int getEnergy() {
-        return energy;
+        return this.resourceTypeMap.get(ResourceType.ENERGY);
     }
 
     /**
      * @param energy set energy to tile
      */
     public void setEnergy(int energy) {
-        this.energy = energy;
+        this.resourceTypeMap.put(ResourceType.ENERGY, energy);
     }
 
     /**
      * @return ore of tile
      */
-    public int getOre() { return ore; }
+    public int getOre() { return this.resourceTypeMap.get(ResourceType.ORE); }
 
     /**
      * @param ore set ore amount to tile
      */
-    public void setOre(int ore) { this.ore = ore; }
+    public void setOre(int ore) { this.resourceTypeMap.put(ResourceType.ORE, ore); }
 
     /**
      * @return crystite of tile
      */
     public int getCrystite() {
-        return crystite;
+        return this.resourceTypeMap.get(ResourceType.CRYSTITE);
     }
 
     /**
      * @param crystite set crystite of tile
      */
     public void setCrystite(int crystite) {
-        this.crystite = crystite;
+        this.resourceTypeMap.put(ResourceType.CRYSTITE, crystite);
     }
 
-
-    public TileType getTileType() {
-        return tileType;
-    }
     /**
      * Returns the Image View of the tile
      * @return the image view of the tile

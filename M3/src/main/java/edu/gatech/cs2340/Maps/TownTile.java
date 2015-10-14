@@ -11,8 +11,4 @@ public class TownTile extends Tile {
         this.getImageView().setImage(new Image("/resources/Town.jpg"));
         this.getChildren().add(this.getImageView());
     }
-
-    public int calculateProduction() {
-        return 0;
-    }
 }

@@ -1,10 +1,6 @@
 package edu.gatech.cs2340.GameObject;
 
 import edu.gatech.cs2340.Game;
-import edu.gatech.cs2340.Maps.Tile;
-import edu.gatech.cs2340.Maps.TileType;
-import javafx.scene.Cursor;
-import javafx.scene.ImageCursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
