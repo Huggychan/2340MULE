@@ -123,6 +123,10 @@ public class Game extends Application {
         players.add(Player);
     }
 
+    public int getNumPlayers() {
+        return this.numPlayers;
+    }
+
     /**
      * Setting configs only next state. passed in the state that just has been
      * finished. i.e. Gameconfig is state 0 player 1 is state 1, player 2 is
