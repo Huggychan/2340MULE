@@ -95,6 +95,9 @@ public class StoreController implements Initializable {
         ResourceType resourceType = this.getResourceTypeFromString
                 (resource);
 
+        System.out.println("asdfasdf" + this.game.getCurrentPlayer().getMoney
+                ());
+
         boolean success = false;
 
         if (resource != null) {
@@ -138,7 +141,8 @@ public class StoreController implements Initializable {
 
     public ResourceType getResourceTypeFromString(String prodTypeString) {
         for (ResourceType pt : ResourceType.values()) {
-            if (prodTypeString.toUpperCase().contains(pt.toString())) {
+            if (prodTypeString != null && prodTypeString.toUpperCase().contains(pt
+                    .toString())) {
                 return pt;
             }
         }

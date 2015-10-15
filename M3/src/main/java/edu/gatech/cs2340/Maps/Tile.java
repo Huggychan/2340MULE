@@ -164,7 +164,11 @@ public abstract class Tile extends StackPane {
     }
 
     public ResourceType getMuleResource () {
-        return this.getMule().getResourceType();
+        if (this.tileHasMule()) {
+            return this.getMule().getResourceType();
+        } else {
+            return null;
+        }
     }
 
     /**
