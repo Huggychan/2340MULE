@@ -95,7 +95,7 @@ public class StoreController implements Initializable {
         ResourceType resourceType = this.getResourceTypeFromString
                 (resource);
 
-        System.out.println("asdfasdf" + this.game.getCurrentPlayer().getMoney
+        System.out.println("Money: " + this.game.getCurrentPlayer().getMoney
                 ());
 
         boolean success = false;
