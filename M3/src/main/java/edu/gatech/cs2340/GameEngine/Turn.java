@@ -8,12 +8,18 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -32,6 +38,7 @@ public class Turn {
     private Timeline timer;
 
     public boolean mule;
+    private Stage stage;
 
     public Turn(Game game) {
         this.game = game;
@@ -80,6 +87,7 @@ public class Turn {
             calcProduction();
             game.incrementRound();
             game.startRound();
+            this.summary();
             label.setText("");
         } else {
             game.setCurrentPlayer(players.get(0));
@@ -148,5 +156,31 @@ public class Turn {
             p.calcProduction();
         }
     }
+
+    public void summary() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource
+                ("resources/Summary.fxml"));
+        loader.setClassLoader(this.getClass().getClassLoader());
+
+        Parent root = null;
+
+        Rectangle2D bounds = Screen.getPrimary().getBounds();
+        Scene scene = new Scene(root, bounds.getMaxX(), bounds.getMaxY());
+        stage.setScene(scene);
+//        root.setClassLoader(this.getClass().getClassLoader());
+
+//        Parent newRoot;
+//
+//        try {
+//            newRoot = loader.load();
+//            newRoot.toFront();
+//        } catch (IOException e) {
+//            System.out.println("IOException loading Summary.fxml");
+//            System.out.println(e.getMessage());
+//        }
+//        sc = loader.getController();
+//        showSummary = true;
+    }
+
 
 }
