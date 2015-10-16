@@ -1,11 +1,20 @@
 package edu.gatech.cs2340.configs;
 import edu.gatech.cs2340.Game;
 import javafx.animation.FillTransition;
+import javafx.animation.PathTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -29,6 +38,10 @@ public class SplashScreenController implements Initializable {
     private Rectangle titleRect;
     @FXML
     private Rectangle namesRect;
+    @FXML
+    private Pane splashPane;
+    @FXML
+    private ImageView muleImage;
 
     private Game game;
 
@@ -57,6 +70,35 @@ public class SplashScreenController implements Initializable {
                 namesRect.getY() + 1, true,
                 CycleMethod.REPEAT, stops);
         namesRect.setFill(linearGradient);
+
+        Path path = new Path();
+        path.getElements().add(new MoveTo(muleImage.getX() + 50,
+                muleImage.getY() + 50));
+        path.getElements().add(new LineTo(muleImage.getX(), muleImage.getY()
+                + 300));
+        path.getElements().add(new LineTo(muleImage.getX()
+                + 1200, muleImage.getY() + 300));
+        path.getElements().add(new LineTo(muleImage.getX()
+                + 1200, muleImage.getY() - 300));
+//        path.getElements().add(new LineTo(muleImage.getX()
+//                + 300, muleImage.getY()));
+
+        PathTransition pathTransition = new PathTransition(Duration.millis
+                (5000), path, muleImage);
+        pathTransition.play();
+
+//        FillTransition muleTransition1 = new FillTransition(
+//                Duration.millis(10000), muleImage, Color.RED, Color.YELLOW);
+
+
+
+//        System.out.println(game.getPlayers().toString());
+
+//        splashPane.setOnKeyPressed(event -> {
+//            if (event.getCode().equals(KeyCode.ENTER)) {
+//                System.out.println("pressing enter");
+//            }
+//        });
     }
 
     /**

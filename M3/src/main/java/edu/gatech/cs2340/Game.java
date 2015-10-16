@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
@@ -99,6 +100,8 @@ public class Game extends Application {
         gcfgController.setGame(this);
 
         this.scene = new Scene(root, 1600, 900);
+        stage.getIcons().add(new Image(Game.class.getResourceAsStream
+                ("/resources/mule.png")));
         stage.setTitle("MULE");
         stage.setScene(scene);
         stage.show();

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.configs.SplashScreenController">
+<Pane fx:id="splashPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.configs.SplashScreenController">
    <children>
-      <Rectangle fx:id="titleRect" arcHeight="5.0" arcWidth="5.0"
-                 fill="#ffffff00" height="346.0" layoutX="387.0" layoutY="44.0" stroke="BLACK" strokeLineCap="BUTT" strokeType="INSIDE" width="963.0" />
+      <Rectangle fx:id="titleRect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="346.0" layoutX="387.0" layoutY="44.0" stroke="BLACK" strokeLineCap="BUTT" strokeType="INSIDE" width="963.0" />
       <Text layoutX="459.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M.U.L.E." textAlignment="CENTER" wrappingWidth="834.345703125">
          <font>
             <Font name="Comic Sans MS" size="96.0" />
@@ -20,12 +19,16 @@
             <Font name="Comic Sans MS" size="29.0" />
          </font>
       </Text>
-      <Rectangle fx:id="namesRect" arcHeight="5.0" arcWidth="5.0"
-                 fill="#ffffff00" height="449.0" layoutX="695.0" layoutY="389.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
+      <Rectangle fx:id="namesRect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="449.0" layoutX="695.0" layoutY="389.0" stroke="BLACK" strokeType="INSIDE" width="369.0" />
       <Text layoutX="754.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Myron King&#10;Marc Lacayo&#10;Nick Liao&#10;Bilal Mawji&#10;Shyam Natarajan" textAlignment="CENTER" wrappingWidth="243.345703125">
          <font>
             <Font name="Comic Sans MS" size="29.0" />
          </font>
       </Text>
+      <ImageView fx:id="muleImage" fitHeight="134.0" fitWidth="160.0" layoutX="34.0" layoutY="390.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@mule.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

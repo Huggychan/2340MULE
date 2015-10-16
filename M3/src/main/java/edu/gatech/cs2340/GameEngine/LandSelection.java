@@ -26,6 +26,7 @@ public class LandSelection {
                 tile.setOwner(game.getCurrentPlayer());
                 game.getCurrentPlayer().addTile(tile);
             } else {
+                //TODO can't let person be removed
                 game.log("someone already owns this plot");
             }
         } else {

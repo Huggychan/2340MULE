@@ -224,9 +224,11 @@ public class Player implements Comparable<Player> {
         System.out.println(this.getName() + " " + inventory);
         for (Tile t : tiles) {
             ResourceType resource = t.getMuleResource();
-            System.out.println(resource);
-            Integer currentValue = inventory.get(resource);
-            inventory.put(resource, currentValue + t.calculateProduction());
+            if (resource != null) {
+                System.out.println(resource);
+                Integer currentValue = inventory.get(resource);
+                inventory.put(resource, currentValue + t.calculateProduction());
+            }
         }
         System.out.println(this.getName() + " " + inventory);
     }
