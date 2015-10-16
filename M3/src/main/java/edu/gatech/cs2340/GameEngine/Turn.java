@@ -83,6 +83,7 @@ public class Turn {
         this.game.getScene().setCursor(Cursor.DEFAULT);
         players.remove(game.getCurrentPlayer());
         game.timer.stop();
+
         if (players.isEmpty()) {
             calcProduction();
             game.incrementRound();

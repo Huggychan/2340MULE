@@ -151,8 +151,6 @@ public abstract class Tile extends StackPane {
         } else {
             map.getGame().log("Mule placed.");
             this.mule = mule;
-            System.out.println("Your mule type on this tile is now: "
-                    + this.getMuleResource());
             ImageView iv2 = new ImageView(
                     this.getMuleResource().getImageString());
             iv2.toFront();
@@ -164,7 +162,11 @@ public abstract class Tile extends StackPane {
     }
 
     public ResourceType getMuleResource () {
-        return this.getMule().getResourceType();
+        if (this.tileHasMule()) {
+            return this.getMule().getResourceType();
+        } else {
+            return null;
+        }
     }
 
     /**
