@@ -24,8 +24,8 @@ public class SplashScreen extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("/resources/SplashScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/resources/SplashScreen.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
 
         Parent newRoot = null;

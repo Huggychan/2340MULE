@@ -2,12 +2,12 @@ package edu.gatech.cs2340.configs;
 import edu.gatech.cs2340.Game;
 import javafx.animation.FillTransition;
 import javafx.animation.PathTransition;
-import javafx.event.EventHandler;
+//import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+//import javafx.scene.input.KeyCode;
+//import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -52,8 +52,8 @@ public class SplashScreenController implements Initializable {
      */
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         FillTransition fillTransition = new FillTransition(
-                Duration.millis(10000), titleRect, Color.RED, Color.BLUE);
-        fillTransition.setCycleCount(4);
+                Duration.millis(5000), titleRect, Color.RED, Color.BLUE);
+        fillTransition.setCycleCount(2);
         fillTransition.setAutoReverse(true);
         fillTransition.play();
 
@@ -74,18 +74,24 @@ public class SplashScreenController implements Initializable {
         Path path = new Path();
         path.getElements().add(new MoveTo(muleImage.getX() + 50,
                 muleImage.getY() + 50));
-        path.getElements().add(new LineTo(muleImage.getX(), muleImage.getY()
-                + 300));
+        path.getElements().add(new LineTo(muleImage.getX() + 50, muleImage
+                .getY() + 350));
         path.getElements().add(new LineTo(muleImage.getX()
-                + 1200, muleImage.getY() + 300));
+                + 1450, muleImage.getY() + 350));
         path.getElements().add(new LineTo(muleImage.getX()
-                + 1200, muleImage.getY() - 300));
-//        path.getElements().add(new LineTo(muleImage.getX()
-//                + 300, muleImage.getY()));
+                + 1450, muleImage.getY() - 300));
+        path.getElements().add(new LineTo(muleImage.getX()
+                + 50, muleImage.getY() - 300));
+        path.getElements().add(new LineTo(muleImage.getX()
+                + 50, muleImage.getY() - 50));
 
-        PathTransition pathTransition = new PathTransition(Duration.millis
-                (5000), path, muleImage);
+        PathTransition pathTransition
+                = new PathTransition(Duration.millis(10000), path, muleImage);
+//        FillTransition mulePath = new FillTransition(Duration.millis(10000),
+//                path, Color.RED, Color.BLUE);
+
         pathTransition.play();
+//        mulePath.play();
 
 //        FillTransition muleTransition1 = new FillTransition(
 //                Duration.millis(10000), muleImage, Color.RED, Color.YELLOW);
