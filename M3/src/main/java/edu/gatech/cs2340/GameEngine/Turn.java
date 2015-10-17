@@ -8,14 +8,21 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +39,7 @@ public class Turn {
     private Timeline timer;
 
     public boolean mule;
+    private Stage stage;
 
     public Turn(Game game) {
         this.game = game;
@@ -76,10 +84,14 @@ public class Turn {
         this.game.getScene().setCursor(Cursor.DEFAULT);
         players.remove(game.getCurrentPlayer());
         game.timer.stop();
+
         if (players.isEmpty()) {
             calcProduction();
             game.incrementRound();
             game.startRound();
+//            TODO change summary to beginning of turn
+            System.out.println("startin summary");
+            this.summary();
             label.setText("");
         } else {
             game.setCurrentPlayer(players.get(0));
@@ -148,5 +160,34 @@ public class Turn {
             p.calcProduction();
         }
     }
+
+    public void summary() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource
+                ("/resources/Summary.fxml"));
+        loader.setClassLoader(this.getClass().getClassLoader());
+
+        Parent root = null;
+
+        try {
+            root = loader.load();
+            root.toFront();
+        } catch (IOException e) {
+            System.out.println("IOException loading Summary.fxml");
+            System.out.println(e.getMessage());
+        }
+
+        Scene scene = new Scene(root, 1600, 900);
+//        TODO uncomment this code to see how Summary works
+//        this.game.getStage().setTitle("Summary!");
+//        this.game.getStage().setScene(scene);
+//        this.game.getStage().show();
+
+
+
+//        Rectangle2D bounds = Screen.getPrimary().getBounds();
+//        Scene scene = new Scene(root, bounds.getMaxX(), bounds.getMaxY());
+//        stage.setScene(scene);
+    }
+
 
 }

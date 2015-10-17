@@ -2,9 +2,7 @@ package edu.gatech.cs2340.GameEngine;
 
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.Tile;
-import edu.gatech.cs2340.Maps.TileType;
 import edu.gatech.cs2340.GameObject.Player;
-import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.Maps.TownTile;
 
 import java.util.LinkedList;
@@ -28,6 +26,7 @@ public class LandSelection {
                 tile.setOwner(game.getCurrentPlayer());
                 game.getCurrentPlayer().addTile(tile);
             } else {
+                //TODO can't let person be removed
                 game.log("someone already owns this plot");
             }
         } else {

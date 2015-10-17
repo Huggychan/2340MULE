@@ -96,8 +96,6 @@ public class TownMapController implements Initializable {
 
             int multiplier = r.nextInt(timeBonus);
 
-            System.out.println(timeLeft);
-
             int money = (int) roundBonus * multiplier;
 
             if (money > 250) {

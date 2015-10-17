@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
@@ -99,6 +100,8 @@ public class Game extends Application {
         gcfgController.setGame(this);
 
         this.scene = new Scene(root, 1600, 900);
+        stage.getIcons().add(new Image(Game.class.getResourceAsStream
+                ("/resources/mule.png")));
         stage.setTitle("MULE");
         stage.setScene(scene);
         stage.show();
@@ -121,6 +124,10 @@ public class Game extends Application {
 
     public void addPlayer(Player Player) {
         players.add(Player);
+    }
+
+    public int getNumPlayers() {
+        return this.numPlayers;
     }
 
     /**
@@ -346,6 +353,8 @@ public class Game extends Application {
     }
 
     public Scene getScene() { return this.scene; }
+
+    public Stage getStage() { return this.stage; }
 
     public boolean getTownEntered() {
         return this.townEntered;

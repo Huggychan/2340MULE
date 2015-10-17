@@ -16,14 +16,4 @@ public class RiverTile extends Tile {
         this.getResourceTypeMap().put(ResourceType.ORE, 0);
         this.getResourceTypeMap().put(ResourceType.CRYSTITE, 0);
     }
-
-    public int calculateProduction() {
-        int amount = 0;
-        if (this.getOwner().getEnergy() > 0 && this.tileHasMule()) {
-            this.getOwner().setEnergy(this.getOwner().getEnergy() - 1);
-            ResourceType resourceType = this.getMuleResource();
-            amount = this.getResourceTypeMap().get(resourceType);
-        }
-        return amount;
-    }
 }
