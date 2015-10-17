@@ -11,7 +11,7 @@ import java.util.Random;
 public class MountainThreeTile extends Tile {
 
     public MountainThreeTile() {
-        this.getImageView().setImage(new Image("/resources/Mountain3.jpg"));
+        this.getImageView().setImage(new Image("/resources/Mountain3.png"));
         this.getChildren().add(this.getImageView());
         Random r = new Random();
         int randomNum = r.nextInt(4);
