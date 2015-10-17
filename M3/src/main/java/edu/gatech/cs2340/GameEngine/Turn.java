@@ -22,6 +22,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +89,8 @@ public class Turn {
             calcProduction();
             game.incrementRound();
             game.startRound();
+//            TODO change summary to beginning of turn
+            System.out.println("startin summary");
             this.summary();
             label.setText("");
         } else {
@@ -160,27 +163,30 @@ public class Turn {
 
     public void summary() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("resources/Summary.fxml"));
+                ("/resources/Summary.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
 
         Parent root = null;
 
-        Rectangle2D bounds = Screen.getPrimary().getBounds();
-        Scene scene = new Scene(root, bounds.getMaxX(), bounds.getMaxY());
-        stage.setScene(scene);
-//        root.setClassLoader(this.getClass().getClassLoader());
+        try {
+            root = loader.load();
+            root.toFront();
+        } catch (IOException e) {
+            System.out.println("IOException loading Summary.fxml");
+            System.out.println(e.getMessage());
+        }
 
-//        Parent newRoot;
-//
-//        try {
-//            newRoot = loader.load();
-//            newRoot.toFront();
-//        } catch (IOException e) {
-//            System.out.println("IOException loading Summary.fxml");
-//            System.out.println(e.getMessage());
-//        }
-//        sc = loader.getController();
-//        showSummary = true;
+        Scene scene = new Scene(root, 1600, 900);
+//        TODO uncomment this code to see how Summary works
+//        this.game.getStage().setTitle("Summary!");
+//        this.game.getStage().setScene(scene);
+//        this.game.getStage().show();
+
+
+
+//        Rectangle2D bounds = Screen.getPrimary().getBounds();
+//        Scene scene = new Scene(root, bounds.getMaxX(), bounds.getMaxY());
+//        stage.setScene(scene);
     }
 
 

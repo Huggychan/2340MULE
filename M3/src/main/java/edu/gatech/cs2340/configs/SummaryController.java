@@ -8,9 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
@@ -50,6 +52,8 @@ public class SummaryController implements Initializable {
     private Label fourthScore;
     @FXML
     private Label summaryScore;
+    @FXML
+    private Button backToGame;
 
 
     private Game game;
@@ -76,9 +80,15 @@ public class SummaryController implements Initializable {
 //        System.out.println(game.getCurrentPlayer());
     }
 
-    /**
-     * @param game the game to be set
-     */
+
+    public void setOnKeyPressed() {
+        System.out.println("need to go to next round");
+    }
+
+
+        /**
+         * @param game the game to be set
+         */
     public void setGame(Game game) {
         this.game = game;
     }

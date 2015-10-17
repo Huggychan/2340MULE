@@ -354,6 +354,8 @@ public class Game extends Application {
 
     public Scene getScene() { return this.scene; }
 
+    public Stage getStage() { return this.stage; }
+
     public boolean getTownEntered() {
         return this.townEntered;
     }
