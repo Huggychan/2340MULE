@@ -8,6 +8,7 @@ import edu.gatech.cs2340.GameObject.Store;
 import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PlayerConfigController;
+import edu.gatech.cs2340.configs.SummaryController;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,7 @@ public class Game extends Application {
     private Store store;
     private Scene scene;
     private TownMapController tmc;
+    private SummaryController sumController;
     private boolean townEntered = false;
     private boolean storeEntered = false;
     public Timeline timer;
@@ -218,6 +220,7 @@ public class Game extends Application {
         state = GameState.LANDSELECTION;
         Collections.sort(this.players);
         currentPlayerIndex = 0;
+//        summary();
         landselection = new LandSelection(this);
     }
 
@@ -256,8 +259,25 @@ public class Game extends Application {
     }
 
     public void summary() {
-        state = GameState.SUMMARY;
-        System.out.println(System.getProperty("user.dir"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource
+                ("/resources/Summary.fxml"));
+        loader.setClassLoader(this.getClass().getClassLoader());
+
+        Parent root = null;
+
+        try {
+            root = loader.load();
+            root.toFront();
+        } catch (IOException e) {
+            System.out.println("IOException loading Summary.fxml");
+            System.out.println(e.getMessage());
+        }
+
+        sumController = loader.getController();
+        sumController.setGame(this);
+        stage.getScene().setRoot(root);
+        stage.setTitle("Summary!");
+        stage.show();
     }
 
     /*

@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.configs;
 
 import edu.gatech.cs2340.Game;
+import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.Race;
 import javafx.collections.FXCollections;
@@ -12,8 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -53,7 +56,7 @@ public class SummaryController implements Initializable {
     @FXML
     private Label summaryScore;
     @FXML
-    private Button backToGame;
+    private Pane summaryPane;
 
 
     private Game game;
@@ -61,6 +64,7 @@ public class SummaryController implements Initializable {
     private Image secondPlace;
     private Image thirdPlace;
     private Image fourthPlace;
+    private LandSelection landSelection;
 
     /**
      * Initializes the fxml file
@@ -76,6 +80,12 @@ public class SummaryController implements Initializable {
         thirdImage.setImage(thirdPlace);
         fourthPlace = new Image("resources/MULE_Flapper.png");
         fourthImage.setImage(fourthPlace);
+
+        summaryPane.setOnKeyPressed( event -> {
+            if(event.getCode().equals(KeyCode.ENTER)) {
+                System.out.println("Pressing enter");
+            }
+        });
 //        firstScore.setText(game.getPlayers().get(0).toString());
 //        System.out.println(game.getCurrentPlayer());
     }
@@ -83,6 +93,7 @@ public class SummaryController implements Initializable {
 
     public void setOnKeyPressed() {
         System.out.println("need to go to next round");
+//        landSelection = new LandSelection(this.game);
     }
 
 

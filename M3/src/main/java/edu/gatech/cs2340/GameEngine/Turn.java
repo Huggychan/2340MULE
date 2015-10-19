@@ -89,9 +89,6 @@ public class Turn {
             calcProduction();
             game.incrementRound();
             game.startRound();
-//            TODO change summary to beginning of turn
-            System.out.println("startin summary");
-            this.summary();
             label.setText("");
         } else {
             game.setCurrentPlayer(players.get(0));
@@ -161,6 +158,7 @@ public class Turn {
         }
     }
 
+//    TODO summary should be at beginning of turn
     public void summary() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/Summary.fxml"));
@@ -177,13 +175,9 @@ public class Turn {
         }
 
         Scene scene = new Scene(root, 1600, 900);
-//        TODO uncomment this code to see how Summary works
-//        this.game.getStage().setTitle("Summary!");
-//        this.game.getStage().setScene(scene);
-//        this.game.getStage().show();
-
-
-
+        this.game.getStage().setTitle("Summary!");
+        this.game.getStage().setScene(scene);
+        this.game.getStage().show();
 //        Rectangle2D bounds = Screen.getPrimary().getBounds();
 //        Scene scene = new Scene(root, bounds.getMaxX(), bounds.getMaxY());
 //        stage.setScene(scene);
