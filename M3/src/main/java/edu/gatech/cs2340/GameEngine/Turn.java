@@ -94,6 +94,7 @@ public class Turn {
             game.setCurrentPlayer(players.get(0));
             setTurnTime();
             turnTimerCreator();
+            game.generateRandomEvent();
         }
 
     }

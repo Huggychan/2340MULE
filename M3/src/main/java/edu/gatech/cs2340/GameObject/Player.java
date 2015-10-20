@@ -31,6 +31,9 @@ public class Player implements Comparable<Player> {
 
     public void setMoney(int money) {
         this.money = money;
+        if (money < 0) {
+            this.money = 0;
+        }
     }
 
     public int getFood() {
@@ -158,18 +161,30 @@ public class Player implements Comparable<Player> {
 
     public void setFood(int food) {
         inventory.put(ResourceType.FOOD, food);
+        if (food < 0) {
+            inventory.put(ResourceType.FOOD, food);
+        }
     }
 
     public void setEnergy(int energy) {
         inventory.put(ResourceType.ENERGY, energy);
+        if (energy < 0) {
+            inventory.put(ResourceType.ENERGY, energy);
+        }
     }
 
     public void setOre(int ore) {
         inventory.put(ResourceType.ORE, ore);
+        if (ore < 0) {
+            inventory.put(ResourceType.ORE, ore);
+        }
     }
 
     public void setCrystite(int crystite) {
         inventory.put(ResourceType.CRYSTITE, crystite);
+        if (crystite < 0) {
+            inventory.put(ResourceType.CRYSTITE, crystite);
+        }
     }
 
 

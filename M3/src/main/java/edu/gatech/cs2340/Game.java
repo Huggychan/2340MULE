@@ -1,6 +1,7 @@
 package edu.gatech.cs2340;
 //TODO fix stuff that violates Law of Demeter
 import edu.gatech.cs2340.GameEngine.LandSelection;
+import edu.gatech.cs2340.GameEngine.RandomEventGenerator;
 import edu.gatech.cs2340.GameEngine.Turn;
 import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
@@ -50,6 +51,7 @@ public class Game extends Application {
     private boolean townEntered = false;
     private boolean storeEntered = false;
     public Timeline timer;
+    private RandomEventGenerator randomEventGenerator;
 
     public enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION, STORE, TOWN, SUMMARY, MULE}
@@ -79,6 +81,7 @@ public class Game extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
+        randomEventGenerator = new RandomEventGenerator(this);
         this.store = new Store();
         roundNumber = 1;
         players = new ArrayList<>();
@@ -227,6 +230,7 @@ public class Game extends Application {
     public void startTurns() {
         state = GameState.TURN;
         turn = new Turn(this);
+        generateRandomEvent();
     }
 
     public void placeMule() {
@@ -375,6 +379,10 @@ public class Game extends Application {
     public Scene getScene() { return this.scene; }
 
     public Stage getStage() { return this.stage; }
+
+    public void generateRandomEvent() {
+        this.randomEventGenerator.generateRandom();
+    }
 
     public boolean getTownEntered() {
         return this.townEntered;
