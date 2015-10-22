@@ -47,7 +47,7 @@ public class Game extends Application {
     private Store store;
     private Scene scene;
     private TownMapController tmc;
-    private SummaryController sumController;
+    private SummaryController summaryController;
     private boolean townEntered = false;
     private boolean storeEntered = false;
     public Timeline timer;
@@ -223,6 +223,7 @@ public class Game extends Application {
         state = GameState.LANDSELECTION;
         Collections.sort(this.players);
         currentPlayerIndex = 0;
+//        TODO fix this section
 //        summary();
         landselection = new LandSelection(this);
     }
@@ -277,8 +278,8 @@ public class Game extends Application {
             System.out.println(e.getMessage());
         }
 
-        sumController = loader.getController();
-        sumController.setGame(this);
+        summaryController = loader.getController();
+        summaryController.setGame(this);
         stage.getScene().setRoot(root);
         stage.setTitle("Summary!");
         stage.show();

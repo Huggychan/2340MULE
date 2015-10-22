@@ -2,6 +2,7 @@ package edu.gatech.cs2340.GameObject;
 
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.Tile;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -50,6 +51,11 @@ public class Player implements Comparable<Player> {
 
     public int getCrystite() {
         return inventory.get(ResourceType.CRYSTITE);
+    }
+
+    public Image getPlayerImage() {
+        String imageString = "/resources/" + this.getRace() + ".png";
+        return new Image(imageString);
     }
 
     public Player(String name, Race race, String colorString, Game game) {
@@ -198,7 +204,7 @@ public class Player implements Comparable<Player> {
         if (this == other) return true;
         if (!(other instanceof Player)) return false;
         Player that = (Player)other;
-        return this.name.equals(that.name) && this.color.equals(that.color);
+        return this.name.equals(that.name) || this.color.equals(that.color);
     }
 
     @Override

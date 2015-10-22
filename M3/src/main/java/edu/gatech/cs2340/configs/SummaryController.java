@@ -20,6 +20,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -57,7 +58,8 @@ public class SummaryController implements Initializable {
     private Label summaryScore;
     @FXML
     private Pane summaryPane;
-
+    @FXML
+    private Button goToGameButton;
 
     private Game game;
     private Image firstPlace;
@@ -65,6 +67,7 @@ public class SummaryController implements Initializable {
     private Image thirdPlace;
     private Image fourthPlace;
     private LandSelection landSelection;
+    private ArrayList<Player> players;
 
     /**
      * Initializes the fxml file
@@ -72,8 +75,10 @@ public class SummaryController implements Initializable {
      * @param resources Resources needed
      */
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-        firstPlace = new Image("resources/MULE_Humanoid.png");
-        firstImage.setImage(firstPlace);
+//        players = (ArrayList<Player>) game.getPlayers();
+//        System.out.println(players.toString());
+//        firstPlace = new Image("resources/MULE_Humanoid.png");
+        firstImage.setImage(getPlayerImage(0));
         secondPlace = new Image("resources/MULE_Bonzoid.png");
         secondImage.setImage(secondPlace);
         thirdPlace = new Image("resources/MULE_Buzzite.jpg");
@@ -81,18 +86,19 @@ public class SummaryController implements Initializable {
         fourthPlace = new Image("resources/MULE_Flapper.png");
         fourthImage.setImage(fourthPlace);
 
-        summaryPane.setOnKeyPressed( event -> {
-            if(event.getCode().equals(KeyCode.ENTER)) {
-                System.out.println("Pressing enter");
-            }
-        });
+//        summaryPane.setOnKeyPressed(event -> {
+//            if (event.getCode().equals(KeyCode.ENTER)) {
+//                printGame();
+//            }
+//        });
 //        firstScore.setText(game.getPlayers().get(0).toString());
 //        System.out.println(game.getCurrentPlayer());
     }
 
 
     public void setOnKeyPressed() {
-        System.out.println("need to go to next round");
+        printGame();
+        //setImagesPlayer();
 //        landSelection = new LandSelection(this.game);
     }
 
@@ -102,5 +108,22 @@ public class SummaryController implements Initializable {
          */
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public void printGame() {
+        System.out.println(this.game);
+        System.out.println(game.getPlayers().toString());
+        System.out.println(game.getCurrentPlayer());
+    }
+
+    public Image getPlayerImage(int index) {
+        if (index < game.getPlayers().size()) {
+            Player player = this.game.getPlayers().get(index);
+            String imageString = player.getRace().getImageString();
+            System.out.println(imageString);
+            return new Image(imageString);
+        }
+
+        return null;
     }
 }
