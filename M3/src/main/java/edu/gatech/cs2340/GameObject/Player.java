@@ -53,6 +53,17 @@ public class Player implements Comparable<Player> {
         return inventory.get(ResourceType.CRYSTITE);
     }
 
+    public int getLand() {
+        return tiles.size();
+    }
+
+    /**
+     * @return Sum of food, energy, crystite, and ore
+     */
+    public int getGoods() {
+        return getFood() + getEnergy() + getCrystite() + getOre();
+    }
+
     public Image getPlayerImage() {
         String imageString = "/resources/" + this.getRace() + ".png";
         return new Image(imageString);

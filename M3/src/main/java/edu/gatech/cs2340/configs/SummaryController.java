@@ -59,7 +59,7 @@ public class SummaryController implements Initializable {
     @FXML
     private Pane summaryPane;
     @FXML
-    private Button goToGameButton;
+    private Button showButton;
 
     private Game game;
     private Image firstPlace;
@@ -75,16 +75,14 @@ public class SummaryController implements Initializable {
      * @param resources Resources needed
      */
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-//        players = (ArrayList<Player>) game.getPlayers();
-//        System.out.println(players.toString());
 //        firstPlace = new Image("resources/MULE_Humanoid.png");
-        firstImage.setImage(getPlayerImage(0));
-        secondPlace = new Image("resources/MULE_Bonzoid.png");
-        secondImage.setImage(secondPlace);
-        thirdPlace = new Image("resources/MULE_Buzzite.jpg");
-        thirdImage.setImage(thirdPlace);
-        fourthPlace = new Image("resources/MULE_Flapper.png");
-        fourthImage.setImage(fourthPlace);
+//        firstImage.setImage(getPlayerImage(0));
+//        secondPlace = new Image("resources/MULE_Bonzoid.png");
+//        secondImage.setImage(secondPlace);
+//        thirdPlace = new Image("resources/MULE_Buzzite.jpg");
+//        thirdImage.setImage(thirdPlace);
+//        fourthPlace = new Image("resources/MULE_Flapper.png");
+//        fourthImage.setImage(fourthPlace);
 
 //        summaryPane.setOnKeyPressed(event -> {
 //            if (event.getCode().equals(KeyCode.ENTER)) {
@@ -97,33 +95,41 @@ public class SummaryController implements Initializable {
 
 
     public void setOnKeyPressed() {
-        printGame();
-        //setImagesPlayer();
+        firstImage.setImage(getPlayerImage(0));
+        secondImage.setImage(getPlayerImage(1));
+        thirdImage.setImage(getPlayerImage(2));
+        fourthImage.setImage(getPlayerImage(3));
+
+        firstScore.setText(getPlayerScore(0));
+        secondScore.setText(getPlayerScore(1));
+        thirdScore.setText(getPlayerScore(2));
+        fourthScore.setText(getPlayerScore(3));
 //        landSelection = new LandSelection(this.game);
     }
 
 
-        /**
-         * @param game the game to be set
-         */
+    /**
+     * @param game the game to be set
+     */
     public void setGame(Game game) {
         this.game = game;
-    }
-
-    public void printGame() {
-        System.out.println(this.game);
-        System.out.println(game.getPlayers().toString());
-        System.out.println(game.getCurrentPlayer());
     }
 
     public Image getPlayerImage(int index) {
         if (index < game.getPlayers().size()) {
             Player player = this.game.getPlayers().get(index);
             String imageString = player.getRace().getImageString();
-            System.out.println(imageString);
             return new Image(imageString);
         }
+        return null;
+    }
 
+    public String  getPlayerScore(int index) {
+        if (index < game.getPlayers().size()) {
+            Player player = this.game.getPlayers().get(index);
+            return player.getMoney() + "\n" + player.getLand() + "\n"
+                    + player.getGoods() + "\n" + player.getScore();
+        }
         return null;
     }
 }
