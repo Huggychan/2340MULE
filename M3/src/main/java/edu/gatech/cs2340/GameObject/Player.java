@@ -26,6 +26,9 @@ public class Player implements Comparable<Player> {
     private Game game;
     public boolean muleBoughtThisTurn = false;
 
+    /**
+     * @return Money of player
+     */
     public int getMoney() {
         return money;
     }
@@ -37,22 +40,37 @@ public class Player implements Comparable<Player> {
         }
     }
 
+    /**
+     * @return Food of player
+     */
     public int getFood() {
         return inventory.get(ResourceType.FOOD);
     }
 
+    /**
+     * @return Ore of player
+     */
     public int getOre() {
         return inventory.get(ResourceType.ORE);
     }
 
+    /**
+     * @return Energy of player
+     */
     public int getEnergy() {
         return inventory.get(ResourceType.ENERGY);
     }
 
+    /**
+     * @return Crystite of player
+     */
     public int getCrystite() {
         return inventory.get(ResourceType.CRYSTITE);
     }
 
+    /**
+     * @return Number of Land tiles player owns
+     */
     public int getLand() {
         return tiles.size();
     }
@@ -69,6 +87,13 @@ public class Player implements Comparable<Player> {
         return new Image(imageString);
     }
 
+    /**
+     * Player constructor
+     * @param name Name of player
+     * @param race Race of player
+     * @param colorString Color of player in string format
+     * @param game Game player is in
+     */
     public Player(String name, Race race, String colorString, Game game) {
         this.inventory = new HashMap<>();
         inventory.put(ResourceType.CRYSTITE, 0);
@@ -82,38 +107,40 @@ public class Player implements Comparable<Player> {
         this.race = race;
         this.colorString = colorString;
         switch (colorString) {
-            case "Red":
-                color = Color.RED;
-                break;
-            case "Orange":
-                color = Color.ORANGE;
-                break;
-            case "Yellow":
-                color = Color.YELLOW;
-                break;
-            case "Green":
-                color = Color.GREEN;
-                break;
-            case "Blue":
-                color = Color.BLUE;
-                break;
-            case "Purple":
-                color = Color.PURPLE;
-                break;
+        case "Red":
+            color = Color.RED;
+            break;
+        case "Orange":
+            color = Color.ORANGE;
+            break;
+        case "Yellow":
+            color = Color.YELLOW;
+            break;
+        case "Green":
+            color = Color.GREEN;
+            break;
+        case "Blue":
+            color = Color.BLUE;
+            break;
+        case "Purple":
+            color = Color.PURPLE;
+            break;
+        default:
+            break;
         }
         switch (race) {
-            case HUMAN:
-                this.money = 600;
-                break;
-            case FLAPPER:
-                this.money = 1600;
-                break;
-            default:
-                this.money = 1000;
-                break;
+        case HUMAN:
+            this.money = 600;
+            break;
+        case FLAPPER:
+            this.money = 1600;
+            break;
+        default:
+            this.money = 1000;
+            break;
         }
     }
-    public void addTile (Tile t) {
+    public void addTile(Tile t) {
         tiles.add(t);
     }
 
@@ -149,9 +176,14 @@ public class Player implements Comparable<Player> {
         return color;
     }
 
+    /**
+     * Gets color in string format
+     * @return Color in string format
+     */
     public String getColorString() {
         return colorString;
     }
+
     /**
      * Sets the Name of Player
      * @param name Name to be set for Player
@@ -224,6 +256,9 @@ public class Player implements Comparable<Player> {
         return 31 * result + name.hashCode() + color.hashCode();
     }
 
+    /**
+     * @return Score of player
+     */
     public int getScore() {
         int returnValue = this.getMoney() + this.tiles.size();
         for (Integer i : inventory.values()) {
