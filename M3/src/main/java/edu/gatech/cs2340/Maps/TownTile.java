@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 public class TownTile extends Tile {
 
     public TownTile() {
-        this.getImageView().setImage(new Image("/resources/Town.jpg"));
+        this.getImageView().setImage(new Image("/resources/Town.png"));
         this.getChildren().add(this.getImageView());
     }
 }
