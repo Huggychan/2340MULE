@@ -13,14 +13,22 @@ public enum Race {
 
     private String imageString;
 
+    /**
+     * Constructor for Race
+     * @param imageString String file location of image
+     */
     private Race(String imageString) {
         this.imageString = imageString;
     }
 
+    @Override
     public String toString() {
-        return name().substring(0,1) + name().toLowerCase().substring(1);
+        return name().substring(0, 1) + name().toLowerCase().substring(1);
     }
 
+    /**
+     * @return String of Image location
+     */
     public String getImageString() {
         return this.imageString;
     }
