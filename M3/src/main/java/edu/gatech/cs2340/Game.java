@@ -12,15 +12,19 @@ import edu.gatech.cs2340.configs.PlayerConfigController;
 import edu.gatech.cs2340.configs.SummaryController;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+import javax.swing.event.DocumentEvent;
+import java.beans.EventHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -216,6 +220,13 @@ public class Game extends Application {
         log = new EventLog();
         map.getStackPane().getChildren().add(log);
         StackPane.setAlignment(log, Pos.TOP_CENTER);
+        stage.getScene().setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.SPACE) {
+                if (this.state == GameState.LANDSELECTION) {
+                    landselection.buy(null);
+                }
+            }
+        });
         startRound();
     }
 

@@ -10,7 +10,12 @@ import java.util.LinkedList;
 public class LandSelection {
     private Game game;
     private LinkedList<Player> GameObjectActive;
-
+    /*this is a terrible name lol
+      its also capitalized
+      The list will have one instance of player at a time, and if the player
+      buys and still has enough money, they will be added back to the end of
+      the list.
+    */
     public LandSelection(Game game) {
         this.game = game;
         GameObjectActive = new LinkedList<>();
@@ -18,6 +23,12 @@ public class LandSelection {
     }
 
     public void buy(Tile tile) {
+        if (tile == null) {
+            if (game.getRoundNumber() > 2) {
+                pass();
+            }
+            return;
+        }
         if (tile instanceof TownTile) {
             return;
         }
@@ -53,6 +64,14 @@ public class LandSelection {
     public void pass() {
         if (GameObjectActive.isEmpty()) {
             game.startTurns();
+        } else {
+            game.log(game.getCurrentPlayer().getName() + "Passes.");
+            GameObjectActive.remove(game.getCurrentPlayer());
+            if (GameObjectActive.isEmpty()) {
+                pass();
+            } else {
+                game.setCurrentPlayer(GameObjectActive.peek());
+            }
         }
     }
 }

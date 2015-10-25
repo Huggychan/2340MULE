@@ -91,8 +91,7 @@ public class MapController implements Initializable {
         }
     }
 
-    public void onMouseEntered() {
-    }
+
 
     public void putBorderOnImageView(MouseEvent event) {
         DropShadow ds = new DropShadow(20, Color.BLACK);
