@@ -10,7 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
+//import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
-import javafx.stage.Screen;
+//import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -41,6 +41,10 @@ public class Turn {
     public boolean mule;
     private Stage stage;
 
+    /**
+     * Turn Constructor
+     * @param game Game being played
+     */
     public Turn(Game game) {
         this.game = game;
         players = new ArrayList<>();
@@ -80,7 +84,7 @@ public class Turn {
     public void endPlayerTurn() {
         game.setState(Game.GameState.TURN);
         game.getCurrentPlayer().setMule(null);
-        game.getCurrentPlayer().muleBoughtThisTurn = false;
+        game.getCurrentPlayer().setMuleBoughtThisTurn(false);
         this.game.getScene().setCursor(Cursor.DEFAULT);
         players.remove(game.getCurrentPlayer());
         game.timer.stop();
@@ -148,10 +152,16 @@ public class Turn {
         timer.play();
     }
 
+    /**
+     * @return Gets the label
+     */
     public Label getLabel() {
         return label;
     }
 
+    /**
+     * Calculates production for each player
+     */
     private void calcProduction() {
         List<Player> players = game.getPlayers();
         for (Player p : players) {
@@ -159,30 +169,29 @@ public class Turn {
         }
     }
 
-//    TODO summary should be at beginning of turn
-    public void summary() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("/resources/Summary.fxml"));
-        loader.setClassLoader(this.getClass().getClassLoader());
-
-        Parent root = null;
-
-        try {
-            root = loader.load();
-            root.toFront();
-        } catch (IOException e) {
-            System.out.println("IOException loading Summary.fxml");
-            System.out.println(e.getMessage());
-        }
-
-        Scene scene = new Scene(root, 1600, 900);
-        this.game.getStage().setTitle("Summary!");
-        this.game.getStage().setScene(scene);
-        this.game.getStage().show();
+//    public void summary() {
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource
+//                ("/resources/Summary.fxml"));
+//        loader.setClassLoader(this.getClass().getClassLoader());
+//
+//        Parent root = null;
+//
+//        try {
+//            root = loader.load();
+//            root.toFront();
+//        } catch (IOException e) {
+//            System.out.println("IOException loading Summary.fxml");
+//            System.out.println(e.getMessage());
+//        }
+//
+//        Scene scene = new Scene(root, 1600, 900);
+//        this.game.getStage().setTitle("Summary!");
+//        this.game.getStage().setScene(scene);
+//        this.game.getStage().show();
 //        Rectangle2D bounds = Screen.getPrimary().getBounds();
 //        Scene scene = new Scene(root, bounds.getMaxX(), bounds.getMaxY());
 //        stage.setScene(scene);
-    }
+//    }
 
 
 }

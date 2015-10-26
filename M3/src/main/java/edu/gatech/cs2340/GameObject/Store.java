@@ -80,8 +80,8 @@ public class Store {
                 System.out.println("Player's inventory after: " + player.getInventory());
                 return true;
             } else {
-                if (player.getMule() == null && !player.muleBoughtThisTurn) {
-                    player.muleBoughtThisTurn = true;
+                if (player.getMule() == null && !player.getMuleBoughtThisTurn()) {
+                    player.setMuleBoughtThisTurn(true);
                     this.decrementKeyInMap(rt, this.inventoryStock);
                     player.giveMule();
                     player.decrementMoney(price);

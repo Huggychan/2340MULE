@@ -24,7 +24,7 @@ public class Player implements Comparable<Player> {
     private int money;
     private Mule mule;
     private Game game;
-    public boolean muleBoughtThisTurn = false;
+    private boolean muleBoughtThisTurn;
 
     /**
      * @return Money of player
@@ -33,6 +33,10 @@ public class Player implements Comparable<Player> {
         return money;
     }
 
+    /**
+     * Sets money of person
+     * @param money Money to set for the person
+     */
     public void setMoney(int money) {
         this.money = money;
         if (money < 0) {
@@ -82,6 +86,24 @@ public class Player implements Comparable<Player> {
         return getFood() + getEnergy() + getCrystite() + getOre();
     }
 
+    /**
+     * @return True if Mule was bought during the turn
+     */
+    public boolean getMuleBoughtThisTurn() {
+        return this.muleBoughtThisTurn;
+    }
+
+    /**
+     * Sets Mule Bought This Turn
+     * @param bool Boolean to set muleBoughtThisTurn
+     */
+    public void setMuleBoughtThisTurn(boolean bool) {
+        this.muleBoughtThisTurn = bool;
+    }
+
+    /**
+     * @return Gets the image of the player
+     */
     public Image getPlayerImage() {
         String imageString = "/resources/" + this.getRace() + ".png";
         return new Image(imageString);
@@ -102,6 +124,7 @@ public class Player implements Comparable<Player> {
         inventory.put(ResourceType.ENERGY, 0);
         this.game = game;
         this.tiles = new ArrayList<>();
+        this.muleBoughtThisTurn = false;
 
         this.name = name;
         this.race = race;
@@ -140,6 +163,11 @@ public class Player implements Comparable<Player> {
             break;
         }
     }
+
+    /**
+     * Adds the tile to the player's collection of tiles
+     * @param t tile to add to player's collection
+     */
     public void addTile(Tile t) {
         tiles.add(t);
     }
@@ -208,6 +236,10 @@ public class Player implements Comparable<Player> {
         this.color = color;
     }
 
+    /**
+     * Sets food of person
+     * @param food Food to set for the person
+     */
     public void setFood(int food) {
         inventory.put(ResourceType.FOOD, food);
         if (food < 0) {
@@ -215,6 +247,10 @@ public class Player implements Comparable<Player> {
         }
     }
 
+    /**
+     * Sets energy of person
+     * @param energy Energy to set for the person
+     */
     public void setEnergy(int energy) {
         inventory.put(ResourceType.ENERGY, energy);
         if (energy < 0) {
@@ -222,6 +258,10 @@ public class Player implements Comparable<Player> {
         }
     }
 
+    /**
+     * Sets ore of person
+     * @param ore Ore to set for the person
+     */
     public void setOre(int ore) {
         inventory.put(ResourceType.ORE, ore);
         if (ore < 0) {
@@ -229,6 +269,10 @@ public class Player implements Comparable<Player> {
         }
     }
 
+    /**
+     * Sets crystite of person
+     * @param crystite Crystite to set for the person
+     */
     public void setCrystite(int crystite) {
         inventory.put(ResourceType.CRYSTITE, crystite);
         if (crystite < 0) {
@@ -244,9 +288,13 @@ public class Player implements Comparable<Player> {
 
     @Override
     public boolean equals(Object other) {
-        if (this == other) return true;
-        if (!(other instanceof Player)) return false;
-        Player that = (Player)other;
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof Player)) {
+            return false;
+        }
+        Player that = (Player) other;
         return this.name.equals(that.name) || this.color.equals(that.color);
     }
 
@@ -267,26 +315,40 @@ public class Player implements Comparable<Player> {
         return returnValue;
     }
 
+    @Override
     public int compareTo(Player other) {
         return other.getScore() - this.getScore();
     }
 
+    /**
+     * @return Inventory of player
+     */
     public HashMap<ResourceType, Integer> getInventory() {
         return this.inventory;
     }
 
+    /**
+     * Decrements money of player
+     * @param amount amount to decrement by
+     */
     public void decrementMoney(int amount) {
         if (this.money > amount) {
             this.money = this.money - amount;
         }
     }
 
+    /**
+     * Gives mule to player
+     */
     public void giveMule() {
         if (this.mule == null) {
             this.mule = new Mule(this);
         }
     }
 
+    /**
+     * Calculates production for the player
+     */
     public void calcProduction() {
         System.out.println(this.getName() + " " + inventory);
         for (Tile t : tiles) {
@@ -300,23 +362,39 @@ public class Player implements Comparable<Player> {
         System.out.println(this.getName() + " " + inventory);
     }
 
+    /**
+     * @return Mule belonging to player
+     */
     public Mule getMule() {
         return this.mule;
     }
 
+    /**
+     * Sets mule for player
+     * @param mule Mule to be set to player
+     */
     public void setMule(Mule mule) {
         this.mule = mule;
     }
 
-
+    /**
+     * @return True if player has a mule
+     */
     public boolean hasMule() {
         return this.mule != null;
     }
 
+    /**
+     * Takes mule from player
+     */
     public void takeMule() {
         this.mule = null;
     }
 
+    /**
+     * Increments money of player
+     * @param amount amount to increment by
+     */
     public void incrementMoney(int amount) {
         this.money = this.money + amount;
     }

@@ -109,7 +109,7 @@ public class StoreController implements Initializable {
                     Image image = mule.getImage();
                     this.game.getScene().setCursor(new ImageCursor(image));
                     this.onStoreLeave();
-                } else if (game.getCurrentPlayer().muleBoughtThisTurn) {
+                } else if (game.getCurrentPlayer().getMuleBoughtThisTurn()) {
                     game.getLog().log("You have already bought a mule this turn");
                 }
             } else {

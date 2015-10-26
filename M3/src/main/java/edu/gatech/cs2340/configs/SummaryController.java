@@ -3,22 +3,22 @@ package edu.gatech.cs2340.configs;
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameObject.Player;
-import edu.gatech.cs2340.GameObject.Race;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+//import edu.gatech.cs2340.GameObject.Race;
+//import javafx.collections.FXCollections;
+//import javafx.event.ActionEvent;
+//import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+//import javafx.scene.input.KeyCode;
+//import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -94,6 +94,9 @@ public class SummaryController implements Initializable {
     }
 
 
+    /**
+     * Sets Images and Scores of Players
+     */
     public void setOnKeyPressed() {
         firstImage.setImage(getPlayerImage(0));
         secondImage.setImage(getPlayerImage(1));
@@ -115,6 +118,10 @@ public class SummaryController implements Initializable {
         this.game = game;
     }
 
+    /**
+     * @param index Index of player in game
+     * @return Image of Player
+     */
     public Image getPlayerImage(int index) {
         if (index < game.getPlayers().size()) {
             Player player = this.game.getPlayers().get(index);
@@ -124,7 +131,11 @@ public class SummaryController implements Initializable {
         return null;
     }
 
-    public String  getPlayerScore(int index) {
+    /**
+     * @param index Index of plaer in game
+     * @return Score of player
+     */
+    public String getPlayerScore(int index) {
         if (index < game.getPlayers().size()) {
             Player player = this.game.getPlayers().get(index);
             return player.getMoney() + "\n" + player.getLand() + "\n"

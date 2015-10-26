@@ -46,11 +46,11 @@ public class GameConfigController implements Initializable {
                 .getAllMapTypes()));
         mapBox.getSelectionModel().selectFirst();
 
-        gameConfigPane.setOnKeyPressed( event -> {
-            if(event.getCode().equals(KeyCode.ENTER)) {
-                passToGame();
-            }
-        });
+        gameConfigPane.setOnKeyPressed(event -> {
+                if (event.getCode().equals(KeyCode.ENTER)) {
+                    passToGame();
+                }
+            });
     }
 
     /**

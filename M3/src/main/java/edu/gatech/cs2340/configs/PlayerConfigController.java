@@ -40,7 +40,7 @@ public class PlayerConfigController implements Initializable {
 
     private int playerNumber;
     private Game game;
-    private Player Player;
+    private Player player;
     private ArrayList<String> tempColor;
     private Game.Difficulty difficulty;
 
@@ -62,22 +62,23 @@ public class PlayerConfigController implements Initializable {
         race.getSelectionModel().selectFirst();
 
         start.setOnAction(event -> {
-            if (name.getText() == null || name.getText().trim().isEmpty()) {
-                welcome.setText("Name must include at least one character"
-                        + "\nPlease enter a valid name");
-            } else {
-                Player = new Player(name.getCharacters().toString(),
-                        race.getValue(), color.getValue(), game);
-                if (game.comparePlayers(Player)) {
-                    welcome.setText("Please enter a different name or color");
+                if (name.getText() == null || name.getText().trim().isEmpty()) {
+                    welcome.setText("Name must include at least one character"
+                            + "\nPlease enter a valid name");
                 } else {
-                    game.addPlayer(Player);
-                    game.nextState(playerNumber);
+                    player = new Player(name.getCharacters().toString(),
+                            race.getValue(), color.getValue(), game);
+                    if (game.comparePlayers(player)) {
+                        welcome.setText("Please enter a different "
+                                + "name or color");
+                    } else {
+                        game.addPlayer(player);
+                        game.nextState(playerNumber);
+                    }
+                    //if someone could figure out how to delay before
+                    //moving onto next part that would be gr8 m8
                 }
-                //if someone could figure out how to delay before
-                //moving onto next part that would be gr8 m8
-            }
-        });
+            });
         start.defaultButtonProperty().bind(name.focusedProperty());
     }
 
@@ -99,6 +100,10 @@ public class PlayerConfigController implements Initializable {
         color.getSelectionModel().selectFirst();
     }
 
+    /**
+     * Sets player number on Person Config Screen
+     * @param i Number for player
+     */
     public void setPlayerNumber(int i) {
         playerNumber = i;
         title.setText("Welcome Player " + playerNumber + "\n select your "
