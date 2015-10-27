@@ -40,5 +40,6 @@
             <Font size="74.0" />
          </font>
       </Label>
+      <Button fx:id="loadGameButton" layoutX="912.0" layoutY="491.0" mnemonicParsing="false" onAction="#loadGame" text="Load Game" />
    </children>
 </Pane>

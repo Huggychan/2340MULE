@@ -12,50 +12,50 @@ import edu.gatech.cs2340.configs.PlayerConfigController;
 import edu.gatech.cs2340.configs.SummaryController;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-import javax.swing.event.DocumentEvent;
-import java.beans.EventHandler;
-import java.io.IOException;
+
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Game extends Application {
+public class Game extends Application implements Serializable {
 
     private ArrayList<Player> players;
     private ArrayList<String> colors;
     private int numPlayers;
     private MapType mapType;
     private Difficulty difficulty;
-    private Stage stage;
+    private transient Stage stage;
     private int currentPlayerIndex;
     private GameState state;
     private int roundNumber;
-    private LandSelection landselection;
+    private transient LandSelection landselection;
     private Turn turn;
     private Mule mule;
     private MapController map;
-    private EventLog log;
+    private transient EventLog log;
     private Store store;
-    private Scene scene;
-    private TownMapController tmc;
-    private SummaryController summaryController;
+    private transient Scene scene;
+    private transient TownMapController tmc;
+    private transient SummaryController summaryController;
     private boolean townEntered = false;
     private boolean storeEntered = false;
-    public Timeline timer;
-    private RandomEventGenerator randomEventGenerator;
+    private transient Timeline timer;
+    private transient RandomEventGenerator randomEventGenerator;
+    private transient SerializableUtil serializableUtil;
 
     public enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION, STORE, TOWN, SUMMARY, MULE}
@@ -86,6 +86,7 @@ public class Game extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         randomEventGenerator = new RandomEventGenerator(this);
+        serializableUtil = new SerializableUtil();
         this.store = new Store();
         roundNumber = 1;
         players = new ArrayList<>();
@@ -98,7 +99,7 @@ public class Game extends Application {
         colors.add("Purple");
         state = GameState.GAMECONFIG;
         URL location = getClass().getResource
-                ("configs/GameConfig.fxml");
+                ("/resources/GameConfig.fxml");
         this.stage = stage;
         FXMLLoader loader = new FXMLLoader(location);
         loader.setClassLoader(this.getClass().getClassLoader());
@@ -151,7 +152,7 @@ public class Game extends Application {
         }
         if (i < numPlayers) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource
-                    ("configs/PlayerConfigScreen.fxml"));
+                    ("/resources/PlayerConfigScreen.fxml"));
             loader.setClassLoader(this.getClass().getClassLoader());
 
             Parent newRoot = null;
@@ -172,6 +173,36 @@ public class Game extends Application {
         }
     }
 
+    public void loadGame(Stage stage) {
+        log = new EventLog();
+        randomEventGenerator = new RandomEventGenerator(this);
+        serializableUtil = new SerializableUtil();
+        GridPane g = new GridPane();
+        int row = 0;
+        int column = 0;
+        for (Tile[] t : map.getTiles()) {
+            for (Tile t2 : t) {
+                GridPane.setRowIndex(t2, row);
+                GridPane.setColumnIndex(t2, column);
+                g.getChildren().add(t2);
+                column++;
+            }
+            row++;
+        }
+
+        this.map.setGridPane(g);
+        StackPane s = new StackPane();
+        s.setMinWidth(1600);
+        s.setMinHeight(900);
+
+        g.toFront();
+        g.setMinWidth(1600);
+        g.setMinHeight(900);
+
+        s.getChildren().add(g);
+        this.map.setStackPane(s);
+        stage.getScene().setRoot(this.getMap().getStackPane());
+    }
 
     /**
      * loads the map fxml and controller, starts the first round
@@ -179,24 +210,26 @@ public class Game extends Application {
     private void startGame() {
         for (Player p : this.getPlayers()) {
             switch (this.getDifficulty()) {
-                case Beginner:
-                    p.setFood(8);
-                    p.setEnergy(4);
-                    p.setOre(0);
-                    p.setCrystite(0);
-                    break;
-                case Standard:
-                    p.setFood(4);
-                    p.setEnergy(2);
-                    p.setOre(0);
-                    p.setCrystite(0);
-                    break;
-                case Tournament:
-                    p.setFood(4);
-                    p.setEnergy(2);
-                    p.setOre(0);
-                    p.setCrystite(0);
-                    break;
+            case Beginner:
+                p.setFood(8);
+                p.setEnergy(4);
+                p.setOre(0);
+                p.setCrystite(0);
+                break;
+            case Standard:
+                p.setFood(4);
+                p.setEnergy(2);
+                p.setOre(0);
+                p.setCrystite(0);
+                break;
+            case Tournament:
+                p.setFood(4);
+                p.setEnergy(2);
+                p.setOre(0);
+                p.setCrystite(0);
+                break;
+            default:
+                break;
             }
         }
 
@@ -236,6 +269,7 @@ public class Game extends Application {
         currentPlayerIndex = 0;
 //        TODO fix this section
 //        summary();
+        serializableUtil.saveGame(this);
         landselection = new LandSelection(this);
     }
 
@@ -296,20 +330,16 @@ public class Game extends Application {
         stage.show();
     }
 
-    /*
-    public void nextTurn() {
-        state = GameState.TURN;
-        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
-    }*/
-
-
-
     public int getRoundNumber() {
         return roundNumber;
     }
 
     public Timeline getTimer() {
         return timer;
+    }
+
+    public void setTimer(Timeline timeline) {
+        this.timer = timeline;
     }
 
     public void incrementRound() {

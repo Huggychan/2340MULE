@@ -24,7 +24,7 @@ public class PlayerConfigScreen extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root =
-            FXMLLoader.load(getClass().getResource("PlayerConfigScreen.fxml"));
+            FXMLLoader.load(getClass().getResource("../../../../resources/PlayerConfigScreen.fxml"));
 
         Scene scene = new Scene(root, 1600, 900);
 

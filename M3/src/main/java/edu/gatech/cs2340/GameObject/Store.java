@@ -1,8 +1,9 @@
 package edu.gatech.cs2340.GameObject;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Store {
+public class Store implements Serializable {
 
     private HashMap<ResourceType, Integer> inventoryStock;
     private HashMap<ResourceType, Integer> inventoryPrice;

@@ -1,13 +1,18 @@
 package edu.gatech.cs2340.configs;
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.MapType;
+import edu.gatech.cs2340.SerializableUtil;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,6 +31,8 @@ public class GameConfigController implements Initializable {
     private ChoiceBox<MapType> mapBox;
     @FXML
     private Pane gameConfigPane;
+    @FXML
+    private Button loadGameButton;
 
     private Game game;
 
@@ -73,6 +80,22 @@ public class GameConfigController implements Initializable {
             game.setNumPlayers(numPlayersBox.getValue());
             game.nextState(0);
         }
+    }
+
+    public void loadGame() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Game Save");
+        fileChooser.setInitialDirectory(new File("src/main/java/saves/"));
+        File file = fileChooser.showOpenDialog(this.game.getStage());
+        SerializableUtil serializableUtil = new SerializableUtil();
+        try {
+            serializableUtil.loadGame(file, game.getStage());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
 

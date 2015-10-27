@@ -5,6 +5,7 @@ import edu.gatech.cs2340.Maps.Tile;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,11 +14,11 @@ import java.util.HashMap;
  * @author Bilal, Marc, Shyam
  * @version 1.1
  */
-public class Player implements Comparable<Player> {
+public class Player implements Comparable<Player>, Serializable {
 
     private String name;
     private Race race;
-    private Color color;
+    private transient Color color;
     private String colorString;
     private ArrayList<Tile> tiles;
     private HashMap<ResourceType, Integer> inventory;

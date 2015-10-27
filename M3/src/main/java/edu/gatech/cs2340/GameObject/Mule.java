@@ -7,7 +7,9 @@ import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
-public class Mule {
+import java.io.Serializable;
+
+public class Mule implements Serializable {
 
     private Color color;
     private String colorString;

@@ -9,6 +9,7 @@ import javafx.scene.image.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 //note to self, the hashmap is inefficient because every tile has its own "map"
@@ -20,11 +21,11 @@ import java.util.Map;
  * @author Bilal, Marc, Nick
  * @version 1.0
  */
-public abstract class Tile extends StackPane {
+public abstract class Tile extends StackPane implements Serializable {
     private String color;
     private Player owner;
     private Mule mule;
-    private ImageView iv;
+    private transient ImageView iv;
     private Image image;
     private MapController map;
     private Map<ResourceType, Integer> resourceTypeMap;

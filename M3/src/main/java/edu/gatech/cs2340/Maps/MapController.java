@@ -11,18 +11,19 @@ import javafx.scene.paint.Color;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class MapController implements Initializable {
+public class MapController implements Initializable, Serializable {
     private Tile[][] tiles;
     private MapType maptype = MapType.STANDARD;
     private Game game;
     @FXML
-    private GridPane backingPane;
+    private transient GridPane backingPane;
     @FXML
-    private StackPane stackPane;
+    private transient StackPane stackPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -37,6 +38,18 @@ public class MapController implements Initializable {
 
     public void setMaptype(MapType maptype) {
         this.maptype = maptype;
+    }
+
+    public void setStackPane(StackPane stackPane) {
+        this.stackPane = stackPane;
+    }
+
+    public void setGridPane(GridPane gridPane) {
+        this.backingPane = gridPane;
+    }
+
+    public Tile[][] getTiles() {
+        return this.tiles;
     }
 
     private void setUpMap() throws IllegalArgumentException {

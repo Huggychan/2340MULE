@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,13 +31,13 @@ import java.util.List;
  * Created by Nick on 9/22/2015.
  * @author Nick, Shyam
  */
-public class Turn {
+public class Turn implements Serializable {
     private  Game game;
     private ArrayList<Player> players;
-    private Label label;
+    private transient Label label;
     private int turnTime = 50;
     private int timeRemaining;
-    private Timeline timer;
+    private transient Timeline timer;
 
     public boolean mule;
     private Stage stage;
@@ -87,7 +88,7 @@ public class Turn {
         game.getCurrentPlayer().setMuleBoughtThisTurn(false);
         this.game.getScene().setCursor(Cursor.DEFAULT);
         players.remove(game.getCurrentPlayer());
-        game.timer.stop();
+        game.getTimer().stop();
 
         if (players.isEmpty()) {
             calcProduction();
@@ -108,7 +109,8 @@ public class Turn {
     }
 
     public void turnTimerCreator() {
-        game.timer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+        Timeline t = new Timeline(new KeyFrame(Duration.seconds(1), new
+                EventHandler<ActionEvent>() {
 
             private int turnTime;
             public int checker;
@@ -147,7 +149,8 @@ public class Turn {
                 }
             }
         }));
-        timer = game.timer;
+        game.setTimer(t);
+        timer = game.getTimer();
         timer.setCycleCount(turnTime);
         timer.play();
     }
