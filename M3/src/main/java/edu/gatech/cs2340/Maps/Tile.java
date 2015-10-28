@@ -234,5 +234,7 @@ public abstract class Tile extends StackPane implements Serializable {
         this.map = map;
     }
 
-
+    public void loadImageView() {
+        this.iv = new ImageView(this.image);
+    }
 }
