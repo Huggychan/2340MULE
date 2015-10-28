@@ -28,7 +28,7 @@ public abstract class Tile extends StackPane implements Serializable {
     private transient ImageView iv;
     private MapController map;
     private Map<ResourceType, Integer> resourceTypeMap;
-    protected Image image;
+    protected transient Image image;
 
     /**
      * Tile construct on Instantiation, we will not handle who owns it.
@@ -230,11 +230,13 @@ public abstract class Tile extends StackPane implements Serializable {
         return iv;
     }
 
+    public void setImageView(ImageView imageView) {
+        this.iv = imageView;
+    }
+
     public void setMap(MapController map) {
         this.map = map;
     }
 
-    public void loadImageView() {
-        this.iv = new ImageView(this.image);
-    }
+    public abstract void loadImageView();
 }

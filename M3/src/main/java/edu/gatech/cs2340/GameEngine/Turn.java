@@ -8,24 +8,21 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-//import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
-//import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+//import javafx.geometry.Rectangle2D;
+//import javafx.stage.Screen;
 
 /**
  * Created by Nick on 9/22/2015.
@@ -47,19 +44,19 @@ public class Turn implements Serializable {
      * @param game Game being played
      */
     public Turn(Game game) {
-        this.game = game;
-        players = new ArrayList<>();
-        players.addAll(game.getPlayers());
-        game.setCurrentPlayer(players.get(0));
-        setTurnTime();
-        label = new Label();
-        game.getMap().getStackPane().getChildren().add(label);
-        label.setFont(Font.font(24));
-        StackPane.setAlignment(label, Pos.TOP_RIGHT);
-        label.setTextFill(Paint.valueOf("white"));
-        turnTimerCreator();
-        mule = false;
-    }
+    this.game = game;
+    players = new ArrayList<>();
+    players.addAll(game.getPlayers());
+    game.setCurrentPlayer(players.get(0));
+    setTurnTime();
+    label = new Label();
+    game.getMap().getStackPane().getChildren().add(label);
+    label.setFont(Font.font(24));
+    StackPane.setAlignment(label, Pos.TOP_RIGHT);
+    label.setTextFill(Paint.valueOf("white"));
+    turnTimerCreator();
+    mule = false;
+}
 
     public void move(Tile tile) {
         if (tile instanceof TownTile) {

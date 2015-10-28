@@ -2,6 +2,7 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.GameObject.ResourceType;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.Random;
 
@@ -21,4 +22,10 @@ public class MountainTwoTile extends Tile {
         this.getResourceTypeMap().put(ResourceType.ORE, 3);
         this.getResourceTypeMap().put(ResourceType.CRYSTITE, randomNum);
     }
+
+    @Override
+    public void loadImageView() {
+        this.setImageView(new ImageView(new Image("/resources/Mountain2.png")));
+    }
+
 }

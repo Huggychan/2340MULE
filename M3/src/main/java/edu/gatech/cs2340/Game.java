@@ -17,15 +17,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-
-import java.io.*;
+import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -182,8 +181,11 @@ public class Game extends Application implements Serializable {
         int row = 0;
         int column = 0;
         for (Tile[] t : map.getTiles()) {
+            column = 0;
             for (Tile t2 : t) {
-                t2.getChildren().add(new ImageView(new Image(t2.get)));
+                t2.loadImageView();
+                t2.setMinHeight(900 / 5);
+                t2.setMinWidth(1600 / 9);
                 GridPane.setRowIndex(t2, row);
                 GridPane.setColumnIndex(t2, column);
                 g.getChildren().add(t2);
