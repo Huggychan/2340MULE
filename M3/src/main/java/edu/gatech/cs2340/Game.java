@@ -206,6 +206,14 @@ public class Game extends Application implements Serializable {
         s.getChildren().add(g);
         this.map.setStackPane(s);
         stage.getScene().setRoot(this.getMap().getStackPane());
+
+//        TODO Gridpane height and witdth are still 0
+
+        System.out.println(s.getHeight());
+        System.out.println(s.getWidth());
+        System.out.println(g.getHeight());
+        System.out.println(g.getWidth());
+        System.out.println(g.getChildren());
     }
 
     /**
