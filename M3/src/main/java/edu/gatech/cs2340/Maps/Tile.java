@@ -26,9 +26,9 @@ public abstract class Tile extends StackPane implements Serializable {
     private Player owner;
     private Mule mule;
     private transient ImageView iv;
-    private Image image;
     private MapController map;
     private Map<ResourceType, Integer> resourceTypeMap;
+    protected Image image;
 
     /**
      * Tile construct on Instantiation, we will not handle who owns it.

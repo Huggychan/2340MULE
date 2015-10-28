@@ -17,6 +17,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -182,6 +183,7 @@ public class Game extends Application implements Serializable {
         int column = 0;
         for (Tile[] t : map.getTiles()) {
             for (Tile t2 : t) {
+                t2.getChildren().add(new ImageView(new Image(t2.get)));
                 GridPane.setRowIndex(t2, row);
                 GridPane.setColumnIndex(t2, column);
                 g.getChildren().add(t2);
