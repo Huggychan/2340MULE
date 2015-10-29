@@ -239,4 +239,5 @@ public abstract class Tile extends StackPane implements Serializable {
     }
 
     public abstract void loadImageView();
+
 }

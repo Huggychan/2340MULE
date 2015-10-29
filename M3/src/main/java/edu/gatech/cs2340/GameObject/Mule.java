@@ -11,20 +11,23 @@ import java.io.Serializable;
 
 public class Mule implements Serializable {
 
-    private Color color;
+    private transient Color color;
     private String colorString;
     private Player player;
     private ResourceType resourceType;
-    private Image image;
+    private transient Image image;
     private Game game;
 
     public Mule(Player player) {
         this.player = player;
         this.colorString = player.getColorString();
+        setImageAndColor();
+    }
+
+    public void setImageAndColor() {
         this.color = player.getColor();
         image = new Image("/resources/mule.png");
     }
-
     public ResourceType getResourceType() {
         return resourceType;
     }

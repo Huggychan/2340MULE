@@ -176,7 +176,7 @@ public class Game extends Application implements Serializable {
     public void loadGame(Stage stage) {
         log = new EventLog();
         randomEventGenerator = new RandomEventGenerator(this);
-        serializableUtil = new SerializableUtil();
+        serializableUtil = new SerializableUtil(); /*
         GridPane g = new GridPane();
         int row = 0;
         int column = 0;
@@ -214,6 +214,55 @@ public class Game extends Application implements Serializable {
         System.out.println(g.getHeight());
         System.out.println(g.getWidth());
         System.out.println(g.getChildren());
+        */
+        FXMLLoader loader = new FXMLLoader(getClass().getResource
+                ("/resources/Map.fxml"));
+        loader.setClassLoader(this.getClass().getClassLoader());
+
+        Parent newRoot = null;
+
+        try {
+            newRoot = loader.load();
+        } catch (IOException e) {
+            System.out.println("IOException loading Map.fxml");
+            System.out.println(e.getMessage());
+        }
+        Tile[][] oldData = map.getTiles();
+        this.map = loader.getController();
+        this.map.setGame(this);
+        this.scene = new Scene(newRoot, 1600, 900);
+        stage.setScene(scene);
+        stage.getScene().setRoot(newRoot);
+
+        log = new EventLog();
+        map.getStackPane().getChildren().add(log);
+        StackPane.setAlignment(log, Pos.TOP_CENTER);
+        stage.getScene().setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.SPACE) {
+                if (this.state == GameState.LANDSELECTION) {
+                    landselection.buy(null);
+                }
+            }
+        });
+        for (Player p : players) {
+            p.setColor(p.getColorString());
+        }
+        for (int i = 0; i < map.getTiles().length; i++) {
+            for (int j = 0; j < map.getTiles()[0].length; j++) {
+                if (oldData[i][j].getOwner() != null) {
+                    map.getTiles()[i][j].setOwner(oldData[i][j].getOwner());
+                    if (oldData[i][j].getMule() != null) {
+                        Mule mule = oldData[i][j].getMule();
+                        mule.setImageAndColor();
+                        map.getTiles()[i][j].placeMule(mule);
+                    }
+                }
+
+            }
+        }
+
+        System.out.println(roundNumber);
+        startRound();
     }
 
     /**
@@ -276,6 +325,7 @@ public class Game extends Application implements Serializable {
     }
 
     public void startRound() {
+        log.log("Round: " + roundNumber);
         state = GameState.LANDSELECTION;
         Collections.sort(this.players);
         currentPlayerIndex = 0;

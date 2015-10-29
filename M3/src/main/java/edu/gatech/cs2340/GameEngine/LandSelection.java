@@ -39,6 +39,7 @@ public class LandSelection {
             } else {
                 //TODO can't let person be removed
                 game.log("someone already owns this plot");
+                return; //i'm a fuckin genius
             }
         } else {
             if (game.getCurrentPlayer().getMoney() >= 300
@@ -48,6 +49,8 @@ public class LandSelection {
                         .getMoney() - 300);
                 game.getCurrentPlayer().addTile(tile);
                 //System.out.println(game.getCurrentPlayer().getMoney());
+            } else if (tile.getOwner() != null) {
+                return;
             }
             if (game.getCurrentPlayer().getMoney() >= 300) {
                 GameObjectActive.add(game.getCurrentPlayer());

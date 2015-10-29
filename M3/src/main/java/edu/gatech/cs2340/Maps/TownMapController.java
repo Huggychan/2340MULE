@@ -172,6 +172,7 @@ public class TownMapController implements Initializable {
     public void setTurn(Turn turn) {
         this.turn = turn;
     }
+
     public void onExitClicked() {
         if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
             this.game.log("Please select a Resource Type before exiting");

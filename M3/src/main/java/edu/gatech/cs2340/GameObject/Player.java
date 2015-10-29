@@ -231,10 +231,32 @@ public class Player implements Comparable<Player>, Serializable {
 
     /**
      * Sets the Color of Player
-     * @param color Color to be set for Player
+     * @param colorString Color to be set for Player
      */
-    public void setColor(Color color) {
+    public void setColor(String colorString) {
         this.color = color;
+        switch (colorString) {
+            case "Red":
+                color = Color.RED;
+                break;
+            case "Orange":
+                color = Color.ORANGE;
+                break;
+            case "Yellow":
+                color = Color.YELLOW;
+                break;
+            case "Green":
+                color = Color.GREEN;
+                break;
+            case "Blue":
+                color = Color.BLUE;
+                break;
+            case "Purple":
+                color = Color.PURPLE;
+                break;
+            default:
+                break;
+        }
     }
 
     /**

@@ -122,4 +122,7 @@ public class MapController implements Initializable, Serializable {
         return this.stackPane;
     }
 
+    public void setTiles(Tile[][] tiles) {
+        this.tiles = tiles;
+    }
 }
