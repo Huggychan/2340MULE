@@ -2,7 +2,12 @@ package edu.gatech.cs2340;
 
 import javafx.stage.Stage;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
 
 /**
  * @author Bilal
@@ -10,6 +15,10 @@ import java.io.*;
  */
 public class SerializableUtil {
 
+    /**
+     * Saves the game
+     * @param game Game to be saved
+     */
     public void saveGame(Game game) {
         try {
             System.out.println(System.getProperty("user.dir"));
@@ -25,11 +34,18 @@ public class SerializableUtil {
             fileOut.close();
             System.out.printf("Serialized data is saved in "
                     + "src/main/java/saves/game.ser\n");
-        } catch(IOException i)  {
+        } catch (IOException i)  {
             i.printStackTrace();
         }
     }
 
+    /**
+     * Loads the game
+     * @param fileName File to be loaded
+     * @param stage Stage of the game
+     * @throws IOException IOException for file
+     * @throws ClassNotFoundException ClassNotFoundException for class not found
+     */
     public void loadGame(File fileName, Stage stage) throws IOException,
             ClassNotFoundException {
         FileInputStream fis = new FileInputStream(fileName);

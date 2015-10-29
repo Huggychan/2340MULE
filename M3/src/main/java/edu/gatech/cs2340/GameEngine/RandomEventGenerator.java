@@ -21,7 +21,7 @@ public class RandomEventGenerator {
     }
 
     /**
-     * Gernerates a random event
+     * Generates a random event
      */
     public void generateRandom() {
         int num = random.nextInt(100);
