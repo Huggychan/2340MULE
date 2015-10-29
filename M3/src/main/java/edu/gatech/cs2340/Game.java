@@ -18,7 +18,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
@@ -176,45 +175,7 @@ public class Game extends Application implements Serializable {
     public void loadGame(Stage stage) {
         log = new EventLog();
         randomEventGenerator = new RandomEventGenerator(this);
-        serializableUtil = new SerializableUtil(); /*
-        GridPane g = new GridPane();
-        int row = 0;
-        int column = 0;
-        for (Tile[] t : map.getTiles()) {
-            column = 0;
-            for (Tile t2 : t) {
-                t2.loadImageView();
-                t2.setMinHeight(900 / 5);
-                t2.setMinWidth(1600 / 9);
-                GridPane.setRowIndex(t2, row);
-                GridPane.setColumnIndex(t2, column);
-                g.getChildren().add(t2);
-                column++;
-            }
-            row++;
-        }
-
-        this.map.setGridPane(g);
-        StackPane s = new StackPane();
-        s.setMinWidth(1600);
-        s.setMinHeight(900);
-
-        g.toFront();
-        g.setMinWidth(1600);
-        g.setMinHeight(900);
-
-        s.getChildren().add(g);
-        this.map.setStackPane(s);
-        stage.getScene().setRoot(this.getMap().getStackPane());
-
-//        TODO Gridpane height and witdth are still 0
-
-        System.out.println(s.getHeight());
-        System.out.println(s.getWidth());
-        System.out.println(g.getHeight());
-        System.out.println(g.getWidth());
-        System.out.println(g.getChildren());
-        */
+        serializableUtil = new SerializableUtil();
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/Map.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
