@@ -67,7 +67,7 @@ public class PlayerConfigController implements Initializable {
                             + "\nPlease enter a valid name");
                 } else {
                     player = new Player(name.getCharacters().toString(),
-                            race.getValue(), color.getValue(), game);
+                            race.getValue(), color.getValue());
                     if (game.comparePlayers(player)) {
                         welcome.setText("Please enter a different "
                                 + "name or color");

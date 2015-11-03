@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.GameObject;
 
-import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.Tile;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -24,7 +23,7 @@ public class Player implements Comparable<Player>, Serializable {
     private HashMap<ResourceType, Integer> inventory;
     private int money;
     private Mule mule;
-    private Game game;
+//    private Game game;
     private boolean muleBoughtThisTurn;
 
     /**
@@ -115,15 +114,14 @@ public class Player implements Comparable<Player>, Serializable {
      * @param name Name of player
      * @param race Race of player
      * @param colorString Color of player in string format
-     * @param game Game player is in
      */
-    public Player(String name, Race race, String colorString, Game game) {
+    public Player(String name, Race race, String colorString) {
         this.inventory = new HashMap<>();
         inventory.put(ResourceType.CRYSTITE, 0);
         inventory.put(ResourceType.FOOD, 0);
         inventory.put(ResourceType.ORE, 0);
         inventory.put(ResourceType.ENERGY, 0);
-        this.game = game;
+//        this.game = game;
         this.tiles = new ArrayList<>();
         this.muleBoughtThisTurn = false;
 
