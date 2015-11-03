@@ -15,6 +15,10 @@ public class LandSelection {
     private Game game;
     private LinkedList<Player> gameObjectActive;
 
+    /**
+     * LandSelection constructor
+     * @param game Game for LandSelection
+     */
     public LandSelection(Game game) {
         this.game = game;
         gameObjectActive = new LinkedList<>();
@@ -30,6 +34,7 @@ public class LandSelection {
     /**
      * Purchases a tile for the game's current player
      * @param tile the tile to buy
+     * @param player player for tile
      */
     public void buy(Tile tile, Player player) {
         if (tile == null) {
