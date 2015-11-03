@@ -26,8 +26,8 @@ public class MuleJUnit {
         string = "This was a setup! It's a trap!";
         string2 = "Is JUnit working?";
         temp = "temp";
-        player1 = new Player("Player 1", Race.HUMAN, "Red", game);
-        player2 = new Player("Player 1", Race.HUMAN, "Red", game);
+        //player1 = new Player("Player 1", Race.HUMAN, "Red", game);
+        //player2 = new Player("Player 1", Race.HUMAN, "Red", game);
     }
 
     @Test

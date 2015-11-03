@@ -353,7 +353,7 @@ public class Player implements Comparable<Player>, Serializable {
      * @param amount amount to decrement by
      */
     public void decrementMoney(int amount) {
-        if (this.money > amount) {
+        if (this.money >= amount) {
             this.money = this.money - amount;
         }
     }

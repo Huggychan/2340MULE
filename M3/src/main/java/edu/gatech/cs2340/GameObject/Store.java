@@ -73,7 +73,7 @@ public class Store implements Serializable {
         System.out.println("Player's inventory before: " + player.getInventory());
         int price = this.inventoryPrice.get(rt);
         int stock = this.inventoryStock.get(rt);
-        if (player.getMoney() > price && stock > 0) {
+        if (player.getMoney() >= price && stock > 0) {
             if (rt != ResourceType.MULE) {
                 this.decrementKeyInMap(rt, this.inventoryStock);
                 this.incrementKeyInMap(rt, player.getInventory());
