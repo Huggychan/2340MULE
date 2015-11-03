@@ -47,7 +47,6 @@ public class Game extends Application implements Serializable {
     private int roundNumber;
     private transient LandSelection landselection;
     private Turn turn;
-    private Mule mule;
     private MapController map;
     private transient EventLog log;
     private Store store;
@@ -71,14 +70,6 @@ public class Game extends Application implements Serializable {
         }
     }
 
-    public boolean getStoreEntered() {
-        return this.storeEntered;
-    }
-
-    public void toggleStoreEntered() {
-        this.storeEntered = !this.storeEntered;
-    }
-
     /**
      * Main
      * @param args Arguments passed
@@ -86,6 +77,12 @@ public class Game extends Application implements Serializable {
     public static void main(String[] args) {
         Application.launch(Game.class, (java.lang.String[]) null);
     }
+
+    /**
+     * The start method for the JavaFX window
+     * @param stage the window
+     * @throws Exception throws exceptions
+     */
     @Override
     public void start(Stage stage) throws Exception {
         randomEventGenerator = new RandomEventGenerator(this);
@@ -118,29 +115,6 @@ public class Game extends Application implements Serializable {
         stage.setTitle("MULE");
         stage.setScene(scene);
         stage.show();
-    }
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
-    }
-    public void setState(GameState state) {
-        this.state = state;
-    }
-    public Difficulty getDifficulty() {
-        return this.difficulty;
-    }
-    public void setMapType(MapType mapType) {
-        this.mapType = mapType;
-    }
-    public void setNumPlayers(int numPlayers) {
-        this.numPlayers = numPlayers;
-    }
-
-    public void addPlayer(Player Player) {
-        players.add(Player);
-    }
-
-    public int getNumPlayers() {
-        return this.numPlayers;
     }
 
     /**
@@ -176,6 +150,10 @@ public class Game extends Application implements Serializable {
         }
     }
 
+    /**
+     * Loads a previously saved game
+     * @param stage the stage to put the loaded game into
+     */
     public void loadGame(Stage stage) {
         log = new EventLog();
         randomEventGenerator = new RandomEventGenerator(this);
@@ -289,6 +267,9 @@ public class Game extends Application implements Serializable {
         startRound();
     }
 
+    /**
+     * starts a round
+     */
     public void startRound() {
         log.log("Round: " + roundNumber);
         state = GameState.LANDSELECTION;
@@ -300,17 +281,18 @@ public class Game extends Application implements Serializable {
         landselection = new LandSelection(this);
     }
 
+    /**
+     * starts turns after land selection is over
+     */
     public void startTurns() {
         state = GameState.TURN;
         turn = new Turn(this);
         generateRandomEvent();
     }
 
-    public void placeMule() {
-        state = GameState.MULE;
-        mule = this.getCurrentPlayer().getMule();
-    }
-
+    /**
+     * Puts the town on top of the view stack
+     */
     public void goToTown() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/TownMap.fxml"));
@@ -335,6 +317,9 @@ public class Game extends Application implements Serializable {
         townEntered = true;
     }
 
+    /**
+     * Puts the summary on top of the view stack
+     */
     public void summary() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource
                 ("/resources/Summary.fxml"));
@@ -357,22 +342,6 @@ public class Game extends Application implements Serializable {
         stage.show();
     }
 
-    public int getRoundNumber() {
-        return roundNumber;
-    }
-
-    public Timeline getTimer() {
-        return timer;
-    }
-
-    public void setTimer(Timeline timeline) {
-        this.timer = timeline;
-    }
-
-    public void incrementRound() {
-        roundNumber++;
-    }
-
     /**
      * Compares Player to Players list
      * @param Player Player being compared
@@ -393,9 +362,14 @@ public class Game extends Application implements Serializable {
         return result;
     }
 
+    /**
+     * Logs a string to the logging label
+     * @param s the string to log
+     */
     public void log(String s) {
         log.log(s);
     }
+
     /**
      * player has clicked on a tile delegates work to other methods
      * @param tile the tile that was clicked
@@ -410,53 +384,209 @@ public class Game extends Application implements Serializable {
         }
     }
 
-    public List<Player> getPlayers() {
-        return this.players;
+    /**
+     * Adds players to a game
+     * @param Player the player to add
+     */
+    public void addPlayer(Player Player) {
+        players.add(Player);
     }
 
+    /**
+     * Gets the list of colors available
+     * @return the list of colors
+     */
     public ArrayList<String> getColors() {
         return this.colors; }
 
+    /**
+     * Gets the difficutly of the game
+     * @return the difficulty of the game
+     */
+    public Difficulty getDifficulty() {
+        return this.difficulty;
+    }
+
+    /**
+     * Sets the game's difficulty
+     * @param difficulty the difficulty to set
+     */
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    /**
+     * Gets the player whose turn it is currently
+     * @return the current player
+     */
     public Player getCurrentPlayer() {
         return players.get(currentPlayerIndex);
     }
 
-    public void setCurrentPlayer(Player p) {
+    /**
+     * Sets the currentPlayerIndex to the player passed in
+     * @param p the player to set the currentPlayerIndex to
+     */
+    public void setCurrentPlayerIndex(Player p) {
         currentPlayerIndex = players.indexOf(p);
     }
 
-    public MapController getMap() {
-        return this.map;
-    }
-
-    public TownMapController getTown() {
-        return this.tmc;
-    }
-
-    public Turn getTurn() {
-        return this.turn;
-    }
-
-    public EventLog getLog() {
-        return this.log;
-    }
-
-    public Store getStore() {
-        return this.store;
-    }
-
-    public Scene getScene() { return this.scene; }
-
-    public Stage getStage() { return this.stage; }
-
+    /**
+     * Generates a random event
+     */
     public void generateRandomEvent() {
         this.randomEventGenerator.generateRandom();
     }
 
+    /**
+     * increments the game's round
+     */
+    public void incrementRound() {
+        roundNumber++;
+    }
+
+    /**
+     * Gets the game's event log
+     * @return the game's event log
+     */
+    public EventLog getLog() {
+        return this.log;
+    }
+
+    /**
+     * Gets the MapController
+     * @return the game's MapController
+     */
+    public MapController getMap() {
+        return this.map;
+    }
+
+    /**
+     * Sets the game's maptype
+     * @param mapType the type of map
+     */
+    public void setMapType(MapType mapType) {
+        this.mapType = mapType;
+    }
+
+    /**
+     * sets the number of players
+     * @param numPlayers the number of players to set
+     */
+    public void setNumPlayers(int numPlayers) {
+        this.numPlayers = numPlayers;
+    }
+
+    /**
+     * Gets the number of players
+     * @return the number of players
+     */
+    public int getNumPlayers() {
+        return this.numPlayers;
+    }
+
+    /**
+     * Gets the game's players
+     * @return the list of players
+     */
+    public List<Player> getPlayers() {
+        return this.players;
+    }
+
+    /**
+     * Gets the round number
+     * @return the round number
+     */
+    public int getRoundNumber() {
+        return roundNumber;
+    }
+
+    /**
+     * Sets the current state of the game
+     * @param state the state to set it to
+     */
+    public void setState(GameState state) {
+        this.state = state;
+    }
+
+    /**
+     * Gets the game's store
+     * @return the game's store
+     */
+    public Store getStore() {
+        return this.store;
+    }
+
+    /**
+     * Gets the game's scene
+     * @return the game's scene
+     */
+    public Scene getScene() { return this.scene; }
+
+    /**
+     * Gets the game's stage
+     * @return the game's stage
+     */
+    public Stage getStage() { return this.stage; }
+
+    /**
+     * gets whether the store is currently on top of the view stack
+     * @return whether or not the store is currently on top of the view stack
+     */
+    public boolean getStoreEntered() {
+        return this.storeEntered;
+    }
+
+    /**
+     * toggles when the store is put on or taken off the top of the view stack
+     */
+    public void toggleStoreEntered() {
+        this.storeEntered = !this.storeEntered;
+    }
+    /**
+     * Gets the timer
+     * @return the game's timer
+     */
+    public Timeline getTimer() {
+        return timer;
+    }
+
+    /**
+     * Sets the game's timer
+     * @param timeline the timer to set it to
+     */
+    public void setTimer(Timeline timeline) {
+        this.timer = timeline;
+    }
+
+    /**
+     * Gets the TownMapController
+     * @return the game's TownMapController
+     */
+    public TownMapController getTown() {
+        return this.tmc;
+    }
+
+    /**
+     * Get's the curren turn
+     * @return the current turn
+     */
+    public Turn getTurn() {
+        return this.turn;
+    }
+
+    /**
+     * Gets whether or not the town is on the view stack
+     * @return whether or not the town is on the view stack
+     */
     public boolean getTownEntered() {
         return this.townEntered;
     }
 
+    /**
+     * Sets whether the town is on the view stack or not
+     * @param bool whether or not the town is on the view stack
+     */
     public void setTownEntered(boolean bool) {
         this.townEntered = bool;
     }

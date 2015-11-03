@@ -63,7 +63,7 @@ public class LandSelection {
         if (gameObjectActive.isEmpty()) {
             pass();
         } else {
-            game.setCurrentPlayer(gameObjectActive.peek());
+            game.setCurrentPlayerIndex(gameObjectActive.peek());
         }
     }
 
@@ -79,7 +79,7 @@ public class LandSelection {
             if (gameObjectActive.isEmpty()) {
                 pass();
             } else {
-                game.setCurrentPlayer(gameObjectActive.peek());
+                game.setCurrentPlayerIndex(gameObjectActive.peek());
             }
         }
     }

@@ -2,6 +2,7 @@ package edu.gatech.cs2340.Maps;
 
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.Turn;
+import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.ResourceType;
 import edu.gatech.cs2340.GameObject.StoreController;
@@ -150,19 +151,23 @@ public class TownMapController implements Initializable {
     }
 
     public void onEnergyClicked() {
-        this.setMuleResourceType(ResourceType.ENERGY);
+        this.setMuleResourceType(ResourceType.ENERGY,
+                game.getCurrentPlayer().getMule());
     }
 
     public void onOreClicked() {
-        this.setMuleResourceType(ResourceType.ORE);
+        this.setMuleResourceType(ResourceType.ORE,
+                game.getCurrentPlayer().getMule());
     }
 
     public void onFoodClicked() {
-        this.setMuleResourceType(ResourceType.FOOD);
+        this.setMuleResourceType(ResourceType.FOOD,
+                game.getCurrentPlayer().getMule());
     }
 
     public void onCrystiteClicked() {
-        this.setMuleResourceType(ResourceType.CRYSTITE);
+        this.setMuleResourceType(ResourceType.CRYSTITE,
+                game.getCurrentPlayer().getMule());
     }
 
     public void setGame(Game game) {
@@ -191,13 +196,11 @@ public class TownMapController implements Initializable {
         return storeController;
     }
 
-    private void setMuleResourceType(ResourceType resource) {
+    private void setMuleResourceType(ResourceType resource, Mule mule) {
         boolean canAfford = false;
         Player curr = game.getCurrentPlayer();
 
         if (curr.hasMule()) {
-            System.out.println(curr.getMoney());
-
             if (resource == ResourceType.CRYSTITE && curr.getMoney() >= 100) {
                 curr.decrementMoney(100);
                 canAfford = true;
@@ -212,20 +215,19 @@ public class TownMapController implements Initializable {
                 canAfford = true;
             }
 
-            System.out.println(curr.getMoney());
-
             if (resource == null || !this.game.getCurrentPlayer().hasMule()) {
                 this.game.log("Buy a mule first!");
-            } else if (this.game.getCurrentPlayer().getMule().getResourceType()
+
+            } else if (mule.getResourceType()
                     == null && canAfford) {
-                this.game.getCurrentPlayer().getMule().setResourceType(resource);
+                mule.setResourceType(resource);
                 WritableImage writableImage =
-                        this.game.getCurrentPlayer().getMule().changeColor(game.getCurrentPlayer());
+                        mule.changeColor(game.getCurrentPlayer());
                 this.game.getScene().setCursor(new ImageCursor(writableImage));
                 System.out.println("Resource type: "
-                        + this.game.getCurrentPlayer().getMule().getResourceType());
+                        + mule.getResourceType());
                 onExitClicked();
-                game.placeMule();
+                game.setState(Game.GameState.MULE);
             } else {
                 this.game.log("Your MULE's resource type is already "
                         + this.game.getCurrentPlayer().getMule().getResourceType());

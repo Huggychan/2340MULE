@@ -47,7 +47,7 @@ public class Turn implements Serializable {
     this.game = game;
     players = new ArrayList<>();
     players.addAll(game.getPlayers());
-    game.setCurrentPlayer(players.get(0));
+    game.setCurrentPlayerIndex(players.get(0));
     setTurnTime();
     label = new Label();
     game.getMap().getStackPane().getChildren().add(label);
@@ -107,7 +107,7 @@ public class Turn implements Serializable {
             game.startRound();
             label.setText("");
         } else {
-            game.setCurrentPlayer(players.get(0));
+            game.setCurrentPlayerIndex(players.get(0));
             setTurnTime();
             turnTimerCreator();
             game.generateRandomEvent();
