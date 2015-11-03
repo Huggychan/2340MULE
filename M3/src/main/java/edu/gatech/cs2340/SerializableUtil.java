@@ -52,7 +52,6 @@ public class SerializableUtil {
         ObjectInputStream ois = new ObjectInputStream(fis);
         Game obj = (Game) ois.readObject();
         ois.close();
-//        obj.startRound();
         obj.loadGame(stage);
     }
 }

@@ -58,16 +58,27 @@ public class Turn implements Serializable {
     mule = false;
 }
 
+    /**
+     * moves to the selected tile
+     * @param tile the tile to be moved to
+     */
     public void move(Tile tile) {
         if (tile instanceof TownTile) {
             game.goToTown();
         }
     }
 
+    /**
+     * Gets the total turn time
+     * @return the total turn time
+     */
     public int getTurnTime() {
         return turnTime;
     }
 
+    /**
+     * sets the turn timer
+     */
     public void setTurnTime() {
         Player player = players.get(0);
         if (player.getFood() >= 12) {
@@ -75,10 +86,13 @@ public class Turn implements Serializable {
         } else if (player.getFood() > 8) {
             turnTime = 30;
         } else {
-            turnTime = 50;
+            turnTime = 5;
         }
     }
 
+    /**
+     * ends the current player's turn
+     */
     public void endPlayerTurn() {
         game.setState(Game.GameState.TURN);
         game.getCurrentPlayer().setMule(null);
@@ -101,10 +115,17 @@ public class Turn implements Serializable {
 
     }
 
+    /**
+     * Gets the time remaining
+     * @return the amount of time remaining
+     */
     public int getTimeRemaining() {
         return this.timeRemaining;
     }
 
+    /**
+     * creates the timer
+     */
     public void turnTimerCreator() {
         Timeline t = new Timeline(new KeyFrame(Duration.seconds(1), new
                 EventHandler<ActionEvent>() {
@@ -168,30 +189,4 @@ public class Turn implements Serializable {
             p.calcProduction();
         }
     }
-
-//    public void summary() {
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource
-//                ("/resources/Summary.fxml"));
-//        loader.setClassLoader(this.getClass().getClassLoader());
-//
-//        Parent root = null;
-//
-//        try {
-//            root = loader.load();
-//            root.toFront();
-//        } catch (IOException e) {
-//            System.out.println("IOException loading Summary.fxml");
-//            System.out.println(e.getMessage());
-//        }
-//
-//        Scene scene = new Scene(root, 1600, 900);
-//        this.game.getStage().setTitle("Summary!");
-//        this.game.getStage().setScene(scene);
-//        this.game.getStage().show();
-//        Rectangle2D bounds = Screen.getPrimary().getBounds();
-//        Scene scene = new Scene(root, bounds.getMaxX(), bounds.getMaxY());
-//        stage.setScene(scene);
-//    }
-
-
 }

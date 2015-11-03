@@ -67,6 +67,9 @@ public class LandSelection {
         }
     }
 
+    /**
+     * Passes for the current player during the land selection phase
+     */
     public void pass() {
         if (gameObjectActive.isEmpty()) {
             game.startTurns();
