@@ -1,7 +1,9 @@
-import edu.gatech.cs2340.GameObject.Player;
-import edu.gatech.cs2340.GameObject.Race;
-import edu.gatech.cs2340.GameObject.ResourceType;
-import edu.gatech.cs2340.GameObject.Store;
+package edu.gatech.cs2340.GameObject;
+
+//import edu.gatech.cs2340.GameObject.Player;
+//import edu.gatech.cs2340.GameObject.Race;
+//import edu.gatech.cs2340.GameObject.ResourceType;
+//import edu.gatech.cs2340.GameObject.Store;
 import org.junit.Before;
 import org.junit.Test;
 

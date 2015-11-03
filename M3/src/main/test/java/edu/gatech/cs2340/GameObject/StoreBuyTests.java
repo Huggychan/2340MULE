@@ -1,13 +1,13 @@
-package java.edu.gatech.cs2340.GameObject;
+package edu.gatech.cs2340.GameObject;
 
 /**
  * Created by Nick on 11/3/2015.
  */
 import edu.gatech.cs2340.Game;
-import edu.gatech.cs2340.GameObject.Player;
-import edu.gatech.cs2340.GameObject.Race;
-import edu.gatech.cs2340.GameObject.ResourceType;
-import edu.gatech.cs2340.GameObject.Store;
+//import edu.gatech.cs2340.GameObject.Player;
+//import edu.gatech.cs2340.GameObject.Race;
+//import edu.gatech.cs2340.GameObject.ResourceType;
+//import edu.gatech.cs2340.GameObject.Store;
 import org.junit.Before;
 import org.junit.Test;
 
