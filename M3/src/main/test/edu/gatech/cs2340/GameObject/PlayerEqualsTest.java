@@ -1,8 +1,6 @@
-package java.edu.gatech.cs2340.GameObject;
+package edu.gatech.cs2340.GameObject;
 
 import edu.gatech.cs2340.Game;
-import edu.gatech.cs2340.GameObject.Player;
-import edu.gatech.cs2340.GameObject.Race;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -12,7 +10,11 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
-public class MuleJUnit {
+/**
+ * @author Bilal
+ * @version 1.0
+ */
+public class PlayerEqualsTest {
 
     private String string;
     private String string2;
@@ -27,8 +29,8 @@ public class MuleJUnit {
         string = "This was a setup! It's a trap!";
         string2 = "Is JUnit working?";
         temp = "temp";
-        //player1 = new Player("Player 1", Race.HUMAN, "Red", game);
-        //player2 = new Player("Player 1", Race.HUMAN, "Red", game);
+        player1 = new Player("Player 1", Race.HUMAN, "Red");
+        player2 = new Player("Player 1", Race.HUMAN, "Red");
     }
 
     @Test
@@ -40,33 +42,45 @@ public class MuleJUnit {
     }
 
     @Test
-    public void testPlayerEquals() {
-//        Bilal JUnit Test
-
-//        this == itself returns true
+    public void testPlayerEqualsSelf() {
         assertEquals(player1.equals(player1), true);
 
-//        this compared with Object returns false
-        assertFalse(player1.equals(new Object()));
-
-//        this compared with String returns false
-        assertFalse(player1.equals(new String("Bob")));
-
-//        this compared with other Player (same color && same name) returns true
-        assertTrue(player1.equals(player2));
-
-        player2.setName("Player 2");
-//        this compared with other Player (same color && diff name) returns true
-        assertTrue(player1.equals(player2));
-
-        player2.setColor("Blue");
-//        this compare w other Player (diff color && diff name) returns false
-        assertNotEquals(player1.equals(player2), true);
-
-        player2.setRace(Race.BONZOID);
-//        this compare w other Player (diff color, diff name, diff Race) false
-        assertFalse(player1.equals(player2));
     }
 
+    @Test
+    public void testPlayerEqualsObject() {
+        assertFalse(player1.equals(new Object()));
+    }
+
+    @Test
+    public void testPlayerEqualsString() {
+        assertFalse(player1.equals(new String("Bob")));
+    }
+
+    @Test
+    public void testPlayerEqualsSameColorSameName() {
+        assertTrue(player1.equals(player2));
+    }
+
+    @Test
+    public void testPlayerEqualsSameColorDiffName() {
+        player2.setName("Player 2");
+        assertTrue(player1.equals(player2));
+    }
+
+    @Test
+    public void testPlayerEqualsDiffColorDiffName() {
+        player2.setName("Player 2");
+        player2.setColor("Blue");
+        assertNotEquals(player1.equals(player2), true);
+    }
+
+    @Test
+    public void testPlayerEqualsDiffColorDiffNameDiffRace() {
+        player2.setName("Player 2");
+        player2.setColor("Blue");
+        player2.setRace(Race.BONZOID);
+        assertFalse(player1.equals(player2));
+    }
 
 }
