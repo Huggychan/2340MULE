@@ -7,6 +7,10 @@ import edu.gatech.cs2340.Maps.TownTile;
 
 import java.util.LinkedList;
 
+/**
+ * @author Nick and Shyam
+ * @version 1.0
+ */
 public class LandSelection {
     private Game game;
     private LinkedList<Player> gameObjectActive;
