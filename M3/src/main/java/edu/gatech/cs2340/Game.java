@@ -205,7 +205,7 @@ public class Game extends Application implements Serializable {
         stage.getScene().setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
                 if (this.state == GameState.LANDSELECTION) {
-                    landselection.buy(null);
+                    landselection.buy(null, getCurrentPlayer());
                 }
             }
         });
@@ -282,7 +282,7 @@ public class Game extends Application implements Serializable {
         stage.getScene().setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
                 if (this.state == GameState.LANDSELECTION) {
-                    landselection.buy(null);
+                    landselection.buy(null, getCurrentPlayer());
                 }
             }
         });
@@ -402,7 +402,7 @@ public class Game extends Application implements Serializable {
      */
     public void pingFromTile(Tile tile) {
         if (state == GameState.LANDSELECTION) {
-            landselection.buy(tile);
+            landselection.buy(tile, getCurrentPlayer());
         } else if (state == GameState.TURN) {
             turn.move(tile);
         } else if (state == GameState.MULE) {

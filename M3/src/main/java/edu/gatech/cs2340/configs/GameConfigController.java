@@ -82,6 +82,9 @@ public class GameConfigController implements Initializable {
         }
     }
 
+    /**
+     * Used for loading a previously saved game
+     */
     public void loadGame() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose Game Save");
@@ -97,6 +100,4 @@ public class GameConfigController implements Initializable {
         }
 
     }
-
-
 }

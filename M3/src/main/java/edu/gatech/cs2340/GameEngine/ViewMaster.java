@@ -63,6 +63,10 @@ public class ViewMaster {
         //TODO do this shit
     };
 
+    /**
+     * goes to next state
+     * @param i
+     */
     public void nextState(int i) {
         if (i == 0) {
             game.setState(Game.GameState.GAMECONFIG);
@@ -82,6 +86,9 @@ public class ViewMaster {
         this.backingStackPane.getChildren().addAll(node);
     }
 
+    /**
+     * moves the log label to the front
+     */
     public void logToFront() {
         this.eventLog.toFront();
     }
