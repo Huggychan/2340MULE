@@ -109,9 +109,6 @@ public class Store implements Serializable {
                 this.decrementKeyInMap(rt, player.getInventory());
                 this.incrementKeyInMap(rt, this.inventoryStock);
 
-                System.out.println(player.getInventory());
-                System.out.println(player.getMoney());
-
                 return true;
             }
         } else {
