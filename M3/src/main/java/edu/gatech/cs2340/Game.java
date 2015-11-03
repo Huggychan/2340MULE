@@ -34,6 +34,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Game class
+ */
 public class Game extends Application implements Serializable {
 
     private ArrayList<Player> players;
