@@ -1,8 +1,5 @@
 package edu.gatech.cs2340.GameObject;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 public enum ResourceType {
 
     MULE(),
@@ -13,12 +10,24 @@ public enum ResourceType {
 
     private String imageString;
 
-    private ResourceType() {}
+    /**
+     * Default constructor
+     */
+    ResourceType() {
 
-    private ResourceType(String string) {
+    }
+
+    /**
+     * Constructor for ResourceType
+     * @param string String to set as imageString
+     */
+    ResourceType(String string) {
         this.imageString = string;
     }
 
+    /**
+     * @return String of image of ResourceType
+     */
     public String getImageString() {
         return this.imageString;
     }

@@ -10,6 +10,9 @@ import javafx.scene.paint.Paint;
 public class EventLog extends Label {
     private String s = "";
 
+    /**
+     * Constructor for EventLog
+     */
     public EventLog() {
         super();
         setTextFill(Paint.valueOf("white"));
@@ -17,6 +20,10 @@ public class EventLog extends Label {
         setAlignment(Pos.TOP_CENTER);
     }
 
+    /**
+     * Logs string to logger
+     * @param s String to be logged
+     */
     public void log(String s) {
         this.s = s;
         setText(s);

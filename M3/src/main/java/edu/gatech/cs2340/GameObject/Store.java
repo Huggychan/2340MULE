@@ -13,6 +13,9 @@ public class Store implements Serializable {
     private final int CRYSTITE_PRICE = 100;
     private final int BASE_MULE_PRICE = 100;
 
+    /**
+     * Constructor for Store
+     */
     public Store() {
         inventoryStock = new HashMap<>();
         inventoryStock.put(ResourceType.FOOD, 16);
@@ -29,48 +32,85 @@ public class Store implements Serializable {
         inventoryPrice.put(ResourceType.MULE, BASE_MULE_PRICE);
     }
 
+    /**
+     * @return Gets how many mules are in inventory
+     */
     public int getMuleCount() {
         return inventoryStock.get(ResourceType.MULE);
     }
 
+    /**
+     * @return Gets how much ore in inventory
+     */
     public int getOreCount() {
         return inventoryStock.get(ResourceType.ORE);
     }
 
+    /**
+     * @return Gets how much food in inventory
+     */
     public int getFoodCount() {
         return inventoryStock.get(ResourceType.FOOD);
     }
 
+    /**
+     * @return Gets how much energy in inventory
+     */
     public int getEnergyCount() {
         return inventoryStock.get(ResourceType.ENERGY);
     }
 
+    /**
+     * @return Gets how much crystite in inventory
+     */
     public int getCrystiteCount() {
         return inventoryStock.get(ResourceType.CRYSTITE);
     }
 
-    public int getENERGY_PRICE() {
+    /**
+     * @return Price of energy
+     */
+    public int getEnergyPrice() {
         return ENERGY_PRICE;
     }
 
-    public int getSMITHORE_PRICE() {
+    /**
+     * @return Price of smith ore
+     */
+    public int getSmithorePrice() {
         return SMITHORE_PRICE;
     }
 
-    public int getBASE_MULE_PRICE() {
+    /**
+     * @return Price of base mule
+     */
+    public int getBaseMulePrice() {
         return BASE_MULE_PRICE;
     }
 
-    public int getFOOD_PRICE() {
+    /**
+     * @return Price of food
+     */
+    public int getFoodPrice() {
         return FOOD_PRICE;
     }
 
-    public int getCRYSTITE_PRICE() {
+    /**
+     * @return Price of crystite
+     */
+    public int getCrystitePrice() {
         return CRYSTITE_PRICE;
     }
 
+    /**
+     * Buys the resource type and gives it to Player
+     * @param rt ResourceType to buy
+     * @param player Player buying items
+     * @return True if successful
+     */
     public boolean buy(ResourceType rt, Player player) {
-        System.out.println("Player's inventory before: " + player.getInventory());
+        System.out.println("Player's inventory before: "
+                + player.getInventory());
         int price = this.inventoryPrice.get(rt);
         int stock = this.inventoryStock.get(rt);
         if (player.getMoney() >= price && stock > 0) {
@@ -78,10 +118,12 @@ public class Store implements Serializable {
                 this.decrementKeyInMap(rt, this.inventoryStock);
                 this.incrementKeyInMap(rt, player.getInventory());
                 player.decrementMoney(price);
-                System.out.println("Player's inventory after: " + player.getInventory());
+                System.out.println("Player's inventory after: "
+                        + player.getInventory());
                 return true;
             } else {
-                if (player.getMule() == null && !player.getMuleBoughtThisTurn()) {
+                if (player.getMule() == null
+                        && !player.getMuleBoughtThisTurn()) {
                     player.setMuleBoughtThisTurn(true);
                     this.decrementKeyInMap(rt, this.inventoryStock);
                     player.giveMule();
@@ -91,14 +133,22 @@ public class Store implements Serializable {
             }
         }
 
-        System.out.println("Player's inventory after: " + player.getInventory());
+        System.out.println("Player's inventory after: "
+                + player.getInventory());
         return false;
     }
 
+    /**
+     * Sells the resource type and gives it to Player
+     * @param rt ResourceType to buy
+     * @param player Player buying items
+     * @return True if successful
+     */
     public boolean sell(ResourceType rt, Player player) {
 
         if (player == null || rt == null) {
-            throw new IllegalArgumentException("Either player or resource type is null");
+            throw new IllegalArgumentException(
+                    "Either player or resource type is null");
         }
 
         int value = this.inventoryPrice.get(rt);
@@ -123,12 +173,22 @@ public class Store implements Serializable {
     }
     //TODO add logging to buying/selling
 
+    /**
+     * Increments resourceType in the map
+     * @param key resourceType to be incremented
+     * @param map HashMap map of resourceType
+     */
     private void incrementKeyInMap(ResourceType key, HashMap<ResourceType,
             Integer> map) {
         int val = map.get(key);
         map.put(key, val + 1);
     }
 
+    /**
+     * Decrements resourceType in the map
+     * @param key resourceType to be incremented
+     * @param map HashMap map of resourceType
+     */
     private void decrementKeyInMap(ResourceType key, HashMap<ResourceType,
             Integer> map) {
         int val = map.get(key);

@@ -47,7 +47,9 @@ public class StoreController implements Initializable {
     private Turn turn;
     private boolean isBuying;
 
-
+    /**
+     * @return Pane which is the backing pane
+     */
     public Pane getBackingPane() {
         return backingPane;
     }
@@ -59,6 +61,9 @@ public class StoreController implements Initializable {
         this.setToggleButtonText();
     }
 
+    /**
+     * Sets the toggle button text
+     */
     public void setToggleButtonText() {
         this.isBuying = !this.isBuying;
 
@@ -76,6 +81,10 @@ public class StoreController implements Initializable {
         game.getMap().getStackPane().getChildren().remove(this.backingPane);
     }
 
+    /**
+     * Sets the store
+     * @param store Store to be set
+     */
     public void setStore(Store store) {
         this.store = store;
         if (store != null) {
@@ -83,20 +92,23 @@ public class StoreController implements Initializable {
         }
     }
 
+    /**
+     * Sets the game
+     * @param game Game to be set
+     */
     public void setGame(Game game) {
         this.game = game;
     }
-
 
     public void onConfirm() {
         String resource = (String) this.listView.getSelectionModel()
                 .getSelectedItem();
 
-        ResourceType resourceType = this.getResourceTypeFromString
-                (resource);
+        ResourceType resourceType
+                = this.getResourceTypeFromString(resource);
 
-        System.out.println("Money: " + this.game.getCurrentPlayer().getMoney
-                ());
+        System.out.println("Money: "
+                + this.game.getCurrentPlayer().getMoney());
 
         boolean success = false;
 
@@ -110,7 +122,8 @@ public class StoreController implements Initializable {
                     this.game.getScene().setCursor(new ImageCursor(image));
                     this.onStoreLeave();
                 } else if (game.getCurrentPlayer().getMuleBoughtThisTurn()) {
-                    game.getLog().log("You have already bought a mule this turn");
+                    game.getLog()
+                            .log("You have already bought a mule this turn");
                 }
             } else {
                 success = store.sell(resourceType, game.getCurrentPlayer());
@@ -123,26 +136,26 @@ public class StoreController implements Initializable {
 
     public void updateInventory() {
         items = FXCollections.observableArrayList();
-        this.items.add("MULE: " + this.store.getBASE_MULE_PRICE() + " " +
-                this.store.getMuleCount());
+        this.items.add("MULE: " + this.store.getBaseMulePrice() + " "
+                + this.store.getMuleCount());
 
-        this.items.add("Crystite: " + this.store.getCRYSTITE_PRICE() + " " +
-                this.store.getCrystiteCount());
+        this.items.add("Crystite: " + this.store.getCrystitePrice() + " "
+                + this.store.getCrystiteCount());
 
-        this.items.add("Food: " + this.store.getFOOD_PRICE() + " " +
-                this.store.getFoodCount());
-        this.items.add("Ore: " + this.store.getSMITHORE_PRICE() + " " +
-                this.store.getOreCount());
-        this.items.add("Energy: " + this.store.getENERGY_PRICE() + " " +
-                this.store.getEnergyCount());
+        this.items.add("Food: " + this.store.getFoodPrice() + " "
+                + this.store.getFoodCount());
+        this.items.add("Ore: " + this.store.getSmithorePrice() + " "
+                + this.store.getOreCount());
+        this.items.add("Energy: " + this.store.getEnergyPrice() + " "
+                + this.store.getEnergyCount());
 
         listView.setItems(this.items);
     }
 
     public ResourceType getResourceTypeFromString(String prodTypeString) {
         for (ResourceType pt : ResourceType.values()) {
-            if (prodTypeString != null && prodTypeString.toUpperCase().contains(pt
-                    .toString())) {
+            if (prodTypeString != null
+                    && prodTypeString.toUpperCase().contains(pt.toString())) {
                 return pt;
             }
         }

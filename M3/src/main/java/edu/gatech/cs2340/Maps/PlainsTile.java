@@ -11,6 +11,9 @@ import java.util.Random;
  */
 public class PlainsTile extends Tile {
 
+    /**
+     * Constructor for PlainsTile
+     */
     public PlainsTile() {
         this.image = new Image("/resources/Plain.png");
         this.getImageView().setImage(new Image("/resources/Plain.png"));

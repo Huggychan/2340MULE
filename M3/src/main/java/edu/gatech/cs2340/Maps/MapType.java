@@ -8,11 +8,11 @@ import java.util.Arrays;
  */
 public enum MapType {
     STANDARD, RANDOM;
+
+    /**
+     * @return ArrayList of MapTypes
+     */
     public static ArrayList<MapType> getAllMapTypes() {
         return new ArrayList<MapType>(Arrays.asList(MapType.values()));
-    }
-
-    public Tile[] getmapData() {
-        return new Tile[1];
     }
 }

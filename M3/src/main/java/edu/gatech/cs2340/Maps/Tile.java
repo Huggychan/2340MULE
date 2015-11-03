@@ -5,7 +5,11 @@ import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.ResourceType;
 import javafx.scene.Cursor;
-import javafx.scene.image.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
@@ -43,26 +47,30 @@ public abstract class Tile extends StackPane implements Serializable {
         resourceTypeMap = new HashMap<>();
 
         this.setOnMouseEntered(event -> {
-            this.toFront();
-            if (this.owner == null && !(this instanceof TownTile)) {
-                this.setStyle("-fx-border-color:" + map.getGame()
-                        .getCurrentPlayer().getColorString() + "; \n"
-                        //#090a0c
-                        + "-fx-border-insets:-5;\n"
-                        + "-fx-border-radius:0;\n"
-                        + "-fx-border-width:5.0");
-            }
-        });
+                this.toFront();
+                if (this.owner == null && !(this instanceof TownTile)) {
+                    this.setStyle("-fx-border-color:" + map.getGame()
+                            .getCurrentPlayer().getColorString() + "; \n"
+                            //#090a0c
+                            + "-fx-border-insets:-5;\n"
+                            + "-fx-border-radius:0;\n"
+                            + "-fx-border-width:5.0");
+                }
+            });
 
         this.setOnMouseExited(event -> {
-            this.setStyle(null);
-        });
+                this.setStyle(null);
+            });
 
         this.setOnMouseClicked(event -> {
-            map.getGame().pingFromTile(this); //sends a message to game
-        });
+                map.getGame().pingFromTile(this); //sends a message to game
+            });
     }
 
+    /**
+     * Calculates production for the tile
+     * @return Integer value of how much production was done for the tile
+     */
     public int calculateProduction() {
         if (this.getOwner().getEnergy() > 0 && this.tileHasMule()) {
             this.getOwner().setEnergy(this.getOwner().getEnergy() - 1);
@@ -73,6 +81,9 @@ public abstract class Tile extends StackPane implements Serializable {
         return 0;
     }
 
+    /**
+     * @return Gets the Resource Type Map
+     */
     public Map<ResourceType, Integer> getResourceTypeMap() {
         return this.resourceTypeMap;
     }
@@ -129,12 +140,21 @@ public abstract class Tile extends StackPane implements Serializable {
     /**
      * @return get Mule of tile
      */
-    public Mule getMule() { return mule; }
+    public Mule getMule() {
+        return mule;
+    }
 
+    /**
+     * @return True if the tile has a mule
+     */
     public boolean tileHasMule() {
         return this.mule != null;
     }
 
+    /**
+     * Places a mule on the tile
+     * @param mule Mule to be placed on tile
+     */
     public void placeMule(Mule mule) {
         //System.out.println(tile.getMule());
         if (this instanceof TownTile) {
@@ -162,7 +182,10 @@ public abstract class Tile extends StackPane implements Serializable {
         this.map.getGame().getCurrentPlayer().setMule(null);
     }
 
-    public ResourceType getMuleResource () {
+    /**
+     * @return Gets the mule's resource
+     */
+    public ResourceType getMuleResource() {
         if (this.tileHasMule()) {
             return this.getMule().getResourceType();
         } else {
@@ -201,12 +224,16 @@ public abstract class Tile extends StackPane implements Serializable {
     /**
      * @return ore of tile
      */
-    public int getOre() { return this.resourceTypeMap.get(ResourceType.ORE); }
+    public int getOre() {
+        return this.resourceTypeMap.get(ResourceType.ORE);
+    }
 
     /**
      * @param ore set ore amount to tile
      */
-    public void setOre(int ore) { this.resourceTypeMap.put(ResourceType.ORE, ore); }
+    public void setOre(int ore) {
+        this.resourceTypeMap.put(ResourceType.ORE, ore);
+    }
 
     /**
      * @return crystite of tile
@@ -230,14 +257,25 @@ public abstract class Tile extends StackPane implements Serializable {
         return iv;
     }
 
+    /**
+     * Sets the ImageView
+     * @param imageView ImageView to be set
+     */
     public void setImageView(ImageView imageView) {
         this.iv = imageView;
     }
 
+    /**
+     * Sets the map
+     * @param map Map to be set
+     */
     public void setMap(MapController map) {
         this.map = map;
     }
 
+    /**
+     * Loads the ImageView of the Tile
+     */
     public abstract void loadImageView();
 
 }

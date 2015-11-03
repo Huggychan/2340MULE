@@ -35,29 +35,45 @@ public class MapController implements Initializable, Serializable {
         }
     }
 
-
+    /**
+     * Sets the maptype
+     * @param maptype Maptype to be set
+     */
     public void setMaptype(MapType maptype) {
         this.maptype = maptype;
     }
 
+    /**
+     * Sets the stackpane
+     * @param stackPane Stackpane to be set
+     */
     public void setStackPane(StackPane stackPane) {
         this.stackPane = stackPane;
     }
 
+    /**
+     * Sets the gridpane
+     * @param gridPane Gridpane to be set
+     */
     public void setGridPane(GridPane gridPane) {
         this.backingPane = gridPane;
     }
 
+    /**
+     * @return 2D array of tiles
+     */
     public Tile[][] getTiles() {
         return this.tiles;
     }
 
-    private void setUpMap() throws IllegalArgumentException {
+    /**
+     * Sets up the map
+     */
+    private void setUpMap() {
         tiles = new Tile[5][9];
         if (maptype == MapType.STANDARD) {
             try {
-                URL url = getClass().getResource
-                        ("/resources/standardmap.txt");
+                URL url = getClass().getResource("/resources/standardmap.txt");
                 File mapfile = new File(url.getPath());
                 Scanner scan = new Scanner(mapfile);
                 int row = 0;
@@ -86,6 +102,12 @@ public class MapController implements Initializable, Serializable {
         }
     }
 
+    /**
+     * Sets tiles according to character
+     * @param c character used to determine which tile to return
+     * @return Tile specified by character
+     * @throws IllegalArgumentException If the letter doesn't exist
+     */
     private Tile setUpTile(char c) throws IllegalArgumentException {
         if (c == 'R') {
             return new RiverTile();
@@ -104,24 +126,40 @@ public class MapController implements Initializable, Serializable {
         }
     }
 
-
-
+    /**
+     * Puts border on ImageView
+     * @param event MouseEvent being detected
+     */
     public void putBorderOnImageView(MouseEvent event) {
         DropShadow ds = new DropShadow(20, Color.BLACK);
     }
 
+    /**
+     * Sets the game
+     * @param game Game to be set
+     */
     public void setGame(Game game) {
         this.game = game;
     }
 
+    /**
+     * @return Gets the game being played
+     */
     public Game getGame() {
         return this.game;
     }
 
+    /**
+     * @return Gets the stackpane
+     */
     public StackPane getStackPane() {
         return this.stackPane;
     }
 
+    /**
+     * Sets the tiles
+     * @param tiles 2D tile array being used to set up map
+     */
     public void setTiles(Tile[][] tiles) {
         this.tiles = tiles;
     }

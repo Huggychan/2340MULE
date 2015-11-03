@@ -35,7 +35,7 @@ public class StoreBuyTests {
         store.buy(ResourceType.FOOD, p1);
         assertEquals(0, p1.getFood());
         assertEquals(16, store.getFoodCount());
-        p1.setMoney(store.getFOOD_PRICE() * store.getFoodCount());
+        p1.setMoney(store.getFoodPrice() * store.getFoodCount());
         while (store.getFoodCount() > 0) {
             store.buy(ResourceType.FOOD, p1);
         }
@@ -47,7 +47,7 @@ public class StoreBuyTests {
 
     @Test(timeout = TIMEOUT)
     public void testIfNotMule() {
-        p1.setMoney(store.getFOOD_PRICE());
+        p1.setMoney(store.getFoodPrice());
         //System.out.println(store.getFoodCount()); 16
         p1.setFood(0);
         store.buy(ResourceType.FOOD, p1);
@@ -58,7 +58,7 @@ public class StoreBuyTests {
 
     @Test(timeout = TIMEOUT, expected = RuntimeException.class)
     public void testIfMule() { //the graphics are not initialized
-        p1.setMoney(2 * store.getBASE_MULE_PRICE());
+        p1.setMoney(2 * store.getBaseMulePrice());
         assertTrue(p1.getMule() == null);
         store.buy(ResourceType.MULE, p1);
         assertTrue(p1.getMule() != null);
@@ -66,7 +66,7 @@ public class StoreBuyTests {
         store.buy(ResourceType.MULE, p1);
         assertTrue(p1.getMuleBoughtThisTurn());
         assertTrue(p1.getMule() == null);
-        assertEquals(store.getBASE_MULE_PRICE(), p1.getMoney());
+        assertEquals(store.getBaseMulePrice(), p1.getMoney());
     }
 
 }

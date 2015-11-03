@@ -11,6 +11,9 @@ import java.util.Random;
  */
 public class MountainTwoTile extends Tile {
 
+    /**
+     * Constructor for MountainTwoTile
+     */
     public MountainTwoTile() {
         this.image = new Image("/resources/Mountain2.png");
         this.getImageView().setImage(this.image);

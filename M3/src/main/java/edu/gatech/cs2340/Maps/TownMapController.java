@@ -16,7 +16,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-import java.awt.event.InputEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
@@ -62,20 +61,14 @@ public class TownMapController implements Initializable {
         backPane.requestFocus();
 
         backPane.setOnKeyPressed(event -> {
-            System.out.println("key pressed");
-        });
+                System.out.println("key pressed");
+            });
     }
 
-    @FXML
-    private void handleOnKeyPressed(final InputEvent event) {
-        System.out.println("Key pressed");
-        System.out.println(event);
-    }
 
-    public void spriteMovement() {
-        System.out.println("pressed");
-    }
-
+    /**
+     * Tests if the assay was clicked
+     */
     public void onAssayClicked() {
         if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
             this.game.log("Select a resource type!");
@@ -84,13 +77,17 @@ public class TownMapController implements Initializable {
         }
     }
 
+    /**
+     * Calculates money for current player and gives them that much money
+     */
     public void onPubClicked() {
         if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
             this.game.log("Select a resource type!");
         } else {
             Random r = new Random();
 
-            double roundBonus = (int) Math.ceil(game.getRoundNumber() / 4.0) * 50;
+            double roundBonus
+                    = (int) Math.ceil(game.getRoundNumber() / 4.0) * 50;
 
             int timeLeft = turn.getTimeRemaining();
             int timeBonus = (int) Math.ceil(timeLeft / 12.5) * 50;
@@ -114,6 +111,9 @@ public class TownMapController implements Initializable {
         }
     }
 
+    /**
+     * Method that is run when Land Office is clicked
+     */
     public void onLandOfficeClicked() {
         if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
             this.game.log("Select a resource type!");
@@ -122,13 +122,16 @@ public class TownMapController implements Initializable {
         }
     }
 
+    /**
+     * Loads the store interface
+     */
     public void onStoreClicked() {
         if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
             this.game.log("Select your Resource Type!");
         } else {
             game.toggleStoreEntered();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource
-                    ("/resources/Store.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/resources/Store.fxml"));
             loader.setClassLoader(this.getClass().getClassLoader());
             Parent newRoot = null;
 
@@ -145,58 +148,93 @@ public class TownMapController implements Initializable {
             this.storeController = sc;
             sc.setStore(this.game.getStore());
             sc.setGame(this.game);
-            this.game.getMap().getStackPane().getChildren().add(sc.getBackingPane
-                    ());
+            this.game.getMap().getStackPane()
+                    .getChildren().add(sc.getBackingPane());
         }
     }
 
+    /**
+     * Sets the mule's resource as energy
+     */
     public void onEnergyClicked() {
         this.setMuleResourceType(ResourceType.ENERGY,
                 game.getCurrentPlayer().getMule());
     }
 
+    /**
+     * Sets the mule's resource as ore
+     */
     public void onOreClicked() {
         this.setMuleResourceType(ResourceType.ORE,
                 game.getCurrentPlayer().getMule());
     }
 
+    /**
+     * Sets the mule's resource as food
+     */
     public void onFoodClicked() {
         this.setMuleResourceType(ResourceType.FOOD,
                 game.getCurrentPlayer().getMule());
     }
 
+    /**
+     * Sets the mule's resource as crystite
+     */
     public void onCrystiteClicked() {
         this.setMuleResourceType(ResourceType.CRYSTITE,
                 game.getCurrentPlayer().getMule());
     }
 
+    /**
+     * Sets the game
+     * @param game Game to be set
+     */
     public void setGame(Game game) {
         this.game = game;
     }
 
+    /**
+     * Sets the turn
+     * @param turn Turn to be set
+     */
     public void setTurn(Turn turn) {
         this.turn = turn;
     }
 
+    /**
+     * Loads the map again
+     */
     public void onExitClicked() {
         if (this.game.getCurrentPlayer().hasMule() && !muleHasResourceType()) {
             this.game.log("Please select a Resource Type before exiting");
         } else {
-            this.game.getMap().getStackPane().getChildren().remove(this.backPane);
+            this.game.getMap().getStackPane()
+                    .getChildren().remove(this.backPane);
             game.getLog().setTextFill(Paint.valueOf("white"));
             game.setTownEntered(false);
         }
     }
 
+    /**
+     * @return True if the current mule has a resource type
+     */
     public boolean muleHasResourceType() {
         return this.game.getCurrentPlayer().getMule().hasResourceType();
     }
 
+    /**
+     * @return Store Controller of the Game
+     */
     public StoreController getStoreController() {
         return storeController;
     }
 
     private void setMuleResourceType(ResourceType resource, Mule mule) {
+    /**
+     * Sets the mule resource type
+     * @param resource Resource to set for the current mule
+     * @param mule Mule to set resource type as
+     */
         boolean canAfford = false;
         Player curr = game.getCurrentPlayer();
 
@@ -204,13 +242,16 @@ public class TownMapController implements Initializable {
             if (resource == ResourceType.CRYSTITE && curr.getMoney() >= 100) {
                 curr.decrementMoney(100);
                 canAfford = true;
-            } else if (resource == ResourceType.ENERGY && curr.getMoney() >= 25) {
+            } else if (resource == ResourceType.ENERGY
+                    && curr.getMoney() >= 25) {
                 curr.decrementMoney(25);
                 canAfford = true;
-            } else if (resource == ResourceType.FOOD && curr.getMoney() >= 30) {
+            } else if (resource == ResourceType.FOOD
+                    && curr.getMoney() >= 30) {
                 curr.decrementMoney(30);
                 canAfford = true;
-            } else if (resource == ResourceType.ORE && curr.getMoney() >= 50) {
+            } else if (resource == ResourceType.ORE
+                    && curr.getMoney() >= 50) {
                 curr.decrementMoney(50);
                 canAfford = true;
             }
@@ -224,13 +265,16 @@ public class TownMapController implements Initializable {
                 WritableImage writableImage =
                         mule.changeColor(game.getCurrentPlayer());
                 this.game.getScene().setCursor(new ImageCursor(writableImage));
+                mule.setResourceType(resource);
                 System.out.println("Resource type: "
-                        + mule.getResourceType());
+                        + this.game.getCurrentPlayer()
+                        .getMule().getResourceType());
                 onExitClicked();
                 game.setState(Game.GameState.MULE);
             } else {
                 this.game.log("Your MULE's resource type is already "
-                        + this.game.getCurrentPlayer().getMule().getResourceType());
+                        + this.game.getCurrentPlayer()
+                        .getMule().getResourceType());
             }
         }
     }

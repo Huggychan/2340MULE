@@ -17,7 +17,7 @@ public enum Race {
      * Constructor for Race
      * @param imageString String file location of image
      */
-    private Race(String imageString) {
+    Race(String imageString) {
         this.imageString = imageString;
     }
 
