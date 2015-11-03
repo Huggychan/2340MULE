@@ -54,7 +54,7 @@ public class TownMapController implements Initializable {
     private StoreController storeController;
 
     /**
-     * Initializes the fxml file
+     * Initializes the fxml file.
      * @param fxmlFileLocation Location of fxml file
      * @param resources Resources needed
      */
