@@ -1,19 +1,18 @@
-package edu.gatech.cs2340.GameObject;
+package java.edu.gatech.cs2340.GameObject;
 
 /**
  * Created by Nick on 11/3/2015.
  */
 import edu.gatech.cs2340.Game;
+import edu.gatech.cs2340.GameObject.Player;
+import edu.gatech.cs2340.GameObject.Race;
+import edu.gatech.cs2340.GameObject.ResourceType;
+import edu.gatech.cs2340.GameObject.Store;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertArrayEquals;
 
 public class StoreBuyTests {
     private Store store;
@@ -24,7 +23,6 @@ public class StoreBuyTests {
 
     @Before
     public void setUp() {
-        game = new Game();
         store = new Store();
         p1 = new Player("1", Race.BONZOID, "Red");
         p2 = new Player("2", Race.BONZOID, "Blue");

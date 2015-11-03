@@ -1,5 +1,6 @@
-package edu.gatech.cs2340;
+package java.edu.gatech.cs2340.GameObject;
 
+import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.Race;
 import org.junit.Before;

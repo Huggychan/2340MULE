@@ -1,5 +1,3 @@
-package edu.gatech.cs2340;
-
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.Race;
 import edu.gatech.cs2340.GameObject.ResourceType;
