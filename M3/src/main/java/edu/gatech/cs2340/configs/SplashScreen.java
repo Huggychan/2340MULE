@@ -15,7 +15,7 @@ import java.io.IOException;
 public class SplashScreen extends Application {
 
     /**
-     * Main method that utilizes PlayerConfigScreen
+     * Main method that utilizes
      * @param args Arguments to command line
      */
     public static void main(String[] args) {

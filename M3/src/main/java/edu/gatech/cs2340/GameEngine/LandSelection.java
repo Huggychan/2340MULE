@@ -22,6 +22,10 @@ public class LandSelection {
         GameObjectActive.addAll(game.getPlayers());
     }
 
+    /**
+     * Purchases a tile for the game's current player
+     * @param tile the tile to buy
+     */
     public void buy(Tile tile) {
         if (tile == null) {
             if (game.getRoundNumber() > 2) {

@@ -121,7 +121,6 @@ public class Player implements Comparable<Player>, Serializable {
         inventory.put(ResourceType.FOOD, 0);
         inventory.put(ResourceType.ORE, 0);
         inventory.put(ResourceType.ENERGY, 0);
-//        this.game = game;
         this.tiles = new ArrayList<>();
         this.muleBoughtThisTurn = false;
 
@@ -129,28 +128,6 @@ public class Player implements Comparable<Player>, Serializable {
         this.race = race;
         this.colorString = colorString;
         this.setColor(this.colorString);
-//        switch (colorString) {
-//        case "Red":
-//            color = Color.RED;
-//            break;
-//        case "Orange":
-//            color = Color.ORANGE;
-//            break;
-//        case "Yellow":
-//            color = Color.YELLOW;
-//            break;
-//        case "Green":
-//            color = Color.GREEN;
-//            break;
-//        case "Blue":
-//            color = Color.BLUE;
-//            break;
-//        case "Purple":
-//            color = Color.PURPLE;
-//            break;
-//        default:
-//            break;
-//        }
         switch (race) {
         case HUMAN:
             this.money = 600;

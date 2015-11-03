@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  */
 public class Summary extends Application {
     /**
-     * Main method that utilizes PlayerConfigScreen
+     * Main method that utilizes SummaryController
      * @param args Arguments to command line
      */
     public static void main(String[] args) {

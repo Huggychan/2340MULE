@@ -10,12 +10,13 @@ public class StoreSellTest {
     private Store store;
     private Player realPlayer;
     private ResourceType realType;
+    public final static int TIMEOUT = 200;
 
     @Before
     public void setUp() {
-        Player realPlayer = new Player("Marc", Race.HUMAN, "Red");
-        ResourceType realType = ResourceType.ENERGY;
-        Store store = new Store();
+        realPlayer = new Player("Marc", Race.HUMAN, "Red");
+        realType = ResourceType.ENERGY;
+        store = new Store();
     }
 
     @Test (expected=IllegalArgumentException.class)
@@ -33,7 +34,7 @@ public class StoreSellTest {
         store.sell(null, null);
     }
 
-    @Test
+    @Test (timeout = TIMEOUT)
     public void testSellEmpty() {
         while (realPlayer.getEnergy() > 0) {
             store.sell(realType, realPlayer);
@@ -49,16 +50,13 @@ public class StoreSellTest {
         assertNull(realPlayer.getMule());
         boolean success = store.sell(ResourceType.MULE, realPlayer);
         assertFalse(success);
-
-        realPlayer.giveMule();
-        assertNotNull(realPlayer.getMule());
-        success = store.sell(ResourceType.MULE, realPlayer);
-        assertTrue(success);
     }
 
-    @Test
+    @Test (timeout = TIMEOUT)
     public void testNormalSell() {
+        realPlayer.setEnergy(2);
         boolean success = store.sell(realType, realPlayer);
         assertTrue(success);
+        assertEquals(1, realPlayer.getEnergy());
     }
 }
