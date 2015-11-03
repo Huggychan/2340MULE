@@ -76,6 +76,9 @@ public class Game extends Application implements Serializable {
     public enum Difficulty {
         Beginner, Standard, Tournament;
 
+        /**
+         * @return Difficulties as an array
+         */
         public static ArrayList<Difficulty> getAllDifficulties() {
             return new ArrayList<>(Arrays.asList(values()));
         }
@@ -109,8 +112,7 @@ public class Game extends Application implements Serializable {
         colors.add("Blue");
         colors.add("Purple");
         state = GameState.GAMECONFIG;
-        URL location = getClass().getResource
-                ("/resources/GameConfig.fxml");
+        URL location = getClass().getResource("/resources/GameConfig.fxml");
         this.stage = stage;
         FXMLLoader loader = new FXMLLoader(location);
         loader.setClassLoader(this.getClass().getClassLoader());
@@ -121,8 +123,8 @@ public class Game extends Application implements Serializable {
         gcfgController.setGame(this);
 
         this.scene = new Scene(root, 1600, 900);
-        stage.getIcons().add(new Image(Game.class.getResourceAsStream
-                ("/resources/mule.png")));
+        stage.getIcons().add(new Image(
+                Game.class.getResourceAsStream("/resources/mule.png")));
         stage.setTitle("MULE");
         stage.setScene(scene);
         stage.show();
@@ -139,8 +141,8 @@ public class Game extends Application implements Serializable {
             state = GameState.PLAYERCONFIG;
         }
         if (i < numPlayers) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource
-                    ("/resources/PlayerConfigScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass()
+                    .getResource("/resources/PlayerConfigScreen.fxml"));
             loader.setClassLoader(this.getClass().getClassLoader());
 
             Parent newRoot = null;
@@ -169,8 +171,8 @@ public class Game extends Application implements Serializable {
         log = new EventLog();
         randomEventGenerator = new RandomEventGenerator(this);
         serializableUtil = new SerializableUtil();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("/resources/Map.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass()
+                .getResource("/resources/Map.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
 
         Parent newRoot = null;
@@ -192,12 +194,12 @@ public class Game extends Application implements Serializable {
         map.getStackPane().getChildren().add(log);
         StackPane.setAlignment(log, Pos.TOP_CENTER);
         stage.getScene().setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.SPACE) {
-                if (this.state == GameState.LANDSELECTION) {
-                    landselection.buy(null, getCurrentPlayer());
+                if (e.getCode() == KeyCode.SPACE) {
+                    if (this.state == GameState.LANDSELECTION) {
+                        landselection.buy(null, getCurrentPlayer());
+                    }
                 }
-            }
-        });
+            });
         for (Player p : players) {
             p.setColor(p.getColorString());
         }
@@ -248,8 +250,8 @@ public class Game extends Application implements Serializable {
             }
         }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("/resources/Map.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass()
+                .getResource("/resources/Map.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
 
         Parent newRoot = null;
@@ -269,12 +271,12 @@ public class Game extends Application implements Serializable {
         map.getStackPane().getChildren().add(log);
         StackPane.setAlignment(log, Pos.TOP_CENTER);
         stage.getScene().setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.SPACE) {
-                if (this.state == GameState.LANDSELECTION) {
-                    landselection.buy(null, getCurrentPlayer());
+                if (e.getCode() == KeyCode.SPACE) {
+                    if (this.state == GameState.LANDSELECTION) {
+                        landselection.buy(null, getCurrentPlayer());
+                    }
                 }
-            }
-        });
+            });
         startRound();
     }
 
@@ -305,8 +307,8 @@ public class Game extends Application implements Serializable {
      * Puts the town on top of the view stack
      */
     public void goToTown() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("/resources/TownMap.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass()
+                .getResource("/resources/TownMap.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
 
         Parent newRoot = null;
@@ -332,8 +334,8 @@ public class Game extends Application implements Serializable {
      * Puts the summary on top of the view stack
      */
     public void summary() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource
-                ("/resources/Summary.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass()
+                .getResource("/resources/Summary.fxml"));
         loader.setClassLoader(this.getClass().getClassLoader());
 
         Parent root = null;
@@ -354,17 +356,17 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Compares Player to Players list
-     * @param Player Player being compared
+     * Compares player to Players list
+     * @param player Player being compared
      * @return True if Player is already in list; false otherwise
      */
-    public boolean comparePlayers(Player Player) {
+    public boolean comparePlayers(Player player) {
         boolean result = true;
         if (players.size() == 0) {
             return false;
         }
         for (Player p : players) {
-            if (Player.equals(p)) {
+            if (player.equals(p)) {
                 return true;
             } else {
                 result = false;
@@ -397,10 +399,10 @@ public class Game extends Application implements Serializable {
 
     /**
      * Adds players to a game
-     * @param Player the player to add
+     * @param player the player to add
      */
-    public void addPlayer(Player Player) {
-        players.add(Player);
+    public void addPlayer(Player player) {
+        players.add(player);
     }
 
     /**
@@ -408,7 +410,8 @@ public class Game extends Application implements Serializable {
      * @return the list of colors
      */
     public ArrayList<String> getColors() {
-        return this.colors; }
+        return this.colors;
+    }
 
     /**
      * Gets the difficutly of the game
@@ -532,13 +535,17 @@ public class Game extends Application implements Serializable {
      * Gets the game's scene
      * @return the game's scene
      */
-    public Scene getScene() { return this.scene; }
+    public Scene getScene() {
+        return this.scene;
+    }
 
     /**
      * Gets the game's stage
      * @return the game's stage
      */
-    public Stage getStage() { return this.stage; }
+    public Stage getStage() {
+        return this.stage;
+    }
 
     /**
      * gets whether the store is currently on top of the view stack
