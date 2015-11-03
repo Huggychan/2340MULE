@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 public class LandSelection {
     private Game game;
-    private LinkedList<Player> GameObjectActive;
+    private LinkedList<Player> gameObjectActive;
     /*this is a terrible name lol
       its also capitalized
       The list will have one instance of player at a time, and if the player
@@ -18,15 +18,15 @@ public class LandSelection {
     */
     public LandSelection(Game game) {
         this.game = game;
-        GameObjectActive = new LinkedList<>();
-        GameObjectActive.addAll(game.getPlayers());
+        gameObjectActive = new LinkedList<>();
+        gameObjectActive.addAll(game.getPlayers());
     }
 
     /**
      * Purchases a tile for the game's current player
      * @param tile the tile to buy
      */
-    public void buy(Tile tile) {
+    public void buy(Tile tile, Player player) {
         if (tile == null) {
             if (game.getRoundNumber() > 2) {
                 pass();
@@ -38,46 +38,45 @@ public class LandSelection {
         }
         if (game.getRoundNumber() == 1 || game.getRoundNumber() == 2) {
             if (tile.getOwner() == null) {
-                tile.setOwner(game.getCurrentPlayer());
-                game.getCurrentPlayer().addTile(tile);
+                tile.setOwner(player);
+                player.addTile(tile);
             } else {
                 //TODO can't let person be removed
                 game.log("someone already owns this plot");
                 return; //i'm a fuckin genius
             }
         } else {
-            if (game.getCurrentPlayer().getMoney() >= 300
+            if (player.getMoney() >= 300
                     && tile.getOwner() == null) {
-                tile.setOwner(game.getCurrentPlayer());
-                game.getCurrentPlayer().setMoney(game.getCurrentPlayer()
-                        .getMoney() - 300);
-                game.getCurrentPlayer().addTile(tile);
+                tile.setOwner(player);
+                player.setMoney(player.getMoney() - 300);
+                player.addTile(tile);
                 //System.out.println(game.getCurrentPlayer().getMoney());
             } else if (tile.getOwner() != null) {
                 return;
             }
-            if (game.getCurrentPlayer().getMoney() >= 300) {
-                GameObjectActive.add(game.getCurrentPlayer());
+            if (player.getMoney() >= 300) {
+                gameObjectActive.add(player);
             }
         }
-        GameObjectActive.remove(game.getCurrentPlayer());
-        if (GameObjectActive.isEmpty()) {
+        gameObjectActive.remove(player);
+        if (gameObjectActive.isEmpty()) {
             pass();
         } else {
-            game.setCurrentPlayer(GameObjectActive.peek());
+            game.setCurrentPlayer(gameObjectActive.peek());
         }
     }
 
     public void pass() {
-        if (GameObjectActive.isEmpty()) {
+        if (gameObjectActive.isEmpty()) {
             game.startTurns();
         } else {
             game.log(game.getCurrentPlayer().getName() + "Passes.");
-            GameObjectActive.remove(game.getCurrentPlayer());
-            if (GameObjectActive.isEmpty()) {
+            gameObjectActive.remove(game.getCurrentPlayer());
+            if (gameObjectActive.isEmpty()) {
                 pass();
             } else {
-                game.setCurrentPlayer(GameObjectActive.peek());
+                game.setCurrentPlayer(gameObjectActive.peek());
             }
         }
     }
