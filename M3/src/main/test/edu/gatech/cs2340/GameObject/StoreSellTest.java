@@ -1,9 +1,5 @@
 package edu.gatech.cs2340.GameObject;
 
-//import edu.gatech.cs2340.GameObject.Player;
-//import edu.gatech.cs2340.GameObject.Race;
-//import edu.gatech.cs2340.GameObject.ResourceType;
-//import edu.gatech.cs2340.GameObject.Store;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,36 +8,29 @@ import static org.junit.Assert.*;
 public class StoreSellTest {
 
     private Store store;
-    private Player realPlayer, nullPlayer;
-    private ResourceType realType, nullType;
+    private Player realPlayer;
+    private ResourceType realType;
 
     @Before
-    public void setup() {
+    public void setUp() {
         Player realPlayer = new Player("Marc", Race.HUMAN, "Red");
-        Player nullPlayer = null;
         ResourceType realType = ResourceType.ENERGY;
-        ResourceType nullType = null;
         Store store = new Store();
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test (expected=IllegalArgumentException.class)
     public void testNullPlayer() {
-        assertNull(nullPlayer);
-        store.sell(realType, nullPlayer);
+        store.sell(realType, null);
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test (expected=IllegalArgumentException.class)
     public void testNullProduct() {
-        assertNull(nullType);
-        store.sell(nullType, realPlayer);
+        store.sell(null, realPlayer);
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test (expected=IllegalArgumentException.class)
     public void testNullBoth() {
-        assertNull(nullType);
-        assertNull(nullPlayer);
-        store.sell(nullType, nullPlayer);
-
+        store.sell(null, null);
     }
 
     @Test
