@@ -96,8 +96,11 @@ public class Store implements Serializable {
     }
 
     public boolean sell(ResourceType rt, Player player) {
-        System.out.println(player.getInventory());
-        System.out.println(player.getMoney());
+
+        if (player == null || rt == null) {
+            throw new IllegalArgumentException("Either player or resource type is null");
+        }
+
         int value = this.inventoryPrice.get(rt);
         int stock = this.inventoryStock.get(rt);
 
