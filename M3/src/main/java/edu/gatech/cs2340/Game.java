@@ -62,9 +62,15 @@ public class Game extends Application implements Serializable {
     private transient RandomEventGenerator randomEventGenerator;
     private transient SerializableUtil serializableUtil;
 
+    /**
+     * This enum documents state of the game
+     */
     public enum GameState{GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
         AUCTION, STORE, TOWN, SUMMARY, MULE}
 
+    /**
+     * This enum documents game difficulty
+     */
     public enum Difficulty {
         Beginner, Standard, Tournament;
 
