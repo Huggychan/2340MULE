@@ -19,7 +19,6 @@ import java.util.Scanner;
 public class MapController implements Initializable, Serializable {
     private Tile[][] tiles;
     private MapType maptype = MapType.STANDARD;
-    private Game game;
     @FXML
     private transient GridPane backingPane;
     @FXML
@@ -127,13 +126,6 @@ public class MapController implements Initializable, Serializable {
     }
 
 
-    /**
-     * Sets the game
-     * @param game Game to be set
-     */
-    public void setGame(Game game) {
-        this.game = game;
-    }
 
     /**
      * @return Gets the game being played
