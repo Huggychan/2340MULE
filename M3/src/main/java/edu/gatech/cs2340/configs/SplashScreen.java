@@ -8,14 +8,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Player Configuration Screen
+ * Player Configuration Screen.
  * @author Bilal, Myron, Shyam
  * @version 1.0
  */
 public class SplashScreen extends Application {
 
     /**
-     * Main method that utilizes
+     * Main method that utilizes.
      * @param args Arguments to command line
      */
     public static void main(String[] args) {

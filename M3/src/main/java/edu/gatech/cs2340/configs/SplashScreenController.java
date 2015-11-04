@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 //import javafx.scene.paint.Color;
 
 /**
- * Player Configuration Screen Controller - works with SceneBuilder
+ * Player Configuration Screen Controller - works with SceneBuilder.
  * @author Bilal, Myron, Shyam
  * @version 1.1
  */
@@ -46,7 +46,7 @@ public class SplashScreenController implements Initializable {
     private Game game;
 
     /**
-     * Initializes the fxml file
+     * Initializes the fxml file.
      * @param fxmlFileLocation Location of fxml file
      * @param resources Resources needed
      */
@@ -109,10 +109,10 @@ public class SplashScreenController implements Initializable {
 
     /**
      * Set the Game bro!
-     * @param game the game to be set
+     * @param newGame the game to be set
      */
-    public void setGame(Game game) {
-        this.game = game;
+    public void setGame(Game newGame) {
+        this.game = newGame;
     }
 
 }

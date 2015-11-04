@@ -22,50 +22,26 @@ import java.util.ResourceBundle;
  * Created by Nick on 9/10/2015. not marc
  */
 public class GameConfigController implements Initializable {
-    /**
-     * A drop down menu with the game difficulty options
-     */
+
     @FXML
     private ChoiceBox<Game.Difficulty> difficultyChoiceBox;
-
-
-    /**
-     * A dropdown menu for the number of players option
-     */
     @FXML
     private ChoiceBox<Integer> numPlayersBox;
-
-
-    /**
-     * A dropdown menu for the map type
-     */
     @FXML
     private ChoiceBox<MapType> mapBox;
-
-    /**
-     * The backing pane
-     */
     @FXML
     private Pane gameConfigPane;
-
-    /**
-     * The button for loading the game
-     */
     @FXML
     private Button loadGameButton;
 
-    /**
-     * The game that the game config controller belongs to
-     */
     private Game game;
 
     /**
-     * Initialize method.
+     * Initialize method
      * @param fxmlFileLocation Location of file
      * @param resources Resources
      */
-    public void initialize(final URL fxmlFileLocation, final ResourceBundle
-            resources) {
+    public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         difficultyChoiceBox.setItems(FXCollections.observableArrayList(Game
                 .Difficulty.getAllDifficulties()));
         difficultyChoiceBox.getSelectionModel().selectFirst();
@@ -88,8 +64,8 @@ public class GameConfigController implements Initializable {
      * Set the Game bro!
      * @param game the game to be set
      */
-    public void setGame(Game gameToSet) {
-        this.game = gameToSet;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     /**
@@ -110,11 +86,11 @@ public class GameConfigController implements Initializable {
      * Used for loading a previously saved game
      */
     public void loadGame() {
-        final FileChooser fileChooser = new FileChooser();
+        FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose Game Save");
         fileChooser.setInitialDirectory(new File("src/main/java/saves/"));
-        final File file = fileChooser.showOpenDialog(this.game.getStage());
-        final SerializableUtil serializableUtil = new SerializableUtil();
+        File file = fileChooser.showOpenDialog(this.game.getStage());
+        SerializableUtil serializableUtil = new SerializableUtil();
         try {
             serializableUtil.loadGame(file, game.getStage());
         } catch (ClassNotFoundException e) {

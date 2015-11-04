@@ -199,7 +199,7 @@ public class Player implements Comparable<Player>, Serializable {
 
     /**
      * Sets the Race of Player
-     * @param race RaCe to be set for Player
+     * @param race Race to be set for Player
      */
     public void setRace(Race race) {
         this.race = race;
