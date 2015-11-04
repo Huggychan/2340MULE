@@ -16,6 +16,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/**
+ * @author Bilal
+ * @version 1.0
+ */
 public class MapController implements Initializable, Serializable {
     private Tile[][] tiles;
     private MapType maptype = MapType.STANDARD;

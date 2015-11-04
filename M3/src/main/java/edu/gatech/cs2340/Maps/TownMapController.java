@@ -229,12 +229,12 @@ public class TownMapController implements Initializable {
         return storeController;
     }
 
-    private void setMuleResourceType(ResourceType resource, Mule mule) {
     /**
      * Sets the mule resource type
      * @param resource Resource to set for the current mule
      * @param mule Mule to set resource type as
      */
+    private void setMuleResourceType(ResourceType resource, Mule mule) {
         boolean canAfford = false;
         Player curr = game.getCurrentPlayer();
 

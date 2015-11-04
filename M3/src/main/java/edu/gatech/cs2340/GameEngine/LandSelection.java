@@ -7,24 +7,34 @@ import edu.gatech.cs2340.Maps.TownTile;
 
 import java.util.LinkedList;
 
+/**
+ * @author Nick and Shyam
+ * @version 1.0
+ */
 public class LandSelection {
     private Game game;
     private LinkedList<Player> gameObjectActive;
 
     /**
      * Landselection constructor
-     * @param game the game that the land selection delegated controller is
-     *             handling
+     * @param game the game that the land selection delegated      *    controller is handling
      */
     public LandSelection(Game game) {
         this.game = game;
         gameObjectActive = new LinkedList<>();
         gameObjectActive.addAll(game.getPlayers());
+        /*this is a terrible name lol
+        its also capitalized
+        The list will have one instance of player at a time, and if the player
+        buys and still has enough money, they will be added back to the end of
+        the list.
+        */
     }
 
     /**
      * Purchases a tile for the game's current player
      * @param tile the tile to buy
+     * @param player player for tile
      */
     public void buy(Tile tile, Player player) {
         if (tile == null) {

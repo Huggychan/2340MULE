@@ -152,12 +152,12 @@ public class Store implements Serializable {
         }
 
         int value = this.inventoryPrice.get(rt);
-        int stock = this.inventoryStock.get(rt);
 
         if (rt != ResourceType.MULE) {
             if (player.getInventory().get(rt) > 0) {
                 this.decrementKeyInMap(rt, player.getInventory());
                 this.incrementKeyInMap(rt, this.inventoryStock);
+                player.incrementMoney(value);
 
                 return true;
             }
@@ -165,6 +165,8 @@ public class Store implements Serializable {
             if (player.getMule() != null) {
                 player.takeMule();
                 this.incrementKeyInMap(rt, this.inventoryStock);
+
+                player.incrementMoney(value);
                 return true;
             }
         }

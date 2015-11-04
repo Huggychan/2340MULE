@@ -76,6 +76,9 @@ public class StoreController implements Initializable {
         }
     }
 
+    /**
+     * Toggles that you are out of store and removes the top pane
+     */
     public void onStoreLeave() {
         game.toggleStoreEntered();
         game.getMap().getStackPane().getChildren().remove(this.backingPane);
@@ -100,6 +103,9 @@ public class StoreController implements Initializable {
         this.game = game;
     }
 
+    /**
+     * Confirms for buying and selling
+     */
     public void onConfirm() {
         String resource = (String) this.listView.getSelectionModel()
                 .getSelectedItem();
@@ -134,6 +140,9 @@ public class StoreController implements Initializable {
         }
     }
 
+    /**
+     * Updates the inventory
+     */
     public void updateInventory() {
         items = FXCollections.observableArrayList();
         this.items.add("MULE: " + this.store.getBaseMulePrice() + " "
@@ -152,6 +161,10 @@ public class StoreController implements Initializable {
         listView.setItems(this.items);
     }
 
+    /**
+     * @param prodTypeString Product resource type to search for
+     * @return the ResourceType from the possible values
+     */
     public ResourceType getResourceTypeFromString(String prodTypeString) {
         for (ResourceType pt : ResourceType.values()) {
             if (prodTypeString != null
