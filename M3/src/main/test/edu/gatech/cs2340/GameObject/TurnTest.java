@@ -1,4 +1,4 @@
-package edu.gatech.cs2340;
+package edu.gatech.cs2340.GameObject;
 
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.Maps.MountainOneTile;
@@ -35,8 +35,5 @@ public class TurnTest {
 
     @Test
          public void testPlayerNoFood() {
-        turn.move(MountainOneTile,)
-        p.setFood(0);
-        assertEquals(turnTime, 50);
     }
 }
