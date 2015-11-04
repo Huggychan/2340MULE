@@ -16,7 +16,6 @@ import static org.junit.Assert.assertTrue;
 
 public class StoreBuyTests {
     private Store store;
-    private Game game;
     private Player p1;
     private Player p2;
     public static final int TIMEOUT = 200;

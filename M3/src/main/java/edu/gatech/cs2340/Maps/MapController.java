@@ -126,13 +126,6 @@ public class MapController implements Initializable, Serializable {
         }
     }
 
-    /**
-     * Puts border on ImageView
-     * @param event MouseEvent being detected
-     */
-    public void putBorderOnImageView(MouseEvent event) {
-        DropShadow ds = new DropShadow(20, Color.BLACK);
-    }
 
     /**
      * Sets the game

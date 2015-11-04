@@ -10,12 +10,12 @@ import java.util.LinkedList;
 public class LandSelection {
     private Game game;
     private LinkedList<Player> gameObjectActive;
-    /*this is a terrible name lol
-      its also capitalized
-      The list will have one instance of player at a time, and if the player
-      buys and still has enough money, they will be added back to the end of
-      the list.
-    */
+
+    /**
+     * Landselection constructor
+     * @param game the game that the land selection delegated controller is
+     *             handling
+     */
     public LandSelection(Game game) {
         this.game = game;
         gameObjectActive = new LinkedList<>();

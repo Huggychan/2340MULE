@@ -7,11 +7,11 @@ public class Store implements Serializable {
 
     private HashMap<ResourceType, Integer> inventoryStock;
     private HashMap<ResourceType, Integer> inventoryPrice;
-    private final int FOOD_PRICE = 30;
-    private final int ENERGY_PRICE = 25;
-    private final int SMITHORE_PRICE = 50;
-    private final int CRYSTITE_PRICE = 100;
-    private final int BASE_MULE_PRICE = 100;
+    private static final int FOOD_PRICE = 30;
+    private static final int ENERGY_PRICE = 25;
+    private static final int SMITHORE_PRICE = 50;
+    private static final int CRYSTITE_PRICE = 100;
+    private static final int BASE_MULE_PRICE = 100;
 
     /**
      * Constructor for Store
