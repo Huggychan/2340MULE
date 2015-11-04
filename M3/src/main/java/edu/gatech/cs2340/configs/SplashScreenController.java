@@ -34,15 +34,30 @@ import java.util.ResourceBundle;
  */
 public class SplashScreenController implements Initializable {
 
+    /**
+     * Rectangle for the title.
+     */
     @FXML
     private Rectangle titleRect;
+    /**
+     * Rectangle for the names.
+     */
     @FXML
     private Rectangle namesRect;
+    /**
+     * Pane for the background.
+     */
     @FXML
     private Pane splashPane;
+    /**
+     * ImageView of the mule.
+     */
     @FXML
     private ImageView muleImage;
 
+    /**
+     * Game being used.
+     */
     private Game game;
 
     /**
