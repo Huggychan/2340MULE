@@ -3,12 +3,9 @@ package edu.gatech.cs2340.Maps;
 import edu.gatech.cs2340.Game;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -27,6 +24,7 @@ public class MapController implements Initializable, Serializable {
     private transient GridPane backingPane;
     @FXML
     private transient StackPane stackPane;
+    private Game game;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -136,6 +134,14 @@ public class MapController implements Initializable, Serializable {
      */
     public Game getGame() {
         return this.game;
+    }
+
+    /**
+     * Sets the game for the map
+     * @param gameToSet the game to set
+     */
+    public void setGame(Game gameToSet) {
+        this.game = gameToSet;
     }
 
     /**
