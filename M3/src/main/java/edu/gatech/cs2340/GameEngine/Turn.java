@@ -40,11 +40,11 @@ public class Turn implements Serializable {
     private Stage stage;
 
     /**
-     * Turn Constructor
+     * Turn Constructor.
      * @param game Game being played
      */
-    public Turn(Game game) {
-    this.game = game;
+    public Turn(Game newGame) {
+    this.game = newGame;
     players = new ArrayList<>();
     players.addAll(game.getPlayers());
     game.setCurrentPlayerIndex(players.get(0));
@@ -81,9 +81,11 @@ public class Turn implements Serializable {
      */
     public void setTurnTime() {
         Player player = players.get(0);
-        if (player.getFood() >= 12) {
+        int requirement = 3 + ((game.getRoundNumber() % 4 == 0) ? (game
+                .getRoundNumber() / 4 - 1) : (game.getRoundNumber() / 4));
+        if (player.getFood() >= requirement) {
             turnTime = 50;
-        } else if (player.getFood() > 8) {
+        } else if (player.getFood() > 0) {
             turnTime = 30;
         } else {
             turnTime = 5;
@@ -148,8 +150,8 @@ public class Turn implements Serializable {
                     }
                 } else {
                     timeRemaining = turnTime - checker - 1;
-                    game.getTurn().getLabel().setText(timeRemaining + " seconds "
-                            + "remaining");
+                    game.getTurn().getLabel().setText(
+                            timeRemaining + " seconds " + "remaining");
                     checker++;
                     if (turnTime - checker == 0) {
                         checker = 0;
@@ -161,7 +163,8 @@ public class Turn implements Serializable {
                             game.getTown().onExitClicked();
                         }
                         game.getTurn().getLabel().setText("");
-                        game.getTurn().getLabel().setText("Your have run out of time");
+                        game.getTurn().getLabel()
+                                .setText("Your have run out of time");
                         game.getTurn().endPlayerTurn();
                     }
                 }
@@ -181,11 +184,11 @@ public class Turn implements Serializable {
     }
 
     /**
-     * Calculates production for each player
+     * Calculates production for each player.
      */
     private void calcProduction() {
-        List<Player> players = game.getPlayers();
-        for (Player p : players) {
+        List<Player> playersList = game.getPlayers();
+        for (Player p : playersList) {
             p.calcProduction();
         }
     }
