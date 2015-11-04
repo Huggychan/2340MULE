@@ -51,6 +51,7 @@ public class TownMapController implements Initializable {
 
     private Game game;
     private Turn turn;
+    private StoreController storeController;
 
     /**
      * Initializes the fxml file.
@@ -135,6 +136,7 @@ public class TownMapController implements Initializable {
             loader.setClassLoader(this.getClass().getClassLoader());
             Parent newRoot = null;
             StoreController sc = loader.getController();
+            this.storeController = sc;
             sc.setStore(this.game.getStore());
             sc.setGame(this.game);
             this.game.getMap().getStackPane()
@@ -210,6 +212,15 @@ public class TownMapController implements Initializable {
     public boolean muleHasResourceType() {
         return this.game.getCurrentPlayer().getMule().hasResourceType();
     }
+
+    /**
+     * get Store controller
+     * @return Store Controller of the game
+     */
+    public StoreController getStoreController() {
+    return storeController;
+    }
+
 
     /**
      * Sets the mule resource type

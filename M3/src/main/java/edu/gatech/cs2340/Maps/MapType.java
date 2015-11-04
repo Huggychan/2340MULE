@@ -15,4 +15,5 @@ public enum MapType {
     public static ArrayList<MapType> getAllMapTypes() {
         return new ArrayList<MapType>(Arrays.asList(MapType.values()));
     }
+
 }
