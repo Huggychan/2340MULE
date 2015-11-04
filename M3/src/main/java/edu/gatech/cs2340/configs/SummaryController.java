@@ -70,7 +70,7 @@ public class SummaryController implements Initializable {
     private ArrayList<Player> players;
 
     /**
-     * Initializes the fxml file
+     * Initializes the fxml file.
      * @param fxmlFileLocation Location of fxml file
      * @param resources Resources needed
      */
@@ -95,7 +95,7 @@ public class SummaryController implements Initializable {
 
 
     /**
-     * Sets Images and Scores of Players
+     * Sets Images and Scores of Players.
      */
     public void setOnKeyPressed() {
         firstImage.setImage(getPlayerImage(0));
@@ -112,10 +112,10 @@ public class SummaryController implements Initializable {
 
 
     /**
-     * @param game the game to be set
+     * @param newGame the game to be set
      */
-    public void setGame(Game game) {
-        this.game = game;
+    public void setGame(Game newGame) {
+        this.game = newGame;
     }
 
     /**
@@ -132,7 +132,7 @@ public class SummaryController implements Initializable {
     }
 
     /**
-     * @param index Index of plaer in game
+     * @param index Index of player in game.
      * @return Score of player
      */
     public String getPlayerScore(int index) {
