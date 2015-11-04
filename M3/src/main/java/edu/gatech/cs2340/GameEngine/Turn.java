@@ -35,6 +35,7 @@ public class Turn implements Serializable {
     private int turnTime = 50;
     private int timeRemaining;
     private transient Timeline timer;
+    private static final long serialVersionUID = 2L;
 
     public boolean mule;
     private Stage stage;

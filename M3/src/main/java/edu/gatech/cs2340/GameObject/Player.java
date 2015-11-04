@@ -25,6 +25,7 @@ public class Player implements Comparable<Player>, Serializable {
     private Mule mule;
 //    private Game game;
     private boolean muleBoughtThisTurn;
+    private static final long serialVersionUID = 2L;
 
     /**
      * @return Money of player

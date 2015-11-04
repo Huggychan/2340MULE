@@ -61,6 +61,7 @@ public class Game extends Application implements Serializable {
     private transient Timeline timer;
     private transient RandomEventGenerator randomEventGenerator;
     private transient SerializableUtil serializableUtil;
+    private static final long serialVersionUID = 2L;
 
     /**
      * This enum documents state of the game

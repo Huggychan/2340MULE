@@ -25,6 +25,7 @@ public class MapController implements Initializable, Serializable {
     @FXML
     private transient StackPane stackPane;
     private Game game;
+    private static final long serialVersionUID = 2L;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
