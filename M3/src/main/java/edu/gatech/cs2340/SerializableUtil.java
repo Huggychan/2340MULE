@@ -24,7 +24,13 @@ public class SerializableUtil {
             System.out.println(System.getProperty("user.dir"));
             File file = new File("src/main/java/saves/game.ser");
             if (!file.exists()) {
-                file.createNewFile();
+                try {
+                    file.createNewFile();
+                } catch (IOException ioe) {
+                    System.out.println("file DNE");
+                } catch (SecurityException se) {
+                    System.out.println("You've been put down by the system");
+                }
             }
             FileOutputStream fileOut =
                     new FileOutputStream(file);

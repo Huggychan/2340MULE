@@ -18,6 +18,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -134,16 +135,16 @@ public class TownMapController implements Initializable {
                     getClass().getResource("/resources/Store.fxml"));
             loader.setClassLoader(this.getClass().getClassLoader());
             Parent newRoot = null;
-
+            /*
             try {
                 newRoot = loader.load();
             } catch (IOException e) {
                 System.out.println("IOException loading Store.fxml");
                 System.out.println(e.getMessage());
                 System.out.println("Cause: " + e.getCause());
-                System.out.println(e.getStackTrace());
+                System.out.println(Arrays.toString(e.getStackTrace()));
             }
-
+            */
             StoreController sc = loader.getController();
             this.storeController = sc;
             sc.setStore(this.game.getStore());

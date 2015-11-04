@@ -8,7 +8,6 @@ import javafx.scene.paint.Paint;
  * Created by Nick on 9/28/2015.
  */
 public class EventLog extends Label {
-    private String s = "";
 
     /**
      * Constructor for EventLog
@@ -25,7 +24,6 @@ public class EventLog extends Label {
      * @param s String to be logged
      */
     public void log(String s) {
-        this.s = s;
         setText(s);
     }
 }
