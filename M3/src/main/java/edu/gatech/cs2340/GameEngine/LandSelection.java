@@ -37,7 +37,7 @@ public class LandSelection {
     }
 
     /**
-     * Purchases a tile for the game's current player
+     * Purchases a tile for the game's current player.
      * @param tile the tile to buy
      * @param player player for tile
      */
@@ -83,7 +83,7 @@ public class LandSelection {
     }
 
     /**
-     * Passes for the current player during the land selection phase
+     * Passes for the current player during the land selection phase.
      */
     public void pass() {
         if (players.isEmpty()) {
