@@ -41,22 +41,40 @@ public class StoreSellTest {
         }
 
         assertEquals(0, realPlayer.getEnergy());
+
+        int playerMoney = realPlayer.getMoney();
         boolean success = store.sell(realType, realPlayer);
+
+        assertEquals(playerMoney, realPlayer.getMoney());
         assertFalse(success);
     }
 
     @Test
     public void testSellMule() {
         assertNull(realPlayer.getMule());
+
         boolean success = store.sell(ResourceType.MULE, realPlayer);
+
         assertFalse(success);
+
+        realPlayer.giveMule(); //NEED TO COMENT OUT GRAPHICS STUFF IN MULE
+        assertNotNull(realPlayer.getMule());
+        success = store.sell(ResourceType.MULE, realPlayer);
+
+        assertTrue(success);
+        assertNull(realPlayer.getMule());
     }
 
     @Test (timeout = TIMEOUT)
     public void testNormalSell() {
         realPlayer.setEnergy(2);
+        int storeEnergy = store.getEnergyCount();
+        int playerMoney = realPlayer.getMoney();
         boolean success = store.sell(realType, realPlayer);
+
         assertTrue(success);
         assertEquals(1, realPlayer.getEnergy());
+        assertEquals(storeEnergy + 1, store.getEnergyCount());
+        assertEquals(playerMoney + store.getEnergyPrice(), realPlayer.getMoney());
     }
 }
