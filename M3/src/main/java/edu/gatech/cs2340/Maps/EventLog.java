@@ -10,7 +10,7 @@ import javafx.scene.paint.Paint;
 public class EventLog extends Label {
 
     /**
-     * Constructor for EventLog
+     * Constructor for EventLog.
      */
     public EventLog() {
         super();
@@ -20,7 +20,7 @@ public class EventLog extends Label {
     }
 
     /**
-     * Logs string to logger
+     * Logs string to logger.
      * @param s String to be logged
      */
     public void log(String s) {

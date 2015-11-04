@@ -64,7 +64,6 @@ public class Turn implements Serializable {
      * Stage for the game.
      */
     private Stage stage;
-    
     /**
      * Turn Constructor.
      * @param newGame Game being played

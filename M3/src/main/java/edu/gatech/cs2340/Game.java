@@ -1,4 +1,5 @@
 package edu.gatech.cs2340;
+
 //TODO fix stuff that violates Law of Demeter
 //TODO add mapType, SummaryController
 import edu.gatech.cs2340.GameEngine.LandSelection;
@@ -35,7 +36,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Game class
+ * Game class.
  */
 public class Game extends Application implements Serializable {
 
@@ -63,7 +64,7 @@ public class Game extends Application implements Serializable {
     private static final long serialVersionUID = 2L;
 
     /**
-     * This enum documents state of the game
+     * This enum documents state of the game.
      */
     public enum GameState {
         GAMECONFIG, PLAYERCONFIG, LANDSELECTION, TURN,
@@ -71,13 +72,13 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * This enum documents game difficulty
+     * This enum documents game difficulty.
      */
     public enum Difficulty {
         Beginner, Standard, Tournament;
 
         /**
-         * @return Difficulties as an array
+         * @return Difficulties as an array.
          */
         public static ArrayList<Difficulty> getAllDifficulties() {
             return new ArrayList<>(Arrays.asList(values()));
@@ -85,7 +86,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Main
+     * Main method.
      * @param args Arguments passed
      */
     public static void main(String[] args) {
@@ -93,12 +94,12 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * The start method for the JavaFX window
+     * The start method for the JavaFX window.
      * @param stage the window
      * @throws Exception throws exceptions
      */
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage givenStage) throws Exception {
         randomEventGenerator = new RandomEventGenerator(this);
         serializableUtil = new SerializableUtil();
         this.store = new Store();
@@ -113,7 +114,7 @@ public class Game extends Application implements Serializable {
         colors.add("Purple");
         state = GameState.GAMECONFIG;
         URL location = getClass().getResource("/resources/GameConfig.fxml");
-        this.stage = stage;
+        this.stage = givenStage;
         FXMLLoader loader = new FXMLLoader(location);
         loader.setClassLoader(this.getClass().getClassLoader());
 
@@ -164,10 +165,10 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Loads a previously saved game
-     * @param stage the stage to put the loaded game into
+     * Loads a previously saved game.
+     * @param gameStage the stage to put the loaded game into
      */
-    public void loadGame(Stage stage) {
+    public void loadGame(Stage gameStage) {
         log = new EventLog();
         randomEventGenerator = new RandomEventGenerator(this);
         serializableUtil = new SerializableUtil();
@@ -187,13 +188,13 @@ public class Game extends Application implements Serializable {
         this.map = loader.getController();
         this.map.setGame(this);
         this.scene = new Scene(newRoot, 1600, 900);
-        stage.setScene(scene);
-        stage.getScene().setRoot(newRoot);
+        gameStage.setScene(scene);
+        gameStage.getScene().setRoot(newRoot);
 
         log = new EventLog();
         map.getStackPane().getChildren().add(log);
         StackPane.setAlignment(log, Pos.TOP_CENTER);
-        stage.getScene().setOnKeyPressed(e -> {
+        gameStage.getScene().setOnKeyPressed(e -> {
                 if (e.getCode() == KeyCode.SPACE) {
                     if (this.state == GameState.LANDSELECTION) {
                         landselection.buy(null, getCurrentPlayer());
@@ -222,7 +223,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * loads the map fxml and controller, starts the first round
+     * Method that loads the map fxml and controller, starts the first round.
      */
     private void startGame() {
         for (Player p : this.getPlayers()) {
@@ -281,7 +282,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * starts a round
+     * Starts a round.
      */
     public void startRound() {
         log.log("Round: " + roundNumber);
@@ -295,7 +296,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * starts turns after land selection is over
+     * Starts turns after land selection is over.
      */
     public void startTurns() {
         state = GameState.TURN;
@@ -304,7 +305,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Puts the town on top of the view stack
+     * Puts the town on top of the view stack.
      */
     public void goToTown() {
         FXMLLoader loader = new FXMLLoader(getClass()
@@ -331,7 +332,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Puts the summary on top of the view stack
+     * Puts the summary on top of the view stack.
      */
     public void summary() {
         FXMLLoader loader = new FXMLLoader(getClass()
@@ -356,7 +357,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Compares player to Players list
+     * Compares player to Players list.
      * @param player Player being compared
      * @return True if Player is already in list; false otherwise
      */
@@ -376,7 +377,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Logs a string to the logging label
+     * Logs a string to the logging label.
      * @param s the string to log
      */
     public void log(String s) {
@@ -384,7 +385,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * player has clicked on a tile delegates work to other methods
+     * player has clicked on a tile delegates work to other methods.
      * @param tile the tile that was clicked
      */
     public void pingFromTile(Tile tile) {
@@ -398,7 +399,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Adds players to a game
+     * Adds players to a game.
      * @param player the player to add
      */
     public void addPlayer(Player player) {
@@ -406,7 +407,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Gets the list of colors available
+     * Gets the list of colors available.
      * @return the list of colors
      */
     public ArrayList<String> getColors() {
@@ -414,7 +415,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Gets the difficutly of the game
+     * Gets the difficutly of the game.
      * @return the difficulty of the game
      */
     public Difficulty getDifficulty() {
@@ -422,15 +423,15 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Sets the game's difficulty
-     * @param difficulty the difficulty to set
+     * Sets the game's difficulty.
+     * @param givenDifficulty the difficulty to set
      */
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
+    public void setDifficulty(Difficulty givenDifficulty) {
+        this.difficulty = givenDifficulty;
     }
 
     /**
-     * Gets the player whose turn it is currently
+     * Gets the player whose turn it is currently.
      * @return the current player
      */
     public Player getCurrentPlayer() {
@@ -438,7 +439,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Sets the currentPlayerIndex to the player passed in
+     * Sets the currentPlayerIndex to the player passed in.
      * @param p the player to set the currentPlayerIndex to
      */
     public void setCurrentPlayerIndex(Player p) {
@@ -446,21 +447,21 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Generates a random event
+     * Generates a random event.
      */
     public void generateRandomEvent() {
         this.randomEventGenerator.generateRandom();
     }
 
     /**
-     * increments the game's round
+     * increments the game's round.
      */
     public void incrementRound() {
         roundNumber++;
     }
 
     /**
-     * Gets the game's event log
+     * Gets the game's event log.
      * @return the game's event log
      */
     public EventLog getLog() {
@@ -468,7 +469,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Gets the MapController
+     * Gets the MapController.
      * @return the game's MapController
      */
     public MapController getMap() {
@@ -476,15 +477,15 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * sets the number of players
-     * @param numPlayers the number of players to set
+     * sets the number of players.
+     * @param givenNumPlayers the number of players to set
      */
-    public void setNumPlayers(int numPlayers) {
-        this.numPlayers = numPlayers;
+    public void setNumPlayers(int givenNumPlayers) {
+        this.numPlayers = givenNumPlayers;
     }
 
     /**
-     * Gets the number of players
+     * Gets the number of players.
      * @return the number of players
      */
     public int getNumPlayers() {
@@ -492,7 +493,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Gets the game's players
+     * Gets the game's players.
      * @return the list of players
      */
     public List<Player> getPlayers() {
@@ -500,7 +501,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Gets the round number
+     * Gets the round number.
      * @return the round number
      */
     public int getRoundNumber() {
@@ -508,15 +509,15 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Sets the current state of the game
-     * @param state the state to set it to
+     * Sets the current state of the game.
+     * @param givenState the state to set it to
      */
-    public void setState(GameState state) {
-        this.state = state;
+    public void setState(GameState givenState) {
+        this.state = givenState;
     }
 
     /**
-     * Gets the game's store
+     * Gets the game's store.
      * @return the game's store
      */
     public Store getStore() {
@@ -524,7 +525,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Gets the game's scene
+     * Gets the game's scene.
      * @return the game's scene
      */
     public Scene getScene() {
@@ -532,7 +533,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Gets the game's stage
+     * Gets the game's stage.
      * @return the game's stage
      */
     public Stage getStage() {
@@ -540,7 +541,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * gets whether the store is currently on top of the view stack
+     * gets whether the store is currently on top of the view stack.
      * @return whether or not the store is currently on top of the view stack
      */
     public boolean getStoreEntered() {
@@ -548,13 +549,13 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * toggles when the store is put on or taken off the top of the view stack
+     * toggles when the store is put on or taken off the top of the view stack.
      */
     public void toggleStoreEntered() {
         this.storeEntered = !this.storeEntered;
     }
     /**
-     * Gets the timer
+     * Gets the timer.
      * @return the game's timer
      */
     public Timeline getTimer() {
@@ -562,7 +563,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Sets the game's timer
+     * Sets the game's timer.
      * @param timeline the timer to set it to
      */
     public void setTimer(Timeline timeline) {
@@ -570,7 +571,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Gets the TownMapController
+     * Gets the TownMapController.
      * @return the game's TownMapController
      */
     public TownMapController getTown() {
@@ -578,7 +579,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Get's the curren turn
+     * Gets the current turn.
      * @return the current turn
      */
     public Turn getTurn() {
@@ -586,7 +587,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Gets whether or not the town is on the view stack
+     * Gets whether or not the town is on the view stack.
      * @return whether or not the town is on the view stack
      */
     public boolean getTownEntered() {
@@ -594,7 +595,7 @@ public class Game extends Application implements Serializable {
     }
 
     /**
-     * Sets whether the town is on the view stack or not
+     * Sets whether the town is on the view stack or not.
      * @param bool whether or not the town is on the view stack
      */
     public void setTownEntered(boolean bool) {
