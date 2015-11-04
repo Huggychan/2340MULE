@@ -28,12 +28,14 @@ public class StoreBuyTests {
     }
 
     @Test(timeout = TIMEOUT)
-    public void testNotEnoughMoneyNotInStock() {
+    public void testNotEnoughMoneyOrNotInStock() {
         p1.setMoney(0);
         p1.setFood(0);
         store.buy(ResourceType.FOOD, p1);
         assertEquals(0, p1.getFood());
         assertEquals(16, store.getFoodCount());
+        //enough money, in stock
+
         p1.setMoney(store.getFoodPrice() * store.getFoodCount());
         while (store.getFoodCount() > 0) {
             store.buy(ResourceType.FOOD, p1);
@@ -42,6 +44,7 @@ public class StoreBuyTests {
         p2.setFood(0);
         store.buy(ResourceType.FOOD, p2);
         assertEquals(0, p2.getFood());
+        //enough money, not in stock
     }
 
     @Test(timeout = TIMEOUT)
@@ -56,7 +59,7 @@ public class StoreBuyTests {
     }
 
     @Test(timeout = TIMEOUT, expected = RuntimeException.class)
-    public void testIfMule() { //the graphics are not initialized
+    public void testIfMuleEnoughMoney() { //the graphics are not initialized
         p1.setMoney(2 * store.getBaseMulePrice());
         assertTrue(p1.getMule() == null);
         store.buy(ResourceType.MULE, p1);
@@ -67,6 +70,7 @@ public class StoreBuyTests {
         assertTrue(p1.getMule() == null);
         assertEquals(store.getBaseMulePrice(), p1.getMoney());
     }
+    //TestMuleNotEnoughMoney
 
 }
 
