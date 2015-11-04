@@ -51,7 +51,6 @@ public class TownMapController implements Initializable {
 
     private Game game;
     private Turn turn;
-    private StoreController storeController;
 
     /**
      * Initializes the fxml file.
@@ -135,18 +134,7 @@ public class TownMapController implements Initializable {
                     getClass().getResource("/resources/Store.fxml"));
             loader.setClassLoader(this.getClass().getClassLoader());
             Parent newRoot = null;
-            /*
-            try {
-                newRoot = loader.load();
-            } catch (IOException e) {
-                System.out.println("IOException loading Store.fxml");
-                System.out.println(e.getMessage());
-                System.out.println("Cause: " + e.getCause());
-                System.out.println(Arrays.toString(e.getStackTrace()));
-            }
-            */
             StoreController sc = loader.getController();
-            this.storeController = sc;
             sc.setStore(this.game.getStore());
             sc.setGame(this.game);
             this.game.getMap().getStackPane()
@@ -221,13 +209,6 @@ public class TownMapController implements Initializable {
      */
     public boolean muleHasResourceType() {
         return this.game.getCurrentPlayer().getMule().hasResourceType();
-    }
-
-    /**
-     * @return Store Controller of the Game
-     */
-    public StoreController getStoreController() {
-        return storeController;
     }
 
     /**

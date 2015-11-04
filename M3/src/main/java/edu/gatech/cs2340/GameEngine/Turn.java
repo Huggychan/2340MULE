@@ -39,10 +39,10 @@ public class Turn implements Serializable {
 
     public boolean mule;
     private Stage stage;
-
+    
     /**
      * Turn Constructor.
-     * @param game Game being played
+     * @param newGame Game being played
      */
     public Turn(Game newGame) {
     this.game = newGame;
