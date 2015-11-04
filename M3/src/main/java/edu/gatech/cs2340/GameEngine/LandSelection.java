@@ -12,19 +12,24 @@ import java.util.LinkedList;
  * @version 1.0
  */
 public class LandSelection {
+    /**
+     * Game being used.
+     */
     private Game game;
-    private LinkedList<Player> gameObjectActive;
+    /**
+     * Players of the game.
+     */
+    private LinkedList<Player> players;
 
     /**
-     * Landselection constructor
-     * @param game the game that the land selection delegated      *    controller is handling
+     * LandSelection constructor.
+     * @param newGame the game that the land selection delegated
      */
-    public LandSelection(Game game) {
-        this.game = game;
-        gameObjectActive = new LinkedList<>();
-        gameObjectActive.addAll(game.getPlayers());
-        /*this is a terrible name lol
-        its also capitalized
+    public LandSelection(Game newGame) {
+        this.game = newGame;
+        players = new LinkedList<>();
+        players.addAll(game.getPlayers());
+        /*
         The list will have one instance of player at a time, and if the player
         buys and still has enough money, they will be added back to the end of
         the list.
@@ -32,7 +37,7 @@ public class LandSelection {
     }
 
     /**
-     * Purchases a tile for the game's current player
+     * Purchases a tile for the game's current player.
      * @param tile the tile to buy
      * @param player player for tile
      */
@@ -66,30 +71,30 @@ public class LandSelection {
                 return;
             }
             if (player.getMoney() >= 300) {
-                gameObjectActive.add(player);
+                players.add(player);
             }
         }
-        gameObjectActive.remove(player);
-        if (gameObjectActive.isEmpty()) {
+        players.remove(player);
+        if (players.isEmpty()) {
             pass();
         } else {
-            game.setCurrentPlayerIndex(gameObjectActive.peek());
+            game.setCurrentPlayerIndex(players.peek());
         }
     }
 
     /**
-     * Passes for the current player during the land selection phase
+     * Passes for the current player during the land selection phase.
      */
     public void pass() {
-        if (gameObjectActive.isEmpty()) {
+        if (players.isEmpty()) {
             game.startTurns();
         } else {
             game.log(game.getCurrentPlayer().getName() + "Passes.");
-            gameObjectActive.remove(game.getCurrentPlayer());
-            if (gameObjectActive.isEmpty()) {
+            players.remove(game.getCurrentPlayer());
+            if (players.isEmpty()) {
                 pass();
             } else {
-                game.setCurrentPlayerIndex(gameObjectActive.peek());
+                game.setCurrentPlayerIndex(players.peek());
             }
         }
     }

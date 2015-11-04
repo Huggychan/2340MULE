@@ -25,23 +25,56 @@ import java.util.ResourceBundle;
  */
 public class PlayerConfigController implements Initializable {
 
+    /**
+     * Combo box for the Race.
+     */
     @FXML
     private ComboBox<Race> race;
+    /**
+     * Combo box for the colors.
+     */
     @FXML
     private ComboBox<String> color;
+    /**
+     * Button to start game.
+     */
     @FXML
     private Button start;
+    /**
+     * Text field for the name.
+     */
     @FXML
     private TextField name;
+    /**
+     * Label for the welcome.
+     */
     @FXML
     private Label welcome;
+    /**
+     * Label for the title.
+     */
     @FXML
     private Label title;
 
+    /**
+     * Number of players playing.
+     */
     private int playerNumber;
+    /**
+     * The actual game.
+     */
     private Game game;
+    /**
+     * Player of the game.
+     */
     private Player player;
+    /**
+     * Array list of the colors.
+     */
     private ArrayList<String> tempColor;
+    /**
+     * Difficulties of the game.
+     */
     private Game.Difficulty difficulty;
 
     /**

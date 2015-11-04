@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Makes a Player with different elements
+ * Makes a Player with different elements.
  * @author Bilal, Marc, Shyam
  * @version 1.1
  */
@@ -35,7 +35,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Sets money of person
+     * Sets money of person.
      * @param money Money to set for the person
      */
     public void setMoney(int money) {

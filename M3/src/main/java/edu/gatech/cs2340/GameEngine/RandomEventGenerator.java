@@ -8,20 +8,26 @@ import java.util.Random;
 
 public class RandomEventGenerator {
 
+    /**
+     * Random object to calculate random numbers.
+     */
     private Random random;
+    /**
+     * Game being used.
+     */
     private Game game;
 
     /**
-     * Constructor for RandomEventGenerator
-     * @param game Game to be used with RandomEventGenerator
+     * Constructor for RandomEventGenerator.
+     * @param newGame Game to be used with RandomEventGenerator
      */
-    public RandomEventGenerator(Game game) {
-        this.game = game;
+    public RandomEventGenerator(Game newGame) {
+        this.game = newGame;
         random = new Random();
     }
 
     /**
-     * Generates a random event
+     * Generates a random event.
      */
     public void generateRandom() {
         int num = random.nextInt(100);

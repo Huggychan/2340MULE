@@ -29,15 +29,40 @@ import java.util.List;
  * @author Nick, Shyam
  */
 public class Turn implements Serializable {
+    /**
+     * Game being used.
+     */
     private  Game game;
+    /**
+     * ArrayList of players.
+     */
     private ArrayList<Player> players;
+    /**
+     * Label for the turn.
+     */
     private transient Label label;
+    /**
+     * Time for the turn.
+     */
     private int turnTime = 50;
+    /**
+     * Time remaining for the turn.
+     */
     private int timeRemaining;
+    /**
+     * Timer being used.
+     */
     private transient Timeline timer;
     private static final long serialVersionUID = 2L;
 
-    public boolean mule;
+    /**
+     * Checker to see if person has bought a mule.
+     */
+    private boolean boughtMule;
+
+    /**
+     * Stage for the game.
+     */
     private Stage stage;
     
     /**
@@ -56,11 +81,11 @@ public class Turn implements Serializable {
     StackPane.setAlignment(label, Pos.TOP_RIGHT);
     label.setTextFill(Paint.valueOf("white"));
     turnTimerCreator();
-    mule = false;
+    boughtMule = false;
 }
 
     /**
-     * moves to the selected tile
+     * moves to the selected tile.
      * @param tile the tile to be moved to
      */
     public void move(Tile tile) {
@@ -70,7 +95,7 @@ public class Turn implements Serializable {
     }
 
     /**
-     * Gets the total turn time
+     * Gets the total turn time.
      * @return the total turn time
      */
     public int getTurnTime() {
@@ -78,7 +103,7 @@ public class Turn implements Serializable {
     }
 
     /**
-     * sets the turn timer
+     * Sets the turn timer.
      */
     public void setTurnTime() {
         Player player = players.get(0);
@@ -94,7 +119,7 @@ public class Turn implements Serializable {
     }
 
     /**
-     * ends the current player's turn
+     * Ends the current player's turn.
      */
     public void endPlayerTurn() {
         game.setState(Game.GameState.TURN);
@@ -119,7 +144,7 @@ public class Turn implements Serializable {
     }
 
     /**
-     * Gets the time remaining
+     * Gets the time remaining.
      * @return the amount of time remaining
      */
     public int getTimeRemaining() {
@@ -127,14 +152,14 @@ public class Turn implements Serializable {
     }
 
     /**
-     * creates the timer
+     * Creates the timer.
      */
     public void turnTimerCreator() {
         Timeline t = new Timeline(new KeyFrame(Duration.seconds(1), new
                 EventHandler<ActionEvent>() {
 
             private int turnTime;
-            public int checker;
+            private int checker;
             private Player player = game.getCurrentPlayer();
 
             public void handle(ActionEvent event) {
@@ -178,7 +203,7 @@ public class Turn implements Serializable {
     }
 
     /**
-     * @return Gets the label
+     * @return Gets the label.
      */
     public Label getLabel() {
         return label;
@@ -193,4 +218,19 @@ public class Turn implements Serializable {
             p.calcProduction();
         }
     }
+
+//    /**
+//     * Sets bought mule.
+//     * @param setBoughtStatus Parameter to set boughtMule.
+//     */
+//    private void setBoughtMule(boolean setBoughtStatus) {
+//        boughtMule = setBoughtStatus;
+//    }
+//
+//    /**
+//     * @return Player bought a mule this turn.
+//     */
+//    private boolean getBoughtMule() {
+//        return boughtMule;
+//    }
 }

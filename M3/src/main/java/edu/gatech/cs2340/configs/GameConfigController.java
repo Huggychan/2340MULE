@@ -23,21 +23,40 @@ import java.util.ResourceBundle;
  */
 public class GameConfigController implements Initializable {
 
+
+    /**
+     * Choice box for difficulties.
+     */
     @FXML
     private ChoiceBox<Game.Difficulty> difficultyChoiceBox;
+    /**
+     * Choice box for Number of players.
+     */
     @FXML
     private ChoiceBox<Integer> numPlayersBox;
+    /**
+     * Choice box for map type.
+     */
     @FXML
     private ChoiceBox<MapType> mapBox;
+    /**
+     * Pane for the game.
+     */
     @FXML
     private Pane gameConfigPane;
+    /**
+     * Button used to load the saved game.
+     */
     @FXML
     private Button loadGameButton;
 
+    /**
+     * Game being used.
+     */
     private Game game;
 
     /**
-     * Initialize method
+     * Initialize method.
      * @param fxmlFileLocation Location of file
      * @param resources Resources
      */
@@ -62,10 +81,10 @@ public class GameConfigController implements Initializable {
 
     /**
      * Set the Game bro!
-     * @param game the game to be set
+     * @param newGame the game to be set
      */
-    public void setGame(Game game) {
-        this.game = game;
+    public void setGame(Game newGame) {
+        this.game = newGame;
     }
 
     /**
@@ -76,14 +95,15 @@ public class GameConfigController implements Initializable {
                 && numPlayersBox.getValue() != null
                 && mapBox.getValue() != null) {
             game.setDifficulty(difficultyChoiceBox.getValue());
-            game.setMapType(mapBox.getValue());
+            //IMPLEMENTING MAP TYPE LATER
+//            game.setMapType(mapBox.getValue());
             game.setNumPlayers(numPlayersBox.getValue());
             game.nextState(0);
         }
     }
 
     /**
-     * Used for loading a previously saved game
+     * Used for loading a previously saved game.
      */
     public void loadGame() {
         FileChooser fileChooser = new FileChooser();

@@ -9,6 +9,10 @@ import javafx.scene.paint.Color;
 
 import java.io.Serializable;
 
+/**
+ * Mule in the Game.
+ * @author Myron, Nick, Marc, Bilal, Shyam
+ */
 public class Mule implements Serializable {
 
     private transient Color color;
@@ -19,17 +23,17 @@ public class Mule implements Serializable {
     private Game game;
 
     /**
-     * Constructor for Mule
-     * @param player Player for the Mule
+     * Constructor for Mule.
+     * @param newPlayer Player for the Mule
      */
-    public Mule(Player player) {
-        this.player = player;
+    public Mule(Player newPlayer) {
+        this.player = newPlayer;
         this.colorString = player.getColorString();
         setImageAndColor();
     }
 
     /**
-     * Sets image and color of mule
+     * Sets image and color of mule.
      */
     public void setImageAndColor() {
         this.color = player.getColor();
@@ -37,22 +41,22 @@ public class Mule implements Serializable {
     }
 
     /**
-     * @return Gets the Resource Type of mule
+     * @return Gets the Resource Type of mule.
      */
     public ResourceType getResourceType() {
         return resourceType;
     }
 
     /**
-     * Sets the resource type
-     * @param resourceType resource type to be set
+     * Sets the resource type.
+     * @param newResourceType resource type to be set
      */
-    public void setResourceType(ResourceType resourceType) {
-        this.resourceType = resourceType;
+    public void setResourceType(ResourceType newResourceType) {
+        this.resourceType = newResourceType;
     }
 
     /**
-     * Checks to see if the mule has a resource type
+     * Checks to see if the mule has a resource type.
      * @return True if mule has a resource type
      */
     public boolean hasResourceType() {
@@ -60,7 +64,7 @@ public class Mule implements Serializable {
     }
 
     /**
-     * @return Color of mule
+     * @return Color of mule.
      */
     public Color getColor() {
         return color;
@@ -88,11 +92,11 @@ public class Mule implements Serializable {
     }
 
     /**
-     * Changes color of Mule
-     * @param player Player of the Mule
+     * Changes color of Mule.
+     * @param newPlayer Player of the Mule
      * @return Image of the mule with changed color
      */
-    public WritableImage changeColor(Player player) {
+    public WritableImage changeColor(Player newPlayer) {
         int width = (int) image.getWidth();
         int height = (int) image.getHeight();
 
@@ -102,9 +106,9 @@ public class Mule implements Serializable {
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                Color color = player.getColor();
+                Color newColor = newPlayer.getColor();
                 if (!(pixelReader.getColor(x, y).equals(Color.TRANSPARENT))) {
-                    pixelWriter.setColor(x, y, color);
+                    pixelWriter.setColor(x, y, newColor);
                 }
             }
         }

@@ -28,45 +28,114 @@ import java.util.ResourceBundle;
  * @version 1.0
  */
 public class SummaryController implements Initializable {
+    /**
+     * HBox of first place.
+     */
     @FXML
     private HBox first;
+    /**
+     * HBox of second place.
+     */
     @FXML
     private HBox second;
+    /**
+     * HBox of third place.
+     */
     @FXML
     private HBox third;
+    /**
+     * HBox of fourth place.
+     */
     @FXML
     private HBox fourth;
+    /**
+     * HBox of summary.
+     */
     @FXML
     private HBox summary;
+    /**
+     * ImageView of first place.
+     */
     @FXML
     private ImageView firstImage;
+    /**
+     * ImageView of second place.
+     */
     @FXML
     private ImageView secondImage;
+    /**
+     * ImageView of third place.
+     */
     @FXML
     private ImageView thirdImage;
+    /**
+     * ImageView of fourth place.
+     */
     @FXML
     private ImageView fourthImage;
+    /**
+     * Label of first place score.
+     */
     @FXML
     private Label firstScore;
+    /**
+     * Label of second place score.
+     */
     @FXML
     private Label secondScore;
+    /**
+     * Label of third place score.
+     */
     @FXML
     private Label thirdScore;
+    /**
+     * Label of fourth place score.
+     */
     @FXML
     private Label fourthScore;
+    /**
+     * Label of summary score.
+     */
     @FXML
     private Label summaryScore;
+    /**
+     * Pane of summary.
+     */
     @FXML
     private Pane summaryPane;
+    /**
+     * Button that shows the scores.
+     */
     @FXML
     private Button showButton;
 
+    /**
+     * Game being used.
+     */
     private Game game;
+    /**
+     * Image of the firstPlace.
+     */
     private Image firstPlace;
+    /**
+     * Image of the secondPlace.
+     */
     private Image secondPlace;
+    /**
+     * Image of the thirdPlace.
+     */
     private Image thirdPlace;
+    /**
+     * Image of the fourthPlace.
+     */
     private Image fourthPlace;
+    /**
+     * LandSelection of the game.
+     */
     private LandSelection landSelection;
+    /**
+     * Array list of the players.
+     */
     private ArrayList<Player> players;
 
     /**

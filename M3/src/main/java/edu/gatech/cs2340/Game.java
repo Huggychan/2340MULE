@@ -1,5 +1,6 @@
 package edu.gatech.cs2340;
 //TODO fix stuff that violates Law of Demeter
+//TODO add mapType, SummaryController
 import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameEngine.RandomEventGenerator;
 import edu.gatech.cs2340.GameEngine.Turn;
@@ -8,7 +9,6 @@ import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.Store;
 import edu.gatech.cs2340.Maps.EventLog;
 import edu.gatech.cs2340.Maps.MapController;
-import edu.gatech.cs2340.Maps.MapType;
 import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TownMapController;
 import edu.gatech.cs2340.configs.GameConfigController;
@@ -42,7 +42,6 @@ public class Game extends Application implements Serializable {
     private ArrayList<Player> players;
     private ArrayList<String> colors;
     private int numPlayers;
-    private MapType mapType;
     private Difficulty difficulty;
     private transient Stage stage;
     private int currentPlayerIndex;
@@ -50,12 +49,12 @@ public class Game extends Application implements Serializable {
     private int roundNumber;
     private transient LandSelection landselection;
     private Turn turn;
+    private SummaryController summaryController;
     private MapController map;
     private transient EventLog log;
     private Store store;
     private transient Scene scene;
     private transient TownMapController tmc;
-    private transient SummaryController summaryController;
     private boolean townEntered = false;
     private boolean storeEntered = false;
     private transient Timeline timer;
@@ -474,14 +473,6 @@ public class Game extends Application implements Serializable {
      */
     public MapController getMap() {
         return this.map;
-    }
-
-    /**
-     * Sets the game's maptype
-     * @param mapType the type of map
-     */
-    public void setMapType(MapType mapType) {
-        this.mapType = mapType;
     }
 
     /**
