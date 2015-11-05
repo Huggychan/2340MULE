@@ -152,11 +152,4 @@ public class MapController implements Initializable, Serializable {
         return this.stackPane;
     }
 
-    /**
-     * Sets the tiles
-     * @param tiles 2D tile array being used to set up map
-     */
-    public void setTiles(Tile[][] tiles) {
-        this.tiles = tiles;
-    }
 }
