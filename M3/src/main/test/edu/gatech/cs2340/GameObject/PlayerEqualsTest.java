@@ -74,6 +74,12 @@ public class PlayerEqualsTest {
     }
 
     @Test
+    public void testPlayerEqualsDiffColorSameName() {
+        player2.setColor("Blue");
+        assertTrue(player1.equals(player2));
+    }
+
+    @Test
     public void testPlayerEqualsDiffColorDiffName() {
         player2.setName("Player 2");
         player2.setColor("Blue");
