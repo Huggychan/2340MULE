@@ -17,7 +17,7 @@ public enum ResourceType {
     }
 
     /**
-     * Constructor for ResourceType
+     * Constructor for ResourceType.
      * @param string String to set as imageString
      */
     ResourceType(String string) {

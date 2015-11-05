@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Team Industrial Grade Salt
+ */
 public class Store implements Serializable {
 
     private static final int INIT_FOOD = 16;

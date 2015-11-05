@@ -3,14 +3,21 @@ package edu.gatech.cs2340.GameObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
 
+/**
+ * @author Marc
+ */
 public class StoreSellTest {
 
     private Store store;
     private Player realPlayer;
     private ResourceType realType;
-    public final static int TIMEOUT = 200;
+    public static final int TIMEOUT = 200;
 
     @Before
     public void setUp() {
@@ -19,17 +26,17 @@ public class StoreSellTest {
         store = new Store();
     }
 
-    @Test (expected=IllegalArgumentException.class)
+    @Test (expected = IllegalArgumentException.class)
     public void testNullPlayer() {
         store.sell(realType, null);
     }
 
-    @Test (expected=IllegalArgumentException.class)
+    @Test (expected = IllegalArgumentException.class)
     public void testNullProduct() {
         store.sell(null, realPlayer);
     }
 
-    @Test (expected=IllegalArgumentException.class)
+    @Test (expected = IllegalArgumentException.class)
     public void testNullBoth() {
         store.sell(null, null);
     }
@@ -75,6 +82,7 @@ public class StoreSellTest {
         assertTrue(success);
         assertEquals(1, realPlayer.getEnergy());
         assertEquals(storeEnergy + 1, store.getEnergyCount());
-        assertEquals(playerMoney + store.getEnergyPrice(), realPlayer.getMoney());
+        assertEquals(playerMoney + store.getEnergyPrice(),
+                realPlayer.getMoney());
     }
 }
