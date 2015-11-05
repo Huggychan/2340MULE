@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 /**
  * @author Bilal
  * @version 1.0
@@ -20,7 +22,7 @@ public class Summary extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
         Parent root =
                 FXMLLoader.load(
                         getClass().getResource("/resources/Summary.fxml"));

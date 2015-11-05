@@ -3,25 +3,26 @@ package edu.gatech.cs2340.configs;
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameObject.Player;
-//import edu.gatech.cs2340.GameObject.Race;
-//import javafx.collections.FXCollections;
-//import javafx.event.ActionEvent;
-//import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-//import javafx.scene.input.KeyCode;
-//import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-//import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+
+//import edu.gatech.cs2340.GameObject.Race;
+//import javafx.collections.FXCollections;
+//import javafx.event.ActionEvent;
+//import javafx.event.EventHandler;
+//import javafx.scene.input.KeyCode;
+//import javafx.scene.input.KeyEvent;
+//import java.io.IOException;
 
 /**
  * @author Bilal
@@ -136,7 +137,7 @@ public class SummaryController implements Initializable {
     /**
      * Array list of the players.
      */
-    private ArrayList<Player> players;
+    private List<Player> players;
 
     /**
      * Initializes the fxml file.

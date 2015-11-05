@@ -6,6 +6,7 @@ import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.Maps.TownTile;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author Nick and Shyam
@@ -19,7 +20,7 @@ public class LandSelection {
     /**
      * Players of the game.
      */
-    private LinkedList<Player> players;
+    private Queue<Player> players;
 
     /**
      * LandSelection constructor.

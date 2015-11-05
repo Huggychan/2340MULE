@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class ViewMaster {
 
-    private final String RESOURCES = "/resources/";
+    private final static String RESOURCES = "/resources/";
 
     private Game game;
     private StackPane backingStackPane;

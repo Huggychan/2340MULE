@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.GameObject;
 
 import edu.gatech.cs2340.Game;
-import edu.gatech.cs2340.GameEngine.Turn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
@@ -31,20 +29,20 @@ public class StoreController implements Initializable {
     private ListView listView;
     @FXML
     private Button buySell;
-    @FXML
-    private Button confirmTransaction;
-    @FXML
-    private ImageView itemImage;
+//    @FXML
+//    private Button confirmTransaction;
+//    @FXML
+//    private ImageView itemImage;
     @FXML
     private Pane backingPane;
-    @FXML
-    private Button leaveStore;
+//    @FXML
+//    private Button leaveStore;
 
-    private ObservableList<String> items;
+    //private ObservableList<String> items;
     private Store store;
 
     private Game game;
-    private Turn turn;
+//    private Turn turn;
     private boolean isBuying;
 
     /**
@@ -144,21 +142,21 @@ public class StoreController implements Initializable {
      * Updates the inventory
      */
     public void updateInventory() {
-        items = FXCollections.observableArrayList();
-        this.items.add("MULE: " + this.store.getBaseMulePrice() + " "
+        ObservableList<String> items = FXCollections.observableArrayList();
+        items.add("MULE: " + this.store.getBaseMulePrice() + " "
                 + this.store.getMuleCount());
 
-        this.items.add("Crystite: " + this.store.getCrystitePrice() + " "
+        items.add("Crystite: " + this.store.getCrystitePrice() + " "
                 + this.store.getCrystiteCount());
 
-        this.items.add("Food: " + this.store.getFoodPrice() + " "
+        items.add("Food: " + this.store.getFoodPrice() + " "
                 + this.store.getFoodCount());
-        this.items.add("Ore: " + this.store.getSmithorePrice() + " "
+        items.add("Ore: " + this.store.getSmithorePrice() + " "
                 + this.store.getOreCount());
-        this.items.add("Energy: " + this.store.getEnergyPrice() + " "
+        items.add("Energy: " + this.store.getEnergyPrice() + " "
                 + this.store.getEnergyCount());
 
-        listView.setItems(this.items);
+        listView.setItems(items);
     }
 
     /**

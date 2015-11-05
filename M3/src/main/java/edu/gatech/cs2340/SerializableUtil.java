@@ -41,7 +41,7 @@ public class SerializableUtil {
             System.out.printf("Serialized data is saved in "
                     + "src/main/java/saves/game.ser\n");
         } catch (IOException i)  {
-            i.printStackTrace();
+            System.out.println(i.getMessage());
         }
     }
 

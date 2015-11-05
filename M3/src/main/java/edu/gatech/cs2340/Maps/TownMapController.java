@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.ImageCursor;
-import javafx.scene.Parent;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
@@ -18,7 +17,6 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -132,11 +130,17 @@ public class TownMapController implements Initializable {
         } else {
             game.toggleStoreEntered();
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/resources/Store.fxml"));
+                    getClass().getResource("/resources/Store1.fxml"));
             loader.setClassLoader(this.getClass().getClassLoader());
-            Parent newRoot = null;
+            try {
+                loader.load();
+            } catch (IOException e) {
+                System.out.println("Exception loading store");
+                System.out.println(e.getMessage());
+            }
             StoreController sc = loader.getController();
             this.storeController = sc;
+            System.out.println("STORE CONTROLLER " + sc);
             sc.setStore(this.game.getStore());
             sc.setGame(this.game);
             this.game.getMap().getStackPane()

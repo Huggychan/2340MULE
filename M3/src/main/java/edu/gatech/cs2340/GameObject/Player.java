@@ -7,6 +7,8 @@ import javafx.scene.paint.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Makes a Player with different elements.
@@ -19,8 +21,8 @@ public class Player implements Comparable<Player>, Serializable {
     private Race race;
     private transient Color color;
     private String colorString;
-    private ArrayList<Tile> tiles;
-    private HashMap<ResourceType, Integer> inventory;
+    private List<Tile> tiles;
+    private Map<ResourceType, Integer> inventory;
     private int money;
     private Mule mule;
 //    private Game game;
@@ -322,7 +324,7 @@ public class Player implements Comparable<Player>, Serializable {
     /**
      * @return Inventory of player
      */
-    public HashMap<ResourceType, Integer> getInventory() {
+    public Map<ResourceType, Integer> getInventory() {
         return this.inventory;
     }
 

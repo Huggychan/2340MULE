@@ -2,11 +2,12 @@ package edu.gatech.cs2340.GameObject;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Store implements Serializable {
 
-    private HashMap<ResourceType, Integer> inventoryStock;
-    private HashMap<ResourceType, Integer> inventoryPrice;
+    private Map<ResourceType, Integer> inventoryStock;
+    private Map<ResourceType, Integer> inventoryPrice;
     private static final int FOOD_PRICE = 30;
     private static final int ENERGY_PRICE = 25;
     private static final int SMITHORE_PRICE = 50;
@@ -180,7 +181,7 @@ public class Store implements Serializable {
      * @param key resourceType to be incremented
      * @param map HashMap map of resourceType
      */
-    private void incrementKeyInMap(ResourceType key, HashMap<ResourceType,
+    private void incrementKeyInMap(ResourceType key, Map<ResourceType,
             Integer> map) {
         int val = map.get(key);
         map.put(key, val + 1);
@@ -191,7 +192,7 @@ public class Store implements Serializable {
      * @param key resourceType to be incremented
      * @param map HashMap map of resourceType
      */
-    private void decrementKeyInMap(ResourceType key, HashMap<ResourceType,
+    private void decrementKeyInMap(ResourceType key, Map<ResourceType,
             Integer> map) {
         int val = map.get(key);
         if (val > 0) {

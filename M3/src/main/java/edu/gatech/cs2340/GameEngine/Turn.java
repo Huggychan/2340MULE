@@ -14,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.Serializable;
@@ -36,7 +35,7 @@ public class Turn implements Serializable {
     /**
      * ArrayList of players.
      */
-    private ArrayList<Player> players;
+    private List<Player> players;
     /**
      * Label for the turn.
      */
@@ -56,16 +55,6 @@ public class Turn implements Serializable {
     private static final long serialVersionUID = 2L;
 
     /**
-     * Checker to see if person has bought a mule.
-     */
-    private boolean boughtMule;
-
-    /**
-     * Stage for the game.
-     */
-    private Stage stage;
-
-    /**
      * Turn Constructor.
      * @param newGame Game being played
      */
@@ -81,7 +70,6 @@ public class Turn implements Serializable {
     StackPane.setAlignment(label, Pos.TOP_RIGHT);
     label.setTextFill(Paint.valueOf("white"));
     turnTimerCreator();
-    boughtMule = false;
 }
 
     /**
@@ -105,7 +93,7 @@ public class Turn implements Serializable {
     /**
      * Sets the turn timer.
      */
-    public void setTurnTime() {
+    public final void setTurnTime() {
         Player player = players.get(0);
         int requirement = 3 + ((game.getRoundNumber() % 4 == 0) ? (game
                 .getRoundNumber() / 4 - 1) : (game.getRoundNumber() / 4));
@@ -154,7 +142,7 @@ public class Turn implements Serializable {
     /**
      * Creates the timer.
      */
-    public void turnTimerCreator() {
+    public final void turnTimerCreator() {
         Timeline t = new Timeline(new KeyFrame(Duration.seconds(1), new
                 EventHandler<ActionEvent>() {
 
@@ -218,19 +206,4 @@ public class Turn implements Serializable {
             p.calcProduction();
         }
     }
-
-//    /**
-//     * Sets bought mule.
-//     * @param setBoughtStatus Parameter to set boughtMule.
-//     */
-//    private void setBoughtMule(boolean setBoughtStatus) {
-//        boughtMule = setBoughtStatus;
-//    }
-//
-//    /**
-//     * @return Player bought a mule this turn.
-//     */
-//    private boolean getBoughtMule() {
-//        return boughtMule;
-//    }
 }

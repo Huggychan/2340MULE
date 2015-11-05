@@ -7,7 +7,6 @@ import edu.gatech.cs2340.GameObject.ResourceType;
 import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
@@ -119,7 +118,6 @@ public abstract class Tile extends StackPane implements Serializable {
                 + ".png");
         WritableImage ownedBorderImage = new WritableImage(
                 (int) borderImage.getWidth(), (int) borderImage.getHeight());
-        PixelReader imageReader = borderImage.getPixelReader();
         PixelWriter ownedImageWriter = ownedBorderImage.getPixelWriter();
         Color ownerColor = owner.getColor();
         for (int i = 0; i < borderImage.getWidth(); i++) {

@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.GameObject;
 
-import edu.gatech.cs2340.Game;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
@@ -20,7 +19,8 @@ public class Mule implements Serializable {
     private Player player;
     private ResourceType resourceType;
     private transient Image image;
-    private Game game;
+//    private Game game;
+    private static final long serialVersionUID = 2L;
 
     /**
      * Constructor for Mule.
@@ -35,7 +35,7 @@ public class Mule implements Serializable {
     /**
      * Sets image and color of mule.
      */
-    public void setImageAndColor() {
+    public final void setImageAndColor() {
         this.color = player.getColor();
         image = new Image("/resources/mule.png");
     }
