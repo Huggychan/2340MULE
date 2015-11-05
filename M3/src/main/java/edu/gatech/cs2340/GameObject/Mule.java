@@ -29,7 +29,7 @@ public class Mule implements Serializable {
     public Mule(Player newPlayer) {
         this.player = newPlayer;
         this.colorString = player.getColorString();
-        setImageAndColor();
+        //setImageAndColor();
     }
 
     /**

@@ -3,16 +3,15 @@ package edu.gatech.cs2340.GameObject;
 /**
  * Created by Nick on 11/3/2015.
  */
-import edu.gatech.cs2340.Game;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
 //import edu.gatech.cs2340.GameObject.Player;
 //import edu.gatech.cs2340.GameObject.Race;
 //import edu.gatech.cs2340.GameObject.ResourceType;
 //import edu.gatech.cs2340.GameObject.Store;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class StoreBuyTests {
     private Store store;
@@ -58,7 +57,7 @@ public class StoreBuyTests {
         assertEquals(1, p1.getFood());
     }
 
-    @Test(timeout = TIMEOUT, expected = RuntimeException.class)
+    @Test(timeout = TIMEOUT)
     public void testIfMuleEnoughMoney() { //the graphics are not initialized
         p1.setMoney(2 * store.getBaseMulePrice());
         assertTrue(p1.getMule() == null);
@@ -67,7 +66,7 @@ public class StoreBuyTests {
         p1.setMule(null);
         store.buy(ResourceType.MULE, p1);
         assertTrue(p1.getMuleBoughtThisTurn());
-        assertTrue(p1.getMule() == null);
+        assertNull(p1.getMule());
         assertEquals(store.getBaseMulePrice(), p1.getMoney());
     }
     //TestMuleNotEnoughMoney

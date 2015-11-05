@@ -375,7 +375,7 @@ public class Player implements Comparable<Player>, Serializable {
      * @param newMule Mule to be set to player
      */
     public void setMule(Mule newMule) {
-        this.mule = mule;
+        this.mule = newMule;
     }
 
     /**
