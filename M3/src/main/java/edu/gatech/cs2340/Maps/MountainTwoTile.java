@@ -15,8 +15,8 @@ public class MountainTwoTile extends Tile {
      * Constructor for MountainTwoTile.
      */
     public MountainTwoTile() {
-        this.image = new Image("/resources/Mountain2.png");
-        this.getImageView().setImage(this.image);
+        this.setImage(new Image("/resources/Mountain2.png"));
+        this.getImageView().setImage(this.getImage());
         this.getChildren().add(this.getImageView());
         Random r = new Random();
         int randomNum = r.nextInt(4);

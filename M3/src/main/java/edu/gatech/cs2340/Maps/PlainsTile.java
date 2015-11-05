@@ -15,8 +15,8 @@ public class PlainsTile extends Tile {
      * Constructor for PlainsTile.
      */
     public PlainsTile() {
-        this.image = new Image("/resources/Plain.png");
-        this.getImageView().setImage(new Image("/resources/Plain.png"));
+        this.setImage(new Image("/resources/Plain.png"));
+        this.getImageView().setImage(this.getImage());
         this.getChildren().add(this.getImageView());
         Random r = new Random();
         int randomNum = r.nextInt(4);

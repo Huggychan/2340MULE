@@ -13,8 +13,8 @@ public class RiverTile extends Tile {
      * Constructor for RiverTile.
      */
     public RiverTile() {
-        this.image = new Image("/resources/River.png");
-        this.getImageView().setImage(this.image);
+        this.setImage(new Image("/resources/River.png"));
+        this.getImageView().setImage(this.getImage());
         this.getChildren().add(this.getImageView());
         this.getResourceTypeMap().put(ResourceType.FOOD, 4);
         this.getResourceTypeMap().put(ResourceType.ENERGY, 2);

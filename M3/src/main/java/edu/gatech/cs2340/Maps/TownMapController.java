@@ -130,7 +130,7 @@ public class TownMapController implements Initializable {
         } else {
             game.toggleStoreEntered();
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/resources/Store1.fxml"));
+                    getClass().getResource("/resources/Store.fxml"));
             loader.setClassLoader(this.getClass().getClassLoader());
             try {
                 loader.load();

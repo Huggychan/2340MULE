@@ -15,8 +15,8 @@ public class MountainThreeTile extends Tile {
      * Constructor for MountainThreeTile.
      */
     public MountainThreeTile() {
-        this.image = new Image("/resources/Mountain3.png");
-        this.getImageView().setImage(this.image);
+        this.setImage(new Image("/resources/Mountain3.png"));
+        this.getImageView().setImage(this.getImage());
         this.getChildren().add(this.getImageView());
         Random r = new Random();
         int randomNum = r.nextInt(4);

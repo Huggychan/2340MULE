@@ -14,7 +14,7 @@ import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TownMapController;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PlayerConfigController;
-import edu.gatech.cs2340.configs.SummaryController;
+//import edu.gatech.cs2340.configs.SummaryController;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +53,7 @@ public class Game extends Application implements Serializable {
     private int roundNumber;
     private transient LandSelection landselection;
     private Turn turn;
-    private SummaryController summaryController;
+//    private SummaryController summaryController;
     private MapController map;
     private transient EventLog log;
     private Store store;
@@ -337,27 +337,27 @@ public class Game extends Application implements Serializable {
     /**
      * Puts the summary on top of the view stack.
      */
-    public void summary() {
-        FXMLLoader loader = new FXMLLoader(getClass()
-                .getResource("/resources/Summary.fxml"));
-        loader.setClassLoader(this.getClass().getClassLoader());
-
-        Parent root = null;
-
-        try {
-            root = loader.load();
-            root.toFront();
-        } catch (IOException e) {
-            System.out.println("IOException loading Summary.fxml");
-            System.out.println(e.getMessage());
-        }
-
-        summaryController = loader.getController();
-        summaryController.setGame(this);
-        stage.getScene().setRoot(root);
-        stage.setTitle("Summary!");
-        stage.show();
-    }
+//    public void summary() {
+//        FXMLLoader loader = new FXMLLoader(getClass()
+//                .getResource("/resources/Summary.fxml"));
+//        loader.setClassLoader(this.getClass().getClassLoader());
+//
+//        Parent root = null;
+//
+//        try {
+//            root = loader.load();
+//            root.toFront();
+//        } catch (IOException e) {
+//            System.out.println("IOException loading Summary.fxml");
+//            System.out.println(e.getMessage());
+//        }
+//
+//        summaryController = loader.getController();
+//        summaryController.setGame(this);
+//        stage.getScene().setRoot(root);
+//        stage.setTitle("Summary!");
+//        stage.show();
+//    }
 
     /**
      * Compares player to Players list.

@@ -31,7 +31,7 @@ public abstract class Tile extends StackPane implements Serializable {
     private transient ImageView iv;
     private MapController map;
     private Map<ResourceType, Integer> resourceTypeMap;
-    protected transient Image image;
+    private transient Image image;
 
     /**
      * Tile construct on Instantiation, we will not handle who owns it.
@@ -169,7 +169,7 @@ public abstract class Tile extends StackPane implements Serializable {
             map.getGame().setState(Game.GameState.TURN);
         } else {
             map.getGame().log("Mule placed.");
-            this.mule = mule;
+            this.mule = mule1;
             ImageView iv2 = new ImageView(
                     this.getMuleResource().getImageString());
             iv2.toFront();
@@ -275,5 +275,20 @@ public abstract class Tile extends StackPane implements Serializable {
      * Loads the ImageView of the Tile.
      */
     public abstract void loadImageView();
+
+    /**
+     * Sets the image.
+     * @param newImage Image to be set as.
+     */
+    public void setImage(Image newImage) {
+        this.image = newImage;
+    }
+
+    /**
+     * @return The image of tile.
+     */
+    public Image getImage() {
+        return this.image;
+    }
 
 }
