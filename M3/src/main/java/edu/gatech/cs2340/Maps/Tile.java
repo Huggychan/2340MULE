@@ -20,7 +20,7 @@ import java.util.Map;
 
 
 /**
- * Tile class
+ * Tile class.
  * @author Bilal, Marc, Nick
  * @version 1.0
  */
@@ -67,7 +67,7 @@ public abstract class Tile extends StackPane implements Serializable {
     }
 
     /**
-     * Calculates production for the tile
+     * Calculates production for the tile.
      * @return Integer value of how much production was done for the tile
      */
     public int calculateProduction() {
@@ -95,14 +95,14 @@ public abstract class Tile extends StackPane implements Serializable {
     }
 
     /**
-     * @param color color to be set
+     * @param thisColor color to be set
      */
-    public void setColor(String color) {
-        this.color = color;
+    public void setColor(String thisColor) {
+        this.color = thisColor;
     }
 
     /**
-     * Player returned
+     * Player returned.
      * @return Player owner of tile
      */
     public Player getOwner() {
@@ -110,10 +110,10 @@ public abstract class Tile extends StackPane implements Serializable {
     }
 
     /**
-     * @param owner set owner to this owner
+     * @param newOwner set owner to this owner
      */
-    public void setOwner(Player owner) {
-        this.owner = owner;
+    public void setOwner(Player newOwner) {
+        this.owner = newOwner;
         Image borderImage = new Image("/resources/ownerBorder"
                 + ".png");
         WritableImage ownedBorderImage = new WritableImage(
@@ -150,16 +150,16 @@ public abstract class Tile extends StackPane implements Serializable {
     }
 
     /**
-     * Places a mule on the tile
-     * @param mule Mule to be placed on tile
+     * Places a mule on the tile.
+     * @param mule1 Mule to be placed on tile
      */
-    public void placeMule(Mule mule) {
+    public void placeMule(Mule mule1) {
         //System.out.println(tile.getMule());
         if (this instanceof TownTile) {
             map.getGame().log("That is town. Mule lost.");
             map.getGame().getScene().setCursor(Cursor.DEFAULT);
             map.getGame().setState(Game.GameState.TURN);
-        } else if (this.getOwner() != mule.getPlayer()) {
+        } else if (this.getOwner() != mule1.getPlayer()) {
             map.getGame().log("You do not own that property. Mule lost.");
             map.getGame().getScene().setCursor(Cursor.DEFAULT);
             map.getGame().setState(Game.GameState.TURN);
@@ -256,7 +256,7 @@ public abstract class Tile extends StackPane implements Serializable {
     }
 
     /**
-     * Sets the ImageView
+     * Sets the ImageView.
      * @param imageView ImageView to be set
      */
     public void setImageView(ImageView imageView) {
@@ -264,7 +264,7 @@ public abstract class Tile extends StackPane implements Serializable {
     }
 
     /**
-     * Sets the map
+     * Sets the map.
      * @param map Map to be set
      */
     public void setMap(MapController map) {
@@ -272,7 +272,7 @@ public abstract class Tile extends StackPane implements Serializable {
     }
 
     /**
-     * Loads the ImageView of the Tile
+     * Loads the ImageView of the Tile.
      */
     public abstract void loadImageView();
 

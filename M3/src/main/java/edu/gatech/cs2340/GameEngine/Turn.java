@@ -40,10 +40,14 @@ public class Turn implements Serializable {
      * Label for the turn.
      */
     private transient Label label;
+    private static final int MAX_TURNTIME = 50;
+    private static final int MED_TURNTIME = 30;
+    private static final int MIN_TURNTIME = 5;
+    private static final int FONTSIZE = 24;
     /**
      * Time for the turn.
      */
-    private int turnTime = 50;
+    private int turnTime = MAX_TURNTIME;
     /**
      * Time remaining for the turn.
      */
@@ -66,7 +70,7 @@ public class Turn implements Serializable {
     setTurnTime();
     label = new Label();
     game.getMap().getStackPane().getChildren().add(label);
-    label.setFont(Font.font(24));
+    label.setFont(Font.font(FONTSIZE));
     StackPane.setAlignment(label, Pos.TOP_RIGHT);
     label.setTextFill(Paint.valueOf("white"));
     turnTimerCreator();
@@ -98,11 +102,11 @@ public class Turn implements Serializable {
         int requirement = 3 + ((game.getRoundNumber() % 4 == 0) ? (game
                 .getRoundNumber() / 4 - 1) : (game.getRoundNumber() / 4));
         if (player.getFood() >= requirement) {
-            turnTime = 50;
+            turnTime = MAX_TURNTIME;
         } else if (player.getFood() > 0) {
-            turnTime = 30;
+            turnTime = MED_TURNTIME;
         } else {
-            turnTime = 5;
+            turnTime = MIN_TURNTIME;
         }
     }
 
