@@ -16,7 +16,7 @@ import java.io.IOException;
 public class SerializableUtil {
 
     /**
-     * Saves the game
+     * Saves the game.
      * @param game Game to be saved
      */
     public void saveGame(Game game) {
@@ -46,7 +46,7 @@ public class SerializableUtil {
     }
 
     /**
-     * Loads the game
+     * Loads the game.
      * @param fileName File to be loaded
      * @param stage Stage of the game
      * @throws IOException IOException for file

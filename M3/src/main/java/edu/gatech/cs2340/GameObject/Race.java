@@ -14,10 +14,10 @@ public enum Race {
     private String imageString;
 
     /**
-     * Constructor for Race
-     * @param imageString String file location of image
+     * Constructor for Race.
+     * @param newImageString String file location of image
      */
-    Race(String imageString) {
+    Race(String newImageString) {
         this.imageString = imageString;
     }
 
@@ -32,5 +32,4 @@ public enum Race {
     public String getImageString() {
         return this.imageString;
     }
-
 }

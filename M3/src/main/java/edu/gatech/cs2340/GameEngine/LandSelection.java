@@ -1,8 +1,8 @@
 package edu.gatech.cs2340.GameEngine;
 
 import edu.gatech.cs2340.Game;
-import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.GameObject.Player;
+import edu.gatech.cs2340.Maps.Tile;
 import edu.gatech.cs2340.Maps.TownTile;
 
 import java.util.LinkedList;
@@ -13,6 +13,9 @@ import java.util.Queue;
  * @version 1.0
  */
 public class LandSelection {
+
+    private static final int LAND_PRICE = 300;
+
     /**
      * Game being used.
      */
@@ -62,16 +65,16 @@ public class LandSelection {
                 return; //i'm a fuckin genius
             }
         } else {
-            if (player.getMoney() >= 300
+            if (player.getMoney() >= LAND_PRICE
                     && tile.getOwner() == null) {
                 tile.setOwner(player);
-                player.setMoney(player.getMoney() - 300);
+                player.setMoney(player.getMoney() - LAND_PRICE);
                 player.addTile(tile);
                 //System.out.println(game.getCurrentPlayer().getMoney());
             } else if (tile.getOwner() != null) {
                 return;
             }
-            if (player.getMoney() >= 300) {
+            if (player.getMoney() >= LAND_PRICE) {
                 players.add(player);
             }
         }

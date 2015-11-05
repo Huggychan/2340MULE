@@ -23,7 +23,6 @@ import java.util.ResourceBundle;
  */
 public class GameConfigController implements Initializable {
 
-
     /**
      * Choice box for difficulties.
      */

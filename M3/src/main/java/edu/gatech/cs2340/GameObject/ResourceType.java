@@ -11,10 +11,9 @@ public enum ResourceType {
     private String imageString;
 
     /**
-     * Default constructor
+     * Default constructor.
      */
     ResourceType() {
-
     }
 
     /**
@@ -31,4 +30,4 @@ public enum ResourceType {
     public String getImageString() {
         return this.imageString;
     }
-};
+}

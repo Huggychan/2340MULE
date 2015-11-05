@@ -12,7 +12,7 @@ import java.util.Random;
 public class MountainOneTile extends Tile {
 
     /**
-     * Constructor for MountainOneTile
+     * Constructor for MountainOneTile.
      */
     public MountainOneTile() {
         this.image = new Image("/resources/Mountain1.png");

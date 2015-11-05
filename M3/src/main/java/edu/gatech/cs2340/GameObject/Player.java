@@ -25,7 +25,6 @@ public class Player implements Comparable<Player>, Serializable {
     private Map<ResourceType, Integer> inventory;
     private int money;
     private Mule mule;
-//    private Game game;
     private boolean muleBoughtThisTurn;
     private static final long serialVersionUID = 2L;
 
@@ -38,11 +37,11 @@ public class Player implements Comparable<Player>, Serializable {
 
     /**
      * Sets money of person.
-     * @param money Money to set for the person
+     * @param amount Money to set for the person
      */
-    public void setMoney(int money) {
-        this.money = money;
-        if (money < 0) {
+    public void setMoney(int amount) {
+        this.money = amount;
+        if (amount < 0) {
             this.money = 0;
         }
     }
@@ -97,7 +96,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Sets Mule Bought This Turn
+     * Sets Mule Bought This Turn.
      * @param bool Boolean to set muleBoughtThisTurn
      */
     public void setMuleBoughtThisTurn(boolean bool) {
@@ -113,12 +112,13 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Player constructor
-     * @param name Name of player
-     * @param race Race of player
-     * @param colorString Color of player in string format
+     * Player constructor.
+     * @param playerName Name of player
+     * @param playerRace Race of player
+     * @param playerColorString Color of player in string format
      */
-    public Player(String name, Race race, String colorString) {
+    public Player(String playerName, Race playerRace,
+                  String playerColorString) {
         this.inventory = new HashMap<>();
         inventory.put(ResourceType.CRYSTITE, 0);
         inventory.put(ResourceType.FOOD, 0);
@@ -127,9 +127,9 @@ public class Player implements Comparable<Player>, Serializable {
         this.tiles = new ArrayList<>();
         this.muleBoughtThisTurn = false;
 
-        this.name = name;
-        this.race = race;
-        this.colorString = colorString;
+        this.name = playerName;
+        this.race = playerRace;
+        this.colorString = playerColorString;
         this.setColor(this.colorString);
         switch (race) {
         case HUMAN:
@@ -145,7 +145,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Adds the tile to the player's collection of tiles
+     * Adds the tile to the player's collection of tiles.
      * @param t tile to add to player's collection
      */
     public void addTile(Tile t) {
@@ -153,7 +153,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Gets the name
+     * Gets the name.
      * @return Name of Player
      */
     public String getName() {
@@ -161,7 +161,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Gets the race
+     * Gets the race.
      * @return Race of Player
      */
     public Race getRace() {
@@ -169,7 +169,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Gets String form of Race
+     * Gets String form of Race.
      * @return String form of Race
      */
     public String getRaceString() {
@@ -177,7 +177,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Gets the color
+     * Gets the color.
      * @return Color of Player
      */
     public Color getColor() {
@@ -185,7 +185,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Gets color in string format
+     * Gets color in string format.
      * @return Color in string format
      */
     public String getColorString() {
@@ -193,26 +193,26 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Sets the Name of Player
-     * @param name Name to be set for Player
+     * Sets the Name of Player.
+     * @param newName Name to be set for Player
      */
-    public void setName(String name) {
+    public void setName(String newName) {
         this.name = name;
     }
 
     /**
-     * Sets the Race of Player
-     * @param race Race to be set for Player
+     * Sets the Race of Player.
+     * @param newRace Race to be set for Player
      */
-    public void setRace(Race race) {
+    public void setRace(Race newRace) {
         this.race = race;
     }
 
     /**
-     * Sets the Color of Player
-     * @param colorString Color to be set for Player
+     * Sets the Color of Player.
+     * @param newColorString Color to be set for Player
      */
-    public void setColor(String colorString) {
+    public void setColor(String newColorString) {
         switch (colorString) {
         case "Red":
             color = Color.RED;
@@ -238,7 +238,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Sets food of person
+     * Sets food of person.
      * @param food Food to set for the person
      */
     public void setFood(int food) {
@@ -249,7 +249,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Sets energy of person
+     * Sets energy of person.
      * @param energy Energy to set for the person
      */
     public void setEnergy(int energy) {
@@ -260,7 +260,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Sets ore of person
+     * Sets ore of person.
      * @param ore Ore to set for the person
      */
     public void setOre(int ore) {
@@ -271,7 +271,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Sets crystite of person
+     * Sets crystite of person.
      * @param crystite Crystite to set for the person
      */
     public void setCrystite(int crystite) {
@@ -329,7 +329,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Decrements money of player
+     * Decrements money of player.
      * @param amount amount to decrement by
      */
     public void decrementMoney(int amount) {
@@ -339,7 +339,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Gives mule to player
+     * Gives mule to player.
      */
     public void giveMule() {
         if (this.mule == null) {
@@ -348,7 +348,7 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Calculates production for the player
+     * Calculates production for the player.
      */
     public void calcProduction() {
         System.out.println(this.getName() + " " + inventory);
@@ -364,17 +364,17 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * @return Mule belonging to player
+     * @return Mule belonging to player.
      */
     public Mule getMule() {
         return this.mule;
     }
 
     /**
-     * Sets mule for player
-     * @param mule Mule to be set to player
+     * Sets mule for player.
+     * @param newMule Mule to be set to player
      */
-    public void setMule(Mule mule) {
+    public void setMule(Mule newMule) {
         this.mule = mule;
     }
 
@@ -386,14 +386,14 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
-     * Takes mule from player
+     * Takes mule from player.
      */
     public void takeMule() {
         this.mule = null;
     }
 
     /**
-     * Increments money of player
+     * Increments money of player.
      * @param amount amount to increment by
      */
     public void incrementMoney(int amount) {

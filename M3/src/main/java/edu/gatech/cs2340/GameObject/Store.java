@@ -6,6 +6,11 @@ import java.util.Map;
 
 public class Store implements Serializable {
 
+    private static final int INIT_FOOD = 16;
+    private static final int INIT_ENERGY = 16;
+    private static final int INIT_MULE = 16;
+
+
     private Map<ResourceType, Integer> inventoryStock;
     private Map<ResourceType, Integer> inventoryPrice;
     private static final int FOOD_PRICE = 30;
@@ -15,15 +20,15 @@ public class Store implements Serializable {
     private static final int BASE_MULE_PRICE = 100;
 
     /**
-     * Constructor for Store
+     * Constructor for Store.
      */
     public Store() {
         inventoryStock = new HashMap<>();
-        inventoryStock.put(ResourceType.FOOD, 16);
-        inventoryStock.put(ResourceType.ENERGY, 16);
+        inventoryStock.put(ResourceType.FOOD, INIT_FOOD);
+        inventoryStock.put(ResourceType.ENERGY, INIT_FOOD);
         inventoryStock.put(ResourceType.ORE, 0);
         inventoryStock.put(ResourceType.CRYSTITE, 0);
-        inventoryStock.put(ResourceType.MULE, 25);
+        inventoryStock.put(ResourceType.MULE, INIT_MULE);
 
         inventoryPrice = new HashMap<>();
         inventoryPrice.put(ResourceType.FOOD, FOOD_PRICE);
@@ -34,7 +39,7 @@ public class Store implements Serializable {
     }
 
     /**
-     * @return Gets how many mules are in inventory
+     * @return Gets how many mules are in inventory.
      */
     public int getMuleCount() {
         return inventoryStock.get(ResourceType.MULE);
@@ -104,7 +109,7 @@ public class Store implements Serializable {
     }
 
     /**
-     * Buys the resource type and gives it to Player
+     * Buys the resource type and gives it to Player.
      * @param rt ResourceType to buy
      * @param player Player buying items
      * @return True if successful
@@ -140,7 +145,7 @@ public class Store implements Serializable {
     }
 
     /**
-     * Sells the resource type and gives it to Player
+     * Sells the resource type and gives it to Player.
      * @param rt ResourceType to buy
      * @param player Player buying items
      * @return True if successful
@@ -177,7 +182,7 @@ public class Store implements Serializable {
     //TODO add logging to buying/selling
 
     /**
-     * Increments resourceType in the map
+     * Increments resourceType in the map.
      * @param key resourceType to be incremented
      * @param map HashMap map of resourceType
      */
@@ -188,7 +193,7 @@ public class Store implements Serializable {
     }
 
     /**
-     * Decrements resourceType in the map
+     * Decrements resourceType in the map.
      * @param key resourceType to be incremented
      * @param map HashMap map of resourceType
      */
@@ -200,5 +205,3 @@ public class Store implements Serializable {
         }
     }
 }
-
-

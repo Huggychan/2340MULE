@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 public class RiverTile extends Tile {
 
     /**
-     * Constructor for RiverTile
+     * Constructor for RiverTile.
      */
     public RiverTile() {
         this.image = new Image("/resources/River.png");

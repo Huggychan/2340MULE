@@ -18,6 +18,10 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class MapController implements Initializable, Serializable {
+
+    private static final int MAP_WIDTH = 9;
+    private static final int MAP_HEIGHT = 5;
+
     private Tile[][] tiles;
     private MapType maptype = MapType.STANDARD;
     @FXML
@@ -38,30 +42,31 @@ public class MapController implements Initializable, Serializable {
     }
 
     /**
-     * Sets the maptype
-     * @param maptype Maptype to be set
+     * Sets the maptype.
+     * @param newMaptype Maptype to be set
      */
-    public void setMaptype(MapType maptype) {
-        this.maptype = maptype;
+    public void setMaptype(MapType newMaptype) {
+        this.maptype = newMaptype;
     }
 
     /**
-     * Sets the stackpane
-     * @param stackPane Stackpane to be set
+     * Sets the stackpane.
+     * @param newStackPane Stackpane to be set
      */
-    public void setStackPane(StackPane stackPane) {
-        this.stackPane = stackPane;
+    public void setStackPane(StackPane newStackPane) {
+        this.stackPane = newStackPane;
     }
 
     /**
-     * Sets the gridpane
-     * @param gridPane Gridpane to be set
+     * Sets the gridpane.
+     * @param newGridPane Gridpane to be set
      */
-    public void setGridPane(GridPane gridPane) {
-        this.backingPane = gridPane;
+    public void setGridPane(GridPane newGridPane) {
+        this.backingPane = newGridPane;
     }
 
     /**
+     * Gets the tiles of the map.
      * @return 2D array of tiles
      */
     public Tile[][] getTiles() {
@@ -69,10 +74,10 @@ public class MapController implements Initializable, Serializable {
     }
 
     /**
-     * Sets up the map
+     * Sets up the map.
      */
     private void setUpMap() {
-        tiles = new Tile[5][9];
+        tiles = new Tile[MAP_HEIGHT][MAP_WIDTH];
         if (maptype == MapType.STANDARD) {
             try {
                 URL url = getClass().getResource("/resources/standardmap.txt");
@@ -105,7 +110,7 @@ public class MapController implements Initializable, Serializable {
     }
 
     /**
-     * Sets tiles according to character
+     * Sets tiles according to character.
      * @param c character used to determine which tile to return
      * @return Tile specified by character
      * @throws IllegalArgumentException If the letter doesn't exist
@@ -131,6 +136,7 @@ public class MapController implements Initializable, Serializable {
 
 
     /**
+     * Returs the game.
      * @return Gets the game being played
      */
     public Game getGame() {
@@ -138,7 +144,7 @@ public class MapController implements Initializable, Serializable {
     }
 
     /**
-     * Sets the game for the map
+     * Sets the game for the map.
      * @param gameToSet the game to set
      */
     public void setGame(Game gameToSet) {
@@ -151,5 +157,4 @@ public class MapController implements Initializable, Serializable {
     public StackPane getStackPane() {
         return this.stackPane;
     }
-
 }

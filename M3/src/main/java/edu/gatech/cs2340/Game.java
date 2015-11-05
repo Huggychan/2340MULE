@@ -40,6 +40,9 @@ import java.util.List;
  */
 public class Game extends Application implements Serializable {
 
+    private static final int SCREEN_WIDTH = 1600;
+    private static final int SCREEN_HEIGHT = 900;
+
     private ArrayList<Player> players;
     private ArrayList<String> colors;
     private int numPlayers;
@@ -95,7 +98,7 @@ public class Game extends Application implements Serializable {
 
     /**
      * The start method for the JavaFX window.
-     * @param stage the window
+     * @param givenStage the window
      * @throws Exception throws exceptions
      */
     @Override
@@ -123,7 +126,7 @@ public class Game extends Application implements Serializable {
         GameConfigController gcfgController = loader.getController();
         gcfgController.setGame(this);
 
-        this.scene = new Scene(root, 1600, 900);
+        this.scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
         stage.getIcons().add(new Image(
                 Game.class.getResourceAsStream("/resources/mule.png")));
         stage.setTitle("MULE");
@@ -187,7 +190,7 @@ public class Game extends Application implements Serializable {
         Tile[][] oldData = map.getTiles();
         this.map = loader.getController();
         this.map.setGame(this);
-        this.scene = new Scene(newRoot, 1600, 900);
+        this.scene = new Scene(newRoot, SCREEN_WIDTH, SCREEN_HEIGHT);
         gameStage.setScene(scene);
         gameStage.getScene().setRoot(newRoot);
 

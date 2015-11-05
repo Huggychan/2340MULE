@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 
 /**
- * Person Configuration Screen Controller - works with SceneBuilder
+ * Person Configuration Screen Controller - works with SceneBuilder.
  * @author Nick
  * @version 1.0
  */
@@ -29,24 +29,15 @@ public class StoreController implements Initializable {
     private ListView listView;
     @FXML
     private Button buySell;
-//    @FXML
-//    private Button confirmTransaction;
-//    @FXML
-//    private ImageView itemImage;
     @FXML
     private Pane backingPane;
-//    @FXML
-//    private Button leaveStore;
 
-    //private ObservableList<String> items;
     private Store store;
-
     private Game game;
-//    private Turn turn;
     private boolean isBuying;
 
     /**
-     * @return Pane which is the backing pane
+     * @return Pane which is the backing pane.
      */
     public Pane getBackingPane() {
         return backingPane;
@@ -60,7 +51,7 @@ public class StoreController implements Initializable {
     }
 
     /**
-     * Sets the toggle button text
+     * Sets the toggle button text.
      */
     public void setToggleButtonText() {
         this.isBuying = !this.isBuying;
@@ -75,7 +66,7 @@ public class StoreController implements Initializable {
     }
 
     /**
-     * Toggles that you are out of store and removes the top pane
+     * Toggles that you are out of store and removes the top pane.
      */
     public void onStoreLeave() {
         game.toggleStoreEntered();
@@ -83,26 +74,26 @@ public class StoreController implements Initializable {
     }
 
     /**
-     * Sets the store
-     * @param store Store to be set
+     * Sets the store.
+     * @param newStore Store to be set
      */
-    public void setStore(Store store) {
-        this.store = store;
+    public void setStore(Store newStore) {
+        this.store = newStore;
         if (store != null) {
             this.updateInventory();
         }
     }
 
     /**
-     * Sets the game
-     * @param game Game to be set
+     * Sets the game.
+     * @param newGame Game to be set
      */
-    public void setGame(Game game) {
-        this.game = game;
+    public void setGame(Game newGame) {
+        this.game = newGame;
     }
 
     /**
-     * Confirms for buying and selling
+     * Confirms for buying and selling.
      */
     public void onConfirm() {
         String resource = (String) this.listView.getSelectionModel()
@@ -139,7 +130,7 @@ public class StoreController implements Initializable {
     }
 
     /**
-     * Updates the inventory
+     * Updates the inventory.
      */
     public void updateInventory() {
         ObservableList<String> items = FXCollections.observableArrayList();

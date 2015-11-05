@@ -9,13 +9,16 @@ import javafx.scene.paint.Paint;
  */
 public class EventLog extends Label {
 
+
+    private static final int FONT_SIZE = 24;
+
     /**
      * Constructor for EventLog.
      */
     public EventLog() {
         super();
         setTextFill(Paint.valueOf("white"));
-        setFont(javafx.scene.text.Font.font(24));
+        setFont(javafx.scene.text.Font.font(FONT_SIZE));
         setAlignment(Pos.TOP_CENTER);
     }
 
