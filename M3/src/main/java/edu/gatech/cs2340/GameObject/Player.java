@@ -197,7 +197,7 @@ public class Player implements Comparable<Player>, Serializable {
      * @param newName Name to be set for Player
      */
     public void setName(String newName) {
-        this.name = name;
+        this.name = newName;
     }
 
     /**
@@ -205,7 +205,7 @@ public class Player implements Comparable<Player>, Serializable {
      * @param newRace Race to be set for Player
      */
     public void setRace(Race newRace) {
-        this.race = race;
+        this.race = newRace;
     }
 
     /**
@@ -213,7 +213,7 @@ public class Player implements Comparable<Player>, Serializable {
      * @param newColorString Color to be set for Player
      */
     public void setColor(String newColorString) {
-        switch (colorString) {
+        switch (newColorString) {
         case "Red":
             color = Color.RED;
             break;

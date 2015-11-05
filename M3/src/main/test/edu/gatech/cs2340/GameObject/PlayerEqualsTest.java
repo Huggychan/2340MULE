@@ -58,6 +58,11 @@ public class PlayerEqualsTest {
     }
 
     @Test
+    public void testPlayerEqualsNull() {
+        assertFalse(player1.equals(null));
+    }
+
+    @Test
     public void testPlayerEqualsSameColorSameName() {
         assertTrue(player1.equals(player2));
     }
