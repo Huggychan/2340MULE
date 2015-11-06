@@ -1,0 +1,67 @@
+// defaultTasks "compileJava", "compileTest", "javadoc", "clean", "jar"
+defaultTasks "jar"
+
+version = '1.0'
+
+apply plugin: 'java'
+
+compileJava {
+  sourceCompatibility = '1.8'
+}
+
+// mainClassName = "src.main.java.edu.gatech.oad.antlab.pkg1.AntLabMain"
+
+// sourceCompatibility = 1.5
+// targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class' : 'edu.gatech.cs2340.Game',
+        'Implementation-Version' : version ,
+        'Implementation-Title' : 'Mule Game - $version'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+dependencies {
+    // testCompile group: 'junit', name: 'junit', version: '4.11'
+    //compile files('lib/resources.jar')
+    //compile files('src/main/java/edu/gatech/oad/antlab/pkg1')
+    //compile files('src/main/java/edu/gatech/oad/antlab/pkg2')
+    //compile files('src/main/java/edu/gatech/oad/antlab/person')
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/java/resources"]
+            //includes = ["*.fxml"]
+            //includes = ["*.jpg"]
+            //includes = ["**/*.png"]
+            //includes = ["**/*.psd"]
+        }
+    }
+}
+
+/*jar {
+    baseName = "bmawji3-antlab"
+    version = "1.0"
+}*/
+
+/*defaultTasks 'beforeHelloWorld'
+
+task helloWorld {
+    doLast {
+        println "hello world!"
+    }
+}
+
+task beforeHelloWorld (dependsOn:helloWorld) << {
+    println "I am beforeHelloWorld"
+}*/
