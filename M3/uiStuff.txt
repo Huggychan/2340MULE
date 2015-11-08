@@ -1,0 +1,24 @@
+Game Config Screen
+More color
+Make it look more inviting
+
+Person Config Screen
+More Color
+"Select your stuff"
+Center items
+Make things bigger
+Add stats for each character/race
+
+Map
+Seconds remaining shouldn't overlap with logger
+Move timer down to lower right or do a bar timer
+
+TownMap
+Show timer
+Pictures on words (ore, energy, food)
+
+Store
+Have instructions/guide for buying/selling
+ex: NAME/COST/#STOCK
+Show how much money each player has left
+Stats menu in lower left

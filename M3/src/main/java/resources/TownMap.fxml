@@ -52,5 +52,10 @@
          </font>
       </Label>
       <Rectangle fx:id="exitRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="134.0" layoutY="54.0" onMouseClicked="#onExitClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="175.0" layoutY="138.0" onMouseClicked="#onAssayClicked" text="Back to Map">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
