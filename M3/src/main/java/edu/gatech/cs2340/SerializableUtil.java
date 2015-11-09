@@ -54,6 +54,11 @@ public class SerializableUtil {
      */
     public void loadGame(File fileName, Stage stage) throws IOException,
             ClassNotFoundException {
+        if (fileName == null) {
+            return;
+            //if player presses cancel instead of actually choosing the
+            //save file. I.E. wants to start a new game
+        }
         FileInputStream fis = new FileInputStream(fileName);
         ObjectInputStream ois = new ObjectInputStream(fis);
         Game obj = (Game) ois.readObject();
