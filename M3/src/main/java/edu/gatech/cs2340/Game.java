@@ -78,7 +78,7 @@ public class Game extends Application implements Serializable {
      * This enum documents game difficulty.
      */
     public enum Difficulty {
-        Beginner, Standard, Tournament;
+        Beginner, Standard, Tournament, SuperEasy, ExtremeMuling;
 
         /**
          * @return Difficulties as an array.
@@ -249,6 +249,17 @@ public class Game extends Application implements Serializable {
                 p.setOre(0);
                 p.setCrystite(0);
                 break;
+            case SuperEasy:
+                p.setFood(8);
+                p.setEnergy(8);
+                p.setOre(8);
+                p.setCrystite(8);
+                break;
+            case ExtremeMuling:
+                p.setFood(1);
+                p.setEnergy(1);
+                p.setOre(1);
+                p.setCrystite(1);
             default:
                 break;
             }

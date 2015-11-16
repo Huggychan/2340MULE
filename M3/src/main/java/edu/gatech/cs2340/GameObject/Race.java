@@ -1,4 +1,8 @@
 package edu.gatech.cs2340.GameObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author Bilal, Marc
@@ -9,7 +13,13 @@ public enum Race {
     FLAPPER("/resources/MULE_Flapper.png"),
     BONZOID("/resources/MULE_Bonzoid.png"),
     UGAITE("/resources/MULE_Ugaite.jpg"),
-    BUZZITE("/resources/MULE_Buzzite.jpg");
+    BUZZITE("/resources/MULE_Buzzite.jpg"),
+    WINDOWSITE("/resources/windows.png"),
+    MACITE("/resources/apple.png"),
+    LINUXITE("/resources/linux.png"),
+    GOOGLEITE("/resources/google.png"),
+    HEARTHSTONEITE("/resources/hearthstone.png"),
+    BONDITE("/resources/bond.gif");
 
     private String imageString;
 
@@ -18,7 +28,7 @@ public enum Race {
      * @param newImageString String file location of image
      */
     Race(String newImageString) {
-        this.imageString = imageString;
+        this.imageString = newImageString;
     }
 
     @Override
@@ -31,5 +41,12 @@ public enum Race {
      */
     public String getImageString() {
         return this.imageString;
+    }
+
+    /**
+     * @return Races as an array.
+     */
+    public static ArrayList<Race> getAllRaces() {
+        return new ArrayList<>(Arrays.asList(values()));
     }
 }

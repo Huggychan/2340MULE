@@ -82,12 +82,7 @@ public class PlayerConfigController implements Initializable {
         this.tempColor = new ArrayList<>();
 
         race.setItems(
-                FXCollections.observableArrayList(
-                        Race.HUMAN,
-                        Race.FLAPPER,
-                        Race.BONZOID,
-                        Race.UGAITE,
-                        Race.BUZZITE));
+                FXCollections.observableArrayList(Race.getAllRaces()));
         race.getSelectionModel().selectFirst();
 
         start.setOnAction(event -> {

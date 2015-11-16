@@ -1,0 +1,19 @@
+Additional difficulty settings beyond Beginner
+    Difficulty(food, energy, ore, crystite)
+    Standard(4, 2, 0, 0)
+    Tournament(4, 2, 0, 0)
+    SuperEasy(8, 8, 8, 8)
+    ExtremeMuling(1, 1, 1, 1)
+
+Additional player races
+    HUMAN(600),
+    FLAPPER(1600),
+    BONZOID(1000),
+    UGAITE(1000),
+    BUZZITE(1000),
+    WINDOWSITE(800),
+    MACITE(2400),
+    LINUXITE(3000),
+    GOOGLEITE(5000),
+    HEARTHSTONEITE(4000),
+    BONDITE(7000);

@@ -138,6 +138,24 @@ public class Player implements Comparable<Player>, Serializable {
         case FLAPPER:
             this.money = 1600;
             break;
+        case WINDOWSITE:
+            this.money = 800;
+            break;
+        case MACITE:
+            this.money = 2400;
+            break;
+        case LINUXITE:
+            this.money = 3000;
+            break;
+        case GOOGLEITE:
+            this.money = 5000;
+            break;
+        case HEARTHSTONEITE:
+            this.money = 4000;
+            break;
+        case BONDITE:
+            this.money = 7000;
+            break;
         default:
             this.money = 1000;
             break;
