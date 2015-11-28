@@ -20,6 +20,9 @@ public class RiverTile extends Tile {
         this.getResourceTypeMap().put(ResourceType.ENERGY, 2);
         this.getResourceTypeMap().put(ResourceType.ORE, 0);
         this.getResourceTypeMap().put(ResourceType.CRYSTITE, 0);
+        this.getResourceTypeMap().put(ResourceType.ELECTRICITY, 3);
+        this.getResourceTypeMap().put(ResourceType.WATER, 4);
+        this.getResourceTypeMap().put(ResourceType.DIAMOND, 1);
     }
 
     @Override

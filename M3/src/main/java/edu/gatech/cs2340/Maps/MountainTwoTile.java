@@ -24,6 +24,9 @@ public class MountainTwoTile extends Tile {
         this.getResourceTypeMap().put(ResourceType.ENERGY, 1);
         this.getResourceTypeMap().put(ResourceType.ORE, 3);
         this.getResourceTypeMap().put(ResourceType.CRYSTITE, randomNum);
+        this.getResourceTypeMap().put(ResourceType.ELECTRICITY, randomNum);
+        this.getResourceTypeMap().put(ResourceType.WATER, 1);
+        this.getResourceTypeMap().put(ResourceType.DIAMOND, randomNum);
     }
 
     @Override

@@ -6,7 +6,10 @@ public enum ResourceType {
     FOOD("/resources/MULE_Food.png"),
     ENERGY("/resources/MULE_Energy.png"),
     ORE("/resources/MULE_Ore.png"),
-    CRYSTITE("/resources/MULE_Crystite.png");
+    CRYSTITE("/resources/MULE_Crystite.png"),
+    ELECTRICITY("/resources/electricity.png"),
+    WATER("/resources/water.png"),
+    DIAMOND("/resources/diamond.png");
 
     private String imageString;
 

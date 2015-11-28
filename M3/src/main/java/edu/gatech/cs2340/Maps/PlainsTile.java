@@ -24,6 +24,9 @@ public class PlainsTile extends Tile {
         this.getResourceTypeMap().put(ResourceType.ENERGY, 3);
         this.getResourceTypeMap().put(ResourceType.ORE, 1);
         this.getResourceTypeMap().put(ResourceType.CRYSTITE, randomNum);
+        this.getResourceTypeMap().put(ResourceType.ELECTRICITY, randomNum);
+        this.getResourceTypeMap().put(ResourceType.WATER, 2);
+        this.getResourceTypeMap().put(ResourceType.DIAMOND, randomNum);
     }
 
     @Override

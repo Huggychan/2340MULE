@@ -75,6 +75,27 @@ public class Player implements Comparable<Player>, Serializable {
     }
 
     /**
+     * @return Electricity of player
+     */
+    public int getElectricity() {
+        return inventory.get(ResourceType.ELECTRICITY);
+    }
+
+    /**
+     * @return Water of player
+     */
+    public int getWater() {
+        return inventory.get(ResourceType.WATER);
+    }
+
+    /**
+     * @return Diamond of player
+     */
+    public int getDiamond() {
+        return inventory.get(ResourceType.DIAMOND);
+    }
+
+    /**
      * @return Number of Land tiles player owns
      */
     public int getLand() {
@@ -85,7 +106,8 @@ public class Player implements Comparable<Player>, Serializable {
      * @return Sum of food, energy, crystite, and ore
      */
     public int getGoods() {
-        return getFood() + getEnergy() + getCrystite() + getOre();
+        return getFood() + getEnergy() + getCrystite() + getOre()
+                + getElectricity() + getWater() + getDiamond();
     }
 
     /**
@@ -124,6 +146,9 @@ public class Player implements Comparable<Player>, Serializable {
         inventory.put(ResourceType.FOOD, 0);
         inventory.put(ResourceType.ORE, 0);
         inventory.put(ResourceType.ENERGY, 0);
+        inventory.put(ResourceType.ELECTRICITY, 0);
+        inventory.put(ResourceType.WATER, 0);
+        inventory.put(ResourceType.DIAMOND, 0);
         this.tiles = new ArrayList<>();
         this.muleBoughtThisTurn = false;
 
@@ -299,6 +324,38 @@ public class Player implements Comparable<Player>, Serializable {
         }
     }
 
+    /**
+     * Sets electricity of person.
+     * @param electricity electricity to set for the person
+     */
+    public void setElectricity(int electricity) {
+        inventory.put(ResourceType.ELECTRICITY, electricity);
+        if (electricity < 0) {
+            inventory.put(ResourceType.ELECTRICITY, electricity);
+        }
+    }
+
+    /**
+     * Sets water of person.
+     * @param water water to set for the person
+     */
+    public void setWater(int water) {
+        inventory.put(ResourceType.WATER, water);
+        if (water < 0) {
+            inventory.put(ResourceType.WATER, water);
+        }
+    }
+
+    /**
+     * Sets diamond of person.
+     * @param diamond electricity to set for the person
+     */
+    public void setDiamond(int diamond) {
+        inventory.put(ResourceType.DIAMOND, diamond);
+        if (diamond < 0) {
+            inventory.put(ResourceType.DIAMOND, diamond);
+        }
+    }
 
     @Override
     public String toString() {

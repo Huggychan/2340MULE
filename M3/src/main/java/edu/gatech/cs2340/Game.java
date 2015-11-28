@@ -236,30 +236,45 @@ public class Game extends Application implements Serializable {
                 p.setEnergy(4);
                 p.setOre(0);
                 p.setCrystite(0);
+                p.setElectricity(0);
+                p.setWater(4);
+                p.setDiamond(0);
                 break;
             case Standard:
                 p.setFood(4);
                 p.setEnergy(2);
                 p.setOre(0);
                 p.setCrystite(0);
+                p.setElectricity(0);
+                p.setWater(2);
+                p.setDiamond(0);
                 break;
             case Tournament:
                 p.setFood(4);
                 p.setEnergy(2);
                 p.setOre(0);
                 p.setCrystite(0);
+                p.setElectricity(0);
+                p.setWater(2);
+                p.setDiamond(0);
                 break;
             case SuperEasy:
                 p.setFood(8);
                 p.setEnergy(8);
                 p.setOre(8);
                 p.setCrystite(8);
+                p.setElectricity(8);
+                p.setWater(8);
+                p.setDiamond(8);
                 break;
             case ExtremeMuling:
                 p.setFood(1);
                 p.setEnergy(1);
                 p.setOre(1);
                 p.setCrystite(1);
+                p.setElectricity(1);
+                p.setWater(1);
+                p.setDiamond(1);
             default:
                 break;
             }

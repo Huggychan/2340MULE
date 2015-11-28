@@ -33,10 +33,10 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Rectangle fx:id="foodRect" arcHeight="5.0" arcWidth="5.0" fill="#976d20" height="200.0" layoutX="1298.0" layoutY="59.0" onMouseClicked="#onFoodClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle fx:id="foodRect" arcHeight="5.0" arcWidth="5.0" fill="#976d20" height="200.0" layoutX="1278.0" layoutY="60.0" onMouseClicked="#onFoodClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <Rectangle fx:id="energyRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="1028.0" layoutY="60.0" onMouseClicked="#onEnergyClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle fx:id="oreRect" arcHeight="5.0" arcWidth="5.0" fill="#575d61" height="200.0" layoutX="761.0" layoutY="60.0" onMouseClicked="#onOreClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Label layoutX="1374.0" layoutY="143.0" text="Food">
+      <Rectangle fx:id="oreRect" arcHeight="5.0" arcWidth="5.0" fill="#575d61" height="200.0" layoutX="785.0" layoutY="60.0" onMouseClicked="#onOreClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="1354.0" layoutY="144.0" text="Food">
          <font>
             <Font size="19.0" />
          </font>
@@ -46,15 +46,44 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="835.0" layoutY="151.0" text="Ore">
+      <Label layoutX="859.0" layoutY="151.0" text="Ore">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Rectangle fx:id="exitRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="134.0" layoutY="54.0" onMouseClicked="#onExitClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Label layoutX="175.0" layoutY="138.0" onMouseClicked="#onAssayClicked" text="Back to Map">
+      <Rectangle fx:id="exitRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="100.0" layoutY="59.0" onMouseClicked="#onExitClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="136.0" layoutY="141.0" onMouseClicked="#onAssayClicked" text="Back to Map">
          <font>
             <Font size="21.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="846.0" layoutY="31.0" prefHeight="16.0" prefWidth="551.0" text="Set Mule Resouce with following options" textAlignment="JUSTIFY">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="waterRect" arcHeight="5.0" arcWidth="5.0" fill="#1515d3" height="200.0" layoutX="1028.0" layoutY="286.0" onMouseClicked="#onWaterClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle fx:id="diamondRect" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="200.0" layoutX="1028.0" layoutY="522.0" onMouseClicked="#onDiamondClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle fx:id="crystiteRect" arcHeight="5.0" arcWidth="5.0" fill="#4a6e90" height="200.0" layoutX="555.0" layoutY="59.0" onMouseClicked="#onCrystiteClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle fx:id="electricityRect" arcHeight="5.0" arcWidth="5.0" fill="#ffff14" height="200.0" layoutX="329.0" layoutY="59.0" onMouseClicked="#onElectricityClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="620.0" layoutY="148.0" text="Crystite">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="386.0" layoutY="148.0" text="Electricity">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="1102.0" layoutY="374.0" onMouseClicked="#onEnergyClicked" text="Water" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="1086.0" layoutY="610.0" onMouseClicked="#onEnergyClicked" text="Diamond">
+         <font>
+            <Font size="19.0" />
          </font>
       </Label>
    </children>

@@ -248,6 +248,48 @@ public abstract class Tile extends StackPane implements Serializable {
     }
 
     /**
+     * @return electricity of tile
+     */
+    public int getElectricity() {
+        return this.resourceTypeMap.get(ResourceType.ELECTRICITY);
+    }
+
+    /**
+     * @param electricity set electricity of tile
+     */
+    public void setElectricity(int electricity) {
+        this.resourceTypeMap.put(ResourceType.ELECTRICITY, electricity);
+    }
+
+    /**
+     * @return water of tile
+     */
+    public int getWater() {
+        return this.resourceTypeMap.get(ResourceType.WATER);
+    }
+
+    /**
+     * @param water set water of tile
+     */
+    public void setWater(int water) {
+        this.resourceTypeMap.put(ResourceType.WATER, water);
+    }
+
+    /**
+     * @return diamond of tile
+     */
+    public int getDiamond() {
+        return this.resourceTypeMap.get(ResourceType.DIAMOND);
+    }
+
+    /**
+     * @param diamond set diamond of tile
+     */
+    public void setDiamond(int diamond) {
+        this.resourceTypeMap.put(ResourceType.DIAMOND, diamond);
+    }
+
+    /**
      * Returns the Image View of the tile
      * @return the image view of the tile
      */

@@ -43,6 +43,14 @@ public class TownMapController implements Initializable {
     @FXML
     private Rectangle foodRect;
     @FXML
+    private Rectangle crystiteRect;
+    @FXML
+    private Rectangle electricityRect;
+    @FXML
+    private Rectangle waterRect;
+    @FXML
+    private Rectangle diamondRect;
+    @FXML
     private Pane backPane;
     @FXML
     private Rectangle exitRect;
@@ -181,6 +189,30 @@ public class TownMapController implements Initializable {
     }
 
     /**
+     * Sets the mule's resource as electricity
+     */
+    public void onElectricityClicked() {
+        this.setMuleResourceType(ResourceType.ELECTRICITY,
+                game.getCurrentPlayer().getMule());
+    }
+
+    /**
+     * Sets the mule's resource as water
+     */
+    public void onWaterClicked() {
+        this.setMuleResourceType(ResourceType.WATER,
+                game.getCurrentPlayer().getMule());
+    }
+
+    /**
+     * Sets the mule's resource as diamond
+     */
+    public void onDiamondClicked() {
+        this.setMuleResourceType(ResourceType.DIAMOND,
+                game.getCurrentPlayer().getMule());
+    }
+
+    /**
      * Sets the game
      * @param game Game to be set
      */
@@ -240,18 +272,31 @@ public class TownMapController implements Initializable {
                 curr.decrementMoney(100);
                 canAfford = true;
             } else if (resource == ResourceType.ENERGY
-                    && curr.getMoney() >= 25) {
-                curr.decrementMoney(25);
-                canAfford = true;
-            } else if (resource == ResourceType.FOOD
-                    && curr.getMoney() >= 30) {
-                curr.decrementMoney(30);
-                canAfford = true;
-            } else if (resource == ResourceType.ORE
                     && curr.getMoney() >= 50) {
                 curr.decrementMoney(50);
                 canAfford = true;
+            } else if (resource == ResourceType.FOOD
+                    && curr.getMoney() >= 25) {
+                curr.decrementMoney(25);
+                canAfford = true;
+            } else if (resource == ResourceType.ORE
+                    && curr.getMoney() >= 75) {
+                curr.decrementMoney(75);
+                canAfford = true;
+            } else if (resource == ResourceType.ELECTRICITY
+                    && curr.getMoney() >= 60) {
+                curr.decrementMoney(60);
+                canAfford = true;
+            } else if (resource == ResourceType.WATER
+                    && curr.getMoney() >= 35) {
+                curr.decrementMoney(35);
+                canAfford = true;
+            } else if (resource == ResourceType.DIAMOND
+                    && curr.getMoney() >= 120) {
+                curr.decrementMoney(120);
+                canAfford = true;
             }
+
 
             if (resource == null || !this.game.getCurrentPlayer().hasMule()) {
                 this.game.log("Buy a mule first!");

@@ -146,6 +146,12 @@ public class StoreController implements Initializable {
                 + this.store.getOreCount());
         items.add("Energy: " + this.store.getEnergyPrice() + " "
                 + this.store.getEnergyCount());
+        items.add("Electricity: " + this.store.getElectricityPrice() + " "
+                + this.store.getElectricityCount());
+        items.add("Water: " + this.store.getWaterPrice() + " "
+                + this.store.getWaterCount());
+        items.add("Diamond: " + this.store.getDiamondPrice() + " "
+                + this.store.getDiamondCount());
 
         listView.setItems(items);
     }

@@ -11,7 +11,10 @@ public class Store implements Serializable {
 
     private static final int INIT_FOOD = 16;
     private static final int INIT_ENERGY = 16;
-    private static final int INIT_MULE = 16;
+    private static final int INIT_MULE = 25;
+    private static final int INIT_ELECTRICITY = 30;
+    private static final int INIT_WATER = 30;
+    private static final int INIT_DIAMOND = 8;
 
 
     private Map<ResourceType, Integer> inventoryStock;
@@ -21,6 +24,10 @@ public class Store implements Serializable {
     private static final int SMITHORE_PRICE = 50;
     private static final int CRYSTITE_PRICE = 100;
     private static final int BASE_MULE_PRICE = 100;
+    private static final int ELECTRICITY_PRICE = 20;
+    private static final int WATER_PRICE = 10;
+    private static final int DIAMOND_PRICE = 120;
+
 
     /**
      * Constructor for Store.
@@ -28,10 +35,13 @@ public class Store implements Serializable {
     public Store() {
         inventoryStock = new HashMap<>();
         inventoryStock.put(ResourceType.FOOD, INIT_FOOD);
-        inventoryStock.put(ResourceType.ENERGY, INIT_FOOD);
+        inventoryStock.put(ResourceType.ENERGY, INIT_ENERGY);
         inventoryStock.put(ResourceType.ORE, 0);
         inventoryStock.put(ResourceType.CRYSTITE, 0);
         inventoryStock.put(ResourceType.MULE, INIT_MULE);
+        inventoryStock.put(ResourceType.ELECTRICITY, INIT_ELECTRICITY);
+        inventoryStock.put(ResourceType.WATER, INIT_WATER);
+        inventoryStock.put(ResourceType.DIAMOND, INIT_DIAMOND);
 
         inventoryPrice = new HashMap<>();
         inventoryPrice.put(ResourceType.FOOD, FOOD_PRICE);
@@ -39,6 +49,9 @@ public class Store implements Serializable {
         inventoryPrice.put(ResourceType.ORE, SMITHORE_PRICE);
         inventoryPrice.put(ResourceType.CRYSTITE, CRYSTITE_PRICE);
         inventoryPrice.put(ResourceType.MULE, BASE_MULE_PRICE);
+        inventoryPrice.put(ResourceType.ELECTRICITY, ELECTRICITY_PRICE);
+        inventoryPrice.put(ResourceType.WATER, WATER_PRICE);
+        inventoryPrice.put(ResourceType.DIAMOND, DIAMOND_PRICE);
     }
 
     /**
@@ -77,6 +90,27 @@ public class Store implements Serializable {
     }
 
     /**
+     * @return Gets how much Electricity in inventory
+     */
+    public int getElectricityCount() {
+        return inventoryStock.get(ResourceType.ELECTRICITY);
+    }
+
+    /**
+     * @return Gets how much water in inventory
+     */
+    public int getWaterCount() {
+        return inventoryStock.get(ResourceType.WATER);
+    }
+
+    /**
+     * @return Gets how much diamond in inventory
+     */
+    public int getDiamondCount() {
+        return inventoryStock.get(ResourceType.DIAMOND);
+    }
+
+    /**
      * @return Price of energy
      */
     public int getEnergyPrice() {
@@ -109,6 +143,27 @@ public class Store implements Serializable {
      */
     public int getCrystitePrice() {
         return CRYSTITE_PRICE;
+    }
+
+    /**
+     * @return price of electricity
+     */
+    public int getElectricityPrice() {
+        return ELECTRICITY_PRICE;
+    }
+
+    /**
+     * @return price of Water
+     */
+    public int getWaterPrice() {
+        return WATER_PRICE;
+    }
+
+    /**
+     * @return price of diamond
+     */
+    public int getDiamondPrice() {
+        return DIAMOND_PRICE;
     }
 
     /**
