@@ -17,3 +17,11 @@ Additional player races
     GOOGLEITE(5000),
     HEARTHSTONEITE(4000),
     BONDITE(7000);
+
+Additional Mule types
+    Electricity
+    Water
+    Diamond
+    (Added resources to player inventory, store, and each tile)
+    (Town Map now has fittings for Crystite, Electricity, Water, and Diamond)
+    (Production also works for each Mule type)

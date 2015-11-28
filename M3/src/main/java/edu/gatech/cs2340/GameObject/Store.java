@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.GameObject;
 
+import edu.gatech.cs2340.Game;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +11,9 @@ import java.util.Map;
  */
 public class Store implements Serializable {
 
+//    private Game game;
+//    private Game.Difficulty difficulty;
+
     private static final int INIT_FOOD = 16;
     private static final int INIT_ENERGY = 16;
     private static final int INIT_MULE = 25;
@@ -16,6 +21,21 @@ public class Store implements Serializable {
     private static final int INIT_WATER = 30;
     private static final int INIT_DIAMOND = 8;
 
+//    private static final int ST_FOOD = 8;
+//    private static final int ST_ENERGY = 8;
+//    private static final int ST_ORE = 8;
+//    private static final int ST_MULE = 14;
+//    private static final int ST_ELECTRICITY = 15;
+//    private static final int ST_WATER = 15;
+//    private static final int ST_DIAMOND = 4;
+//
+//    private static final int SE_FOOD = 20;
+//    private static final int SE_ENERGY = 20;
+//    private static final int SE_ORE = 20;
+//    private static final int SE_MULE = 20;
+//    private static final int SE_ELECTRICITY = 30;
+//    private static final int SE_WATER = 30;
+//    private static final int SE_DIAMOND = 30;
 
     private Map<ResourceType, Integer> inventoryStock;
     private Map<ResourceType, Integer> inventoryPrice;
@@ -33,15 +53,38 @@ public class Store implements Serializable {
      * Constructor for Store.
      */
     public Store() {
+//        TODO inventory stock should be different for each difficulty
         inventoryStock = new HashMap<>();
-        inventoryStock.put(ResourceType.FOOD, INIT_FOOD);
-        inventoryStock.put(ResourceType.ENERGY, INIT_ENERGY);
-        inventoryStock.put(ResourceType.ORE, 0);
-        inventoryStock.put(ResourceType.CRYSTITE, 0);
-        inventoryStock.put(ResourceType.MULE, INIT_MULE);
-        inventoryStock.put(ResourceType.ELECTRICITY, INIT_ELECTRICITY);
-        inventoryStock.put(ResourceType.WATER, INIT_WATER);
-        inventoryStock.put(ResourceType.DIAMOND, INIT_DIAMOND);
+//        if (difficulty == Game.Difficulty.Beginner) {
+            inventoryStock.put(ResourceType.FOOD, INIT_FOOD);
+            inventoryStock.put(ResourceType.ENERGY, INIT_ENERGY);
+            inventoryStock.put(ResourceType.ORE, 0);
+            inventoryStock.put(ResourceType.CRYSTITE, 0);
+            inventoryStock.put(ResourceType.MULE, INIT_MULE);
+            inventoryStock.put(ResourceType.ELECTRICITY, INIT_ELECTRICITY);
+            inventoryStock.put(ResourceType.WATER, INIT_WATER);
+            inventoryStock.put(ResourceType.DIAMOND, INIT_DIAMOND);
+//        } else if (difficulty == Game.Difficulty.Standard
+//                || difficulty == Game.Difficulty.Tournament) {
+//            inventoryStock.put(ResourceType.FOOD, ST_FOOD);
+//            inventoryStock.put(ResourceType.ENERGY, ST_ENERGY);
+//            inventoryStock.put(ResourceType.ORE, ST_ORE);
+//            inventoryStock.put(ResourceType.CRYSTITE, 0);
+//            inventoryStock.put(ResourceType.MULE, ST_MULE);
+//            inventoryStock.put(ResourceType.ELECTRICITY, ST_ELECTRICITY);
+//            inventoryStock.put(ResourceType.WATER, ST_WATER);
+//            inventoryStock.put(ResourceType.DIAMOND, ST_DIAMOND);
+//        } else if (difficulty == Game.Difficulty.SuperEasy
+//                || difficulty == Game.Difficulty.ExtremeMuling) {
+//            inventoryStock.put(ResourceType.FOOD, SE_FOOD);
+//            inventoryStock.put(ResourceType.ENERGY, SE_ENERGY);
+//            inventoryStock.put(ResourceType.ORE, SE_ORE);
+//            inventoryStock.put(ResourceType.CRYSTITE, 0);
+//            inventoryStock.put(ResourceType.MULE, SE_MULE);
+//            inventoryStock.put(ResourceType.ELECTRICITY, SE_ELECTRICITY);
+//            inventoryStock.put(ResourceType.WATER, SE_WATER);
+//            inventoryStock.put(ResourceType.DIAMOND, SE_DIAMOND);
+//        }
 
         inventoryPrice = new HashMap<>();
         inventoryPrice.put(ResourceType.FOOD, FOOD_PRICE);
