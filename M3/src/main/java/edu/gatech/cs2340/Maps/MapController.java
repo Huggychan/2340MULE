@@ -128,6 +128,12 @@ public class MapController implements Initializable, Serializable {
             return new MountainThreeTile();
         } else if (c == 'T') {
             return new TownTile();
+        } else if (c == 'E') {
+            return new ElectricTile();
+        } else if (c == 'C') {
+            return new CaveTile();
+        } else if (c == 'S') {
+            return new CasinoTile();
         } else {
             throw new IllegalArgumentException("No Such Tile type");
         }

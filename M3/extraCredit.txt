@@ -25,3 +25,8 @@ Additional Mule types
     (Added resources to player inventory, store, and each tile)
     (Town Map now has fittings for Crystite, Electricity, Water, and Diamond)
     (Production also works for each Mule type)
+
+Additional Tile types
+    ElectricTile (mainly Ore, Energy, Electricity)
+    CaveTile (mainly Ore, Crystite, Diamond)
+    CasinoTile (random number of everything)
