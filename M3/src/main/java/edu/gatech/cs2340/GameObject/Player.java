@@ -287,7 +287,7 @@ public class Player implements Comparable<Player>, Serializable {
     public void setFood(int food) {
         inventory.put(ResourceType.FOOD, food);
         if (food < 0) {
-            inventory.put(ResourceType.FOOD, food);
+            inventory.put(ResourceType.FOOD, 0);
         }
     }
 
@@ -298,7 +298,7 @@ public class Player implements Comparable<Player>, Serializable {
     public void setEnergy(int energy) {
         inventory.put(ResourceType.ENERGY, energy);
         if (energy < 0) {
-            inventory.put(ResourceType.ENERGY, energy);
+            inventory.put(ResourceType.ENERGY, 0);
         }
     }
 
@@ -309,7 +309,7 @@ public class Player implements Comparable<Player>, Serializable {
     public void setOre(int ore) {
         inventory.put(ResourceType.ORE, ore);
         if (ore < 0) {
-            inventory.put(ResourceType.ORE, ore);
+            inventory.put(ResourceType.ORE, 0);
         }
     }
 
@@ -320,7 +320,7 @@ public class Player implements Comparable<Player>, Serializable {
     public void setCrystite(int crystite) {
         inventory.put(ResourceType.CRYSTITE, crystite);
         if (crystite < 0) {
-            inventory.put(ResourceType.CRYSTITE, crystite);
+            inventory.put(ResourceType.CRYSTITE, 0);
         }
     }
 
@@ -331,7 +331,7 @@ public class Player implements Comparable<Player>, Serializable {
     public void setElectricity(int electricity) {
         inventory.put(ResourceType.ELECTRICITY, electricity);
         if (electricity < 0) {
-            inventory.put(ResourceType.ELECTRICITY, electricity);
+            inventory.put(ResourceType.ELECTRICITY, 0);
         }
     }
 
@@ -342,7 +342,7 @@ public class Player implements Comparable<Player>, Serializable {
     public void setWater(int water) {
         inventory.put(ResourceType.WATER, water);
         if (water < 0) {
-            inventory.put(ResourceType.WATER, water);
+            inventory.put(ResourceType.WATER, 0);
         }
     }
 
@@ -353,7 +353,7 @@ public class Player implements Comparable<Player>, Serializable {
     public void setDiamond(int diamond) {
         inventory.put(ResourceType.DIAMOND, diamond);
         if (diamond < 0) {
-            inventory.put(ResourceType.DIAMOND, diamond);
+            inventory.put(ResourceType.DIAMOND, 0);
         }
     }
 
