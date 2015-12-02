@@ -8,11 +8,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-//import edu.gatech.cs2340.GameObject.Player;
-//import edu.gatech.cs2340.GameObject.Race;
-//import edu.gatech.cs2340.GameObject.ResourceType;
-//import edu.gatech.cs2340.GameObject.Store;
-
 public class StoreBuyTests {
     private Store store;
     private Player p1;
