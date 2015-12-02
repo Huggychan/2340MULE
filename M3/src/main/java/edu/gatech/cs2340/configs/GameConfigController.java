@@ -1,7 +1,10 @@
 package edu.gatech.cs2340.configs;
+
 import edu.gatech.cs2340.Game;
 import edu.gatech.cs2340.Maps.MapType;
 import edu.gatech.cs2340.SerializableUtil;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +13,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +52,8 @@ public class GameConfigController implements Initializable {
      */
     @FXML
     private Button loadGameButton;
+    @FXML
+    private ImageView standardMapImageView;
 
     /**
      * Game being used.
@@ -70,6 +76,18 @@ public class GameConfigController implements Initializable {
         mapBox.setItems(FXCollections.observableArrayList(MapType
                 .getAllMapTypes()));
         mapBox.getSelectionModel().selectFirst();
+        mapBox.getSelectionModel().selectedIndexProperty().addListener(
+                new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable,
+                                        Number oldValue, Number newValue) {
+                        if (newValue.equals(0)) {
+                            standardMapImageView.setVisible(true);
+                        } else {
+                            standardMapImageView.setVisible(false);
+                        }
+                    }
+        });
 
         gameConfigPane.setOnKeyPressed(event -> {
                 if (event.getCode().equals(KeyCode.ENTER)) {
