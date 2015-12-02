@@ -31,6 +31,8 @@ public class StoreController implements Initializable {
     private Button buySell;
     @FXML
     private Pane backingPane;
+    @FXML
+    private Label playerInventoryLabel;
 
     private Store store;
     private Game game;
@@ -90,6 +92,8 @@ public class StoreController implements Initializable {
      */
     public void setGame(Game newGame) {
         this.game = newGame;
+
+        this.updatePlayerInventory();
     }
 
     /**
@@ -126,6 +130,7 @@ public class StoreController implements Initializable {
         }
         if (success) {
             this.updateInventory();
+            this.updatePlayerInventory();
         }
     }
 
@@ -134,27 +139,40 @@ public class StoreController implements Initializable {
      */
     public void updateInventory() {
         ObservableList<String> items = FXCollections.observableArrayList();
-        items.add("MULE: " + this.store.getBaseMulePrice() + " "
+        items.add("MULE: $" + this.store.getBaseMulePrice() + " Qty: "
                 + this.store.getMuleCount());
 
-        items.add("Crystite: " + this.store.getCrystitePrice() + " "
+        items.add("Crystite: $" + this.store.getCrystitePrice() + " Qty: "
                 + this.store.getCrystiteCount());
 
-        items.add("Food: " + this.store.getFoodPrice() + " "
+        items.add("Food: $" + this.store.getFoodPrice() + " Qty: "
                 + this.store.getFoodCount());
-        items.add("Ore: " + this.store.getSmithorePrice() + " "
+        items.add("Ore: $" + this.store.getSmithorePrice() + " Qty: "
                 + this.store.getOreCount());
-        items.add("Energy: " + this.store.getEnergyPrice() + " "
+        items.add("Energy: $" + this.store.getEnergyPrice() + " Qty: "
                 + this.store.getEnergyCount());
-        items.add("Electricity: " + this.store.getElectricityPrice() + " "
+        items.add("Electricity: $" + this.store.getElectricityPrice() + " Qty: "
                 + this.store.getElectricityCount());
-        items.add("Water: " + this.store.getWaterPrice() + " "
+        items.add("Water: $" + this.store.getWaterPrice() + " Qty: "
                 + this.store.getWaterCount());
-        items.add("Diamond: " + this.store.getDiamondPrice() + " "
+        items.add("Diamond: $" + this.store.getDiamondPrice() + " Qty: "
                 + this.store.getDiamondCount());
 
         listView.setItems(items);
     }
+
+    public void updatePlayerInventory() {
+        String crystite = "Crystite: " + this.game.getCurrentPlayer().getCrystite() + "\n";
+        String food = "Food: " + this.game.getCurrentPlayer().getFood() + "\n";
+        String ore = "Ore: " + this.game.getCurrentPlayer().getOre() + "\n";
+        String energy = "Energy: " + this.game.getCurrentPlayer().getEnergy() + "\n";
+        String elec = "Electricity: " + this.game.getCurrentPlayer().getElectricity() + "\n";
+        String water = "Water: " + this.game.getCurrentPlayer().getWater()  + "\n";
+        String diamond = "Diamond: " + this.game.getCurrentPlayer().getDiamond() + "\n";
+
+        playerInventoryLabel.setText(crystite + food + ore + energy + elec + water + diamond);
+    }
+
 
     /**
      * @param prodTypeString Product resource type to search for

@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.GameObject;
 
-import edu.gatech.cs2340.Game;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -280,7 +278,7 @@ public class Store implements Serializable {
 
         return false;
     }
-    //TODO add logging to buying/selling
+
 
     /**
      * Increments resourceType in the map.

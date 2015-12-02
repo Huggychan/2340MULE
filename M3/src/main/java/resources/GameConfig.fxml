@@ -31,7 +31,7 @@
             <Font name="Retro Computer" size="74.0" />
          </font>
       </Label>
-      <Label layoutX="421.0" layoutY="690.0" text="Press Enter When Ready" textAlignment="CENTER">
+      <Label layoutX="511.0" layoutY="690.0" text="Press Enter When Ready" textAlignment="CENTER">
          <font>
             <Font name="Retro Computer" size="36.0" />
          </font>

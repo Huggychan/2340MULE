@@ -7,7 +7,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane fx:id="backingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.GameObject.StoreController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="959.0" layoutX="-17.0" layoutY="-32.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="1653.0" />
@@ -16,15 +15,23 @@
             <Image url="@TimerSucks.jpg" />
          </image>
       </ImageView>
-      <ListView fx:id="listView" layoutX="700.0" layoutY="289.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label layoutX="278.0" layoutY="619.0" prefHeight="59.0" prefWidth="98.0" text="I want to:" />
-      <Button fx:id="confirmTransaction" layoutX="1211.0" layoutY="618.0" mnemonicParsing="false" onAction="#onConfirm" text="Confirm" />
-      <Label fx:id="buySellLabel" alignment="CENTER" layoutX="692.0" layoutY="88.0" prefHeight="95.0" prefWidth="216.0" text="Buying" textAlignment="CENTER">
+      <ListView fx:id="listView" layoutX="649.0" layoutY="235.0" prefHeight="230.0" prefWidth="302.0" stylesheets="@RetroFontStylesheet.css" />
+      <Label layoutX="226.0" layoutY="619.0" prefHeight="59.0" prefWidth="123.0" stylesheets="@RetroFontStylesheet.css" text="I want to:">
          <font>
-            <Font size="69.0" />
+            <Font name="Retro Computer" size="16.0" />
+         </font></Label>
+      <Button fx:id="confirmTransaction" layoutX="1211.0" layoutY="618.0" mnemonicParsing="false" onAction="#onConfirm" stylesheets="@RetroFontStylesheet.css" text="Confirm" />
+      <Label fx:id="buySellLabel" alignment="CENTER" layoutX="623.0" layoutY="89.0" prefHeight="98.0" prefWidth="374.0" stylesheets="@RetroFontStylesheet.css" text="Buying" textAlignment="CENTER">
+         <font>
+            <Font name="Retro Computer" size="69.0" />
          </font>
       </Label>
-      <Button fx:id="leaveStore" layoutX="351.0" layoutY="108.0" mnemonicParsing="false" onAction="#onStoreLeave" text="Leave Store" />
-      <Button fx:id="buySell" layoutX="344.0" layoutY="634.0" mnemonicParsing="false" onAction="#setToggleButtonText" text="sell" />
+      <Button fx:id="leaveStore" layoutX="351.0" layoutY="108.0" mnemonicParsing="false" onAction="#onStoreLeave" stylesheets="@RetroFontStylesheet.css" text="Leave Store" />
+      <Button fx:id="buySell" layoutX="344.0" layoutY="634.0" mnemonicParsing="false" onAction="#setToggleButtonText" stylesheets="@RetroFontStylesheet.css" text="sell" />
+      <Label fx:id="playerInventoryLabel" layoutX="172.0" layoutY="235.0" prefHeight="289.0" prefWidth="302.0">
+         <font>
+            <Font name="Retro Computer" size="13.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

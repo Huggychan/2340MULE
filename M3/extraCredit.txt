@@ -31,6 +31,11 @@ Additional Tile types
     CaveTile (mainly Ore, Crystite, Diamond)
     CasinoTile (random number of everything)
 
+<<<<<<< HEAD
 Original Tile art for basic tiles
 
 Looping Music
+=======
+Original Artwork in Map & Town
+Music
+>>>>>>> 9cf9944a6393011ee71b3d4ed74861981ed60ce8
