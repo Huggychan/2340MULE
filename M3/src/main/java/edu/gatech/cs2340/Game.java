@@ -3,6 +3,7 @@ package edu.gatech.cs2340;
 //TODO fix stuff that violates Law of Demeter
 //TODO add mapType, SummaryController
 import edu.gatech.cs2340.GameEngine.LandSelection;
+import edu.gatech.cs2340.GameEngine.Music;
 import edu.gatech.cs2340.GameEngine.RandomEventGenerator;
 import edu.gatech.cs2340.GameEngine.Turn;
 import edu.gatech.cs2340.GameObject.Mule;
@@ -103,6 +104,8 @@ public class Game extends Application implements Serializable {
      */
     @Override
     public void start(Stage givenStage) throws Exception {
+        Music music = new Music();
+        music.playSong();
         randomEventGenerator = new RandomEventGenerator(this);
         serializableUtil = new SerializableUtil();
         this.store = new Store();

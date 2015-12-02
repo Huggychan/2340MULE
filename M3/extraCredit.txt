@@ -30,3 +30,7 @@ Additional Tile types
     ElectricTile (mainly Ore, Energy, Electricity)
     CaveTile (mainly Ore, Crystite, Diamond)
     CasinoTile (random number of everything)
+
+Original Tile art for basic tiles
+
+Looping Music
