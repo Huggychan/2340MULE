@@ -30,3 +30,6 @@ Additional Tile types
     ElectricTile (mainly Ore, Energy, Electricity)
     CaveTile (mainly Ore, Crystite, Diamond)
     CasinoTile (random number of everything)
+
+Original Artwork in Map & Town
+Music

@@ -148,9 +148,8 @@ public class TownMapController implements Initializable {
             }
             StoreController sc = loader.getController();
             this.storeController = sc;
-            System.out.println("STORE CONTROLLER " + sc);
-            sc.setStore(this.game.getStore());
             sc.setGame(this.game);
+            sc.setStore(this.game.getStore());
             this.game.getMap().getStackPane()
                     .getChildren().add(sc.getBackingPane());
         }
