@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -105,6 +106,27 @@ public class MapController implements Initializable, Serializable {
                 System.out.println(e);
                 System.out.println(e.getMessage());
                 System.out.println("Trash tier coding");
+            }
+        }
+    }
+
+    private void randomGenMap() {
+        tiles = new Tile[MAP_HEIGHT][MAP_WIDTH];
+        char[] tileTypes = {'P', 'M', 'N', 'O', 'E', 'C', 'S'};
+        Random r = new Random();
+
+        for (int i = 0; i < MAP_HEIGHT; i++) {
+            for (int j = 0; j < MAP_WIDTH; j++) {
+                if (j == 4) {
+                    if (i == 2) {
+                        tiles[i][j] = new TownTile();
+                    } else {
+                        tiles[i][j] = new RiverTile();
+                    }
+                } else {
+                    char tileType = tileTypes[r.nextInt()%tileTypes.length];
+                    tiles[i][j] = setUpTile(tileType);
+                }
             }
         }
     }
