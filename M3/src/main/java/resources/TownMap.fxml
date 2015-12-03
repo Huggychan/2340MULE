@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -9,33 +10,38 @@
 
 <Pane fx:id="backPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.cs2340.Maps.TownMapController">
    <children>
-      <Rectangle fx:id="assayRect" arcHeight="5.0" arcWidth="5.0" fill="#da9292" height="400.0" layoutX="167.0" layoutY="350.0" onMouseClicked="#onAssayClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <ImageView fitHeight="900.0" fitWidth="1600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@intown.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="assayRect" arcHeight="5.0" arcWidth="5.0" fill="#da9292" height="320.0" layoutX="174.0" layoutY="387.0" onMouseClicked="#onAssayClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
       <Label layoutX="234.0" layoutY="559.0" onMouseClicked="#onAssayClicked" text="Assay">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Rectangle fx:id="pubRect" arcHeight="5.0" arcWidth="5.0" fill="#96b9da" height="400.0" layoutX="442.0" layoutY="351.0" onMouseClicked="#onPubClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle fx:id="pubRect" arcHeight="5.0" arcWidth="5.0" fill="#96b9da" height="320.0" layoutX="447.0" layoutY="387.0" onMouseClicked="#onPubClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
       <Label layoutX="521.0" layoutY="556.0" onMouseClicked="#onPubClicked" text="Pub">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Rectangle fx:id="landOfficeRect" arcHeight="5.0" arcWidth="5.0" fill="#9acd8e" height="400.0" layoutX="716.0" layoutY="354.0" onMouseClicked="#onLandOfficeClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle fx:id="landOfficeRect" arcHeight="5.0" arcWidth="5.0" fill="#9acd8e" height="320.0" layoutX="723.0" layoutY="395.0" onMouseClicked="#onLandOfficeClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
       <Label layoutX="762.0" layoutY="534.0" onMouseClicked="#onLandOfficeClicked" text="Land Office">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Rectangle fx:id="storeRect" arcHeight="5.0" arcWidth="5.0" fill="#8e969e" height="400.0" layoutX="1298.0" layoutY="357.0" onMouseClicked="#onStoreClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Label layoutX="1365.0" layoutY="538.0" onMouseClicked="#onStoreClicked" text="MULEs">
+      <Rectangle fx:id="storeRect" arcHeight="5.0" arcWidth="5.0" fill="#8e969e" height="320.0" layoutX="1305.0" layoutY="394.0" onMouseClicked="#onStoreClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
+      <Label layoutX="1365.0" layoutY="538.0" onMouseClicked="#onStoreClicked" text="Store">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Rectangle fx:id="foodRect" arcHeight="5.0" arcWidth="5.0" fill="#976d20" height="200.0" layoutX="1278.0" layoutY="60.0" onMouseClicked="#onFoodClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle fx:id="energyRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="1028.0" layoutY="60.0" onMouseClicked="#onEnergyClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle fx:id="oreRect" arcHeight="5.0" arcWidth="5.0" fill="#575d61" height="200.0" layoutX="785.0" layoutY="60.0" onMouseClicked="#onOreClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle fx:id="foodRect" arcHeight="5.0" arcWidth="5.0" fill="#976d20" height="116.0" layoutX="1284.0" layoutY="102.0" onMouseClicked="#onFoodClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
+      <Rectangle fx:id="energyRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="116.0" layoutX="1035.0" layoutY="101.0" onMouseClicked="#onEnergyClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
+      <Rectangle fx:id="oreRect" arcHeight="5.0" arcWidth="5.0" fill="#575d61" height="116.0" layoutX="791.0" layoutY="100.0" onMouseClicked="#onOreClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
       <Label layoutX="1354.0" layoutY="144.0" text="Food">
          <font>
             <Font size="19.0" />
@@ -62,10 +68,10 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Rectangle fx:id="waterRect" arcHeight="5.0" arcWidth="5.0" fill="#1515d3" height="200.0" layoutX="1028.0" layoutY="286.0" onMouseClicked="#onWaterClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle fx:id="diamondRect" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="200.0" layoutX="1028.0" layoutY="522.0" onMouseClicked="#onDiamondClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle fx:id="crystiteRect" arcHeight="5.0" arcWidth="5.0" fill="#4a6e90" height="200.0" layoutX="555.0" layoutY="59.0" onMouseClicked="#onCrystiteClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Rectangle fx:id="electricityRect" arcHeight="5.0" arcWidth="5.0" fill="#ffff14" height="200.0" layoutX="329.0" layoutY="59.0" onMouseClicked="#onElectricityClicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle fx:id="waterRect" arcHeight="5.0" arcWidth="5.0" fill="#1515d3" height="116.0" layoutX="1035.0" layoutY="328.0" onMouseClicked="#onWaterClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
+      <Rectangle fx:id="diamondRect" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="116.0" layoutX="1034.0" layoutY="564.0" onMouseClicked="#onDiamondClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
+      <Rectangle fx:id="crystiteRect" arcHeight="5.0" arcWidth="5.0" fill="#4a6e90" height="116.0" layoutX="562.0" layoutY="98.0" onMouseClicked="#onCrystiteClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
+      <Rectangle fx:id="electricityRect" arcHeight="5.0" arcWidth="5.0" fill="#ffff14" height="116.0" layoutX="336.0" layoutY="101.0" onMouseClicked="#onElectricityClicked" stroke="BLACK" strokeType="INSIDE" width="187.0" />
       <Label layoutX="620.0" layoutY="148.0" text="Crystite">
          <font>
             <Font size="19.0" />

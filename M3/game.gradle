@@ -40,7 +40,7 @@ dependencies {
 sourceSets {
     main {
         resources {
-            srcDirs = ["src/main/java/resources"]
+            srcDirs = ["./src/main/java/resources/"]
             //includes = ["*.fxml"]
             //includes = ["*.jpg"]
             //includes = ["**/*.png"]
