@@ -30,6 +30,7 @@ public class StoreTests {
     @Test
      public void testIncrementKeyInMap() {
         //THESE ARE PRIVATE METHODS WHY DID YOU TRY TO TEST THEM
+        // idk im super sleepy
 //        incrementKeyInMap(ResourceType.CRYSTITE, map);
 //        assertEquals(map.get(ResourceType.CRYSTITE), 6);
     }
