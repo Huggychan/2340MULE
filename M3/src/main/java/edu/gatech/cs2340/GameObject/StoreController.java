@@ -169,8 +169,11 @@ public class StoreController implements Initializable {
         String elec = "Electricity: " + this.game.getCurrentPlayer().getElectricity() + "\n";
         String water = "Water: " + this.game.getCurrentPlayer().getWater()  + "\n";
         String diamond = "Diamond: " + this.game.getCurrentPlayer().getDiamond() + "\n";
+        String money = "Money: " + this.game.getCurrentPlayer().getMoney()
+                + "\n";
 
-        playerInventoryLabel.setText(crystite + food + ore + energy + elec + water + diamond);
+        playerInventoryLabel.setText(crystite + food + ore + energy + elec
+                + water + diamond + money);
     }
 
 
