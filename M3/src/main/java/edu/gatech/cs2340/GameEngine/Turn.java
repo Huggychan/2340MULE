@@ -31,7 +31,7 @@ public class Turn implements Serializable {
     /**
      * Game being used.
      */
-    private  Game game;
+    private Game game;
     /**
      * ArrayList of players.
      */

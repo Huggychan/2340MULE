@@ -91,6 +91,9 @@ public class RandomEventGenerator {
                             + "TO CLEAN IT UP, IT COST YOU $" + m);
                     player.setMoney(player.getMoney() - m);
                     break;
+
+                //Additional Random Events
+
                 case 7:
                     if (lowest) {
                         break;
@@ -109,6 +112,8 @@ public class RandomEventGenerator {
                 default:
                     break;
             }
+        } else if (num < 42) {
+
         }
 //        System.out.println("Score after: " + player.getScore());
     }
