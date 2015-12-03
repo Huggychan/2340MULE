@@ -106,14 +106,43 @@ public class RandomEventGenerator {
                     break;
                 case 8:
                     game.log("A SMALL METEOR MADE OF DIAMOND LANDS IN "
-                            + player.getName() + "'s LAND. HE GAINS 10 DIAMOND.");
-                    player.setDiamond(player.getDiamond() + 10);
+                            + player.getName() + "'s LAND. HE GAINS "
+                            + m / 5 + " DIAMOND.");
+                    player.setDiamond(player.getDiamond() + m / 5);
                     break;
                 default:
                     break;
             }
-        } else if (num < 42) {
 
+        //Round random events
+
+        } else if (num < 42) {
+            num %= 3;
+            switch (num) {
+                case 0:
+                    game.log("THE PLANET WAS STRUCK BY ACID RAIN. EVERYONE "
+                            + "LOSES A FOURTH OF THEIR FOOD");
+                    for (Player p : game.getPlayers()) {
+                        p.setFood(p.getFood() * 3 / 4);
+                    }
+                    break;
+                case 1:
+                    game.log("A BITTER PLAGUE SWEEPS THE PLANET. EVERYONE "
+                            + "LOSES HALF THEIR FOOD");
+                    for (Player p : game.getPlayers()) {
+                        p.setFood(p.getFood() / 2);
+                    }
+                    break;
+                case 2:
+                    game.log("IT'S CLOUDY WITH A CHANCE OF MEATBALLS."
+                            + " EVERYONE GAINS " + m / 5 + " FOOD");
+                    for (Player p : game.getPlayers()) {
+                        p.setFood(p.getFood() * 6 / 5);
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
 //        System.out.println("Score after: " + player.getScore());
     }
