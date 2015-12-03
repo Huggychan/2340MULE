@@ -34,16 +34,6 @@ public class MapController implements Initializable, Serializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            if (this.game.getMapType() == MapType.STANDARD) {
-                setUpMap();
-            } else {
-                randomGenMap();
-            }
-        } catch (IllegalArgumentException iae) {
-            System.out.println("Problem setting up map");
-            System.out.println(iae.getMessage());
-        }
     }
 
     /**
@@ -121,16 +111,25 @@ public class MapController implements Initializable, Serializable {
 
         for (int i = 0; i < MAP_HEIGHT; i++) {
             for (int j = 0; j < MAP_WIDTH; j++) {
+                Tile t;
                 if (j == 4) {
                     if (i == 2) {
-                        tiles[i][j] = new TownTile();
+                        t = new TownTile();
                     } else {
-                        tiles[i][j] = new RiverTile();
+                        t = new RiverTile();
                     }
                 } else {
-                    char tileType = tileTypes[r.nextInt()%tileTypes.length];
-                    tiles[i][j] = setUpTile(tileType);
+                    char tileType = tileTypes[r.nextInt(6)];
+                    t = setUpTile(tileType);
                 }
+
+                t.setMap(this);
+
+                GridPane.setColumnIndex(t, j);
+                GridPane.setRowIndex(t, i);
+
+                this.backingPane.getChildren().add(t);
+                tiles[i][j] = t;
             }
         }
     }
@@ -181,6 +180,17 @@ public class MapController implements Initializable, Serializable {
      */
     public void setGame(Game gameToSet) {
         this.game = gameToSet;
+
+        try {
+            if (this.game.getMapType() == MapType.STANDARD) {
+                setUpMap();
+            } else {
+                randomGenMap();
+            }
+        } catch (IllegalArgumentException iae) {
+            System.out.println("Problem setting up map");
+            System.out.println(iae.getMessage());
+        }
     }
 
     /**
