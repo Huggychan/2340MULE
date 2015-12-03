@@ -112,8 +112,7 @@ public class GameConfigController implements Initializable {
                 && numPlayersBox.getValue() != null
                 && mapBox.getValue() != null) {
             game.setDifficulty(difficultyChoiceBox.getValue());
-            //IMPLEMENTING MAP TYPE LATER
-//            game.setMapType(mapBox.getValue());
+            game.setMapType(mapBox.getValue());
             game.setNumPlayers(numPlayersBox.getValue());
             game.nextState(0);
         }

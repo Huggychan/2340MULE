@@ -35,7 +35,11 @@ public class MapController implements Initializable, Serializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            setUpMap();
+            if (this.game.getMapType() == MapType.STANDARD) {
+                setUpMap();
+            } else {
+                randomGenMap();
+            }
         } catch (IllegalArgumentException iae) {
             System.out.println("Problem setting up map");
             System.out.println(iae.getMessage());

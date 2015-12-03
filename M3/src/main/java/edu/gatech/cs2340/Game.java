@@ -2,6 +2,7 @@ package edu.gatech.cs2340;
 
 //TODO fix stuff that violates Law of Demeter
 //TODO add mapType, SummaryController
+
 import edu.gatech.cs2340.GameEngine.LandSelection;
 import edu.gatech.cs2340.GameEngine.Music;
 import edu.gatech.cs2340.GameEngine.RandomEventGenerator;
@@ -9,13 +10,9 @@ import edu.gatech.cs2340.GameEngine.Turn;
 import edu.gatech.cs2340.GameObject.Mule;
 import edu.gatech.cs2340.GameObject.Player;
 import edu.gatech.cs2340.GameObject.Store;
-import edu.gatech.cs2340.Maps.EventLog;
-import edu.gatech.cs2340.Maps.MapController;
-import edu.gatech.cs2340.Maps.Tile;
-import edu.gatech.cs2340.Maps.TownMapController;
+import edu.gatech.cs2340.Maps.*;
 import edu.gatech.cs2340.configs.GameConfigController;
 import edu.gatech.cs2340.configs.PlayerConfigController;
-//import edu.gatech.cs2340.configs.SummaryController;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +32,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+//import edu.gatech.cs2340.configs.SummaryController;
 
 /**
  * Game class.
@@ -56,6 +55,7 @@ public class Game extends Application implements Serializable {
     private Turn turn;
 //    private SummaryController summaryController;
     private MapController map;
+    private MapType mapType;
     private transient EventLog log;
     private Store store;
     private transient Scene scene;
@@ -436,6 +436,14 @@ public class Game extends Application implements Serializable {
      */
     public void addPlayer(Player player) {
         players.add(player);
+    }
+
+    public MapType getMapType() {
+        return this.mapType;
+    }
+
+    public void setMapType(MapType type) {
+        this.mapType = type;
     }
 
     /**
