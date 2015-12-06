@@ -144,10 +144,5 @@ public class RandomEventGenerator {
                     break;
             }
         }
-//        System.out.println("Score after: " + player.getScore());
     }
-
-
-
-
 }
